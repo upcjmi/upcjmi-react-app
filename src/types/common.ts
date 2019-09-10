@@ -13,3 +13,8 @@ export interface IRoute {
   screen: LazyExoticComponent<any>;
   exact?: boolean;
 }
+
+export interface ICarousel {
+  image: string;
+  caption: string;
+}

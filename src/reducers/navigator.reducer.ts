@@ -1,12 +1,12 @@
 import {IReducerAction, IRoute} from '../types/common';
-import {commonRoutes} from '../constants/routes';
+import {COMMON_ROUTES} from '../constants/routes';
 
 interface INavigatorState {
   routes: Array<IRoute>;
 }
 
 const initialState: INavigatorState = {
-  routes: commonRoutes,
+  routes: COMMON_ROUTES,
 };
 
 export const navigator = (state: INavigatorState = initialState, action: IReducerAction) => {

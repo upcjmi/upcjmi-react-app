@@ -1,4 +1,6 @@
 import React, {FC} from 'react';
+import Result from 'antd/es/result';
+import Button from 'antd/es/button';
 
 interface IProps {
   location: any;
@@ -6,6 +8,15 @@ interface IProps {
   [key: string]: any;
 }
 
-const NotFoundScreen: FC<IProps> = () => <h1>404: Page you are looking for does not exists</h1>;
+const NotFoundScreen: FC<IProps> = () => (
+  <div className="full-page center-hv">
+    <Result
+      status="404"
+      title="404"
+      subTitle="Sorry, the page you visited does not exist."
+      extra={<Button type="primary">Back Home</Button>}
+    />
+  </div>
+);
 
 export default NotFoundScreen;

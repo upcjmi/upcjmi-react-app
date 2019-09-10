@@ -1,0 +1,62 @@
+@import 'variables';
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: $full-page-height;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+  z-index: -3;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+.ant-carousel .slick-slide img {
+  width: 100vw;
+  height: $full-page-height;
+  object-fit: cover;
+  object-position: center;
+}
+
+.overlay {
+  height: $full-page-height;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  background-image: linear-gradient(153deg, rgba(0, 0, 0, 0.75) 0%, rgba(58, 17, 147, 0.75) 95%);
+  width: 100vw;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+.slick-dots {
+  z-index: 6;
+}
+
+.welcome-text h1.ant-typography,
+h2.ant-typography,
+h3.ant-typography {
+  color: #eeeeee !important;
+  margin: 0 !important;
+}
+
+.welcome-text h1.ant-typography {
+  font-size: 3rem;
+  display: inline-block;
+}
+
+.welcome-text h2.ant-typography {
+  font-size: 2rem;
+}
+
+.welcome-text h1.ant-typography p {
+  font-size: 1.5rem;
+  float: right;
+  color: green !important;
+  display: block;
+}

@@ -1,0 +1,12 @@
+.badge-container {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-direction: row;
+  max-width: 100vw;
+}
+
+.badge-container img {
+  max-width: 100%;
+  height: auto;
+}
