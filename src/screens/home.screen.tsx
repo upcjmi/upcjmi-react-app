@@ -3,8 +3,6 @@ import {Tag, Typography} from 'antd';
 
 import OverlayCarousel from '../components/overlayCarousel';
 
-import '../styles/home.scss';
-
 import {HOME_CAROUSEL} from '../constants/carousel/home.constant';
 import {BADGES} from '../constants/home/badges.constant';
 import ContactScreen from './contact.screen';

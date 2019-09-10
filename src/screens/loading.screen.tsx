@@ -1,8 +1,6 @@
 import React, {FC} from 'react';
 import {Spin} from 'antd';
 
-import '../styles/loadingScreen.scss';
-
 interface IProps {}
 
 const LoadingScreen: FC<IProps> = () => (

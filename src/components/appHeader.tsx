@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Row, Col, Button, Menu, Icon} from 'antd';
 
-import '../styles/header.scss';
 import {CONTACT_PATH, HOME_PATH} from '../constants/paths.constant';
 import {selectScreen} from '../helpers/screen';
 
