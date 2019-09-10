@@ -1,12 +1,7 @@
 import React, {FC} from 'react';
-import Result from 'antd/es/result';
-import Button from 'antd/es/button';
+import {Result, Button} from 'antd';
 
-interface IProps {
-  location: any;
-
-  [key: string]: any;
-}
+interface IProps {}
 
 const NotFoundScreen: FC<IProps> = () => (
   <div className="full-page center-hv">

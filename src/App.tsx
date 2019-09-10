@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import React, {Component} from 'react';
 import {applyMiddleware, createStore} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
@@ -14,12 +14,48 @@ import Main from './main';
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
 
-const App = () => (
-  <Provider store={store}>
-    <Router>
-      <Main />
-    </Router>
-  </Provider>
-);
+interface IProps {}
+
+interface IState {
+  width: number;
+}
+
+class App extends Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props);
+
+    this.state = {
+      // eslint-disable-next-line react/no-unused-state
+      width: window.innerWidth,
+    };
+  }
+
+  componentWillMount = (): void => {
+    this.updateDimensions();
+  };
+
+  componentDidMount = (): void => {
+    window.addEventListener('resize', this.updateDimensions);
+  };
+
+  componentWillUnmount = (): void => {
+    window.removeEventListener('resize', this.updateDimensions);
+  };
+
+  updateDimensions = (): void => {
+    // eslint-disable-next-line react/no-unused-state
+    this.setState({width: window.innerWidth});
+  };
+
+  render() {
+    return (
+      <Provider store={store}>
+        <Router>
+          <Main />
+        </Router>
+      </Provider>
+    );
+  }
+}
 
 export default App;

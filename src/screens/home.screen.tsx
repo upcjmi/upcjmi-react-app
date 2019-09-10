@@ -1,15 +1,16 @@
 import React, {FC} from 'react';
-
-import Typography from 'antd/es/typography';
-import Tag from 'antd/es/tag';
+import {Tag, Typography} from 'antd';
 
 import OverlayCarousel from '../components/overlayCarousel';
 
 import '../styles/home.scss';
 
-import {HOME_CAROUSEL} from '../constants/carousel/home';
-import {BADGES} from '../constants/badges';
+import {HOME_CAROUSEL} from '../constants/carousel/home.constant';
+import {BADGES} from '../constants/home/badges.constant';
 import ContactScreen from './contact.screen';
+import AboutUs from '../components/home/aboutUs';
+import TopRecruiters from '../components/home/topRecruiters';
+import {selectScreen} from '../helpers/screen';
 
 interface IProps {}
 
@@ -39,10 +40,10 @@ const CarouselOverlayComponent = () => (
       </Title>
     </div>
 
-    <div className="badge-container">
+    <div className="badge-container" style={{display: selectScreen('none', 'none', null)}}>
       {BADGES.map(({badge, info}, index) => (
         <div key={index.toString()}>
-          <img src={badge} alt={info} title={info} />
+          <img src={badge} alt={info} title={info} className="responsive-img" />
         </div>
       ))}
     </div>
@@ -54,8 +55,10 @@ const HomeScreen: FC<IProps> = () => (
     <OverlayCarousel
       overlay={CarouselOverlayComponent}
       images={HOME_CAROUSEL}
-      carousel={{dotPosition: 'left'}}
+      carousel={{dotPosition: 'bottom'}}
     />
+    <AboutUs />
+    <TopRecruiters />
     <ContactScreen />
   </>
 );

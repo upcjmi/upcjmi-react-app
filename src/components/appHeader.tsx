@@ -1,15 +1,10 @@
 import React, {Component} from 'react';
-import {HashLink} from 'react-router-hash-link';
 import {Link} from 'react-router-dom';
-
-import Row from 'antd/es/row';
-import Col from 'antd/es/col';
-import Button from 'antd/es/button';
-import Menu from 'antd/es/menu';
-import Icon from 'antd/es/icon';
+import {Row, Col, Button, Menu, Icon} from 'antd';
 
 import '../styles/header.scss';
-import {CONTACT_PATH, HOME_PATH} from '../constants/paths';
+import {CONTACT_PATH, HOME_PATH} from '../constants/paths.constant';
+import {selectScreen} from '../helpers/screen';
 
 const JamiaLogo = require('../assets/svgs/jamia-logo.svg');
 
@@ -59,10 +54,15 @@ class AppHeader extends Component<IProps, IState> {
       <header className={`${!visible ? 'nav-up' : ''}`}>
         <Row style={{flex: 1}}>
           <Link to={HOME_PATH}>
-            <Col xs={24} md={6} xxl={4} className="logo-container space-child">
+            <Col
+              xs={24}
+              md={6}
+              xxl={4}
+              className="logo-container"
+              style={{justifyContent: selectScreen('center', 'center', null)}}>
               <img src={JamiaLogo} alt="University Placement Cell, Logo" />
               &nbsp;&nbsp;&nbsp;
-              <div style={{color: '#000000'}}>
+              <div style={{color: '#000000', fontSize: '0.9rem'}}>
                 <b>University Placement Cell</b>
                 <br />
                 Jamia Millia Islamia
@@ -84,10 +84,6 @@ class AppHeader extends Component<IProps, IState> {
                     <Icon type="phone" />
                     Contact Us
                   </Link>
-                </Item>
-                <Item key="recruit">
-                  <Icon type="solution" />
-                  Recruit
                 </Item>
               </Menu>
             </div>

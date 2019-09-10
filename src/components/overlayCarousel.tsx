@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import Carousel, {CarouselProps} from 'antd/es/carousel';
-
+import {CarouselProps} from 'antd/es/carousel';
+import {Carousel} from 'antd';
 import {ICarousel} from '../types/common';
 
 import '../styles/carousel.scss';

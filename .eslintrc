@@ -19,9 +19,12 @@
     "react/jsx-filename-extension": ["off"],
     "react/prop-types": ["warn"],
     "no-return-assign": ["off"],
+    "react/jsx-props-no-spreading": ["off"],
 
     "indent": "warn",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "import/prefer-default-export": ["off"],
+    "no-param-reassign": "warn"
   },
   "settings": {
     "import/resolver": {

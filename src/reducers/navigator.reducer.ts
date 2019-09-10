@@ -1,5 +1,5 @@
 import {IReducerAction, IRoute} from '../types/common';
-import {COMMON_ROUTES} from '../constants/routes';
+import {COMMON_ROUTES} from '../constants/routes.constant';
 
 interface INavigatorState {
   routes: Array<IRoute>;

@@ -4,11 +4,11 @@ body {
   font-family: Avenir, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
     'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  font-size: 1.1rem;
 }
 
 .space-child > * {
-  margin-left: 12.5px;
-  margin-right: 12.5px;
+  margin-right: 12px;
 }
 
 .full-page {
@@ -27,4 +27,10 @@ main {
 
 .container {
   padding: 40px;
+}
+
+img.responsive-img,
+video.responsive-video {
+  max-width: 100%;
+  height: auto;
 }

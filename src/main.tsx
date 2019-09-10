@@ -28,6 +28,10 @@ const Main = ({routes}: IProps) => (
         <Route component={NotFoundScreen} />
       </Switch>
     </main>
+    <footer
+      style={{backgroundColor: '#000000', color: '#999999', textAlign: 'center', padding: 20}}>
+      &copy; 2019 University Placement Cell, Jamia Millia Islamia
+    </footer>
   </Suspense>
 );
 
