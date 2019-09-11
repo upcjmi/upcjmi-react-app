@@ -1,22 +1,17 @@
-# University Placement Cell | React Application
+# University Placement Cell - Official Web Application
 
-- Hosted [here](https://upc.parwaz.in)
-- Maintaners [Faisal Manzer](https://github.com/Faisal-Manzer), [Ahmad Hassan](https://github.com/alhaqhassan)
+#### Submit bugs [here](https://github.com/Faisal-Manzer/upcjmi-react-app/issues/new)
 
-## Running Locally
+#### Submit feature request [here](https://github.com/Faisal-Manzer/upcjmi-react-app/issues/new)
 
-```shell script
-git clone https://github.com/Faisal-Manzer/upcjmi-react-app.git
-cd upcjmi-react-app
-```
+NOTE: You should on submit issues related to application.
 
-```shell script
-yarn install
-yarn run
-```
+## Contributing to repository
 
-## Deploy
+Read our [Code of conduct](/CODE_OF_CONDUCT.md) and [Contributing guidelines](/CONTRIBUTING.md)
 
-```shell script
-yarn deploy
-```
+## Maintainers and contributors
+
+- Maintainers
+  - @Faisal-Manzer ([view profile](https://github.com/Faisal-Manzer))
+  - @alhaqhassan ([view profile](https://github.com/alhaqhassan))

@@ -23,8 +23,8 @@ const ContactScreen: FC<IProps> = () => (
         </Title>
         Phone numbers
         <ul className="space-child">
-          {CONTACT.phoneNumbers.map(phone => (
-            <li>
+          {CONTACT.phoneNumbers.map((phone, index) => (
+            <li key={index.toString()}>
               <a href={`tel:${phone}`} key={phone}>
                 <Icon type="phone" />
                 &nbsp;
@@ -35,8 +35,8 @@ const ContactScreen: FC<IProps> = () => (
         </ul>
         Mailing addresses
         <ul>
-          {CONTACT.mails.map(mail => (
-            <li>
+          {CONTACT.mails.map((mail, index) => (
+            <li key={index.toString()}>
               <a href={`mailto:${mail}`} key={mail}>
                 <Icon type="mail" />
                 &nbsp;

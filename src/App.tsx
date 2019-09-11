@@ -30,10 +30,6 @@ class App extends Component<IProps, IState> {
     };
   }
 
-  componentWillMount = (): void => {
-    this.updateDimensions();
-  };
-
   componentDidMount = (): void => {
     window.addEventListener('resize', this.updateDimensions);
   };

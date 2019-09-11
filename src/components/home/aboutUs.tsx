@@ -35,8 +35,8 @@ const AboutUs: FC<IProps> = () => (
       <br />
 
       <Row>
-        {ABOUT_US_PEOPLE.map(({image, name, position}) => (
-          <Col sm={24} md={8} style={{textAlign: 'center'}}>
+        {ABOUT_US_PEOPLE.map(({image, name, position}, index) => (
+          <Col sm={24} md={8} style={{textAlign: 'center'}} key={index.toString()}>
             <img src={image} alt={name} />
             <br />
             <Title level={3}>{name}</Title>

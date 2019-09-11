@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Row, Col, Button, Menu, Icon} from 'antd';
+import {Row, Col, Button, Menu, Icon, notification} from 'antd';
+import {GoogleLogin} from 'react-google-login';
 
 import {CONTACT_PATH, HOME_PATH} from '../constants/paths.constant';
+import {GOOGLE_OAUTH_CLIENT_ID} from '../constants/credentials.constant';
 import {selectScreen} from '../helpers/screen';
 
 const JamiaLogo = require('../assets/svgs/jamia-logo.svg');
@@ -38,11 +40,38 @@ class AppHeader extends Component<IProps, IState> {
     const {prevScrollPos} = this.state;
 
     const currentScrollPos = window.pageYOffset;
-    const visible = prevScrollPos > currentScrollPos || currentScrollPos < 64;
+    const {body, documentElement: html} = document;
+
+    const pageHeight = Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight,
+    );
+
+    const visible =
+      prevScrollPos > currentScrollPos ||
+      currentScrollPos < 64 ||
+      pageHeight - window.innerHeight - currentScrollPos < 64;
 
     this.setState({
       prevScrollPos: currentScrollPos,
       visible,
+    });
+  };
+
+  googleSignInSuccess = (response: any) => {
+    notification.success({
+      message: `Welcome ${response.profileObj.givenName}`,
+      description: 'You successfully signed in.',
+    });
+  };
+
+  googleSignInFailure = () => {
+    notification.error({
+      message: 'Sorry',
+      description: 'Some unknown error occurred during signing in.',
     });
   };
 
@@ -71,9 +100,22 @@ class AppHeader extends Component<IProps, IState> {
 
           <Col xs={0} md={18} xxl={20}>
             <div className="header-pill" style={{paddingTop: 18}}>
-              <Button type="primary" icon="google">
-                Sign In With Google
-              </Button>
+              <GoogleLogin
+                clientId={GOOGLE_OAUTH_CLIENT_ID || ''}
+                render={renderProps => (
+                  <Button
+                    onClick={renderProps.onClick}
+                    disabled={renderProps.disabled}
+                    type="primary"
+                    icon="google">
+                    Sign In With Google
+                  </Button>
+                )}
+                buttonText="Login"
+                onSuccess={this.googleSignInSuccess}
+                onFailure={this.googleSignInFailure}
+                cookiePolicy="single_host_origin"
+              />
             </div>
 
             <div className="header-pill">

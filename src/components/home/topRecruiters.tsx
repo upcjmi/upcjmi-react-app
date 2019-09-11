@@ -15,8 +15,12 @@ const TopRecruiters: FC<IProps> = () => (
 
       <Row gutter={24}>
         {TOP_RECRUITERS.map((recruiter, index) => (
-          <Col xs={24} md={8} style={{textAlign: 'center', marginTop: 20, marginBottom: 20}}>
-            <img src={recruiter} key={index.toString()} alt="" style={{maxHeight: 50}} />
+          <Col
+            xs={24}
+            md={8}
+            style={{textAlign: 'center', marginTop: 20, marginBottom: 20}}
+            key={index.toString()}>
+            <img src={recruiter} alt="" style={{maxHeight: 50}} />
           </Col>
         ))}
       </Row>
