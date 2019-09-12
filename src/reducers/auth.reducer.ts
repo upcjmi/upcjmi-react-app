@@ -1,20 +1,18 @@
-// @ts-ignore
-import {reactLocalStorage} from 'reactjs-localstorage';
-
-import {IReducerAction} from '../types/common.type';
+import {IReducerAction, ISignInOptions} from '../types/common.type';
 import {SIGN_IN_INITIATED, SIGN_IN_SUCCESS, SIGN_OUT, SIGNING_IN_FAILED} from '../actions';
 import {IUserMeta} from '../types/api.type';
-import {API_TOKENS} from '../constants/localStorage.constant';
 
 export interface IAuthState {
   isAuthenticated: boolean;
   inProgress: boolean;
   user?: IUserMeta;
+  signedWith: ISignInOptions;
 }
 
 const initialState: IAuthState = {
   isAuthenticated: false,
   inProgress: false,
+  signedWith: 'U',
 };
 
 export const auth = (state: IAuthState = initialState, action: IReducerAction) => {
@@ -29,6 +27,7 @@ export const auth = (state: IAuthState = initialState, action: IReducerAction) =
       return setState({
         isAuthenticated: true,
         user: action.user,
+        signedWith: action.signedWith,
       });
 
     case SIGN_IN_INITIATED:
@@ -38,7 +37,6 @@ export const auth = (state: IAuthState = initialState, action: IReducerAction) =
       };
 
     case SIGN_OUT:
-      reactLocalStorage.remove(API_TOKENS);
       return initialState;
 
     case SIGNING_IN_FAILED:

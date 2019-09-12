@@ -15,6 +15,7 @@ export interface IRoute {
   path: string;
   screen: LazyExoticComponent<any>;
   exact?: boolean;
+  title?: string;
 }
 
 export interface ICarousel {
@@ -29,3 +30,5 @@ export interface IGetStateFunction {
 export interface IObject {
   [key: string]: any;
 }
+
+export type ISignInOptions = 'E' | 'G' | 'U';

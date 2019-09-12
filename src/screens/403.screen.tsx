@@ -19,7 +19,11 @@ const NotAuthorisedScreen: FC<IProps> = ({isAuthenticated}: IProps) => (
     <Result
       status="403"
       title="403"
-      subTitle="Sorry, but you dont have permission to view this screen."
+      subTitle={
+        isAuthenticated
+          ? 'Sorry, but you dont have permission to view this screen.'
+          : 'You need to sign in to view this screen.'
+      }
       extra={
         !isAuthenticated ? <SignIn /> : 'Try signing out and signing in with different account.'
       }

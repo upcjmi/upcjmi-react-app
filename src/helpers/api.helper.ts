@@ -15,10 +15,10 @@ const UUserMetaDetails = 'auth/meta/';
 
 export const pingAPI = (): Promise<IPing> => loadOpenUrl(UPing);
 
-export const signINWithEmailAPI = (username: string, password: string): Promise<ISignInToken> =>
+export const signINWithEmailAPI = (email: string, password: string): Promise<ISignInToken> =>
   loadOpenUrl(USignInWithEmail, {
     method: 'post',
-    data: {username, password},
+    data: {email, password},
   });
 export const signInWithGoogleAPI = (id: string, token: string): Promise<ISignInToken> =>
   loadOpenUrl(USignInWithGoogle, {

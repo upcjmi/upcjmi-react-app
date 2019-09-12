@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Row, Col, Menu, Icon} from 'antd';
 
-import {CONTACT_PATH, HOME_PATH} from '../constants/paths.constant';
+import {CONTACT_PATH, HOME_PATH, STUDENT_PORTAL_HOME_PATH} from '../constants/paths.constant';
 import {selectScreen} from '../helpers/screen.helper';
 import SignIn from './signIn';
 
@@ -94,6 +94,13 @@ class AppHeader extends Component<IProps, IState> {
                   <Link to={CONTACT_PATH}>
                     <Icon type="phone" />
                     Contact Us
+                  </Link>
+                </Item>
+
+                <Item key="appstore">
+                  <Link to={STUDENT_PORTAL_HOME_PATH}>
+                    <Icon type="appstore" />
+                    Placement Portal
                   </Link>
                 </Item>
               </Menu>

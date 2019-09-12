@@ -27,12 +27,9 @@ export const errorGettingUserInfoNotification = () =>
 export const signInSuccessNotification = (name: string) =>
   openNotificationWithIcon('success', `Welcome ${name}`, 'You successfully signed in.');
 
-export const signingInErrorNotification = () =>
-  openNotificationWithIcon(
-    'error',
-    'An unknown error occurred during sign in',
-    'If you feel that this is a Bug. Report Bug.',
-  );
+export const signingInErrorNotification = (
+  message: string = 'An unknown error occurred during sign in',
+) => openNotificationWithIcon('error', message, 'Create a new account.');
 
 export const cannotConnectToServerNotification = () =>
   notification.error({

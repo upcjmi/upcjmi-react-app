@@ -8,6 +8,7 @@ import LoadingScreen from './screens/loading.screen';
 import NotFoundScreen from './screens/404.screen';
 import AppHeader from './components/appHeader';
 import {checkUserAction} from './actions/auth.action';
+import Screen from './components/screen';
 
 interface IStateProps {
   routes: Array<IRoute>;
@@ -33,7 +34,7 @@ const Main = ({routes, checkUser}: IProps) => {
             <Route
               exact={route.exact === undefined ? true : route.exact}
               path={route.path}
-              component={route.screen}
+              component={() => <Screen title={route.title} screen={route.screen} />}
               key={index.toString()}
             />
           ))}

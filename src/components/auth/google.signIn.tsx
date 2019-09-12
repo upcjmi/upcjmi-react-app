@@ -2,13 +2,14 @@ import React, {FC} from 'react';
 import {connect} from 'react-redux';
 import {Button} from 'antd';
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
+import {withRouter} from 'react-router-dom';
 
 import {GOOGLE_OAUTH_CLIENT_ID} from '../../constants/credentials.constant';
 import {IReduxState} from '../../reducers';
-import {signInWithGoogleAction} from '../../actions/auth.action';
+import {signInWithGoogleAction, signOutAction} from '../../actions/auth.action';
 import {IAuthState} from '../../reducers/auth.reducer';
 import {IGoogleSignInResponseHacked, IUserMeta} from '../../types/api.type';
-import {SIGN_IN_INITIATED, SIGN_OUT, SIGNING_IN_FAILED} from '../../actions';
+import {SIGN_IN_INITIATED, SIGNING_IN_FAILED} from '../../actions';
 
 // eslint-disable-next-line no-undef
 interface IStateProps extends Partial<IAuthState> {
@@ -16,30 +17,29 @@ interface IStateProps extends Partial<IAuthState> {
 }
 
 interface IDispatchProps {
-  signIn(id: string, token: string): any;
-
+  signIn(id: string, token: string, redirect: any): any;
   startSignInProcess(): any;
-
   signInFailed(): any;
-
-  signOut(): any;
+  signOut(redirect: any): any;
 }
 
-interface IProps extends IStateProps, IDispatchProps {}
+interface IProps extends IStateProps, IDispatchProps {
+  history: any;
+}
 
 const GoogleSignIn: FC<IProps> = (props: IProps) => {
-  const {isAuthenticated, inProgress, user} = props;
+  const {isAuthenticated, inProgress, user, history} = props;
 
   if (isAuthenticated && user)
     return (
       <GoogleLogout
         clientId={GOOGLE_OAUTH_CLIENT_ID || ''}
         onLogoutSuccess={() => {
-          props.signOut();
+          props.signOut(history.push);
         }}
         render={renderProps => (
           <Button onClick={renderProps.onClick} icon="logout" type="primary">
-            Logout
+            Sign Out
           </Button>
         )}>
         {user.email}
@@ -57,14 +57,15 @@ const GoogleSignIn: FC<IProps> = (props: IProps) => {
           }}
           disabled={renderProps.disabled}
           // type="primary"
-          icon={inProgress ? 'loading' : 'google'}>
+          icon={inProgress ? 'loading' : 'google'}
+          style={{width: '100%'}}>
           Sign In With Google
         </Button>
       )}
       buttonText="Login"
       // @ts-ignore
       onSuccess={(response: IGoogleSignInResponseHacked) => {
-        props.signIn(response.googleId, response.tokenId);
+        props.signIn(response.googleId, response.tokenId, history.push);
       }}
       onFailure={() => {
         props.signInFailed();
@@ -81,13 +82,14 @@ const mapStateToProps = (state: IReduxState): IStateProps => ({
 });
 
 const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
-  signIn: (id: string, token: string) => dispatch(signInWithGoogleAction(id, token)),
+  signIn: (id, token, redirect) => dispatch(signInWithGoogleAction(id, token, redirect)),
   startSignInProcess: () => dispatch({type: SIGN_IN_INITIATED}),
   signInFailed: () => dispatch({type: SIGNING_IN_FAILED}),
-  signOut: () => dispatch({type: SIGN_OUT}),
+  signOut: redirect => dispatch(signOutAction(redirect)),
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(GoogleSignIn);
+  // @ts-ignore
+)(withRouter(GoogleSignIn));
