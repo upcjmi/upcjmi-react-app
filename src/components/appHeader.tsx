@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Row, Col, Button, Menu, Icon, notification} from 'antd';
-import {GoogleLogin} from 'react-google-login';
+import {Row, Col, Menu, Icon} from 'antd';
 
 import {CONTACT_PATH, HOME_PATH} from '../constants/paths.constant';
-import {GOOGLE_OAUTH_CLIENT_ID} from '../constants/credentials.constant';
-import {selectScreen} from '../helpers/screen';
+import {selectScreen} from '../helpers/screen.helper';
+import SignIn from './signIn';
 
 const JamiaLogo = require('../assets/svgs/jamia-logo.svg');
 
@@ -61,20 +60,6 @@ class AppHeader extends Component<IProps, IState> {
     });
   };
 
-  googleSignInSuccess = (response: any) => {
-    notification.success({
-      message: `Welcome ${response.profileObj.givenName}`,
-      description: 'You successfully signed in.',
-    });
-  };
-
-  googleSignInFailure = () => {
-    notification.error({
-      message: 'Sorry',
-      description: 'Some unknown error occurred during signing in.',
-    });
-  };
-
   render() {
     const {visible} = this.state;
 
@@ -100,22 +85,7 @@ class AppHeader extends Component<IProps, IState> {
 
           <Col xs={0} md={18} xxl={20}>
             <div className="header-pill" style={{paddingTop: 18}}>
-              <GoogleLogin
-                clientId={GOOGLE_OAUTH_CLIENT_ID || ''}
-                render={renderProps => (
-                  <Button
-                    onClick={renderProps.onClick}
-                    disabled={renderProps.disabled}
-                    type="primary"
-                    icon="google">
-                    Sign In With Google
-                  </Button>
-                )}
-                buttonText="Login"
-                onSuccess={this.googleSignInSuccess}
-                onFailure={this.googleSignInFailure}
-                cookiePolicy="single_host_origin"
-              />
+              <SignIn />
             </div>
 
             <div className="header-pill">

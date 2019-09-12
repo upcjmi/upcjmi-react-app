@@ -1,0 +1,8 @@
+// Auth
+export const SIGN_IN_INITIATED = 'SIGN_IN_INITIATED';
+export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
+export const SIGN_OUT = 'SIGN_OUT';
+export const SIGNING_IN_FAILED = 'SIGNING_IN_FAILED';
+
+// Navigator
+export const CONNECTED_WITH_SERVER = 'CONNECTED_WITH_SERVER';

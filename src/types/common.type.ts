@@ -1,7 +1,10 @@
 import {LazyExoticComponent} from 'react';
+import {IReduxState} from '../reducers';
 
 export interface IReducerAction {
   type: string;
+
+  [key: string]: any;
 }
 
 export interface IDispatchFunction {
@@ -17,4 +20,12 @@ export interface IRoute {
 export interface ICarousel {
   image: string;
   caption: string;
+}
+
+export interface IGetStateFunction {
+  (): IReduxState;
+}
+
+export interface IObject {
+  [key: string]: any;
 }

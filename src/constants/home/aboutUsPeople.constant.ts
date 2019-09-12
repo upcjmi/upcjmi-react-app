@@ -16,7 +16,7 @@ export const ABOUT_US_PEOPLE: Array<IPerson> = [
   },
   {
     name: 'Dr. Rihan Khan Suri',
-    position: 'Training and Placement Offer',
+    position: 'Training and Placement Officer',
     image: RihanKhanSuri,
   },
   {

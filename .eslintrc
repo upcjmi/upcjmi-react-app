@@ -24,7 +24,8 @@
     "indent": "warn",
     "no-unused-vars": "warn",
     "import/prefer-default-export": ["off"],
-    "no-param-reassign": "warn"
+    "no-param-reassign": "warn",
+    "no-async-promise-executor": "warn"
   },
   "settings": {
     "import/resolver": {

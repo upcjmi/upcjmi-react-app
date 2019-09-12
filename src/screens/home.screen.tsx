@@ -1,14 +1,15 @@
 import React, {FC} from 'react';
 import {Tag, Typography} from 'antd';
+import {Link} from 'react-router-dom';
 
 import OverlayCarousel from '../components/overlayCarousel';
-
+import AboutUs from '../components/home/aboutUs';
 import {HOME_CAROUSEL} from '../constants/carousel/home.constant';
 import {BADGES} from '../constants/home/badges.constant';
 import ContactScreen from './contact.screen';
-import AboutUs from '../components/home/aboutUs';
 import TopRecruiters from '../components/home/topRecruiters';
-import {selectScreen} from '../helpers/screen';
+import {selectScreen} from '../helpers/screen.helper';
+import {STUDENT_PORTAL_HOME_PATH} from '../constants/paths.constant';
 
 interface IProps {}
 
@@ -17,16 +18,16 @@ const {Title} = Typography;
 const CarouselOverlayComponent = () => (
   <>
     <div className="space-child">
-      <Title level={4} style={{color: '#EEE', display: 'inline-block'}}>
+      <Title level={4} style={{color: '#eeeeee', display: 'inline-block'}}>
         Quick Links:
       </Title>
-      <a href="#!" style={{color: '#CCC'}}>
+      <a href="#!" style={{color: '#cccccc'}}>
         Courses Offered &nbsp;
         <Tag color="#87d068">New</Tag>
       </a>
-      <a href="#!" style={{color: '#CCC'}}>
+      <Link to={STUDENT_PORTAL_HOME_PATH} style={{color: '#CCC'}}>
         Placements and Internship Portal
-      </a>
+      </Link>
     </div>
 
     <div className="welcome-text">

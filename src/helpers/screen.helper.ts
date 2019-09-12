@@ -17,10 +17,15 @@ export const selectScreen = (
 ): any => {
   const device = deviceType(window.innerWidth);
 
+  // eslint-disable-next-line no-param-reassign
   if (sm === undefined) sm = xs;
+  // eslint-disable-next-line no-param-reassign
   if (md === undefined) md = sm;
+  // eslint-disable-next-line no-param-reassign
   if (lg === undefined) lg = md;
+  // eslint-disable-next-line no-param-reassign
   if (xl === undefined) xl = lg;
+  // eslint-disable-next-line no-param-reassign
   if (xxl === undefined) xxl = xl;
 
   switch (device) {

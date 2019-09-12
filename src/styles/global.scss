@@ -32,3 +32,14 @@ video.responsive-video {
   max-width: 100%;
   height: auto;
 }
+
+footer {
+  background-color: #000c17;
+  color: #eeeeee;
+  text-align: center;
+  padding: 20px;
+}
+
+main {
+  min-height: $full-page-height;
+}
