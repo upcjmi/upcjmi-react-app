@@ -17,6 +17,8 @@
     "max-len": ["warn", {"code": 100}],
     "prefer-promise-reject-errors": ["off"],
     "react/jsx-filename-extension": ["off"],
+    "react/jsx-closing-bracket-location": ["off"],
+
     "react/prop-types": ["warn"],
     "no-return-assign": ["off"],
     "react/jsx-props-no-spreading": ["off"],

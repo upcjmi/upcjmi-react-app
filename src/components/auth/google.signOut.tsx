@@ -17,16 +17,18 @@ interface IDispatchProps {
 
 interface IProps extends IStateProps, IDispatchProps {
   history: any;
+  redirect: boolean;
 }
 
 const GoogleSignOut: FC<IProps> = (props: IProps) => {
-  const {history} = props;
+  const {history, redirect} = props;
 
   return (
     <GoogleLogout
       clientId={GOOGLE_OAUTH_CLIENT_ID || ''}
       onLogoutSuccess={() => {
-        props.signOut(history.push);
+        const redirectFunction = redirect ? history.push : () => {};
+        props.signOut(redirectFunction);
       }}
       render={renderProps => (
         <Button onClick={renderProps.onClick} icon="logout" type="link">
@@ -45,8 +47,10 @@ const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
   signOut: redirect => dispatch(signOutAction(redirect)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+export default withRouter(
   // @ts-ignore
-)(withRouter(GoogleSignOut));
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(GoogleSignOut),
+);

@@ -2,9 +2,14 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Row, Col, Menu, Icon} from 'antd';
 
-import {CONTACT_PATH, HOME_PATH, STUDENT_PORTAL_HOME_PATH} from '../constants/paths.constant';
+import {
+  CONTACT_PATH,
+  HOME_PATH,
+  SIGN_UP_PATH,
+  STUDENT_PORTAL_HOME_PATH,
+} from '../constants/paths.constant';
 import {selectScreen} from '../helpers/screen.helper';
-import SignIn from './signIn';
+import SignIn from './userAccountButton';
 
 const JamiaLogo = require('../assets/svgs/jamia-logo.svg');
 
@@ -84,7 +89,7 @@ class AppHeader extends Component<IProps, IState> {
           </Link>
 
           <Col xs={0} md={18} xxl={20}>
-            <div className="header-pill" style={{paddingTop: 18}}>
+            <div className="header-pill center-hv" style={{height: '100%'}}>
               <SignIn />
             </div>
 
@@ -101,6 +106,13 @@ class AppHeader extends Component<IProps, IState> {
                   <Link to={STUDENT_PORTAL_HOME_PATH}>
                     <Icon type="appstore" />
                     Placement Portal
+                  </Link>
+                </Item>
+
+                <Item key="sign-up">
+                  <Link to={SIGN_UP_PATH}>
+                    <Icon type="user-add" />
+                    Create New Account
                   </Link>
                 </Item>
               </Menu>

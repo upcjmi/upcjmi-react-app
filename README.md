@@ -13,5 +13,5 @@ Read our [Code of conduct](/CODE_OF_CONDUCT.md) and [Contributing guidelines](/C
 ## Maintainers and contributors
 
 - Maintainers
-  - ([@Faisal-Manzer](https://github.com/Faisal-Manzer))
-  - ([@alhaqhassan](https://github.com/alhaqhassan))
+  - [@Faisal-Manzer](https://github.com/Faisal-Manzer)
+  - [@alhaqhassan](https://github.com/alhaqhassan)

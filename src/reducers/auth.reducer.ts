@@ -28,6 +28,7 @@ export const auth = (state: IAuthState = initialState, action: IReducerAction) =
         isAuthenticated: true,
         user: action.user,
         signedWith: action.signedWith,
+        inProgress: false,
       });
 
     case SIGN_IN_INITIATED:

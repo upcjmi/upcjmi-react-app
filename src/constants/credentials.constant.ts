@@ -1,1 +1,3 @@
 export const GOOGLE_OAUTH_CLIENT_ID = process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID;
+export const GOOGLE_RECAPTCHA_KEY = process.env.REACT_APP_GOOGLE_RECAPTCHA_CLIENT_KEY;
+export const BASE_URL = process.env.REACT_APP_SERVER_URL;

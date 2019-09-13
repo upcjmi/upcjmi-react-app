@@ -54,7 +54,6 @@ class SignInForm extends React.Component {
             Forgot password
           </a>
           <Button
-            type="primary"
             htmlType="submit"
             className="login-form-button"
             icon={inProgress ? 'loading' : 'login'}

@@ -2,10 +2,10 @@ import axios from 'axios';
 // @ts-ignore
 import {reactLocalStorage} from 'reactjs-localstorage';
 
-import {API_TOKENS} from '../constants/localStorage.constant';
-import {signInAgainNotification, errorGettingUserInfoNotification} from './notification.helper';
-import {IAccessToken} from '../types/api.type';
-import {IObject} from '../types/common.type';
+import {API_TOKENS} from '../../constants/localStorage.constant';
+import {signInAgainNotification, errorGettingUserInfoNotification} from '../notification.helper';
+import {IAccessToken} from '../../types/api.type';
+import {IObject} from '../../types/common.type';
 
 const REFRESH_ACCESS_TOKEN = 'auth/token/refresh/';
 

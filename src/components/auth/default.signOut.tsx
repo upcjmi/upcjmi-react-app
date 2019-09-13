@@ -15,10 +15,17 @@ interface IProps extends IStateProps, IDispatchProps {
   history: {
     push: any;
   };
+  redirect: boolean;
 }
 
-const DefaultSignOut: FC<IProps> = ({signOut, history}: IProps) => (
-  <Button onClick={() => signOut(history.push)} icon="logout" type="link">
+const DefaultSignOut: FC<IProps> = ({signOut, history, redirect = true}: IProps) => (
+  <Button
+    onClick={() => {
+      const redirectFunction = redirect ? history.push : () => {};
+      signOut(redirectFunction);
+    }}
+    icon="logout"
+    type="link">
     Sign Out
   </Button>
 );
@@ -30,8 +37,10 @@ const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
   signOut: redirect => dispatch(signOutAction(redirect)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  // @ts-ignore
-)(withRouter(DefaultSignOut));
+// @ts-ignore
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(DefaultSignOut),
+);

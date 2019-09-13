@@ -37,3 +37,7 @@ export interface IGoogleSignInResponseHacked {
 
   [key: string]: any;
 }
+
+export interface IUserExists {
+  exists: boolean;
+}
