@@ -36,13 +36,13 @@ const GoogleSignIn: FC<IProps> = (props: IProps) => {
             renderProps.onClick();
           }}
           disabled={renderProps.disabled}
-          type="primary"
+          type='primary'
           icon={inProgress ? 'loading' : 'google'}
           style={{width: '100%', backgroundColor: '#000000'}}>
           Sign In With Google
         </Button>
       )}
-      buttonText="Login"
+      buttonText='Login'
       // @ts-ignore
       onSuccess={(response: IGoogleSignInResponseHacked) => {
         props.signIn(response.googleId, response.tokenId);
@@ -50,7 +50,7 @@ const GoogleSignIn: FC<IProps> = (props: IProps) => {
       onFailure={() => {
         props.signInFailed();
       }}
-      cookiePolicy="single_host_origin"
+      cookiePolicy='single_host_origin'
     />
   );
 };

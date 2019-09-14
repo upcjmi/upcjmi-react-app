@@ -4,6 +4,7 @@ import {GoogleLogin} from 'react-google-login';
 import {Button} from 'antd';
 import {GOOGLE_OAUTH_CLIENT_ID} from '../constants/credentials.constant';
 import {IGoogleSignInResponseHacked} from '../types/api.type';
+import {errorGettingUserInfoNotification} from '../helpers/notification.helper';
 
 interface IStateProps {}
 
@@ -20,25 +21,28 @@ const GoogleSignUpButton: FC<IProps> = ({onSignInSuccess}: IProps) => (
       <Button
         onClick={renderProps.onClick}
         disabled={renderProps.disabled}
-        type="primary"
-        icon="google"
-        size="large"
+        type='primary'
+        icon='google'
+        size='large'
         style={{width: '100%', backgroundColor: '#000000'}}>
         Create Account Using Google
       </Button>
     )}
-    buttonText="Sign Up"
+    buttonText='Sign Up'
     // @ts-ignore
     onSuccess={(response: IGoogleSignInResponseHacked) => {
       onSignInSuccess({
         id: response.googleId,
         token: response.tokenId,
         email: response.profileObj.email,
+        name: response.profileObj.name,
         type: 'G',
       });
     }}
-    onFailure={response => {}}
-    cookiePolicy="single_host_origin"
+    onFailure={() => {
+      errorGettingUserInfoNotification();
+    }}
+    cookiePolicy='single_host_origin'
   />
 );
 

@@ -6,6 +6,10 @@ import {API_TOKENS} from '../../constants/localStorage.constant';
 import {signInAgainNotification, errorGettingUserInfoNotification} from '../notification.helper';
 import {IAccessToken} from '../../types/api.type';
 import {IObject} from '../../types/common.type';
+import {BASE_URL} from '../../constants/credentials.constant';
+
+axios.defaults.baseURL = BASE_URL;
+axios.defaults.headers.get['Content-Type'] = 'application/x-www-urlencoded';
 
 const REFRESH_ACCESS_TOKEN = 'auth/token/refresh/';
 

@@ -1,4 +1,5 @@
 import {notification} from 'antd';
+import reactHtmlParser from 'react-html-parser';
 
 export const openNotificationWithIcon = (
   type: 'warning' | 'success' | 'error',
@@ -10,6 +11,18 @@ export const openNotificationWithIcon = (
     message,
     description: desc,
   });
+};
+export const htmlNotification = (
+  type: 'warning' | 'success' | 'error',
+  message: string,
+  desc: string = '',
+): void => {
+  openNotificationWithIcon(
+    type,
+    message,
+    // @ts-ignore
+    reactHtmlParser(desc.replace(/(?:\r\n|\r|\n)/g, '<br />')),
+  );
 };
 
 export const signInAgainNotification = () =>
@@ -57,3 +70,9 @@ export const userExistsWithThisEmail = (email: string) =>
     `Email ${email} is associated with another account.`,
     'Try signing in or try forgetting password.',
   );
+
+export const signUpSuccessfullNotification = () =>
+  openNotificationWithIcon('success', 'Account created you successfull');
+
+export const signUpFailedNotification = (detail: string) =>
+  htmlNotification('error', 'Failed to create account', detail);

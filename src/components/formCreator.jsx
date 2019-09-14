@@ -26,6 +26,17 @@ import {getFileHandlerURL, removeFileFromServer} from '../helpers/api/file.api.h
 
 const {MonthPicker, RangePicker} = DatePicker;
 
+const formItemLayout = {
+  labelCol: {
+    xs: {span: 24},
+    sm: {span: 8},
+  },
+  wrapperCol: {
+    xs: {span: 24},
+    sm: {span: 16},
+  },
+};
+
 class FormCreator extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +59,6 @@ class FormCreator extends Component {
   };
 
   componentDidMount() {
-    // eslint-disable-next-line react/prop-types
     const {initialValue} = this.props;
     if (initialValue)
       initialValue()
@@ -72,6 +82,8 @@ class FormCreator extends Component {
       initialValue,
       submitButtonText,
       cancelButtonText,
+      buttonType,
+      formLayout = formItemLayout,
     } = this.props;
     let {formTemplate} = this.props;
     const {loaded} = this.state;
@@ -83,7 +95,7 @@ class FormCreator extends Component {
     }
 
     return (
-      <Form onSubmit={this.handleSubmit} hideRequiredMark labelAlign="left">
+      <Form onSubmit={this.handleSubmit} {...formLayout}>
         {formTemplate.map((formItem, index) => {
           const {label, name, help, kwargs, type, desc, ...fieldOptions} = formItem;
           const element = type;
@@ -231,22 +243,25 @@ class FormCreator extends Component {
             </Form.Item>
           );
         })}
-
-        <Form.Item>
-          {onCancel ? (
-            <Button
-              style={{
-                marginRight: 8,
-              }}
-              onClick={() => onCancel(this.props.form)}
-              htmlType="button">
-              {cancelButtonText || 'Cancel'}
-            </Button>
-          ) : null}
-          <Button onClick={this.handleSubmit} type="primary" htmlType="submit">
-            {submitButtonText || 'Submit'}
+        {onCancel ? (
+          <Button
+            style={{
+              display: buttonType,
+            }}
+            onClick={() => onCancel(this.props.form)}
+            htmlType="button">
+            {cancelButtonText || 'Cancel'}
           </Button>
-        </Form.Item>
+        ) : null}
+        <Button
+          onClick={this.handleSubmit}
+          type="primary"
+          htmlType="submit"
+          style={{
+            width: buttonType === 'block' ? '100%' : null,
+          }}>
+          {submitButtonText || 'Submit'}
+        </Button>
       </Form>
     );
   }

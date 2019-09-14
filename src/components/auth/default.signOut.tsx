@@ -24,8 +24,8 @@ const DefaultSignOut: FC<IProps> = ({signOut, history, redirect = true}: IProps)
       const redirectFunction = redirect ? history.push : () => {};
       signOut(redirectFunction);
     }}
-    icon="logout"
-    type="link">
+    icon='logout'
+    type='link'>
     Sign Out
   </Button>
 );
@@ -37,8 +37,8 @@ const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
   signOut: redirect => dispatch(signOutAction(redirect)),
 });
 
-// @ts-ignore
 export default withRouter(
+  // @ts-ignore
   connect(
     mapStateToProps,
     mapDispatchToProps,

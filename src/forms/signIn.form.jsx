@@ -23,7 +23,7 @@ class SignInForm extends React.Component {
     const {getFieldDecorator, getFieldError, isFieldTouched} = form;
 
     return (
-      <Form onSubmit={this.handleSubmit} className="login-form" id="sign-in-form">
+      <Form onSubmit={this.handleSubmit} className='login-form' id='sign-in-form'>
         <Form.Item>
           {getFieldDecorator('email', {
             rules: [
@@ -32,9 +32,9 @@ class SignInForm extends React.Component {
             ],
           })(
             <Input
-              prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}} />}
-              placeholder="Email"
-              type="email"
+              prefix={<Icon type='user' style={{color: 'rgba(0,0,0,.25)'}} />}
+              placeholder='Email'
+              type='email'
             />,
           )}
         </Form.Item>
@@ -43,19 +43,19 @@ class SignInForm extends React.Component {
             rules: [{required: true, message: 'Please input your Password!'}],
           })(
             <Input
-              prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}} />}
-              type="password"
-              placeholder="Password"
+              prefix={<Icon type='lock' style={{color: 'rgba(0,0,0,.25)'}} />}
+              type='password'
+              placeholder='Password'
             />,
           )}
         </Form.Item>
         <Form.Item>
-          <a className="login-form-forgot" href="#!">
+          <a className='login-form-forgot' href='#!'>
             Forgot password
           </a>
           <Button
-            htmlType="submit"
-            className="login-form-button"
+            htmlType='submit'
+            className='login-form-button'
             icon={inProgress ? 'loading' : 'login'}
             disabled={
               inProgress ||

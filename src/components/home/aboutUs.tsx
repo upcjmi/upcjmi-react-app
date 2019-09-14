@@ -9,7 +9,7 @@ interface IProps {}
 const {Title} = Typography;
 
 const AboutUs: FC<IProps> = () => (
-  <div id="about-us" className="container full-page center-hv" style={{backgroundColor: '#eeeeee'}}>
+  <div id='about-us' className='container full-page center-hv' style={{backgroundColor: '#eeeeee'}}>
     <div>
       <Title>About Us</Title>
       <Row>
@@ -26,7 +26,7 @@ const AboutUs: FC<IProps> = () => (
           Council).
         </Col>
         <Col sm={24} md={6} style={{textAlign: 'center'}}>
-          <img src={JamiaLogo} alt="University Placement Cell, Logo" style={{maxHeight: 200}} />
+          <img src={JamiaLogo} alt='University Placement Cell, Logo' style={{maxHeight: 200}} />
         </Col>
       </Row>
 

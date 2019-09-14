@@ -4,11 +4,12 @@ import GoogleSignUpButton from '../googleSignUpButton';
 import EmailSignUpForm from '../../forms/signUp/emailSignUp.form';
 import {doesUserExistsAPI} from '../../helpers/api/api.helper';
 import {userExistsWithThisEmail} from '../../helpers/notification.helper';
+import {ISignUpData} from '../../types/signUp.type';
 
 interface IProps {
   action: any;
   next: any;
-  data: any;
+  data: ISignUpData;
 }
 
 const {Title} = Typography;
@@ -17,7 +18,14 @@ const AccountSignUp: FC<IProps> = ({action, data, next}: IProps) => {
   const saveData = async (signInData: any) => {
     const {exists} = await doesUserExistsAPI(signInData.email);
     if (!exists) {
-      action(signInData);
+      action({
+        ...data,
+        basic: {
+          ...data.basic,
+          name: signInData.name,
+        },
+        account: signInData,
+      });
       next();
     } else {
       userExistsWithThisEmail(signInData.email);

@@ -1,10 +1,7 @@
 import React, {FC} from 'react';
-import {Result} from 'antd';
 import {connect} from 'react-redux';
-
+import {Result} from 'antd';
 import SignIn from '../components/userAccountButton';
-import {IReduxState} from '../reducers';
-import {IDispatchFunction} from '../types/common.type';
 
 interface IStateProps {
   isAuthenticated: boolean;
@@ -14,7 +11,7 @@ interface IDispatchProps {}
 
 interface IProps extends IStateProps, IDispatchProps {}
 
-const NotAuthorisedScreen: FC<IProps> = ({isAuthenticated}: IProps) => (
+const OnlyPublic: FC<IProps> = ({isAuthenticated}: IProps) => (
   <div className='full-page center-hv'>
     <Result
       status='403'
@@ -31,14 +28,14 @@ const NotAuthorisedScreen: FC<IProps> = ({isAuthenticated}: IProps) => (
   </div>
 );
 
-const mapStateToProps = (state: IReduxState): IStateProps => ({
+const mapStateToProps = (state: any): IStateProps => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
 // eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch: IDispatchFunction): IDispatchProps => ({});
+const mapDispatchToProps = (dispatch: any): IDispatchProps => ({});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(NotAuthorisedScreen);
+)(OnlyPublic);

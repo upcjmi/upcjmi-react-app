@@ -26,7 +26,7 @@ const HomeStudentScreen: FC<IProps> = (props: IProps) => {
   if (user && user.type !== 'S') return <NotAuthorisedScreen />;
 
   return (
-    <div className="container">
+    <div className='container'>
       <Title>Student Portal</Title>
     </div>
   );

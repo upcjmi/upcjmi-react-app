@@ -1,21 +1,25 @@
-import axios from 'axios';
 import {loadOpenUrl, loadSecureUrl} from './loader.api.helper';
 import {IPing, ISignInToken, IUserExists, IUserMeta} from '../../types/api.type';
-import {BASE_URL} from '../../constants/credentials.constant';
-
-axios.defaults.baseURL = BASE_URL;
-axios.defaults.headers.get['Content-Type'] = 'application/x-www-urlencoded';
+import {ISignUpData} from '../../types/signUp.type';
 
 const UPing = 'ping/';
 
 const USignInWithEmail = 'auth/sign-in/email/';
 const USignInWithGoogle = 'auth/sign-in/google/';
 
+const USignUpStudent = 'student/sign-up/';
+// const USignUpCompanyRepresentative = 'company/sign-up/';
+
 const UUserMetaDetails = 'auth/user/meta/';
 const UUserExits = 'auth/user/exists/';
 
 export const pingAPI = (): Promise<IPing> => loadOpenUrl(UPing);
 
+export const signUpStudentAPI = (data: ISignUpData) =>
+  loadOpenUrl(USignUpStudent, {
+    method: 'post',
+    data,
+  });
 export const signINWithEmailAPI = (email: string, password: string): Promise<ISignInToken> =>
   loadOpenUrl(USignInWithEmail, {
     method: 'post',

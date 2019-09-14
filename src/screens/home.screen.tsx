@@ -17,20 +17,20 @@ const {Title} = Typography;
 
 const CarouselOverlayComponent = () => (
   <>
-    <div className="space-child">
+    <div className='space-child'>
       <Title level={4} style={{color: '#eeeeee', display: 'inline-block'}}>
         Quick Links:
       </Title>
-      <a href="#!" style={{color: '#cccccc'}}>
+      <a href='#!' style={{color: '#cccccc'}}>
         Courses Offered &nbsp;
-        <Tag color="#87d068">New</Tag>
+        <Tag color='#87d068'>New</Tag>
       </a>
       <Link to={STUDENT_PORTAL_HOME_PATH} style={{color: '#CCC'}}>
         Placements and Internship Portal
       </Link>
     </div>
 
-    <div className="welcome-text">
+    <div className='welcome-text'>
       <Title level={2}>Welcome to,</Title>
       <Title>
         University Placement Cell
@@ -39,10 +39,10 @@ const CarouselOverlayComponent = () => (
       </Title>
     </div>
 
-    <div className="badge-container" style={{display: selectScreen('none', 'none', null)}}>
+    <div className='badge-container' style={{display: selectScreen('none', 'none', null)}}>
       {BADGES.map(({badge, info}, index) => (
         <div key={index.toString()}>
-          <img src={badge} alt={info} title={info} className="responsive-img" />
+          <img src={badge} alt={info} title={info} className='responsive-img' />
         </div>
       ))}
     </div>

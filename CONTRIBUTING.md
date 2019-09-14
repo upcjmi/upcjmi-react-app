@@ -24,6 +24,11 @@ Read and Follow [Code of Conduct](/CODE_OF_CONDUCT.md)
 git clone https://github.com/Faisal-Manzer/upcjmi-react-app.git
 cd upcjmi-react-app
 yarn install
-export REACT_APP_GOOGLE_OAUTH_CLIENT_ID=<your_google_client_secret>
+
+cp .env .env.development
+cp .env .env.production
+
+nano .env.development
+
 yarn start
 ```
