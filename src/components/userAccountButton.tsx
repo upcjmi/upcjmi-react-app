@@ -22,7 +22,7 @@ const UserAccountButton: FC<IProps> = (props: IProps) => {
 
   return (
     <Link to={SIGN_IN_PATH}>
-      <Button type="primary" size="large" icon="login">
+      <Button type='primary' size='large' icon='login'>
         Sign In
       </Button>
     </Link>

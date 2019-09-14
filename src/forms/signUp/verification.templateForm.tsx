@@ -6,7 +6,7 @@ export const verificationDocumentTemplate =
   (state: any, initialValues: any, extraValues: any, form: any) => [
     {
       label: 'Documents',
-      name: 'verification_document',
+      name: 'documents',
       initialValue: get(initialValues.values, 'documents'),
 
       type: FORM_ELEMENT_TYPES.FILE_DRAG_DROP,

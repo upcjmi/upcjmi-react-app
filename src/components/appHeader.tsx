@@ -76,9 +76,9 @@ class AppHeader extends Component<IProps, IState> {
               xs={24}
               md={6}
               xxl={4}
-              className="logo-container"
+              className='logo-container'
               style={{justifyContent: selectScreen('center', 'center', null)}}>
-              <img src={JamiaLogo} alt="University Placement Cell, Logo" />
+              <img src={JamiaLogo} alt='University Placement Cell, Logo' />
               &nbsp;&nbsp;&nbsp;
               <div style={{color: '#000000', fontSize: '0.9rem'}}>
                 <b>University Placement Cell</b>
@@ -89,29 +89,29 @@ class AppHeader extends Component<IProps, IState> {
           </Link>
 
           <Col xs={0} md={18} xxl={20}>
-            <div className="header-pill center-hv" style={{height: '100%'}}>
+            <div className='header-pill center-hv' style={{height: '100%'}}>
               <SignIn />
             </div>
 
-            <div className="header-pill">
-              <Menu mode="horizontal" style={{border: 0}}>
-                <Item key="contact">
+            <div className='header-pill'>
+              <Menu mode='horizontal' style={{border: 0}}>
+                <Item key='contact'>
                   <Link to={CONTACT_PATH}>
-                    <Icon type="phone" />
+                    <Icon type='phone' />
                     Contact Us
                   </Link>
                 </Item>
 
-                <Item key="appstore">
+                <Item key='appstore'>
                   <Link to={STUDENT_PORTAL_HOME_PATH}>
-                    <Icon type="appstore" />
+                    <Icon type='appstore' />
                     Placement Portal
                   </Link>
                 </Item>
 
-                <Item key="sign-up">
+                <Item key='sign-up'>
                   <Link to={SIGN_UP_PATH}>
-                    <Icon type="user-add" />
+                    <Icon type='user-add' />
                     Create New Account
                   </Link>
                 </Item>

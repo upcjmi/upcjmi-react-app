@@ -14,18 +14,20 @@
     "jest": true
   },
   "rules": {
-    "max-len": ["warn", {"code": 100}],
-    "prefer-promise-reject-errors": ["off"],
+    "react/prop-types": ["warn"],
     "react/jsx-filename-extension": ["off"],
     "react/jsx-closing-bracket-location": ["off"],
-
-    "react/prop-types": ["warn"],
-    "no-return-assign": ["off"],
     "react/jsx-props-no-spreading": ["off"],
+    "react/jsx-tag-spacing": "error",
+
+    "max-len": ["warn", {"code": 100}],
+    "no-return-assign": ["off"],
+    "prefer-promise-reject-errors": ["off"],
+    "jsx-quotes": ["error", "prefer-single"],
+    "import/prefer-default-export": ["off"],
 
     "indent": "warn",
     "no-unused-vars": "warn",
-    "import/prefer-default-export": ["off"],
     "no-param-reassign": "warn",
     "no-async-promise-executor": "warn"
   },

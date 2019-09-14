@@ -9,7 +9,7 @@ const {Title} = Typography;
 const TopRecruiters: FC<IProps> = () => (
   <div
     style={{textAlign: 'center', borderBottom: '1px solid #eeeeee'}}
-    className="full-page container center-hv">
+    className='full-page container center-hv'>
     <div>
       <Title>Our Top Recruiters</Title>
 
@@ -20,7 +20,7 @@ const TopRecruiters: FC<IProps> = () => (
             md={8}
             style={{textAlign: 'center', marginTop: 20, marginBottom: 20}}
             key={index.toString()}>
-            <img src={recruiter} alt="" style={{maxHeight: 50}} />
+            <img src={recruiter} alt='' style={{maxHeight: 50}} />
           </Col>
         ))}
       </Row>

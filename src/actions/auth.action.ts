@@ -20,6 +20,7 @@ import {API_TOKENS, SIGNED_IN_TYPE} from '../constants/localStorage.constant';
 import {IAccessToken, ISignInToken, IUserMeta} from '../types/api.type';
 import {
   cannotConnectToServerNotification,
+  openNotificationWithIcon,
   signingInErrorNotification,
   signInSuccessNotification,
   signOutSuccessNotification,
@@ -61,6 +62,14 @@ const makeUserSignIn = (apiCall: any, signedWith: ISignInOptions = 'U') => async
   }
 };
 
+export const signInWithEmailAction = (email: string, password: string) => async (
+  dispatch: Dispatch,
+  getState: IGetStateFunction,
+) => {
+  const apiCall = () => signINWithEmailAPI(email, password);
+  makeUserSignIn(apiCall, 'E')(dispatch, getState);
+};
+
 export const signInWithGoogleAction = (id: string, googleToken: string) => async (
   dispatch: Dispatch,
   getState: IGetStateFunction,
@@ -69,12 +78,17 @@ export const signInWithGoogleAction = (id: string, googleToken: string) => async
   makeUserSignIn(apiCall, 'G')(dispatch, getState);
 };
 
-export const signInWithEmailAction = (email: string, password: string) => async (
-  dispatch: Dispatch,
-  getState: IGetStateFunction,
-) => {
-  const apiCall = () => signINWithEmailAPI(email, password);
-  makeUserSignIn(apiCall, 'E')(dispatch, getState);
+export const signIn = (account: any) => (dispatch: Dispatch, getState: IGetStateFunction) => {
+  switch (account.type) {
+    case 'E':
+      signInWithEmailAction(account.email, account.password)(dispatch, getState);
+      break;
+    case 'G':
+      signInWithGoogleAction(account.id, account.token)(dispatch, getState);
+      break;
+    default:
+      openNotificationWithIcon('error', 'Unkown signing');
+  }
 };
 
 export const checkUserAction = () => async (dispatch: Dispatch, getState: IGetStateFunction) => {

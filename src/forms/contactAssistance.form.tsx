@@ -31,7 +31,7 @@ const ContactAssistanceForm: FC<IProps> = ({form}: IProps) => {
     <>
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Form {...formItemLayout}>
-        <Form.Item label="Name" hasFeedback>
+        <Form.Item label='Name' hasFeedback>
           {getFieldDecorator('name', {
             rules: [
               {
@@ -42,7 +42,7 @@ const ContactAssistanceForm: FC<IProps> = ({form}: IProps) => {
           })(<Input />)}
         </Form.Item>
 
-        <Form.Item label="Email" hasFeedback>
+        <Form.Item label='Email' hasFeedback>
           {getFieldDecorator('email', {
             rules: [
               {
@@ -56,13 +56,13 @@ const ContactAssistanceForm: FC<IProps> = ({form}: IProps) => {
                 message: 'Please enter valid email address.',
               },
             ],
-          })(<Input type="email" />)}
+          })(<Input type='email' />)}
         </Form.Item>
 
-        <Form.Item label="Mobile Number">
+        <Form.Item label='Mobile Number'>
           {getFieldDecorator('phone', {
             rules: [{min: 10, max: 10, message: 'Please enter a valid Indian number'}],
-          })(<Input type="number" addonBefore={['+91']} style={{width: '100%'}} />)}
+          })(<Input type='number' addonBefore={['+91']} style={{width: '100%'}} />)}
         </Form.Item>
 
         <Form.Item wrapperCol={wrapperCol}>
@@ -73,11 +73,11 @@ const ContactAssistanceForm: FC<IProps> = ({form}: IProps) => {
                 message: 'We need your question to help you. Please enter your question.',
               },
             ],
-          })(<TextArea placeholder="Ask your question in detail." autosize={{minRows: 3}} />)}
+          })(<TextArea placeholder='Ask your question in detail.' autosize={{minRows: 3}} />)}
         </Form.Item>
 
         <Form.Item wrapperCol={wrapperCol}>
-          <Button type="primary">Submit your query</Button>
+          <Button type='primary'>Submit your query</Button>
         </Form.Item>
       </Form>
     </>

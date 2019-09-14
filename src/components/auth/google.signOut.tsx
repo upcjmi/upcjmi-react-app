@@ -26,12 +26,16 @@ const GoogleSignOut: FC<IProps> = (props: IProps) => {
   return (
     <GoogleLogout
       clientId={GOOGLE_OAUTH_CLIENT_ID || ''}
-      onLogoutSuccess={() => {
-        const redirectFunction = redirect ? history.push : () => {};
-        props.signOut(redirectFunction);
-      }}
+      onLogoutSuccess={() => {}}
       render={renderProps => (
-        <Button onClick={renderProps.onClick} icon="logout" type="link">
+        <Button
+          onClick={() => {
+            const redirectFunction = redirect ? history.push : () => {};
+            props.signOut(redirectFunction);
+            renderProps.onClick();
+          }}
+          icon='logout'
+          type='link'>
           Sign Out
         </Button>
       )}

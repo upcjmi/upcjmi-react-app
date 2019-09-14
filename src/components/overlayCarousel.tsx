@@ -11,12 +11,12 @@ interface IProps {
 
 const OverlayCarousel: FC<IProps> = ({overlay: Overlay, images, carousel}: IProps) => (
   <div style={{position: 'relative'}}>
-    <div className="overlay">
+    <div className='overlay'>
       <Overlay />
     </div>
 
     {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-    <Carousel autoplay dotPosition="right" {...carousel}>
+    <Carousel autoplay dotPosition='right' {...carousel}>
       {images.map(({image, caption}, index) => (
         <img src={image} alt={caption} key={index.toString()} />
       ))}

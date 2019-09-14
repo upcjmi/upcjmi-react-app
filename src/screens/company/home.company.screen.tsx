@@ -26,7 +26,7 @@ const HomeCompanyScreen: FC<IProps> = (props: IProps) => {
   if (user && user.type !== 'C') return <NotAuthorisedScreen />;
 
   return (
-    <div className="container">
+    <div className='container'>
       <Title>Company Portal</Title>
     </div>
   );

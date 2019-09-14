@@ -17,6 +17,7 @@ export const SUBMIT_FORM = 'SUBMIT_FORM';
 export const CAPTCHA = {
   type: FORM_ELEMENT_TYPES.CAPTCHA,
   name: 'captcha',
+  label: 'Captcha',
   rules: [
     {
       required: true,

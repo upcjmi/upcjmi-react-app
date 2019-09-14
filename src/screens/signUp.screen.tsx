@@ -1,9 +1,10 @@
-import React, {FC, lazy, useState, Suspense} from 'react';
+import React, {FC, useState, Suspense} from 'react';
 import {connect} from 'react-redux';
-import {Card, Typography, Alert, Steps, Icon, Result} from 'antd';
+import {Card, Typography, Alert, Steps, Icon} from 'antd';
 import LoadingScreen from './loading.screen';
 import {IReduxState} from '../reducers';
-import SignOutButton from '../components/signOutButton';
+import OnlyPublic from './403.onlyPublic';
+import {signUpNavigation} from '../constants/signUp';
 
 interface IStateProps {
   isAuthenticated: boolean;
@@ -13,99 +14,56 @@ interface IDispatchProps {}
 
 interface IProps extends IStateProps, IDispatchProps {}
 
-interface INavigation {
-  title: string;
-  icon: string;
-  component: any;
-  action: any;
-  data: any;
-}
+const emptyData = {
+  basic: {},
+  account: {},
+};
 
 const {Title} = Typography;
 const {Step} = Steps;
 
 // eslint-disable-next-line no-unused-vars
 const SignUpScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
-  const [active, setActive] = useState(2);
-  const [basic, setBasic] = useState({});
-  const [account, setAccount] = useState({});
-  const [verification, setVerification] = useState({});
+  const [active, setActive] = useState(0);
+  const [data, setData] = useState(emptyData);
 
-  if (isAuthenticated)
-    return (
-      <div className="full-page center-hv">
-        <Result
-          status="403"
-          title="403"
-          subTitle="Sorry you dont have permission to view this screen."
-          extra={
-            <div>
-              You are signed in, if you want to create a new account then
-              <SignOutButton redirect={false} />
-            </div>
-          }
-        />
-      </div>
-    );
-
-  const navigation: Array<INavigation> = [
-    {
-      title: 'Account',
-      icon: 'user',
-      component: lazy(() => import('../components/signUp/account.signUp')),
-      action: setAccount,
-      data: account,
-    },
-    {
-      title: 'Basic Detail',
-      icon: 'solution',
-      component: lazy(() => import('../components/signUp/basicDetail.signUp')),
-      action: setBasic,
-      data: basic,
-    },
-    {
-      title: 'Verification Document',
-      icon: 'file-protect',
-      component: lazy(() => import('../components/signUp/verificationDocument.signUp')),
-      action: setVerification,
-      data: verification,
-    },
-  ];
+  if (isAuthenticated && active !== 3) return <OnlyPublic />;
 
   const next = () => setActive(active + 1);
   const previous = () => setActive(active - 1);
-  const done = (): void => {};
+  const startAgain = () => {
+    setActive(0);
+  };
 
-  const {action, data, component}: any = navigation[active];
-  const SignUpComponent: any = component;
+  const SignUpComponent: any = signUpNavigation[active].component;
 
   return (
-    <div className="container center-hv full-page" style={{backgroundColor: '#EEEEEE'}}>
+    <div className='container center-hv full-page' style={{backgroundColor: '#EEEEEE'}}>
       <div>
         <Alert
           message={
             'This is only for students. ' +
             'If you are a company representative contact us via mail.'
           }
-          type="info"
+          type='info'
           style={{maxWidth: '100vw', width: 450}}
         />
         <br />
         <Card style={{maxWidth: '100vw', width: 450}}>
           <Title>Create New Account</Title>
           <br />
-          <Steps size="small" labelPlacement="vertical" current={active}>
-            {navigation.map(({title, icon}, index) => (
+          <Steps size='small' labelPlacement='vertical' current={active}>
+            {signUpNavigation.slice(0, 3).map(({title, icon}, index) => (
               <Step title={title} icon={<Icon type={icon} />} key={index.toString()} />
             ))}
           </Steps>
           <Suspense fallback={<LoadingScreen />}>
             <SignUpComponent
               next={next}
-              action={action}
+              action={setData}
               data={data}
               previous={previous}
-              done={done}
+              startAgain={startAgain}
             />
           </Suspense>
         </Card>
