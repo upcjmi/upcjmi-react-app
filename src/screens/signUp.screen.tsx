@@ -46,10 +46,10 @@ const SignUpScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
             'If you are a company representative contact us via mail.'
           }
           type='info'
-          style={{maxWidth: '100vw', width: 450}}
+          style={{maxWidth: '95vw', width: 450}}
         />
         <br />
-        <Card style={{maxWidth: '100vw', width: 450}}>
+        <Card style={{maxWidth: '95vw', width: 450}}>
           <Title>Create New Account</Title>
           <br />
           <Steps size='small' labelPlacement='vertical' current={active}>

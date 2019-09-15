@@ -35,6 +35,9 @@ class SignInForm extends React.Component {
               prefix={<Icon type='user' style={{color: 'rgba(0,0,0,.25)'}} />}
               placeholder='Email'
               type='email'
+              autoComplete='username email'
+              autoCapitalize='none'
+              autoCorrect='off'
             />,
           )}
         </Form.Item>
@@ -46,6 +49,7 @@ class SignInForm extends React.Component {
               prefix={<Icon type='lock' style={{color: 'rgba(0,0,0,.25)'}} />}
               type='password'
               placeholder='Password'
+              autoComplete='password'
             />,
           )}
         </Form.Item>

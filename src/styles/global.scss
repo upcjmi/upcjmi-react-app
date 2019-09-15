@@ -42,3 +42,15 @@ footer {
 main {
   min-height: $full-page-height;
 }
+
+.drawer-handel{
+  position: fixed;
+  top: 70px;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
