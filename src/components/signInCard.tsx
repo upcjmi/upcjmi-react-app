@@ -45,10 +45,8 @@ const SignInCard: FC<IProps> = ({isAuthenticated, user}: IProps) => {
       <br />
       <div style={{textAlign: 'center'}}>OR</div>
       <br />
-      <br />
-
       <EmailSignIn />
-
+      <br />
       <Link to={SIGN_UP_PATH}>
         <Button type='dashed' style={{width: '100%'}} icon='user-add' size='large'>
           Create New Account

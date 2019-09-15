@@ -9,6 +9,7 @@ import NotFoundScreen from './screens/404.screen';
 import AppHeader from './components/appHeader';
 import {checkUserAction} from './actions/auth.action';
 import Screen from './components/screen';
+import Footer from './components/footer';
 
 interface IStateProps {
   routes: Array<IRoute>;
@@ -41,7 +42,7 @@ const Main = ({routes, checkUser}: IProps) => {
           <Route component={NotFoundScreen} />
         </Switch>
       </main>
-      <footer>&copy; 2019 University Placement Cell, Jamia Millia Islamia</footer>
+      <Footer />
     </Suspense>
   );
 };

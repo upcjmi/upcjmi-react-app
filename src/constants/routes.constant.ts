@@ -3,10 +3,10 @@ import {IRoute} from '../types/common.type';
 import {
   COMPANY_PORTAL_HOME_PATH,
   CONTACT_PATH,
-  HOME_PATH,
+  HOME_PATH, PRIVACY_POLICY_PATH,
   SIGN_IN_PATH,
   SIGN_UP_PATH,
-  STUDENT_PORTAL_HOME_PATH,
+  STUDENT_PORTAL_HOME_PATH, TERMS_AND_CONDITION_PATH,
 } from './paths.constant';
 
 export const COMMON_ROUTES: Array<IRoute> = [
@@ -40,4 +40,14 @@ export const COMMON_ROUTES: Array<IRoute> = [
     title: 'Create new student account || UPC JMI',
     screen: lazy(() => import('../screens/signUp.screen')),
   },
+  {
+    path: TERMS_AND_CONDITION_PATH,
+    title: 'Terms and Conditions || UPC JMI',
+    screen: lazy(() => import('../screens/termsAndConditions.screen')),
+  },
+  {
+    path: PRIVACY_POLICY_PATH,
+    title: 'Privacy policy || UPC JMI',
+    screen: lazy(() => import('../screens/privacyPolicy.screen'))
+  }
 ];

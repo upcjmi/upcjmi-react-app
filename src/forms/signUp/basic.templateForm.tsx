@@ -32,7 +32,7 @@ export const basicTemplateForm =
     },
     {
       label: 'Student ID',
-      name: 'student',
+      name: 'student_id',
       initialValue: get(initialValues, 'student'),
       kwargs: {
         placeholder: 'ex: 20177089',
