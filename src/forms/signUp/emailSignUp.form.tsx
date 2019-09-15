@@ -63,9 +63,9 @@ class EmailSignUpForm extends React.Component<IProps> {
               prefix={<Icon type='user' style={{color: 'rgba(0,0,0,.25)'}} />}
               placeholder='Email'
               type='email'
-              autocomplete='username email'
-              autocapitalize='none'
-              autocorrect='off'
+              autoComplete='username email'
+              autoCapitalize='none'
+              autoCorrect='off'
             />,
           )}
         </Form.Item>

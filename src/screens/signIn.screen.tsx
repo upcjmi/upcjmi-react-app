@@ -7,7 +7,7 @@ interface IProps {}
 
 const SignInScreen: FC<IProps> = () => (
   <div className='full-page center-hv' style={{backgroundColor: '#EEEEEE'}}>
-    <Card style={{maxWidth: '100vw', width: 450}}>
+    <Card style={{maxWidth: '95vw', width: 450}}>
       <SignInCard />
     </Card>
   </div>

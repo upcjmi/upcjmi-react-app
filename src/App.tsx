@@ -32,10 +32,12 @@ class App extends Component<IProps, IState> {
 
   componentDidMount = (): void => {
     window.addEventListener('resize', this.updateDimensions);
+    window.addEventListener('hashchange', this.scrollTop)
   };
 
   componentWillUnmount = (): void => {
     window.removeEventListener('resize', this.updateDimensions);
+    window.removeEventListener('hashchange', this.scrollTop)
   };
 
   updateDimensions = (): void => {
@@ -43,7 +45,13 @@ class App extends Component<IProps, IState> {
     this.setState({width: window.innerWidth});
   };
 
+  scrollTop = (): void => {
+    window.scrollTo(0, 0);
+  };
+
   render() {
+    console.log('ooooo');
+
     return (
       <Provider store={store}>
         <Router>
