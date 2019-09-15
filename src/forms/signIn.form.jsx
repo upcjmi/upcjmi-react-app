@@ -50,9 +50,6 @@ class SignInForm extends React.Component {
           )}
         </Form.Item>
         <Form.Item>
-          <a className='login-form-forgot' href='#!'>
-            Forgot password
-          </a>
           <Button
             htmlType='submit'
             className='login-form-button'
@@ -66,6 +63,9 @@ class SignInForm extends React.Component {
             }>
             Sign In
           </Button>
+          <a className='login-form-forgot' href='#!'>
+            Forgot password
+          </a>
         </Form.Item>
       </Form>
     );
