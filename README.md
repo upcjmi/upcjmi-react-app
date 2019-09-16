@@ -1,4 +1,5 @@
 # University Placement Cell ![][licence]
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 Official Site [upcjmi.com][official site] ![][website status]  
 Beta site [beta.upcjmi.com][beta site] [![][build status]][netlify deploy]
 
@@ -15,6 +16,15 @@ Read our [Code of conduct](/CODE_OF_CONDUCT.md) and [Contributing guidelines](/C
   
 ## Contributors ![][contributors]
 
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="https://Faisal-Manzer.in"><img src="https://avatars3.githubusercontent.com/u/18066439?v=4" width="100px;" alt="Faisal Manzer"/><br /><sub><b>Faisal Manzer</b></sub></a><br /><a href="https://github.com/Faisal-Manzer/upcjmi-react-app/commits?author=Faisal-Manzer" title="Code">💻</a> <a href="#design-Faisal-Manzer" title="Design">🎨</a> <a href="#infra-Faisal-Manzer" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-Faisal-Manzer" title="Maintenance">🚧</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ---
 [beta site]: [https://beta.upcjmi.com]

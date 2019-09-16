@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Faisal-Manzer",
+      "name": "Faisal Manzer",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/18066439?v=4",
+      "profile": "https://Faisal-Manzer.in",
+      "contributions": [
+        "code",
+        "design",
+        "infra",
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "upcjmi-react-app",
+  "projectOwner": "Faisal-Manzer",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
