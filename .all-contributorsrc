@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Faisal",
+      "name": "Faisal N Jawdat",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/2758?v=4",
+      "profile": "http://faisal.com",
+      "contributions": [
+        "code",
+        "design",
+        "infra",
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "upcjmi-react-app",
+  "projectOwner": "Faisal-Manzer",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
