@@ -25,9 +25,11 @@
     "reactjs-localstorage": "^0.0.7",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
+    "source-map-explorer": "^2.0.1",
     "typescript": "^3.6.3"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "sh -ac '. .env.development'; react-app-rewired start",
     "build": "sh -ac '. .env.production'; react-app-rewired build",
     "test": "react-app-rewired test",

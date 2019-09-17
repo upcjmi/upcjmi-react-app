@@ -46,6 +46,8 @@ const VerificationDocumentSignUp: FC<IProps> = ({action, data, next}: IProps) =>
       <XLink href={PRIVACY_POLICY} newLine={false}> privacy policy. </XLink>
       <br />
       We are tracking your activity for any suspicious or illegal activity.
+      <br />
+      <br />
       {form}
     </div>
   );

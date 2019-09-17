@@ -43,17 +43,17 @@ class EmailSignUpForm extends React.Component<IProps> {
     // eslint-disable-next-line react/prop-types
     const {form, data} = this.props;
     // eslint-disable-next-line react/prop-types
-    const {getFieldDecorator, getFieldError, isFieldTouched} = form;
+    const {getFieldDecorator} = form;
 
     // @ts-ignore
     return (
       <Form onSubmit={this.handleSubmit} className='login-form' id='sign-in-form'>
         <Form.Item hasFeedback>
           {getFieldDecorator('email', {
-            initialValue: get(data.basic, 'email'),
+            initialValue: get(data.account, 'email'),
             rules: [
               {required: true, message: 'Please input your email!'},
-              {type: 'email', message: 'Enter a valid email!'},
+              // {type: 'email', message: 'Enter a valid email!'},
               {validator: usernameValidator},
             ],
             validateTrigger: 'onBlur',
@@ -87,7 +87,7 @@ class EmailSignUpForm extends React.Component<IProps> {
           )}
         </Form.Item>
         <Form.Item hasFeedback>
-          {getFieldDecorator('confirm-password', {
+          {getFieldDecorator('confirm_password', {
             rules: [
               {
                 validator: (rule: any, value: string, callback: any) => {
@@ -113,14 +113,7 @@ class EmailSignUpForm extends React.Component<IProps> {
             type='primary'
             htmlType='submit'
             className='login-form-button'
-            disabled={
-              !isFieldTouched('email') ||
-              getFieldError('email') ||
-              !isFieldTouched('password') ||
-              getFieldError('password') ||
-              !isFieldTouched('confirm-password') ||
-              getFieldError('confirm-password')
-            }>
+            >
             Next
           </Button>
         </Form.Item>

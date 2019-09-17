@@ -6,6 +6,7 @@ import {IDispatchFunction} from '../../types/common.type';
 import {IReduxState} from '../../reducers';
 import {IUserMeta} from '../../types/api.type';
 import NotAuthorisedScreen from '../403.screen';
+import AccountNotVerifiedScreen from './accountNotVerified.screen';
 
 interface IStateProps {
   user: IUserMeta | undefined;
@@ -22,8 +23,8 @@ const HomeStudentScreen: FC<IProps> = (props: IProps) => {
   const {user, isAuthenticated} = props;
 
   if (!isAuthenticated) return <NotAuthorisedScreen />;
-
   if (user && user.type !== 'S') return <NotAuthorisedScreen />;
+  if(user && !user.account.account_verified) return <AccountNotVerifiedScreen user={user} />;
 
   return (
     <div className='container'>

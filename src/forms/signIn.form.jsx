@@ -20,7 +20,7 @@ class SignInForm extends React.Component {
     // eslint-disable-next-line react/prop-types
     const {form, inProgress} = this.props;
     // eslint-disable-next-line react/prop-types
-    const {getFieldDecorator, getFieldError, isFieldTouched} = form;
+    const {getFieldDecorator} = form;
 
     return (
       <Form onSubmit={this.handleSubmit} className='login-form' id='sign-in-form'>
@@ -58,13 +58,7 @@ class SignInForm extends React.Component {
             htmlType='submit'
             className='login-form-button'
             icon={inProgress ? 'loading' : 'login'}
-            disabled={
-              inProgress ||
-              !isFieldTouched('email') ||
-              getFieldError('email') ||
-              !isFieldTouched('password') ||
-              getFieldError('password')
-            }>
+          >
             Sign In
           </Button>
           <a className='login-form-forgot' href='#!'>

@@ -3,12 +3,12 @@ import {BASE_URL} from '../../constants/credentials.constant';
 
 const FILE = 'utils/file/';
 
-export const removeFileFromServer = (id: number, uploadId: number) =>
+export const removeFileFromServer = (identifier: number, uploadId: number) =>
   loadOpenUrl(FILE, {
     method: 'delete',
     data: {
-      uid: uploadId,
-      id,
+      upload_id: uploadId,
+      identifier,
     },
   });
 export const getFileHandlerURL = () => `${BASE_URL}/${FILE}`;

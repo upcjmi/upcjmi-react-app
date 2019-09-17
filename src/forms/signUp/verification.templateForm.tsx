@@ -17,8 +17,9 @@ export const verificationDocumentTemplate =
       ],
       kwargs: {
         multiple: true,
-        help: 'Add verification documents',
-        desc: 'Upload picture of your admit card and id card.',
+        help: 'Upload picture of your Admit card and Student ID Card',
+        desc: 'These documents will be manually verified by ' +
+          'our student coordinators through your respective departments.',
       },
     },
     {
