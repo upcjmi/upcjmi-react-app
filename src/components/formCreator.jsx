@@ -185,16 +185,16 @@ class FormCreator extends Component {
                   {...kwargs}
                   action={getFileHandlerURL()}
                   data={file => ({
-                    id: file.uid,
+                    upload_id: file.uid,
                   })}
-                  onRemove={file => removeFileFromServer(file.response.id, file.uid)}
+                  onRemove={file => removeFileFromServer(file.response.identifier, file.uid)}
                   onChange={obj => {
                     const files = [];
                     obj.fileList.map(file => {
                       // files[file.uid] = file.response ? file.response.id : '';
                       files.push({
-                        uid: file.uid,
-                        id: file.response ? file.response.id : '',
+                        upload_id: file.uid,
+                        identifier: file.response ? file.response.identifier : '',
                       });
                       return '';
                     });

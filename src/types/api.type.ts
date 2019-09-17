@@ -6,6 +6,10 @@ export interface IUserMeta {
   name: string;
   email: string;
   type: 'S' | 'C';
+  account: {
+    account_verified: boolean;
+    email_verified: boolean;
+  }
 }
 
 export interface ISignInToken {

@@ -33,18 +33,15 @@ export const basicTemplateForm =
     {
       label: 'Student ID',
       name: 'student_id',
-      initialValue: get(initialValues, 'student'),
+      initialValue: get(initialValues, 'student_id'),
       kwargs: {
         placeholder: 'ex: 20177089',
       },
       type: FORM_ELEMENT_TYPES.INPUT,
       rules: [
         {required: true},
-        {
-          max: 9,
-          min: 8,
-          message: 'Normally student id is of 8 or 9 digit',
-        },
+        {pattern: /^\d{8,9}$/, message: 'Not valid student is, ' +
+            'normally student id is of 8 or 9 digit'},
       ],
     },
     {
@@ -62,9 +59,6 @@ export const basicTemplateForm =
       name: 'year',
       initialValue: get(initialValues, 'year') || '2',
       type: FORM_ELEMENT_TYPES.SELECT,
-      kwargs: {
-        placeholder: 'ex: 2nd year',
-      },
       rules: [{required: true}],
       options: {
         '1': '1st year',
@@ -77,14 +71,11 @@ export const basicTemplateForm =
     {
       label: 'Number',
       name: 'phone_number',
+      type: FORM_ELEMENT_TYPES.INPUT,
       initialValue: get(initialValues, 'phone_number'),
       rules: [
-        {
-          min: 10,
-          max: 10,
-          message: 'Not a Valid Indian Phone Number',
-        },
         {required: true},
+        {pattern: /^\d{10}$/, message: 'Not a Valid Indian Phone Number'}
       ],
       kwargs: {
         addonBefore: '+91',

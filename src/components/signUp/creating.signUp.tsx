@@ -46,7 +46,7 @@ const CreatingSignUp: FC<IProps> = ({
         setStatus('signing');
         signInUser(data.account);
       } catch (e) {
-        signUpFailedNotification(e.data.detail);
+        signUpFailedNotification(e && e.data? e.data.detail : 'Unknown error occured');
         setStatus('failed');
       }
     };
