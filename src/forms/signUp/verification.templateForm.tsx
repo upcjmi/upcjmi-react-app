@@ -20,6 +20,8 @@ export const verificationDocumentTemplate =
         help: 'Upload picture of your Admit card and Student ID Card',
         desc: 'These documents will be manually verified by ' +
           'our student coordinators through your respective departments.',
+        listType: 'picture',
+        accept: 'image/jpeg'
       },
     },
     {

@@ -35,7 +35,7 @@ const Message: FC<IProps> = ({user}: IProps) => (
 );
 
 const AccountNotVerifiedScreen: FC<IProps> = ({user}: IProps) => (
-  <div className='container center-hv'>
+  <div className='container center-hv full-page'>
     <Result
       status='warning'
       title='You account is not yet verified'

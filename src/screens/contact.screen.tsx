@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {Typography, Icon, Row, Col} from 'antd';
 
 import {CONTACT} from '../constants/contact.constant';
-import ContactAssistanceForm from '../forms/contactAssistance.form';
+import ContactUs from '../components/contactUs';
 
 interface IProps {}
 
@@ -49,7 +49,7 @@ const ContactScreen: FC<IProps> = () => (
 
       <Col xs={24} md={12} className='container'>
         <Title level={3}>Need assistance from us?</Title>
-        <ContactAssistanceForm />
+        <ContactUs />
       </Col>
     </Row>
     <iframe
