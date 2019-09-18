@@ -1,6 +1,7 @@
 import {loadOpenUrl, loadSecureUrl} from './loader.api.helper';
 import {IPing, ISignInToken, IUserExists, IUserMeta} from '../../types/api.type';
 import {ISignUpData} from '../../types/signUp.type';
+import {IContactForm} from '../../types/apiData.types';
 
 const UPing = 'ping/';
 
@@ -9,6 +10,8 @@ const USignInWithGoogle = 'auth/sign-in/google/';
 
 const USignUpStudent = 'student/sign-up/';
 // const USignUpCompanyRepresentative = 'company/sign-up/';
+
+const UContact = 'contact/';
 
 const UUserMetaDetails = 'auth/user/meta/';
 const UUserExits = 'auth/user/exists/';
@@ -20,6 +23,7 @@ export const signUpStudentAPI = (data: ISignUpData) =>
     method: 'post',
     data,
   });
+
 export const signINWithEmailAPI = (email: string, password: string): Promise<ISignInToken> =>
   loadOpenUrl(USignInWithEmail, {
     method: 'post',
@@ -30,6 +34,12 @@ export const signInWithGoogleAPI = (id: string, token: string): Promise<ISignInT
     method: 'post',
     data: {id, token},
   });
+
+export const contactFormAPI = (data: IContactForm): Promise<any> => loadOpenUrl(UContact, {
+  method: 'post',
+  data
+});
+
 export const getUserMetaDetailAPI = (): Promise<IUserMeta> => loadSecureUrl(UUserMetaDetails);
 export const doesUserExistsAPI = (email: string): Promise<IUserExists> =>
   loadOpenUrl(UUserExits, {

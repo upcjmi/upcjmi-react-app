@@ -12,6 +12,8 @@ import {
   Upload,
   Radio,
   InputNumber,
+  Row,
+  Col
 } from 'antd';
 import {connect} from 'react-redux';
 
@@ -37,6 +39,32 @@ const formItemLayout = {
   },
 };
 
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
+
+const blockFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 24,
+      offset: 0
+    }
+  }
+};
+
 class FormCreator extends Component {
   constructor(props) {
     super(props);
@@ -57,6 +85,7 @@ class FormCreator extends Component {
       else openNotificationWithIcon('error', 'Please Correct the error displayed in forms.');
     });
   };
+
 
   componentDidMount() {
     const {initialValue} = this.props;
@@ -93,6 +122,9 @@ class FormCreator extends Component {
     if (typeof formTemplate === 'function') {
       formTemplate = formTemplate(state, this.state.initialValues, extraData, this.props.form);
     }
+
+    const buttonPlacement = buttonType === 'block'? blockFormItemLayout : tailFormItemLayout;
+
 
     return (
       <Form onSubmit={this.handleSubmit} {...formLayout}>
@@ -179,6 +211,9 @@ class FormCreator extends Component {
                 />
               );
               break;
+            case FORM_ELEMENT_TYPES.TEXTAREA:
+              itemInput = <Input.TextArea {...kwargs} />;
+              break;
             case FORM_ELEMENT_TYPES.FILE_DRAG_DROP:
               extraComponent = (
                 <Upload.Dragger
@@ -243,25 +278,30 @@ class FormCreator extends Component {
             </Form.Item>
           );
         })}
+        <Form.Item {...buttonPlacement}>
         {onCancel ? (
           <Button
             style={{
-              display: buttonType,
+              width: buttonType === 'block' ? '100%' : null,
             }}
             onClick={() => onCancel(this.props.form)}
             htmlType="button">
             {cancelButtonText || 'Cancel'}
           </Button>
         ) : null}
+        </Form.Item>
+
+        <Form.Item {...buttonPlacement}>
         <Button
-          onClick={this.handleSubmit}
-          type="primary"
-          htmlType="submit"
-          style={{
-            width: buttonType === 'block' ? '100%' : null,
-          }}>
-          {submitButtonText || 'Submit'}
-        </Button>
+            onClick={this.handleSubmit}
+            type="primary"
+            htmlType="submit"
+            style={{
+              width: buttonType === 'block' ? '100%' : null,
+            }}>
+            {submitButtonText || 'Submit'}
+          </Button>
+        </Form.Item>
       </Form>
     );
   }

@@ -26,6 +26,15 @@
         "code",
         "design"
       ]
+    },
+    {
+      "login": "ashertoufeeq",
+      "name": "Asher Toufeeq",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/32986474?v=4",
+      "profile": "http://asher-toufeeq.me",
+      "contributions": [
+        "security"
+      ]
     }
   ],
   "contributorsPerLine": 7,
