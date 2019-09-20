@@ -20,7 +20,7 @@ export const CAPTCHA = {
   label: 'Captcha',
   rules: [
     {
-      required: true,
+      required: process.env.NODE_ENV === 'production',
       message: 'Please solve the captcha',
     },
   ],

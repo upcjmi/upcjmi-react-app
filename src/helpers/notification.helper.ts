@@ -76,3 +76,26 @@ export const signUpSuccessfullNotification = () =>
 
 export const signUpFailedNotification = (detail: string) =>
   htmlNotification('error', 'Failed to create account', detail);
+
+export const apiErrorNotification = (
+  type: 'warning' | 'success' | 'error',
+  message: string,
+  error: any,
+): void => {
+  if(error.data !== undefined){
+    const errorData = error.data.detail;
+    if(typeof errorData === 'string')
+      openNotificationWithIcon(type, message, errorData);
+    else{
+      const errorDetail = Object.keys(errorData).map((errorO: any) => {
+        return errorO.map((errorOO: any) => {
+          return `${errorOO}\n`
+        })
+      });
+
+      htmlNotification(type, message, `The following error occured\n${errorDetail}`);
+    }
+  } else {
+    openNotificationWithIcon(type, message, 'An unkown error occured')
+  }
+};

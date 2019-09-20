@@ -2,7 +2,7 @@ import {lazy} from 'react';
 import {IRoute} from '../types/common.type';
 import {
   COMPANY_PORTAL_HOME_PATH,
-  CONTACT_PATH,
+  CONTACT_PATH, EMAIL_VERIFICATION,
   HOME_PATH, PRIVACY_POLICY_PATH,
   SIGN_IN_PATH,
   SIGN_UP_PATH,
@@ -49,5 +49,10 @@ export const COMMON_ROUTES: Array<IRoute> = [
     path: PRIVACY_POLICY_PATH,
     title: 'Privacy policy || UPC JMI',
     screen: lazy(() => import('../screens/privacyPolicy.screen'))
+  },
+  {
+    path: EMAIL_VERIFICATION,
+    title: 'Verify your email || UPC JMI',
+    screen: lazy(() => import('../screens/emailVerification.screen'))
   }
 ];

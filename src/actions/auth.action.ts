@@ -38,12 +38,13 @@ const saveToken = (token: IAccessToken): void => {
   });
 };
 
-const saveSignIn = (user: IUserMeta, signedWith: ISignInOptions = 'U') =>
+const saveSignIn = (user: IUserMeta, signedWith: ISignInOptions = 'U', silent: boolean=false) =>
   // eslint-disable-next-line no-unused-vars
   async (dispatch: Dispatch, getState: IGetStateFunction) => {
     dispatch({type: SIGN_IN_SUCCESS, user, signedWith});
     reactLocalStorage.set(SIGNED_IN_TYPE, signedWith);
-    signInSuccessNotification(user.name);
+    if(!silent)
+      signInSuccessNotification(user.name);
   };
 
 const makeUserSignIn = (apiCall: any, signedWith: ISignInOptions = 'U') => async (
@@ -95,7 +96,7 @@ export const checkUserAction = () => async (dispatch: Dispatch, getState: IGetSt
   try {
     if (reactLocalStorage.get(API_TOKENS)) {
       const user = await getUserMetaDetailAPI();
-      saveSignIn(user, reactLocalStorage.get(SIGNED_IN_TYPE))(dispatch, getState);
+      saveSignIn(user, reactLocalStorage.get(SIGNED_IN_TYPE), true)(dispatch, getState);
     } else {
       await pingAPI();
     }

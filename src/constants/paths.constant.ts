@@ -8,3 +8,5 @@ export const TERMS_AND_CONDITION_PATH = '/terms-and-conditions/';
 
 export const STUDENT_PORTAL_HOME_PATH = '/student/portal/';
 export const COMPANY_PORTAL_HOME_PATH = '/company/portal/';
+
+export const EMAIL_VERIFICATION = '/verification/email/:hash';

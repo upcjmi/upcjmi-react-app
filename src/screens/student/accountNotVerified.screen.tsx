@@ -1,46 +1,88 @@
-import React, {FC} from 'react';
-import {Result} from 'antd';
+import React, {FC, useState} from 'react';
+import {Button, Result, Timeline, Typography} from 'antd';
 import {IUserMeta} from '../../types/api.type';
 import SignOutButton from '../../components/signOutButton';
+import {reSendVerificationMailAPI} from '../../helpers/api/api.helper';
 
 interface IProps {
   user: IUserMeta;
 }
 
+// @ts-ignore
+const SendMailButton: FC<any> = ({email}) => {
+  const [status, setStatus] = useState('not-sent');
+  switch (status) {
+    case 'not-sent':
+    case 'sending':
+      return (
+        <Button
+          icon='mail'
+          onClick={async () => {
+            try {
+              setStatus('sending');
+              await reSendVerificationMailAPI();
+              setStatus('sent');
+            } catch (e) {
+              setStatus('error')
+            }
+          }}
+          loading={status === 'sending'}
+        >
+          {status === 'sending'? 'Sending you mail' : 'Send Verification Mail'}
+        </Button>
+      );
+    case 'error':
+      return 'An error occured while sending your verification mail. Try again later.';
+    default:
+      return `Sent you mail on your email (${email})`
+  }
+};
+
+const {Title, Text} = Typography;
 const Message: FC<IProps> = ({user}: IProps) => (
-  <div>
-    {user.account.email_verified? (
-      <>
-        Your email is verified and our student coordinators will verify documnents provided by you.
-      </>
-    ) : (
-      <>
-        You will receive a email (on
-        {' '}
-        {user.email}
-        ) to verify your email after signup.
-        <br />
-        If your email gets verified then
-        our student coordinators will verify documnents provided by you.
-      </>
-    )}
-    <br />
-    This process normally takes 1-2 days.
+  <div style={{textAlign: 'left'}}>
+    <Title level={3} style={{textAlign: 'center'}}>Verification Process</Title>
+
+    <Title level={4} disabled={user.account.email_verified}>
+      1. Verification of email
+    </Title>
+    <Text disabled={user.account.email_verified}>
+      You need to verify your email in order to proceed next.
+      <br />
+      We sent you a verification mail, do check your spam folder.
+    </Text>
+
     <br />
     <br />
-    We will notify you after verification.
+    <div className='center-hv'>
+      {user.account.email_verified? (
+        <Text disabled>
+          Your email is already verified
+        </Text>
+      ) : <SendMailButton email={user.email} />}
+    </div>
     <br />
-    <SignOutButton />
+    <br />
+
+    <Title level={4}>
+      2. Verfication of documents
+    </Title>
+    We will manully verify your document by your respective department.
+    This process will take 1-2 days.
+    <br />
+    We will notify you after compleation of process.
   </div>
 );
 
 const AccountNotVerifiedScreen: FC<IProps> = ({user}: IProps) => (
   <div className='container center-hv full-page'>
-    <Result
-      status='warning'
-      title='You account is not yet verified'
-      extra={<Message user={user} />}
-    />
+    <div style={{maxWidth: 600}}>
+      <Result
+        status='warning'
+        title='You account is not yet verified'
+        extra={<Message user={user} />}
+      />
+    </div>
   </div>
 );
 
