@@ -50,8 +50,6 @@ class App extends Component<IProps, IState> {
   };
 
   render() {
-    console.log('ooooo');
-
     return (
       <Provider store={store}>
         <Router>

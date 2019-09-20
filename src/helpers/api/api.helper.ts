@@ -1,5 +1,5 @@
 import {loadOpenUrl, loadSecureUrl} from './loader.api.helper';
-import {IPing, ISignInToken, IUserExists, IUserMeta} from '../../types/api.type';
+import {IEmail, IPing, ISignInToken, IUserExists, IUserMeta} from '../../types/api.type';
 import {ISignUpData} from '../../types/signUp.type';
 import {IContactForm} from '../../types/apiData.types';
 
@@ -15,6 +15,9 @@ const UContact = 'contact/';
 
 const UUserMetaDetails = 'auth/user/meta/';
 const UUserExits = 'auth/user/exists/';
+
+const UVerifyEmail = 'auth/verify/email/';
+const USendVerificationMail = 'auth/verify/email/send/';
 
 export const pingAPI = (): Promise<IPing> => loadOpenUrl(UPing);
 
@@ -47,3 +50,11 @@ export const doesUserExistsAPI = (email: string): Promise<IUserExists> =>
       email,
     },
   });
+
+export const verifyEmailAPI = (hash: string): Promise<IEmail> => loadOpenUrl(UVerifyEmail, {
+  method: 'post',
+  data: {hash}
+});
+
+export const reSendVerificationMailAPI = (): Promise<void> =>
+  loadSecureUrl(USendVerificationMail);

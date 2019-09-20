@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {Typography, Row, Col, Icon} from 'antd';
+import packageJson from '../../package.json';
 
 import XLink from './xLink';
 import {
@@ -34,7 +35,8 @@ const Footer: FC<IProps> = (props: IProps) => (
       </Col>
       <Col xs={24} md={12}>
         <Title level={4}>
-          Application
+          Application v
+          {packageJson.version}
         </Title>
         This is site is an open source application licened under &nbsp;
         <XLink href={LICENCE}>Apache License 2.0</XLink>

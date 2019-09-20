@@ -45,3 +45,11 @@ export interface IGoogleSignInResponseHacked {
 export interface IUserExists {
   exists: boolean;
 }
+
+export interface IVerifyEmail {
+  hash: string
+}
+
+export interface IEmail {
+  email: string
+}

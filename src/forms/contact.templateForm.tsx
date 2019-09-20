@@ -15,7 +15,7 @@ export const conatctTemplateForm =
       label: 'Email',
       name: 'email',
       type: FORM_ELEMENT_TYPES.INPUT,
-      rules: [{required: true}],
+      rules: [{required: true, type: 'email'}],
     }, {
       label: 'Contact Number',
       name: 'phone',

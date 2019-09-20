@@ -30,7 +30,7 @@ const ContactUs: FC<IProps> = () => {
           await contactFormAPI(objFrom.getFieldsValue());
           setSubmitted(true)
         } catch (ee) {
-          openNotificationWithIcon('error', 'Unkown error occured.', 'Try after sometime');
+          openNotificationWithIcon('error', ee.data.detail);
         }
       }}
     />

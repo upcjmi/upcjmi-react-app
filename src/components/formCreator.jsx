@@ -149,7 +149,7 @@ class FormCreator extends Component {
                   onErrored={() => changeValue()}
                 />
               );
-              itemInput = <input type="hidden" />;
+              itemInput = <input type="hidden" value={getFieldValue('captcha')} />;
               break;
             case FORM_ELEMENT_TYPES.INPUT:
               itemInput = <Input {...kwargs} />;
