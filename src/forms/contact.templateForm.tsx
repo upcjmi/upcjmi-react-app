@@ -27,6 +27,16 @@ export const conatctTemplateForm =
         addonBefore: '+91',
       },
     }, {
+      label: 'You are',
+      name: 'type',
+      type: FORM_ELEMENT_TYPES.SELECT,
+      rules: [{required: true}],
+      options: {
+        'S': 'Student',
+        'C': 'Company repesentative',
+        'V': 'Visitor',
+      },
+    }, {
       label: 'Question',
       name: 'question',
       type: FORM_ELEMENT_TYPES.TEXTAREA,
