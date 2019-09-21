@@ -1,7 +1,6 @@
 import React, {FC, useState} from 'react';
-import {Button, Result, Timeline, Typography} from 'antd';
+import {Button, Result, Typography} from 'antd';
 import {IUserMeta} from '../../types/api.type';
-import SignOutButton from '../../components/signOutButton';
 import {reSendVerificationMailAPI} from '../../helpers/api/api.helper';
 
 interface IProps {
