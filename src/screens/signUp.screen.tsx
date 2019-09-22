@@ -29,7 +29,10 @@ const SignUpScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
 
   if (isAuthenticated && active !== 3) return <OnlyPublic />;
 
-  const next = () => setActive(active + 1);
+  const next = () => {
+    window.scrollTo(0, 0);
+    setActive(active + 1);
+  };
   const previous = () => setActive(active - 1);
   const startAgain = () => {
     setActive(0);

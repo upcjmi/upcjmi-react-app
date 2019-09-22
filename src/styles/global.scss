@@ -3,6 +3,7 @@ body {
     'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
   font-size: 1.1rem;
+  overflow-x: hidden;
 }
 
 .space-child > * {
@@ -53,4 +54,8 @@ main {
   padding: 10px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+}
+
+.ant-menu-item-selected{
+  background-color: #eeeeee !important;
 }

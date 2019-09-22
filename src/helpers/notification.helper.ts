@@ -10,6 +10,7 @@ export const openNotificationWithIcon = (
   notification[type]({
     message,
     description: desc,
+    top: 70
   });
 };
 export const htmlNotification = (

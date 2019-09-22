@@ -104,6 +104,7 @@ export const checkUserAction = () => async (dispatch: Dispatch, getState: IGetSt
     dispatch({type: CONNECTED_WITH_SERVER});
   } catch (e) {
     // pass
+    dispatch({type: SIGN_OUT});
     cannotConnectToServerNotification();
   }
 };
