@@ -18,6 +18,14 @@ export interface IRoute {
   title?: string;
 }
 
+export interface ISidebarRoute {
+  path: string;
+  screen?: LazyExoticComponent<any>;
+  icon: string;
+  name: string;
+  children?: Array<ISidebarRoute>
+}
+
 export interface ICarousel {
   image: string;
   caption: string;

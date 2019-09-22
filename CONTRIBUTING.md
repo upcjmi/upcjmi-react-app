@@ -7,7 +7,7 @@ Read and Follow [Code of Conduct](/CODE_OF_CONDUCT.md)
 - `Functional components` are preferred over `Class-based components`
 - `Typescript` and `SCSS` should only be used (although `less` is supported by build tool but we discourage its use)
 - Folder Structure should be strictly followed
-- The filename should be in lower camel case with the type of file as semi extension. ex: `home.student.screen.tsx` (_name.semi-extension.file-extension_)
+- The filename should be in lower camel case with the type of file as semi extension. ex: `main.student.screen.tsx` (_name.semi-extension.file-extension_)
 - Prefer `yarn` over `npm`
 - No file should have `linting` or `prettier` errors if you feel like this is unnecessary error do suppress with `eslint-disable-next-line`.
 
