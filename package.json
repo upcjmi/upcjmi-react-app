@@ -1,6 +1,6 @@
 {
   "name": "upcjmi",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": false,
   "license": "Apache-2.0",
   "homepage": "https://upcjmi.com",
@@ -11,6 +11,7 @@
     "customize-cra": "^0.6.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "moment": "^2.24.0",
     "node-sass": "^4.12.0",
     "react": "^16.9.0",
     "react-app-rewired": "^2.1.3",
@@ -18,6 +19,7 @@
     "react-google-login": "^5.0.5",
     "react-google-recaptcha": "^2.0.0-rc.1",
     "react-html-parser": "^2.0.2",
+    "react-markdown": "^4.2.2",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "react-router-hash-link": "^1.2.2",

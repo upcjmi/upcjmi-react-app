@@ -12,11 +12,10 @@ Jamia Millia Islamia was founded at Aligarh in the United Province, India in 192
 ## Contributing to repository
 Read our [Code of conduct](/CODE_OF_CONDUCT.md) and [Contributing guidelines](/CONTRIBUTING.md)
 
-### Maintainers
+### Maintainer
   - [@Faisal-Manzer](https://github.com/Faisal-Manzer)
-  - [@alhaqhassan](https://github.com/alhaqhassan)
   
-## Contributors 
+### Contributors 
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->

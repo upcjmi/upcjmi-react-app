@@ -1,7 +1,7 @@
 import {lazy} from 'react';
 import {ISidebarRoute} from '../types/common.type';
 
-export const studentRoutes: Array<ISidebarRoute> = [
+export const studentSideRoutes: Array<ISidebarRoute> = [
   {
     name: 'Home',
     icon: 'home',
@@ -27,5 +27,13 @@ export const studentRoutes: Array<ISidebarRoute> = [
     icon: 'setting',
     path: '/settings/',
     screen: lazy(() => import('../screens/student/settings.student.screen'))
+  }
+];
+
+export const studentRoutes = [
+  {
+    name: 'Job Details',
+    path: '/company/:company/job/:job/',
+    screen: lazy(() => import('../screens/student/jobDetails.student.screen'))
   }
 ];
