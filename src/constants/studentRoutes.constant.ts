@@ -18,6 +18,11 @@ export const studentSideRoutes: Array<ISidebarRoute> = [
     path: '/internships/',
     screen: lazy(() => import('../screens/student/internships.student.screen'))
   }, {
+    name: 'Courses',
+    icon: 'book',
+    path: '/courses/',
+    screen: lazy(() => import('../screens/student/courses.student.screen'))
+  }, {
     name: 'Your Resume',
     icon: 'solution',
     path: '/resume/',
@@ -35,5 +40,9 @@ export const studentRoutes = [
     name: 'Job Details',
     path: '/company/:company/job/:job/',
     screen: lazy(() => import('../screens/student/jobDetails.student.screen'))
+  }, {
+    name: 'Course details',
+    path: '/courses/:course/',
+    screen: lazy(() => import('../screens/student/courseDetails.student.screen'))
   }
 ];
