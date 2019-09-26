@@ -92,20 +92,29 @@ export const signIn = (account: any) => (dispatch: Dispatch, getState: IGetState
   }
 };
 
-export const checkUserAction = () => async (dispatch: Dispatch, getState: IGetStateFunction) => {
+// eslint-disable-next-line no-unused-vars
+const ping = () => async (dispatch: Dispatch, getState: IGetStateFunction) => {
   try {
-    if (reactLocalStorage.get(API_TOKENS)) {
-      const user = await getUserMetaDetailAPI();
-      saveSignIn(user, reactLocalStorage.get(SIGNED_IN_TYPE), true)(dispatch, getState);
-    } else {
-      await pingAPI();
-    }
-
+    await pingAPI();
     dispatch({type: CONNECTED_WITH_SERVER});
   } catch (e) {
-    // pass
-    dispatch({type: SIGN_OUT});
     cannotConnectToServerNotification();
+  }
+};
+
+
+export const checkUserAction = () => async (dispatch: Dispatch, getState: IGetStateFunction) => {
+  if (reactLocalStorage.get(API_TOKENS)) {
+    try {
+      const user = await getUserMetaDetailAPI();
+      saveSignIn(user, reactLocalStorage.get(SIGNED_IN_TYPE), true)(dispatch, getState);
+      dispatch({type: CONNECTED_WITH_SERVER});
+    } catch (e) {
+      localStorage.clear();
+      ping()(dispatch, getState);
+    }
+  } else {
+    ping()(dispatch, getState)
   }
 };
 

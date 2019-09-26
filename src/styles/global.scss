@@ -22,10 +22,11 @@ body {
 
 main {
   padding-top: $header-height;
+  overflow-x: hidden;
 }
 
 .container {
-  padding: 40px;
+  padding: 20px;
 }
 
 img.responsive-img,
@@ -46,16 +47,30 @@ main {
 
 .drawer-handel{
   position: fixed;
-  top: 70px;
+  top: 0;
   right: 0;
   z-index: 1000;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
   background-color: #ffffff;
   padding: 10px;
+  height: 64px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  border-right: #999999 solid 1px;
 }
 
 .ant-menu-item-selected{
   background-color: #eeeeee !important;
+}
+
+.footer-hide{
+  display: none;
+}
+
+main .portal{
+  background-color: #eeeeee;
 }

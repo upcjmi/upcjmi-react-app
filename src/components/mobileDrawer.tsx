@@ -52,22 +52,24 @@ class MobileDrawer extends React.Component<IProps, IState> {
 
     return (
       <div>
+        {/* eslint-disable-next-line max-len */}
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
         <div
           className='drawer-handel'
+          onClick={this.showDrawer}
         >
-          <Icon type='double-left' onClick={this.showDrawer} />
+          <Icon type='down-circle' />
         </div>
         <Drawer
-          // title='Basic Drawer'
-          placement='right'
+          placement='top'
           closable={false}
           onClose={this.onClose}
           visible={visible}
         >
           <div className='center-hv'>
             <Link to={HOME_PATH}>
-              <Title>
-                UPC JMI
+              <Title level={4}>
+                University Placement Cell
               </Title>
             </Link>
           </div>
