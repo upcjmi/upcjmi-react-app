@@ -34,6 +34,7 @@ const RecruitmentStudentScreen: FC<IProps> = (props: IProps) => {
       <Title>
         Recruitment Drives
       </Title>
+      {jobs.length === 0 ? 'No jobs are ready for now' : null}
 
       {loading? (
         <Card>
