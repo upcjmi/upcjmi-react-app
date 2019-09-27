@@ -166,25 +166,20 @@ const HomeStudentScreen: FC<IProps> = () => {
     <div className='container'>
       <Row gutter={24}>
         <Col sm={24} md={12}>
+          <Card title='Notice Board' />
+          <br />
           <ProfileCard editable />
           <Link to='/resume/'>
             <Button type='link'>
               <Icon type='edit' />
-            Edit your full resume
+              Edit your full resume
             </Button>
           </Link>
         </Col>
-        <Col sm={24} md={12}>
-          <Card title='Notice Board' />
-        </Col>
-      </Row>
-      <br />
-      <br />
-      <Row gutter={24}>
+
         <Col sm={24} md={12}>
           <JobApplication />
-        </Col>
-        <Col sm={24} md={12}>
+          <br />
           <CourseApplication />
         </Col>
       </Row>

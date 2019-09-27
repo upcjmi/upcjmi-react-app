@@ -7,7 +7,7 @@ import {
   BUG_REPORT,
   FEATURE_REQUEST,
   JAMIA_MILLIA_ISLAMIA,
-  LICENCE, PRIVACY_POLICY,
+  PRIVACY_POLICY,
   REPO_LINK, TERMS_AND_CONDITION,
   UNIVERSITY_PLACEMENT_CELL,
 } from '../constants/externalLinks.constant';
@@ -38,9 +38,7 @@ const Footer: FC<IProps> = (props: IProps) => (
           Application v
           {packageJson.version}
         </Title>
-        This is site is an open source application licened under &nbsp;
-        <XLink href={LICENCE}>Apache License 2.0</XLink>
-
+        This is an open source application.
         <XLink href={REPO_LINK}>
           <Icon type='github' />
           &nbsp; GitHub Repository

@@ -12,3 +12,4 @@ export const removeFileFromServer = (identifier: number, uploadId: number) =>
     },
   });
 export const getFileHandlerURL = () => `${BASE_URL}/${FILE}`;
+export const studentDocumentUploadURL = () => `${BASE_URL}/student/upload/documents/`;

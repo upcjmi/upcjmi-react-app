@@ -1,6 +1,6 @@
 {
   "name": "upcjmi",
-  "version": "0.1.4",
+  "version": "0.2.1",
   "private": false,
   "license": "Apache-2.0",
   "homepage": "https://upcjmi.com",
@@ -18,6 +18,7 @@
     "react-dom": "^16.9.0",
     "react-google-login": "^5.0.5",
     "react-google-recaptcha": "^2.0.0-rc.1",
+    "react-helmet": "^5.2.1",
     "react-html-parser": "^2.0.2",
     "react-markdown": "^4.2.2",
     "react-redux": "^7.1.1",

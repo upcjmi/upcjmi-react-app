@@ -13,6 +13,7 @@ import Footer from './components/footer';
 
 interface IStateProps {
   routes: Array<IRoute>;
+  connected: null | boolean;
 }
 
 interface IDispatchProps {
@@ -21,10 +22,13 @@ interface IDispatchProps {
 
 interface IProps extends IStateProps, IDispatchProps {}
 
-const Main = ({routes, checkUser}: IProps) => {
+const Main = ({routes, checkUser, connected}: IProps) => {
   useEffect(() => {
     checkUser();
   }, [checkUser]);
+
+  if(connected === null)
+    return <LoadingScreen />;
 
   return (
     <Suspense fallback={<LoadingScreen />}>
@@ -49,6 +53,7 @@ const Main = ({routes, checkUser}: IProps) => {
 
 const mapStateToProps = (state: any): IStateProps => ({
   routes: state.navigator.routes,
+  connected: state.navigator.connected
 });
 
 const mapDispatchToProps = (dispatch: any): IDispatchProps => ({

@@ -217,7 +217,6 @@ class FormCreator extends Component {
             case FORM_ELEMENT_TYPES.FILE_DRAG_DROP:
               extraComponent = (
                 <Upload.Dragger
-                  {...kwargs}
                   action={getFileHandlerURL()}
                   data={file => ({
                     upload_id: file.uid,
@@ -226,7 +225,6 @@ class FormCreator extends Component {
                   onChange={obj => {
                     const files = [];
                     obj.fileList.map(file => {
-                      // files[file.uid] = file.response ? file.response.id : '';
                       files.push({
                         upload_id: file.uid,
                         identifier: file.response ? file.response.identifier : '',
@@ -236,7 +234,9 @@ class FormCreator extends Component {
                     setFieldsValue({
                       [name]: files,
                     });
-                  }}>
+                  }}
+                  {...kwargs}
+                >
                   <p className="ant-upload-drag-icon">
                     <Icon type="inbox" />
                   </p>

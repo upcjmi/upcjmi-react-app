@@ -8,6 +8,7 @@ interface IProps {
 }
 
 const {Title} = Typography;
+// eslint-disable-next-line no-unused-vars
 const CoursesStudentScreen: FC<IProps> = (props: IProps) => {
   const [courses, setCourses] = useState([
     {

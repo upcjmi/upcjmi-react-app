@@ -24,7 +24,7 @@ const GoogleSignUpButton: FC<IProps> = ({onSignInSuccess}: IProps) => (
         type='primary'
         icon='google'
         size='large'
-        style={{width: '100%', backgroundColor: '#000000'}}>
+        style={{width: '100%', backgroundColor: renderProps.disabled? '#eeeeee' :'#000000'}}>
         Create Account Using Google
       </Button>
     )}
