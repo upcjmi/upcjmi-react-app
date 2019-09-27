@@ -4,9 +4,10 @@ interface IProps {
 }
 
 
+// eslint-disable-next-line no-unused-vars
 const InternshipsStudentScreen: FC<IProps> = (props: IProps) => (
-  <div>
-    InternshipsStudentScreen
+  <div className='container'>
+    Internship search coming soon
   </div>
 );
 

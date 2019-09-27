@@ -1,15 +1,15 @@
 import {IReducerAction, IRoute} from '../types/common.type';
 import {COMMON_ROUTES} from '../constants/routes.constant';
-import {CONNECTED_WITH_SERVER} from '../actions';
+import {CONNECTED_WITH_SERVER, COULD_NOT_CONNECT_TO_SERVER} from '../actions';
 
 export interface INavigatorState {
   routes: Array<IRoute>;
-  connected: boolean;
+  connected: boolean | null;
 }
 
 const initialState: INavigatorState = {
   routes: COMMON_ROUTES,
-  connected: false,
+  connected: null,
 };
 
 export const navigator = (state: INavigatorState = initialState, action: IReducerAction) => {
@@ -22,6 +22,8 @@ export const navigator = (state: INavigatorState = initialState, action: IReduce
   switch (action.type) {
     case CONNECTED_WITH_SERVER:
       return setState({connected: true});
+    case COULD_NOT_CONNECT_TO_SERVER:
+      return setState({connected: false});
 
     default:
       return state;

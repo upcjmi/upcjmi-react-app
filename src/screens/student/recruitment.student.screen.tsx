@@ -9,7 +9,7 @@ interface IProps {
 
 const {Title} = Typography;
 
-
+// eslint-disable-next-line no-unused-vars
 const RecruitmentStudentScreen: FC<IProps> = (props: IProps) => {
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(true);

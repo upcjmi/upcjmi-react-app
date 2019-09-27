@@ -9,7 +9,7 @@ import {
   signInWithGoogleAPI,
 } from '../helpers/api/api.helper';
 import {
-  CONNECTED_WITH_SERVER,
+  CONNECTED_WITH_SERVER, COULD_NOT_CONNECT_TO_SERVER,
   SIGN_IN_INITIATED,
   SIGN_IN_SUCCESS,
   SIGN_OUT,
@@ -59,7 +59,10 @@ const makeUserSignIn = (apiCall: any, signedWith: ISignInOptions = 'U') => async
     saveSignIn(user, signedWith)(dispatch, getState);
   } catch (e) {
     dispatch({type: SIGNING_IN_FAILED});
-    signingInErrorNotification((e.data && e.data.detail) || undefined);
+    if(e && e.data !== undefined)
+      signingInErrorNotification(e.data.detail);
+    else
+      signingInErrorNotification(undefined);
   }
 };
 
@@ -99,6 +102,7 @@ const ping = () => async (dispatch: Dispatch, getState: IGetStateFunction) => {
     dispatch({type: CONNECTED_WITH_SERVER});
   } catch (e) {
     cannotConnectToServerNotification();
+    dispatch({type: COULD_NOT_CONNECT_TO_SERVER});
   }
 };
 
