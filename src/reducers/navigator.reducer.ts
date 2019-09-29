@@ -1,5 +1,5 @@
 import {IReducerAction, IRoute} from '../types/common.type';
-import {COMMON_ROUTES} from '../constants/routes.constant';
+import {COMMON_ROUTES} from '../constants/routes/main.routes.constant';
 import {CONNECTED_WITH_SERVER, COULD_NOT_CONNECT_TO_SERVER} from '../actions';
 
 export interface INavigatorState {

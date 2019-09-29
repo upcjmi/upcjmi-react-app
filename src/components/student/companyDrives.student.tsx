@@ -4,7 +4,7 @@ import {Card, Col, Row, Typography, Skeleton} from 'antd';
 import {ICompany} from '../../types/company.api.type';
 import {getJobBasicDetailsAPI} from '../../helpers/api/company.api.helper';
 import {openNotificationWithIcon} from '../../helpers/notification.helper';
-import JobListing from './jobListing';
+import JobListing from './jobListing.student';
 
 
 interface IProps {

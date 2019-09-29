@@ -4,11 +4,18 @@ import {Icon, Menu} from 'antd';
 import {Link} from 'react-router-dom';
 
 import SignIn from './userAccountButton';
-import {CONTACT_PATH, SIGN_UP_PATH, STUDENT_PORTAL_HOME_PATH} from '../constants/paths.constant';
+import {
+  COMPANY_PORTAL_HOME_PATH,
+  CONTACT_PATH,
+  SIGN_UP_PATH,
+  STUDENT_PORTAL_HOME_PATH,
+} from '../constants/routes/main.paths.constant';
 import {IReduxState} from '../reducers';
+import {IUserMeta} from '../types/api.type';
 
 interface IStateProps {
-  isAuthenticated: boolean
+  isAuthenticated: boolean;
+  user: IUserMeta | undefined;
 }
 
 interface IDispatchProps {}
@@ -19,7 +26,7 @@ interface IProps extends IStateProps, IDispatchProps  {
 
 const {Item} = Menu;
 
-const HeaderPills: FC<IProps> = ({mode='horizontal', isAuthenticated}: IProps) => (
+const HeaderPills: FC<IProps> = ({mode='horizontal', isAuthenticated, user}: IProps) => (
   <div>
     <div className='header-pill center-hv' style={{height: '100%'}}>
       <SignIn />
@@ -36,7 +43,9 @@ const HeaderPills: FC<IProps> = ({mode='horizontal', isAuthenticated}: IProps) =
         {
           isAuthenticated? (
             <Item key='appstore'>
-              <Link to={STUDENT_PORTAL_HOME_PATH}>
+              <Link
+                to={user && user.type === 'C'? COMPANY_PORTAL_HOME_PATH : STUDENT_PORTAL_HOME_PATH}
+              >
                 <Icon type='appstore' />
                 Placement Portal
               </Link>
@@ -57,7 +66,8 @@ const HeaderPills: FC<IProps> = ({mode='horizontal', isAuthenticated}: IProps) =
 
 
 const mapStateToProps = (state: IReduxState): IStateProps => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
 });
 
 // eslint-disable-next-line no-unused-vars

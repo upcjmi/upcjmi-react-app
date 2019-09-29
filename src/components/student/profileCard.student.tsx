@@ -8,7 +8,7 @@ import {IStudentExtraDetails} from '../../types/student.api.type';
 import {loadStudentExtraDetails} from '../../actions/student.action';
 import {IUserMeta} from '../../types/api.type';
 import SideDrawerForm from '../sideDrawerForm';
-import ExtraDetailsChange from './extraDetailsChange';
+import ExtraDetailsChange from './extraDetailsChange.student';
 import {GetProfileIcon} from '../../helpers/function.helper';
 
 
@@ -41,7 +41,7 @@ const getYear = (year: number): string => {
 };
 
 
-const ProfileCard: FC<IProps> =
+const ProfileCardStudent: FC<IProps> =
   ({extraDetails, loadExtraDetails, user, editable=false}: IProps) => {
 
     useEffect(() => {
@@ -164,4 +164,4 @@ const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
   loadExtraDetails: () => dispatch(loadStudentExtraDetails())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileCard);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileCardStudent);

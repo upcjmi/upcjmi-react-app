@@ -3,7 +3,7 @@ import {Typography} from 'antd';
 import XLink from '../xLink';
 
 import FormCreator from '../formCreator';
-import {verificationDocumentTemplate} from '../../forms/signUp/verification.templateForm';
+import {verificationDocumentTemplate} from '../../forms/signUp/verification.signUp.tForm';
 import {ISignUpData} from '../../types/signUp.type';
 import {PRIVACY_POLICY, TERMS_AND_CONDITION} from '../../constants/externalLinks.constant';
 

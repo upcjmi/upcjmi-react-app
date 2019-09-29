@@ -10,7 +10,7 @@ import {
   HOME_PATH,
   SIGN_UP_PATH,
   STUDENT_PORTAL_HOME_PATH,
-} from '../constants/paths.constant';
+} from '../constants/routes/main.paths.constant';
 import {IReduxState} from '../reducers';
 import {IUserMeta} from '../types/api.type';
 

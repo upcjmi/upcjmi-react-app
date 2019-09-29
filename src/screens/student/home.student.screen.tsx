@@ -1,11 +1,12 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Button, Card, Col, Descriptions, Icon, Row, Skeleton, Typography} from 'antd';
+import {Button, Card, Col, Descriptions, Icon, Row, Skeleton, Typography, Empty} from 'antd';
 import {Link} from 'react-router-dom';
 
-import ProfileCard from '../../components/student/profileCard';
+import ProfileCard from '../../components/student/profileCard.student';
 import {getAllJobsAppliedAPI} from '../../helpers/api/company.api.helper';
 import {openNotificationWithIcon} from '../../helpers/notification.helper';
 import {getAllAppliedCoursesAPI} from '../../helpers/api/core.api.helper';
+import NoticeBoard from '../../components/noticeBoard';
 
 interface IProps {
 }
@@ -48,12 +49,24 @@ const JobApplication: FC<IProps> = () => {
 
   return (
     <div>
-      <Title>
+      <Title level={3}>
         Your job applications
       </Title>
       {
-        jobs === []?
-          'You have not applied to any job yet, find jobs at recruitment section' : null
+        jobs.length === 0?
+          (
+            <Card>
+              <Empty
+                description='You have not applied to any job yet'
+              >
+                <Link to='/recruitment/'>
+                  <Button>
+                    Find Jobs
+                  </Button>
+                </Link>
+              </Empty>
+            </Card>
+          ) : null
       }
       {
         jobs.map((job) => {
@@ -123,7 +136,7 @@ const CourseApplication: FC<IProps> = () => {
   if(loading)
     return (
       <div>
-        <Title>
+        <Title level={3}>
           Courses enrolled
         </Title>
         <Skeleton />
@@ -132,12 +145,24 @@ const CourseApplication: FC<IProps> = () => {
 
   return (
     <div>
-      <Title>
+      <Title level={3}>
         Courses enrolled
       </Title>
       {
-        courses === []?
-          'You have not applied to any job yet, find jobs at courses section' : null
+        courses.length === 0?
+          (
+            <Card>
+              <Empty
+                description='You are not enrolled in any course'
+              >
+                <Link to='/courses/'>
+                  <Button>
+                    Find Jobs
+                  </Button>
+                </Link>
+              </Empty>
+            </Card>
+          ) : null
       }
       {
         courses.map((course) => {
@@ -166,7 +191,7 @@ const HomeStudentScreen: FC<IProps> = () => {
     <div className='container'>
       <Row gutter={24}>
         <Col sm={24} md={12}>
-          <Card title='Notice Board' />
+          <NoticeBoard />
           <br />
           <ProfileCard editable />
           <Link to='/resume/'>

@@ -9,7 +9,7 @@ import {BADGES} from '../constants/home/badges.constant';
 import ContactScreen from './contact.screen';
 import TopRecruiters from '../components/home/topRecruiters';
 import {selectScreen} from '../helpers/screen.helper';
-import {STUDENT_PORTAL_HOME_PATH} from '../constants/paths.constant';
+import {STUDENT_PORTAL_HOME_PATH} from '../constants/routes/main.paths.constant';
 
 interface IProps {}
 

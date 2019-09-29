@@ -2,7 +2,7 @@ import React, {FC, useState} from 'react';
 import {Icon, Result} from 'antd';
 
 import FormCreator from './formCreator';
-import {contactTemplateForm} from '../forms/contact.templateForm';
+import {contactTForm} from '../forms/contact.tForm';
 import {contactFormAPI} from '../helpers/api/api.helper';
 import {openNotificationWithIcon} from '../helpers/notification.helper';
 
@@ -23,7 +23,7 @@ const ContactUs: FC<IProps> = () => {
   return (
     // @ts-ignore
     <FormCreator
-      formTemplate={contactTemplateForm}
+      formTemplate={contactTForm}
       submitButtonText='Submit your query'
       onSubmit={async (objFrom: any) => {
         try{

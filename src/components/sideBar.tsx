@@ -19,6 +19,7 @@ interface IProps extends IStateProps, IDispatchProps {
   match: string;
 }
 
+const JamiaLogo = require('../assets/svgs/jamia-logo.svg');
 
 const SideBar: FC<IProps> = ({collapsed, toggle, routes}: IProps) => {
 
@@ -54,12 +55,14 @@ const SideBar: FC<IProps> = ({collapsed, toggle, routes}: IProps) => {
   return (
     <div style={{
       position: 'fixed',
-      top: 64,
+      top: 0,
       left: collapsed? selectScreen('-100vw', 0):0,
-      zIndex: 1000,
-      height: 'calc(100vh - 64px)',
-      transition: 'left 0.2s'
+      height: '100vh',
+      transition: 'left 0.2s',
     }}>
+      <div style={{height: 64, backgroundColor: '#FFFFFF'}} className='logo-container center-hv'>
+        <img src={JamiaLogo} alt='University Placement Cell, Logo' />
+      </div>
       <Menu
         mode='inline'
         theme='light'

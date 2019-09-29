@@ -3,7 +3,7 @@ import {Typography} from 'antd';
 
 import FormCreator from '../formCreator';
 import {ISignUpData} from '../../types/signUp.type';
-import {basicTemplateForm} from '../../forms/signUp/basic.templateForm';
+import {basicSignUpTForm} from '../../forms/signUp/basic.signUp.tForm';
 
 interface IProps {
   action: any;
@@ -17,9 +17,10 @@ const BasicSignUp: FC<IProps> = ({action, data, next}: IProps) => {
   const form = (
     // @ts-ignore
     <FormCreator
-      formTemplate={basicTemplateForm}
+      formTemplate={basicSignUpTForm}
       initialValue={async () => data.basic}
       buttonType='block'
+      submitButtonText='Next'
       onSubmit={(objForm: any) => {
         action({
           ...data,

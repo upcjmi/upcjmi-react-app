@@ -182,7 +182,7 @@ interface IProps extends IStateProps, IDispatchProps {
   form: any;
 }
 
-const ExtraDetailsChange: FC<IProps> = ({action, form, extraDetails, loadExtraData}: IProps) => {
+const ExtraDetailsChangeStudent: FC<IProps> = ({action, form, extraDetails, loadExtraData}: IProps) => {
   const {getFieldDecorator, setFieldsValue, getFieldValue, getFieldsValue} = form;
   let details: IStudentExtraDetails = {
     tag_line: '',
@@ -318,5 +318,5 @@ const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  Form.create({})(ExtraDetailsChange)
+  Form.create({})(ExtraDetailsChangeStudent)
 );

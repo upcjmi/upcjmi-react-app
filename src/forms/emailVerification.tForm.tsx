@@ -1,6 +1,6 @@
 import {FORM_ELEMENT_TYPES} from '../constants/formFields.constant';
 
-export const emailverificationFormTemplate =
+export const emailVerificationTForm =
   // eslint-disable-next-line no-unused-vars
   (state: any, initialValues: any, extraValues: any, form: any) => [
     {

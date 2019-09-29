@@ -13,7 +13,9 @@ import {
   Radio,
   InputNumber,
   Row,
-  Col
+  Col,
+  Switch,
+  Cascader
 } from 'antd';
 import {connect} from 'react-redux';
 
@@ -64,6 +66,14 @@ const blockFormItemLayout = {
     }
   }
 };
+
+const blockElements = [
+  FORM_ELEMENT_TYPES.MARKDOWN,
+  FORM_ELEMENT_TYPES.CASCADER,
+  FORM_ELEMENT_TYPES.TEXTAREA,
+  FORM_ELEMENT_TYPES.FILE_DRAG_DROP,
+  FORM_ELEMENT_TYPES.CAPTCHA
+];
 
 class FormCreator extends Component {
   constructor(props) {
@@ -247,6 +257,18 @@ class FormCreator extends Component {
               fieldOptions.initialValue = '';
               itemInput = <input type="hidden" value={getFieldValue(name)} />;
               break;
+            case FORM_ELEMENT_TYPES.SWITCH:
+              itemInput = <Switch {...kwargs} />;
+              break;
+            case FORM_ELEMENT_TYPES.HIDDEN:
+              itemInput = <input type='hidden' />;
+              break;
+            case FORM_ELEMENT_TYPES.CASCADER:
+              itemInput = <input type='hidden' />;
+              extraComponent = <Cascader
+                {...kwargs}
+              />;
+              break;
             default:
               itemInput = <Input {...kwargs} />;
           }
@@ -269,7 +291,10 @@ class FormCreator extends Component {
               style={{
                 marginBottom: 20,
               }}
-              extra={desc}>
+              extra={desc}
+              labelCol={blockElements.includes(element)? {span: 24} : formItemLayout.labelCol}
+              wrapperCol={blockElements.includes(element)? {span: 24} : formItemLayout.wrapperCol}
+            >
               {extraComponent}
               {getFieldDecorator(formItem.name, {
                 preserve: true,
@@ -284,6 +309,7 @@ class FormCreator extends Component {
             style={{
               width: buttonType === 'block' ? '100%' : null,
             }}
+            size='large'
             onClick={() => onCancel(this.props.form)}
             htmlType="button">
             {cancelButtonText || 'Cancel'}
@@ -296,6 +322,7 @@ class FormCreator extends Component {
             onClick={this.handleSubmit}
             type="primary"
             htmlType="submit"
+            size='large'
             style={{
               width: buttonType === 'block' ? '100%' : null,
             }}>

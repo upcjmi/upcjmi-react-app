@@ -9,6 +9,7 @@
     "axios": "^0.19.0",
     "babel-plugin-import": "^1.12.1",
     "customize-cra": "^0.6.0",
+    "jamia-all-courses": "^1.1.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "moment": "^2.24.0",
@@ -39,7 +40,7 @@
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "predeploy": "yarn run build && cp build/index.html build/404.html && cp CNAME build/CNAME",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build -m",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },

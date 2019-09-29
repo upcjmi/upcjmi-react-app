@@ -52,8 +52,8 @@ class EmailSignUpForm extends React.Component<IProps> {
           {getFieldDecorator('email', {
             initialValue: get(data.account, 'email'),
             rules: [
-              {required: true, message: 'Please input your email!'},
-              // {type: 'email', message: 'Enter a valid email!'},
+              {required: true, message: 'Please input your email!', },
+              {type: 'email', message: 'Enter a valid email!'},
               {validator: usernameValidator},
             ],
             validateTrigger: 'onBlur',

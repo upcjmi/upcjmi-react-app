@@ -72,5 +72,10 @@ main {
 }
 
 main .portal{
-  background-color: #eeeeee;
+  background-color: #f0f1f2;
+}
+
+.ant-menu.full-page{
+  border-right: 0 solid #000c17;
+  z-index: -10;
 }

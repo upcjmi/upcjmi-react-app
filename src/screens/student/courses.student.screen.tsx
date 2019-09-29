@@ -1,5 +1,5 @@
 import React, {FC, useState, useEffect} from 'react';
-import {Button, Card, Descriptions, Skeleton, Typography} from 'antd';
+import {Button, Card, Descriptions, Skeleton, Typography, Empty} from 'antd';
 import {Link} from 'react-router-dom';
 import {openNotificationWithIcon} from '../../helpers/notification.helper';
 import {getAllAvailableCourseAPI} from '../../helpers/api/core.api.helper';
@@ -53,7 +53,11 @@ const CoursesStudentScreen: FC<IProps> = (props: IProps) => {
       <Title>
         Courses offered
       </Title>
-      {courses.length === 0? 'No courses available for now': null}
+      {courses.length === 0 && !loading? (
+        <Card>
+          <Empty description='No courses are available yet' />
+        </Card>
+      ) : null}
       {courses.map(course => (
         <Card>
           <Descriptions title={course.title}>

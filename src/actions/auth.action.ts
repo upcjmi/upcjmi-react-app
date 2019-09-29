@@ -26,7 +26,7 @@ import {
   signOutSuccessNotification,
 } from '../helpers/notification.helper';
 import {IGetStateFunction, ISignInOptions} from '../types/common.type';
-import {HOME_PATH} from '../constants/paths.constant';
+import {HOME_PATH} from '../constants/routes/main.paths.constant';
 
 // eslint-disable-next-line no-unused-vars
 const fakeRedirect = (path: string): void => {};
