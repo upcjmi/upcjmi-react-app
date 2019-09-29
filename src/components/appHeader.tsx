@@ -4,7 +4,7 @@ import {Row, Col} from 'antd';
 
 import {
   HOME_PATH,
-} from '../constants/paths.constant';
+} from '../constants/routes/main.paths.constant';
 import {selectScreen} from '../helpers/screen.helper';
 import HeaderPills from './headerPills';
 import MobileDrawer from './mobileDrawer';
@@ -66,7 +66,7 @@ class AppHeader extends Component<IProps, IState> {
 
     return (
       <>
-        <header className={`${!visible ? 'nav-up' : ''}`}>
+        <header className={`${!visible ? 'nav-up' : ''}`} style={{zIndex: 1}}>
           <Row style={{flex: 1}}>
             <Link to={HOME_PATH}>
               <Col

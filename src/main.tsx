@@ -1,5 +1,6 @@
 import React, {Suspense, useEffect} from 'react';
 import {connect} from 'react-redux';
+import {Spin} from 'antd';
 import {Route, Switch} from 'react-router-dom';
 
 import {IRoute} from './types/common.type';
@@ -10,6 +11,7 @@ import AppHeader from './components/appHeader';
 import {checkUserAction} from './actions/auth.action';
 import Screen from './components/screen';
 import Footer from './components/footer';
+
 
 interface IStateProps {
   routes: Array<IRoute>;
@@ -26,9 +28,6 @@ const Main = ({routes, checkUser, connected}: IProps) => {
   useEffect(() => {
     checkUser();
   }, [checkUser]);
-
-  if(connected === null)
-    return <LoadingScreen />;
 
   return (
     <Suspense fallback={<LoadingScreen />}>
@@ -47,6 +46,21 @@ const Main = ({routes, checkUser, connected}: IProps) => {
         </Switch>
       </main>
       <Footer />
+      {connected === null? (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            backgroundColor: '#EEEEEE',
+            zIndex: 2000,
+          }}
+        >
+          <div className='loading-screen'>
+            <Spin size='large' tip='Connecting to server...' />
+          </div>
+        </div>
+      ) : null}
     </Suspense>
   );
 };

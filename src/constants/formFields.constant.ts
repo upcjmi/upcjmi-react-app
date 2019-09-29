@@ -10,6 +10,9 @@ export const FORM_ELEMENT_TYPES = {
   FILE_DRAG_DROP: 'file-drag-drop',
   RANGE_PICKER: 'range-picker',
   RADIO: 'radio',
+  SWITCH: 'switch',
+  HIDDEN: 'hidden',
+  CASCADER: 'cascader'
 };
 
 export const SUBMIT_FORM = 'SUBMIT_FORM';

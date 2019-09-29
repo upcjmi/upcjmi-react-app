@@ -6399,6 +6399,11 @@ istanbul-reports@^2.2.6:
   dependencies:
     handlebars "^4.1.2"
 
+jamia-all-courses@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/jamia-all-courses/-/jamia-all-courses-1.1.0.tgz#5adec41cccce1be13eb217db0af5d436724d2022"
+  integrity sha512-sEKB92/hhNb292G6wmjHG1DiuRfDW6vmIgSD+/N4rwDZdQM5yWNDPHjzXBS13xwmghk4MIS20S9t+UKd4An1sQ==
+
 jest-changed-files@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-24.9.0.tgz#08d8c15eb79a7fa3fc98269bc14b451ee82f8039"

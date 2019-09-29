@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 import {selectScreen} from '../helpers/screen.helper';
 import HeaderPills from './headerPills';
-import {HOME_PATH} from '../constants/paths.constant';
+import {HOME_PATH} from '../constants/routes/main.paths.constant';
 
 interface IProps {
 }

@@ -2,7 +2,7 @@ import {CAPTCHA, FORM_ELEMENT_TYPES} from '../constants/formFields.constant';
 import {get} from '../helpers/function.helper';
 
 
-export const contactTemplateForm =
+export const contactTForm =
   // eslint-disable-next-line no-unused-vars
   (state: any, initialValues: any, extraValues: any, form: any) => [
     {

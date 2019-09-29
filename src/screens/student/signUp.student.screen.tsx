@@ -1,10 +1,10 @@
 import React, {FC, useState, Suspense} from 'react';
 import {connect} from 'react-redux';
 import {Card, Typography, Alert, Steps, Icon} from 'antd';
-import LoadingScreen from './loading.screen';
-import {IReduxState} from '../reducers';
-import OnlyPublic from './403.onlyPublic';
-import {signUpNavigation} from '../constants/signUp';
+import LoadingScreen from '../loading.screen';
+import {IReduxState} from '../../reducers';
+import OnlyPublic from '../403.onlyPublic';
+import {signUpNavigation} from '../../constants/signUp';
 
 interface IStateProps {
   isAuthenticated: boolean;
@@ -23,7 +23,7 @@ const {Title} = Typography;
 const {Step} = Steps;
 
 // eslint-disable-next-line no-unused-vars
-const SignUpScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
+const SignUpStudentScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
   const [active, setActive] = useState(0);
   const [data, setData] = useState(emptyData);
 
@@ -85,4 +85,4 @@ const mapDispatchToProps = (dispatch: any): IDispatchProps => ({});
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(SignUpScreen);
+)(SignUpStudentScreen);

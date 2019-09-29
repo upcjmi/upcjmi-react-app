@@ -3,7 +3,7 @@ import {Skeleton, Typography, Result, Descriptions} from 'antd';
 import {withRouter} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import {applyToCourseAPI, courseDetailsAPI} from '../../helpers/api/core.api.helper';
-import {captchaFormTemplate} from '../../forms/captcha.fromTemplate';
+import {captchaFormTemplate} from '../../forms/captcha.tForm';
 import FormCreator from '../../components/formCreator';
 import {openNotificationWithIcon} from '../../helpers/notification.helper';
 
@@ -35,6 +35,7 @@ const CourseDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) => {
     const load = async () => {
       try {
         const data = await courseDetailsAPI(match.params.course);
+        console.log(data);
         setCourse(data);
         setLoading(false);
       } catch (e) {

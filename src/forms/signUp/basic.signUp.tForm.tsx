@@ -1,7 +1,9 @@
 import {FORM_ELEMENT_TYPES} from '../../constants/formFields.constant';
 import {get} from '../../helpers/function.helper';
+// eslint-disable-next-line import/named
+import {allCoursesOption} from '../../constants/allOfferedCourses';
 
-export const basicTemplateForm =
+export const basicSignUpTForm =
   // eslint-disable-next-line no-unused-vars
   (state: any, initialValues: any, extraValues: any, form: any) => [
     {
@@ -49,9 +51,14 @@ export const basicTemplateForm =
       name: 'course',
       initialValue: get(initialValues, 'course'),
       kwargs: {
-        placeholder: 'ex: B.Tech. Civil',
+        placeholder: 'ex: Undergraduate / B.Tech. / Civil Engineering',
+        options: allCoursesOption,
+        showSearch: true,
+        onChange: (value: Array<string>) => {
+          form.setFieldsValue({'course': value[2]})
+        }
       },
-      type: FORM_ELEMENT_TYPES.INPUT,
+      type: FORM_ELEMENT_TYPES.CASCADER,
       rules: [{required: true}],
     },
     {
