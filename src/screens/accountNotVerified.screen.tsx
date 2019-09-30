@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useState, useEffect} from 'react';
 import {Button, Result, Typography} from 'antd';
 import {IUserMeta} from '../types/api.type';
 import {reSendVerificationMailAPI} from '../helpers/api/api.helper';
@@ -9,7 +9,16 @@ interface IProps {
 
 // @ts-ignore
 const SendMailButton: FC<any> = ({email}) => {
-  const [status, setStatus] = useState('not-sent');
+  const [status, setStatus] = useState('sent');
+  const [nextActive, setNextActive] = useState(1000 * 60 * 2);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setNextActive(nextActive * 2);
+      setStatus('not-sent');
+    }, nextActive)
+  }, [nextActive, status]);
+
   switch (status) {
     case 'not-sent':
     case 'sending':
@@ -33,7 +42,16 @@ const SendMailButton: FC<any> = ({email}) => {
     case 'error':
       return 'An error occured while sending your verification mail. Try again later.';
     default:
-      return `Sent you mail on your email (${email})`
+      return (
+        <div style={{textAlign: 'center'}}>
+          Sent you a mail on &nbsp;
+          {email}
+          <br />
+          Retry after &nbsp;
+          {nextActive/60000}
+          mins
+        </div>
+      )
   }
 };
 
@@ -66,10 +84,19 @@ const Message: FC<IProps> = ({user}: IProps) => (
     <Title level={4}>
       2. Verfication of documents
     </Title>
-    We will manully verify your document by your respective department.
-    This process will take 1-2 days.
-    <br />
-    We will notify you after compleation of process.
+    <Text disabled={user.account.account_verified}>
+      We will manully verify your document by your respective department.
+      This process will take 1-2 days.
+      <br />
+      <br />
+      <div className='center-hv'>
+        {user.account.account_verified? (
+          <Text disabled>
+            Your account is already verified
+          </Text>
+        ) : 'We will notify you after completion of process.'}
+      </div>
+    </Text>
   </div>
 );
 

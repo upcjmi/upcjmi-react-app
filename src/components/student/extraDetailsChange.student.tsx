@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import { connect } from 'react-redux';
-import {Typography, Form, Input, DatePicker, Tag, Button, Select, Icon} from 'antd';
+import {Typography, Form, Input, DatePicker, Tag, Button, Select, Icon, Checkbox} from 'antd';
 import moment from 'moment';
 
 import {openNotificationWithIcon} from '../../helpers/notification.helper';
@@ -182,131 +182,180 @@ interface IProps extends IStateProps, IDispatchProps {
   form: any;
 }
 
-const ExtraDetailsChangeStudent: FC<IProps> = ({action, form, extraDetails, loadExtraData}: IProps) => {
-  const {getFieldDecorator, setFieldsValue, getFieldValue, getFieldsValue} = form;
-  let details: IStudentExtraDetails = {
-    tag_line: '',
-    about: '',
-    dob: '',
-    gender: 'M',
-    skills: [],
-    profiles: [],
-    student: {
-      roll: '',
-      student_id: '',
-      course: '',
-      year: 1,
-    }
-  };
+const ExtraDetailsChangeStudent: FC<IProps> =
+  ({action, form, extraDetails, loadExtraData}: IProps) => {
+    const {getFieldDecorator, setFieldsValue, getFieldValue, getFieldsValue} = form;
+    let details: IStudentExtraDetails = {
+      tag_line: '',
+      about: '',
+      dob: '',
+      gender: 'M',
+      skills: [],
+      profiles: [],
+      student: {
+        roll: '',
+        student_id: '',
+        course: '',
+        year: 1,
+      },
+      grade: '',
+      grading_sys: '',
+      active_back_log: false,
+      previous_back_log: false
+    };
 
-  if(extraDetails !== null && extraDetails !== undefined)
-    details = extraDetails;
+    if(extraDetails !== null && extraDetails !== undefined)
+      details = extraDetails;
 
-  const handelSubmit = (e: any) => {
-    e.preventDefault();
-    const {validateFields} = form;
+    const handelSubmit = (e: any) => {
+      e.preventDefault();
+      const {validateFields} = form;
 
-    validateFields(async (err: any) => {
-      if (!err){
-        const data = getFieldsValue();
-        try{
-          await saveStudentExtraDataAPI(data, action);
-          loadExtraData();
-          openNotificationWithIcon('success', 'Saved your details')
-        } catch (error) {
-          openNotificationWithIcon('error', 'There are errors in saving your details.')
+      validateFields(async (err: any) => {
+        if (!err){
+          const data = getFieldsValue();
+          try{
+            await saveStudentExtraDataAPI(data, action);
+            loadExtraData();
+            openNotificationWithIcon('success', 'Saved your details')
+          } catch (error) {
+            openNotificationWithIcon('error', 'There are errors in saving your details.')
+          }
         }
-      }
-      else openNotificationWithIcon('error', 'Please Correct the error displayed in forms.');
-    });
-  };
+        else openNotificationWithIcon('error', 'Please Correct the error displayed in forms.');
+      });
+    };
 
-  return (
-    <div>
-      <Title>
+    return (
+      <div>
+        <Title>
         Extra details
-      </Title>
-      <br />
-      <Form onSubmit={handelSubmit} hideRequiredMark>
+        </Title>
+        <br />
+        <Form onSubmit={handelSubmit} hideRequiredMark>
 
-        <Form.Item label='Tag line (short description)'>
-          {getFieldDecorator('tag_line', {
-            rules: [{required: true, max: 50}],
-            initialValue: details.tag_line
-          })(<Input type='text' placeholder='Write about you self in 1 line (50 characters)' />)}
-        </Form.Item>
+          <Form.Item label='Tag line (short description)'>
+            {getFieldDecorator('tag_line', {
+              rules: [{required: true, max: 50}],
+              initialValue: details.tag_line
+            })(<Input type='text' placeholder='Write about you self in 1 line (50 characters)' />)}
+          </Form.Item>
 
-        <Form.Item label='About'>
-          {getFieldDecorator('about', {
-            rules: [{required: true, max: 400}],
-            initialValue: details.about
-          })(
-            <Input.TextArea
-              placeholder='Tell about yourself in 1 paragraph (400 characters)'
-              autosize
+          <Form.Item label='About'>
+            {getFieldDecorator('about', {
+              rules: [{required: true, max: 400}],
+              initialValue: details.about
+            })(
+              <Input.TextArea
+                placeholder='Tell about yourself in 1 paragraph (400 characters)'
+                autosize
             />
-          )}
-        </Form.Item>
+            )}
+          </Form.Item>
 
-        <Form.Item label='Date of Birth'>
-          {getFieldDecorator('dob', {
-            rules: [{required: true}],
-            initialValue: details.dob,
-          })(<Input type='hidden' />)}
-          <DatePicker
-            format='YYYY-MM-DD'
+          <Form.Item label='Date of Birth'>
+            {getFieldDecorator('dob', {
+              rules: [{required: true}],
+              initialValue: details.dob,
+            })(<Input type='hidden' />)}
+            <DatePicker
+              format='YYYY-MM-DD'
             // value={details.dob}
-            defaultValue={moment(details.dob, 'YYYY-MM-DD')}
-            onChange={(date, dateString) => setFieldsValue({'dob': dateString})}
+              defaultValue={moment(details.dob, 'YYYY-MM-DD')}
+              onChange={(date, dateString) => setFieldsValue({'dob': dateString})}
           />
-        </Form.Item>
+          </Form.Item>
 
-        <Form.Item label='Gender'>
-          {getFieldDecorator('gender', {
-            rules: [{required: true}],
-            initialValue: details.gender
-          })(
-            <Select>
-              <Option value='M'>Male</Option>
-              <Option value='F'>Female</Option>
-            </Select>
-          )}
-        </Form.Item>
+          <Form.Item label='Gender'>
+            {getFieldDecorator('gender', {
+              rules: [{required: true}],
+              initialValue: details.gender
+            })(
+              <Select>
+                <Option value='M'>Male</Option>
+                <Option value='F'>Female</Option>
+              </Select>
+            )}
+          </Form.Item>
 
-        <Form.Item label='Your Skills' style={{marginBottom: 0}}>
-          {getFieldDecorator('skills', {
-            rules: [{required: true}],
-            initialValue: details.skills
-          })(<Input type='hidden' />)}
-          <TagEditor
-            tags={getFieldValue('skills')}
-            change={(skills: Array<string>) => {
-              setFieldsValue({'skills': skills})
-            }}
-            addText='Add New Skill'
+          <Form.Item label='Your Skills' style={{marginBottom: 0}}>
+            {getFieldDecorator('skills', {
+              rules: [{required: true}],
+              initialValue: details.skills
+            })(<Input type='hidden' />)}
+            <TagEditor
+              tags={getFieldValue('skills')}
+              change={(skills: Array<string>) => {
+                setFieldsValue({'skills': skills})
+              }}
+              addText='Add New Skill'
           />
-        </Form.Item>
-        <Form.Item label='Your Profiles' style={{marginBottom: 0}}>
-          {getFieldDecorator('profiles', {
-            rules: [{required: true}],
-            initialValue: details.profiles
-          })(<Input type='hidden' />)}
-          <LinkEditor
-            links={getFieldValue('profiles')}
-            change={(profiles: Array<string>) => {
-              setFieldsValue({'profiles': profiles})
-            }}
+          </Form.Item>
+          <Form.Item label='Your Profiles' style={{marginBottom: 0}}>
+            {getFieldDecorator('profiles', {
+              rules: [{required: true}],
+              initialValue: details.profiles
+            })(<Input type='hidden' />)}
+            <LinkEditor
+              links={getFieldValue('profiles')}
+              change={(profiles: Array<string>) => {
+                setFieldsValue({'profiles': profiles})
+              }}
           />
-        </Form.Item>
-        <br />
-        <br />
-        <Button type='primary' style={{width: '100%'}} onClick={handelSubmit}>
+          </Form.Item>
+
+          <Form.Item label='Grading System'>
+            {getFieldDecorator('grading_sys', {
+              rules: [{required: true}],
+              initialValue: 'CPI',
+            })(
+              <Select>
+                <Option value='CPI'>
+                CPI
+                </Option>
+              </Select>
+            )}
+          </Form.Item>
+
+          <Form.Item label='Grade'>
+            {getFieldDecorator('grade', {
+              rules: [{required: true}],
+              initialValue: details.grade
+            })(<Input />)}
+          </Form.Item>
+
+          <Form.Item label='Active backlog'>
+            {getFieldDecorator('active_back_log', {
+              rules: [{required: true}],
+              initialValue: details.active_back_log
+            })(
+              <Checkbox onChange={(e) => {
+                setFieldsValue({'active_back_log': e.target.checked})
+              }}
+            />)}
+          </Form.Item>
+
+          <Form.Item label='Previous backlog'>
+            {getFieldDecorator('previous_back_log', {
+              rules: [{required: true}],
+              initialValue: details.previous_back_log
+            })(
+              <Checkbox onChange={(e) => {
+                setFieldsValue({'previous_back_log': e.target.checked})
+              }}
+            />)}
+          </Form.Item>
+
+
+          <br />
+          <br />
+          <Button type='primary' style={{width: '100%'}} onClick={handelSubmit}>
           Save
-        </Button>
-      </Form>
-    </div>
-  );
-};
+          </Button>
+        </Form>
+      </div>
+    );
+  };
 
 
 const mapStateToProps = (state: IReduxState): IStateProps => ({

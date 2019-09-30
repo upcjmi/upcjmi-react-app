@@ -55,7 +55,7 @@ const CoursesStudentScreen: FC<IProps> = (props: IProps) => {
       </Title>
       {courses.length === 0 && !loading? (
         <Card>
-          <Empty description='No courses are available yet' />
+          <Empty description='No courses are available for now' />
         </Card>
       ) : null}
       {courses.map(course => (
