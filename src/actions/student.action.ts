@@ -1,8 +1,8 @@
 import {Dispatch} from 'redux';
-import {IGetStateFunction} from '../types/common.type';
-import {getStudentExtraDetailsAPI} from '../helpers/api/student.api.helper';
+import {IGetStateFunction} from 'types/common.type';
+import {getStudentExtraDetailsAPI} from 'helpers/api/student.api.helper';
+import {openNotificationWithIcon} from 'helpers/notification.helper';
 import {STUDENT_EXTRA_DATA_LOADED} from './index';
-import {openNotificationWithIcon} from '../helpers/notification.helper';
 
 export const loadStudentExtraDetails = () =>
   // eslint-disable-next-line

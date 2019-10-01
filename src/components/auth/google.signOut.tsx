@@ -4,9 +4,9 @@ import {Button} from 'antd';
 import {GoogleLogout} from 'react-google-login';
 import {withRouter} from 'react-router-dom';
 
-import {GOOGLE_OAUTH_CLIENT_ID} from '../../constants/credentials.constant';
-import {IReduxState} from '../../reducers';
-import {signOutAction} from '../../actions/auth.action';
+import {GOOGLE_OAUTH_CLIENT_ID} from 'constants/credentials.constant';
+import {IReduxState} from 'reducers';
+import {signOutAction} from 'actions/auth.action';
 
 // eslint-disable-next-line no-undef
 interface IStateProps {}

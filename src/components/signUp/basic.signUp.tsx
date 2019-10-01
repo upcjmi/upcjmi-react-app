@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
 import {Typography} from 'antd';
 
-import FormCreator from '../formCreator';
-import {ISignUpData} from '../../types/signUp.type';
-import {basicSignUpTForm} from '../../forms/signUp/basic.signUp.tForm';
+import FormCreator from 'components/formCreator';
+import {ISignUpData} from 'types/signUp.type';
+import {basicSignUpTForm} from 'forms/signUp/basic.signUp.tForm';
 
 interface IProps {
   action: any;

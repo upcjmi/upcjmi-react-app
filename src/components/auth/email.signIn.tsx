@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import {connect} from 'react-redux';
 
-import SignInForm from '../../forms/signIn.form';
-import {signInWithEmailAction} from '../../actions/auth.action';
+import SignInForm from 'forms/signIn.form';
+import {signInWithEmailAction} from 'actions/auth.action';
 
 interface IStateProps {}
 

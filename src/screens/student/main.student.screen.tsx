@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
-import Portal from '../../components/portal';
+import Portal from 'components/portal';
 import {studentExtraRoutes,
-  studentSideRoutes} from '../../constants/routes/student.routes.constant';
+  studentSideRoutes} from 'constants/routes/student.routes.constant';
 
 interface IProps {
 }

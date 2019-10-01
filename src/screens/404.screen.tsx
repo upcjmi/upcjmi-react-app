@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {Result, Button} from 'antd';
 import {Link} from 'react-router-dom';
-import {HOME_PATH} from '../constants/routes/main.paths.constant';
+import {HOME_PATH} from 'constants/routes/main.paths.constant';
 
 interface IProps {}
 
