@@ -33,7 +33,7 @@ export const contactTForm =
       rules: [{required: true}],
       options: {
         'S': 'Student',
-        'C': 'Company repesentative',
+        'C': 'Company representative',
         'V': 'Visitor',
       },
     }, {
