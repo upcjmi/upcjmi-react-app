@@ -3,8 +3,8 @@ import {Button} from 'antd';
 import {connect} from 'react-redux';
 
 import {Link} from 'react-router-dom';
-import {IReduxState} from '../reducers';
-import {SIGN_IN_PATH} from '../constants/routes/main.paths.constant';
+import {IReduxState} from 'reducers';
+import {SIGN_IN_PATH} from 'constants/routes/main.paths.constant';
 import SignOutButton from './signOutButton';
 
 interface IStateProps {

@@ -1,5 +1,5 @@
+import {IAllCompany} from 'types/company.api.type';
 import {loadSecureUrl} from './loader.api.helper';
-import {IAllCompany} from '../../types/company.api.type';
 
 const UAllCompanies = 'company/';
 const UAllAppliedJobs = 'company/applied/jobs/';

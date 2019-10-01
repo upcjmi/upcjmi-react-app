@@ -1,8 +1,8 @@
 import React, {FC, useState, useEffect} from 'react';
 import {Spin, Result, Icon} from 'antd';
 import {withRouter} from 'react-router-dom';
-import {verifyEmailAPI} from '../helpers/api/api.helper';
-import {openNotificationWithIcon} from '../helpers/notification.helper';
+import {verifyEmailAPI} from 'helpers/api/api.helper';
+import {openNotificationWithIcon} from 'helpers/notification.helper';
 
 interface IProps {
   match: any

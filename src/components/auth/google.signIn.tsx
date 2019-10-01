@@ -3,12 +3,12 @@ import {connect} from 'react-redux';
 import {Button} from 'antd';
 import {GoogleLogin} from 'react-google-login';
 
-import {GOOGLE_OAUTH_CLIENT_ID} from '../../constants/credentials.constant';
-import {IReduxState} from '../../reducers';
-import {signInWithGoogleAction} from '../../actions/auth.action';
-import {IAuthState} from '../../reducers/auth.reducer';
-import {IGoogleSignInResponseHacked} from '../../types/api.type';
-import {SIGN_IN_INITIATED, SIGNING_IN_FAILED} from '../../actions';
+import {GOOGLE_OAUTH_CLIENT_ID} from 'constants/credentials.constant';
+import {IReduxState} from 'reducers';
+import {signInWithGoogleAction} from 'actions/auth.action';
+import {IAuthState} from 'reducers/auth.reducer';
+import {IGoogleSignInResponseHacked} from 'types/api.type';
+import {SIGN_IN_INITIATED, SIGNING_IN_FAILED} from 'actions';
 
 // eslint-disable-next-line no-undef
 interface IStateProps extends Partial<IAuthState> {

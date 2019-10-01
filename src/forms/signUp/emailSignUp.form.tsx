@@ -1,10 +1,10 @@
 import React from 'react';
 import {Form, Icon, Input, Button} from 'antd';
 import {connect} from 'react-redux';
-import {IReduxState} from '../../reducers';
-import {doesUserExistsAPI} from '../../helpers/api/api.helper';
-import {ISignUpData} from '../../types/signUp.type';
-import {get} from '../../helpers/function.helper';
+import {IReduxState} from 'reducers';
+import {doesUserExistsAPI} from 'helpers/api/api.helper';
+import {ISignUpData} from 'types/signUp.type';
+import {get} from 'helpers/function.helper';
 
 interface IStateProps {
   form: any;

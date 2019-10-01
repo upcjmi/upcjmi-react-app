@@ -1,8 +1,8 @@
 import React, {FC, useState, useEffect} from 'react';
 import {Button, Card, Descriptions, Skeleton, Typography, Empty} from 'antd';
 import {Link} from 'react-router-dom';
-import {openNotificationWithIcon} from '../../helpers/notification.helper';
-import {getAllAvailableCourseAPI} from '../../helpers/api/core.api.helper';
+import {openNotificationWithIcon} from 'helpers/notification.helper';
+import {getAllAvailableCourseAPI} from 'helpers/api/core.api.helper';
 
 interface IProps {
 }

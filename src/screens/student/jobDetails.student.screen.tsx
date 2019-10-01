@@ -2,11 +2,11 @@ import React, {FC, useState, useEffect} from 'react';
 import {Typography, Tabs, Descriptions, Card, Collapse, Skeleton, Result} from 'antd';
 import {withRouter} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import {applyToJobAPI, getJobDetailsAPI} from '../../helpers/api/company.api.helper';
-import FormCreator from '../../components/formCreator';
-import {applicationFormTemplate} from '../../forms/student/application.student.tForm';
-import {htmlNotification, openNotificationWithIcon} from '../../helpers/notification.helper';
-import {captchaFormTemplate} from '../../forms/captcha.tForm';
+import {applyToJobAPI, getJobDetailsAPI} from 'helpers/api/company.api.helper';
+import FormCreator from 'components/formCreator';
+import {applicationFormTemplate} from 'forms/student/application.student.tForm';
+import {htmlNotification, openNotificationWithIcon} from 'helpers/notification.helper';
+import {captchaFormTemplate} from 'forms/captcha.tForm';
 
 interface IProps {
   match: any;

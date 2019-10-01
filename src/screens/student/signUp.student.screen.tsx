@@ -1,10 +1,10 @@
 import React, {FC, useState, Suspense} from 'react';
 import {connect} from 'react-redux';
 import {Card, Typography, Alert, Steps, Icon} from 'antd';
-import LoadingScreen from '../loading.screen';
-import {IReduxState} from '../../reducers';
-import OnlyPublic from '../403.onlyPublic';
-import {signUpNavigation} from '../../constants/signUp';
+import {IReduxState} from 'reducers';
+import LoadingScreen from 'screens/loading.screen';
+import OnlyPublic from 'screens/403.onlyPublic';
+import {signUpNavigation} from 'constants/signUp';
 
 interface IStateProps {
   isAuthenticated: boolean;

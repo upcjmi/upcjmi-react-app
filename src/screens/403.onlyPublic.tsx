@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {connect} from 'react-redux';
 import {Result} from 'antd';
-import SignIn from '../components/userAccountButton';
+import SignIn from 'components/userAccountButton';
 
 interface IStateProps {
   isAuthenticated: boolean;
