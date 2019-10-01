@@ -7,7 +7,10 @@
 NOTE: You should only submit issues related to application.
 
 ## About Jamia Millia Islamia
-Jamia Millia Islamia was founded at Aligarh in the United Province, India in 1920 during the Khilafat and  Non-Cooperation Movement in response to Gandhiji's call to boycott government supported educational institutions. JMI moved from Aligarh to Delhi in the year 1925 and was made a central university by Parliamentary act of 1988. Today, Jamia Millia Islamia is one of the most prominent and promising central university of the country.  JMI was recently awarded an 'A' Grade by NAAC (National Assessment and Accreditation Council).  
+Jamia Millia Islamia was founded at Aligarh in the United Province, India in 1920 during the Khilafat and  Non-Cooperation Movement in response to Gandhiji's call to boycott government supported educational institutions. JMI moved from Aligarh to Delhi in the year 1925 and was made a central university by Parliamentary act of 1988. Today, Jamia Millia Islamia is one of the most prominent and promising central university of the country.  JMI was recently awarded an 'A' Grade by NAAC (National Assessment and Accreditation Council).
+
+## About University Placement Cell, JMI
+University Placement Cell makes a bridge to fill the gap between the stringent competition in the industry and talent available in the college. University Placement Cell provides co-ordination among the students, departments, and companies. It contacts different companies for the student's placements and internships. It provides training for skill, personality development and more.
 
 ## Contributing to repository
 Read our [Code of conduct](/CODE_OF_CONDUCT.md) and [Contributing guidelines](/CONTRIBUTING.md)
