@@ -12,7 +12,7 @@ About a paragraph about this role.. or
 <iframe width="320" height="200" src="https://www.youtube.com/embed/kIpQvDsjHRg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Skills & Qualifications for this Role
-Oh typoo here will be marked as red 😀`;
+Oh typo here will be marked as red 😀`;
 
 const questionInitialValue = `## Why should you be hired for this job?
 Space for answer...

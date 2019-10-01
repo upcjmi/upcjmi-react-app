@@ -5,7 +5,7 @@ import {reactLocalStorage} from 'reactjs-localstorage';
 import {
   getUserMetaDetailAPI,
   pingAPI,
-  signINWithEmailAPI,
+  signInWithEmailAPI,
   signInWithGoogleAPI,
 } from '../helpers/api/api.helper';
 import {
@@ -70,7 +70,7 @@ export const signInWithEmailAction = (email: string, password: string) => async 
   dispatch: Dispatch,
   getState: IGetStateFunction,
 ) => {
-  const apiCall = () => signINWithEmailAPI(email, password);
+  const apiCall = () => signInWithEmailAPI(email, password);
   makeUserSignIn(apiCall, 'E')(dispatch, getState);
 };
 

@@ -60,7 +60,7 @@ export const cannotConnectToServerNotification = () =>
     message: 'Error connecting to server',
     description:
       'Try refreshing page. After refresh if problem persist clear data and cookies. ' +
-      'If problem doesn't resolve mail to faisalmanzer11@gmail.com.',
+      'If problem doesn\'t resolve mail to faisalmanzer11@gmail.com.',
     duration: 1000,
     placement: 'bottomRight',
   });
