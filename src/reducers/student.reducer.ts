@@ -1,6 +1,6 @@
-import {IReducerAction} from '../types/common.type';
-import {STUDENT_EXTRA_DATA_LOADED} from '../actions';
-import {IStudentExtraDetails} from '../types/student.api.type';
+import {IReducerAction} from 'types/common.type';
+import {STUDENT_EXTRA_DATA_LOADED} from 'actions';
+import {IStudentExtraDetails} from 'types/student.api.type';
 
 export interface IStudentState {
   extraDetails?: IStudentExtraDetails | null;

@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import {Typography, Form, Input, DatePicker, Tag, Button, Select, Icon} from 'antd';
 import moment from 'moment';
 
-import {openNotificationWithIcon} from '../../helpers/notification.helper';
-import {saveStudentExtraDataAPI} from '../../helpers/api/student.api.helper';
-import {IReduxState} from '../../reducers';
-import {IStudentExtraDetails} from '../../types/student.api.type';
-import {loadStudentExtraDetails} from '../../actions/student.action';
+import {openNotificationWithIcon} from 'helpers/notification.helper';
+import {saveStudentExtraDataAPI} from 'helpers/api/student.api.helper';
+import {IReduxState} from 'reducers';
+import {IStudentExtraDetails} from 'types/student.api.type';
+import {loadStudentExtraDetails} from 'actions/student.action';
 
 const {Title} = Typography;
 const {Option} = Select;

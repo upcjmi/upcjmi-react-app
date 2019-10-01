@@ -9,8 +9,8 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {HashRouter as Router} from 'react-router-dom';
 
-import rootReducer from './reducers';
-import Main from './main';
+import rootReducer from 'reducers';
+import Main from 'main';
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
 

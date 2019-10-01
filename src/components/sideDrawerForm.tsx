@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import { Drawer } from 'antd';
-import {selectScreen} from '../helpers/screen.helper';
+import {selectScreen} from 'helpers/screen.helper';
 
 interface IProps {
   children: any;

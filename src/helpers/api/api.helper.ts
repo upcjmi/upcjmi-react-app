@@ -1,7 +1,7 @@
+import {IEmail, IPing, ISignInToken, IUserExists, IUserMeta} from 'types/api.type';
+import {ISignUpData} from 'types/signUp.type';
+import {IContactForm} from 'types/apiData.types';
 import {loadOpenUrl, loadSecureUrl} from './loader.api.helper';
-import {IEmail, IPing, ISignInToken, IUserExists, IUserMeta} from '../../types/api.type';
-import {ISignUpData} from '../../types/signUp.type';
-import {IContactForm} from '../../types/apiData.types';
 
 const UPing = 'ping/';
 

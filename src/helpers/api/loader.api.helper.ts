@@ -2,11 +2,14 @@ import axios from 'axios';
 // @ts-ignore
 import {reactLocalStorage} from 'reactjs-localstorage';
 
-import {API_TOKENS} from '../../constants/localStorage.constant';
-import {signInAgainNotification, errorGettingUserInfoNotification} from '../notification.helper';
-import {IAccessToken} from '../../types/api.type';
-import {IObject} from '../../types/common.type';
-import {BASE_URL} from '../../constants/credentials.constant';
+import {API_TOKENS} from 'constants/localStorage.constant';
+import {IAccessToken} from 'types/api.type';
+import {IObject} from 'types/common.type';
+import {BASE_URL} from 'constants/credentials.constant';
+import {
+  signInAgainNotification,
+  errorGettingUserInfoNotification
+} from 'helpers/notification.helper';
 
 axios.defaults.baseURL = BASE_URL;
 axios.defaults.headers.get['Content-Type'] = 'application/x-www-urlencoded';

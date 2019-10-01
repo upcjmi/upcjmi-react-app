@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Icon, Menu} from 'antd';
 
-import {ISidebarRoute} from '../types/common.type';
+import {ISidebarRoute} from 'types/common.type';
 
-import '../styles/sidebar.scss';
-import {selectScreen} from '../helpers/screen.helper';
+import 'styles/sidebar.scss';
+import {selectScreen} from 'helpers/screen.helper';
 
 interface IStateProps {}
 
@@ -19,7 +19,7 @@ interface IProps extends IStateProps, IDispatchProps {
   match: string;
 }
 
-const JamiaLogo = require('../assets/svgs/jamia-logo.svg');
+const JamiaLogo = require('assets/svgs/jamia-logo.svg');
 
 const SideBar: FC<IProps> = ({collapsed, toggle, routes}: IProps) => {
 

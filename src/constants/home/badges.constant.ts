@@ -3,10 +3,10 @@ interface IBadge {
   info: string;
 }
 
-const Outlook = require('../../assets/badges/Outlookrank.png');
-const Outlook100University = require('../../assets/badges/Outlook100university.png');
-const RURUniversityRanking = require('../../assets/badges/RURUniversityRanking.png');
-const QSWorldRank = require('../../assets/badges/QSWorldRank.png');
+const Outlook = require('assets/badges/Outlookrank.png');
+const Outlook100University = require('assets/badges/Outlook100university.png');
+const RURUniversityRanking = require('assets/badges/RURUniversityRanking.png');
+const QSWorldRank = require('assets/badges/QSWorldRank.png');
 
 export const BADGES: Array<IBadge> = [
   {

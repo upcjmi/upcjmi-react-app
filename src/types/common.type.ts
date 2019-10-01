@@ -1,5 +1,5 @@
 import {LazyExoticComponent} from 'react';
-import {IReduxState} from '../reducers';
+import {IReduxState} from 'reducers';
 
 export interface IReducerAction {
   type: string;

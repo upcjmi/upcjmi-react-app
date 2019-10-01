@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import {connect} from 'react-redux';
 
-import {ISignInOptions} from '../types/common.type';
-import {IReduxState} from '../reducers';
+import {ISignInOptions} from 'types/common.type';
+import {IReduxState} from 'reducers';
 import GoogleSignOut from './auth/google.signOut';
 import DefaultSignOut from './auth/default.signOut';
 
