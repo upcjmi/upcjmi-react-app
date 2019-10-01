@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
 import {Typography} from 'antd';
-import GoogleSignUpButton from '../googleSignUpButton';
-import EmailSignUpForm from '../../forms/signUp/emailSignUp.form';
-import {doesUserExistsAPI} from '../../helpers/api/api.helper';
-import {userExistsWithThisEmail} from '../../helpers/notification.helper';
-import {ISignUpData} from '../../types/signUp.type';
+import GoogleSignUpButton from 'components/googleSignUpButton';
+import EmailSignUpForm from 'forms/signUp/emailSignUp.form';
+import {doesUserExistsAPI} from 'helpers/api/api.helper';
+import {userExistsWithThisEmail} from 'helpers/notification.helper';
+import {ISignUpData} from 'types/signUp.type';
 
 interface IProps {
   action: any;

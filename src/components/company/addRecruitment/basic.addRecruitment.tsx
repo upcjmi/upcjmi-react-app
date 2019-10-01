@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {Typography} from 'antd';
-import FormCreator from '../../formCreator';
-import {basicAddRecruitmentTForm} from '../../../forms/addRecruitment/basic.addRecruitment.tForm';
+import FormCreator from 'components/formCreator';
+import {basicAddRecruitmentTForm} from 'forms/addRecruitment/basic.addRecruitment.tForm';
 
 interface IProps {
 }

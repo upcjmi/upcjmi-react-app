@@ -1,4 +1,4 @@
-import {CAPTCHA} from '../constants/formFields.constant';
+import {CAPTCHA} from 'constants/formFields.constant';
 
 
 export const captchaFormTemplate =

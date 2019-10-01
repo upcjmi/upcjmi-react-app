@@ -3,15 +3,15 @@ import {connect} from 'react-redux';
 import {Icon, Menu} from 'antd';
 import {Link} from 'react-router-dom';
 
-import SignIn from './userAccountButton';
 import {
   COMPANY_PORTAL_HOME_PATH,
   CONTACT_PATH,
   SIGN_UP_PATH,
   STUDENT_PORTAL_HOME_PATH,
-} from '../constants/routes/main.paths.constant';
-import {IReduxState} from '../reducers';
-import {IUserMeta} from '../types/api.type';
+} from 'constants/routes/main.paths.constant';
+import {IReduxState} from 'reducers';
+import {IUserMeta} from 'types/api.type';
+import SignIn from './userAccountButton';
 
 interface IStateProps {
   isAuthenticated: boolean;

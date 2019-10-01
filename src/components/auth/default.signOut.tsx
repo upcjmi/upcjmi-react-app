@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Button} from 'antd';
 import {withRouter} from 'react-router-dom';
 
-import {signOutAction} from '../../actions/auth.action';
+import {signOutAction} from 'actions/auth.action';
 
 interface IStateProps {}
 

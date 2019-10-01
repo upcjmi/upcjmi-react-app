@@ -2,15 +2,15 @@ import React, {FC, useState, Suspense, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter, Route, Switch, withRouter} from 'react-router-dom';
 
-import {IDispatchFunction, IRoute, ISidebarRoute} from '../types/common.type';
-import {IReduxState} from '../reducers';
-import {IUserMeta} from '../types/api.type';
-import NotAuthorisedScreen from '../screens/403.screen';
-import AccountNotVerifiedScreen from '../screens/accountNotVerified.screen';
+import {IDispatchFunction, IRoute, ISidebarRoute} from 'types/common.type';
+import {IReduxState} from 'reducers';
+import {IUserMeta} from 'types/api.type';
+import NotAuthorisedScreen from 'screens/403.screen';
+import AccountNotVerifiedScreen from 'screens/accountNotVerified.screen';
+import NotFoundScreen from 'screens/404.screen';
+import LoadingScreen from 'screens/loading.screen';
+import {selectScreen} from 'helpers/screen.helper';
 import SideBar from './sideBar';
-import NotFoundScreen from '../screens/404.screen';
-import LoadingScreen from '../screens/loading.screen';
-import {selectScreen} from '../helpers/screen.helper';
 
 interface IStateProps {
   user: IUserMeta | undefined;

@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
-import Portal from '../../components/portal';
+import Portal from 'components/portal';
 import {
   companyExtraRoutes,
   companySideRoutes,
-} from '../../constants/routes/company.routes.constant';
+} from 'constants/routes/company.routes.constant';
 
 interface IProps {
 }

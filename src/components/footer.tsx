@@ -1,8 +1,5 @@
 import React, {FC} from 'react';
 import {Typography, Row, Col, Icon} from 'antd';
-import packageJson from '../../package.json';
-
-import XLink from './xLink';
 import {
   BUG_REPORT,
   FEATURE_REQUEST,
@@ -10,7 +7,10 @@ import {
   PRIVACY_POLICY,
   REPO_LINK, TERMS_AND_CONDITION,
   UNIVERSITY_PLACEMENT_CELL,
-} from '../constants/externalLinks.constant';
+} from 'constants/externalLinks.constant';
+import XLink from './xLink';
+
+import packageJson from '../../package.json';
 
 interface IProps {
 }

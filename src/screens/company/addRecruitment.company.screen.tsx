@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {Typography, Card, Col, Row, Steps, Icon} from 'antd';
-import BasicAddRecruitment from '../../components/company/addRecruitment/basic.addRecruitment';
+import BasicAddRecruitment from 'components/company/addRecruitment/basic.addRecruitment';
 
 interface IProps {
 }
