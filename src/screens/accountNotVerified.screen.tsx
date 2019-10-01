@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
 import {Button, Result, Typography} from 'antd';
 import {IUserMeta} from '../types/api.type';
-import {reSendVerificationMailAPI} from '../helpers/api/api.helper';
+import {resendVerificationMailAPI} from '../helpers/api/api.helper';
 
 interface IProps {
   user: IUserMeta;
@@ -19,7 +19,7 @@ const SendMailButton: FC<any> = ({email}) => {
           onClick={async () => {
             try {
               setStatus('sending');
-              await reSendVerificationMailAPI();
+              await resendVerificationMailAPI();
               setStatus('sent');
             } catch (e) {
               setStatus('error')
