@@ -14,7 +14,7 @@ import {
 import {
   getUserMetaDetailAPI,
   pingAPI,
-  signINWithEmailAPI,
+  signInWithEmailAPI,
   signInWithGoogleAPI,
 } from 'helpers/api/api.helper';
 import {API_TOKENS, SIGNED_IN_TYPE} from 'constants/localStorage.constant';
@@ -70,7 +70,7 @@ export const signInWithEmailAction = (email: string, password: string) => async 
   dispatch: Dispatch,
   getState: IGetStateFunction,
 ) => {
-  const apiCall = () => signINWithEmailAPI(email, password);
+  const apiCall = () => signInWithEmailAPI(email, password);
   makeUserSignIn(apiCall, 'E')(dispatch, getState);
 };
 
@@ -91,7 +91,7 @@ export const signIn = (account: any) => (dispatch: Dispatch, getState: IGetState
       signInWithGoogleAction(account.id, account.token)(dispatch, getState);
       break;
     default:
-      openNotificationWithIcon('error', 'Unkown signing');
+      openNotificationWithIcon('error', 'Unknown signing');
   }
 };
 

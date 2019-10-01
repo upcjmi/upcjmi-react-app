@@ -73,7 +73,7 @@ const CreatingSignUp: FC<IProps> = ({
           </div>
         );
       default:
-        return 'Unkonw signin up status';
+        return 'Unknown signing up status';
     }
   };
 

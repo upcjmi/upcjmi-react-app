@@ -15,7 +15,7 @@ export const applicationFormTemplate =
         {
           validator: (rule: any, value: string, callback: any) => {
             if(value === get(initialValues, 'application', ''))
-              callback('You need to fill the application');
+              callback('You need to fill in the application');
 
             callback();
           }

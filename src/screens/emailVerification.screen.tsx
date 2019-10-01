@@ -49,7 +49,7 @@ const EmailVerificationScreen: FC<IProps> = ({match}: any) => {
     return (
       <Result
         status='warning'
-        title='Trouble verifing your email'
+        title='Trouble verifying your email'
       />
     )
   };
