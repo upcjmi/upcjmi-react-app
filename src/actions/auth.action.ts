@@ -91,7 +91,7 @@ export const signIn = (account: any) => (dispatch: Dispatch, getState: IGetState
       signInWithGoogleAction(account.id, account.token)(dispatch, getState);
       break;
     default:
-      openNotificationWithIcon('error', 'Unkown signing');
+      openNotificationWithIcon('error', 'Unknown signing');
   }
 };
 
