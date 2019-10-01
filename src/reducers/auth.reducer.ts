@@ -1,6 +1,6 @@
-import {IReducerAction, ISignInOptions} from '../types/common.type';
-import {SIGN_IN_INITIATED, SIGN_IN_SUCCESS, SIGN_OUT, SIGNING_IN_FAILED} from '../actions';
-import {IUserMeta} from '../types/api.type';
+import {IReducerAction, ISignInOptions} from 'types/common.type';
+import {SIGN_IN_INITIATED, SIGN_IN_SUCCESS, SIGN_OUT, SIGNING_IN_FAILED} from 'actions';
+import {IUserMeta} from 'types/api.type';
 
 export interface IAuthState {
   isAuthenticated: boolean;

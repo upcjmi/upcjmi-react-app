@@ -2,14 +2,14 @@ import React, {FC, useEffect} from 'react';
 import { connect } from 'react-redux';
 import {Avatar, Button, Card, Icon, Tag, Typography, Skeleton} from 'antd';
 
-import {selectScreen} from '../../helpers/screen.helper';
-import {IReduxState} from '../../reducers';
-import {IStudentExtraDetails} from '../../types/student.api.type';
-import {loadStudentExtraDetails} from '../../actions/student.action';
-import {IUserMeta} from '../../types/api.type';
+import {selectScreen} from 'helpers/screen.helper';
+import {IReduxState} from 'reducers';
+import {IStudentExtraDetails} from 'types/student.api.type';
+import {loadStudentExtraDetails} from 'actions/student.action';
+import {IUserMeta} from 'types/api.type';
+import {GetProfileIcon} from 'helpers/function.helper';
 import SideDrawerForm from '../sideDrawerForm';
 import ExtraDetailsChange from './extraDetailsChange.student';
-import {GetProfileIcon} from '../../helpers/function.helper';
 
 
 interface IStateProps {

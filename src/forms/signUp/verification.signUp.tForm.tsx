@@ -1,8 +1,8 @@
 import {message} from 'antd';
 
-import {FORM_ELEMENT_TYPES, CAPTCHA} from '../../constants/formFields.constant';
-import {get} from '../../helpers/function.helper';
-import {studentDocumentUploadURL} from '../../helpers/api/file.api.helper';
+import {FORM_ELEMENT_TYPES, CAPTCHA} from 'constants/formFields.constant';
+import {get} from 'helpers/function.helper';
+import {studentDocumentUploadURL} from 'helpers/api/file.api.helper';
 
 export const verificationDocumentTemplate =
   // eslint-disable-next-line no-unused-vars

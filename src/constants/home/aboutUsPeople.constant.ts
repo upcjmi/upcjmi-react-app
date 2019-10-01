@@ -4,9 +4,9 @@ interface IPerson {
   image: string;
 }
 
-const RihanKhanSuri = require('../../assets/persons/rihan-khan-suri-tpo-jamia-miilia-islamia.png');
-const ViceChancellor = require('../../assets/persons/vc-jamia-millia-islamia.png');
-const ZainulAbdinJaffery = require('../../assets/persons/zainul-abdin-jaffery.png');
+const RihanKhanSuri = require('assets/persons/rihan-khan-suri-tpo-jamia-miilia-islamia.png');
+const ViceChancellor = require('assets/persons/vc-jamia-millia-islamia.png');
+const ZainulAbdinJaffery = require('assets/persons/zainul-abdin-jaffery.png');
 
 export const ABOUT_US_PEOPLE: Array<IPerson> = [
   {

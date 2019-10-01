@@ -1,5 +1,6 @@
+import {IStudentExtraDetails} from 'types/student.api.type';
+
 import {loadSecureUrl} from './loader.api.helper';
-import {IStudentExtraDetails} from '../../types/student.api.type';
 
 const UStudentExtraDetails = '/student/extra-details/';
 

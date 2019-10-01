@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import {Typography, Row, Col} from 'antd';
-import {ABOUT_US_PEOPLE} from '../../constants/home/aboutUsPeople.constant';
+import {ABOUT_US_PEOPLE} from 'constants/home/aboutUsPeople.constant';
 
-const JamiaLogo = require('../../assets/svgs/jamia-logo.svg');
+const JamiaLogo = require('assets/svgs/jamia-logo.svg');
 
 interface IProps {}
 
