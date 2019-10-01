@@ -27,7 +27,7 @@ export const signUpStudentAPI = (data: ISignUpData) =>
     data,
   });
 
-export const signINWithEmailAPI = (email: string, password: string): Promise<ISignInToken> =>
+export const signInWithEmailAPI = (email: string, password: string): Promise<ISignInToken> =>
   loadOpenUrl(USignInWithEmail, {
     method: 'post',
     data: {email, password},
@@ -56,5 +56,5 @@ export const verifyEmailAPI = (hash: string): Promise<IEmail> => loadOpenUrl(UVe
   data: {hash}
 });
 
-export const reSendVerificationMailAPI = (): Promise<void> =>
+export const resendVerificationMailAPI = (): Promise<void> =>
   loadSecureUrl(USendVerificationMail);

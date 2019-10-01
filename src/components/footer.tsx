@@ -27,7 +27,7 @@ const Footer: FC<IProps> = (props: IProps) => (
             External links
         </Title>
         <XLink href={UNIVERSITY_PLACEMENT_CELL}>
-            Placement cell on Jamia&#39;s officail site
+            Placement cell on Jamia&#39;s official site
         </XLink>
         <XLink href={JAMIA_MILLIA_ISLAMIA}>Jamia Millia Islamia</XLink>
         <XLink href={PRIVACY_POLICY}>Privacy policy</XLink>

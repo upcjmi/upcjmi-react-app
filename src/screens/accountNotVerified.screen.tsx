@@ -1,7 +1,9 @@
 import React, {FC, useState} from 'react';
 import {Button, Result, Typography} from 'antd';
+
 import {IUserMeta} from 'types/api.type';
 import {reSendVerificationMailAPI} from 'helpers/api/api.helper';
+
 
 interface IProps {
   user: IUserMeta;
@@ -19,7 +21,7 @@ const SendMailButton: FC<any> = ({email}) => {
           onClick={async () => {
             try {
               setStatus('sending');
-              await reSendVerificationMailAPI();
+              await resendVerificationMailAPI();
               setStatus('sent');
             } catch (e) {
               setStatus('error')
@@ -31,7 +33,7 @@ const SendMailButton: FC<any> = ({email}) => {
         </Button>
       );
     case 'error':
-      return 'An error occured while sending your verification mail. Try again later.';
+      return 'An error occurred while sending your verification mail. Try again later.';
     default:
       return `Sent you mail on your email (${email})`
   }
@@ -64,12 +66,12 @@ const Message: FC<IProps> = ({user}: IProps) => (
     <br />
 
     <Title level={4}>
-      2. Verfication of documents
+      2. Verification of documents
     </Title>
-    We will manully verify your document by your respective department.
+    We will manually verify your document by your respective department.
     This process will take 1-2 days.
     <br />
-    We will notify you after compleation of process.
+    We will notify you after completion of process.
   </div>
 );
 

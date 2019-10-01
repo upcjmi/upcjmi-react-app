@@ -100,7 +100,7 @@ const LinkDisplay: FC<ILinkDisplayProps> = ({type, link, onChange, remove}: ILin
       >
         <Option value='W'>Link</Option>
         <Option value='G'>GitHub</Option>
-        <Option value='B'>Beehance</Option>
+        <Option value='B'>Behance</Option>
         <Option value='S'>StackOverFlow</Option>
         <Option value='M'>Medium</Option>
       </Select>
