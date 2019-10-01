@@ -7,6 +7,7 @@ import {getAllJobsAppliedAPI} from '../../helpers/api/company.api.helper';
 import {openNotificationWithIcon} from '../../helpers/notification.helper';
 import {getAllAppliedCoursesAPI} from '../../helpers/api/core.api.helper';
 import NoticeBoard from '../../components/noticeBoard';
+import SEO from '../../components/seo';
 
 interface IProps {
 }
@@ -186,31 +187,31 @@ const CourseApplication: FC<IProps> = () => {
   )
 };
 
-const HomeStudentScreen: FC<IProps> = () => {
-  return (
-    <div className='container'>
-      <Row gutter={24}>
-        <Col sm={24} md={12}>
-          <NoticeBoard />
-          <br />
-          <ProfileCard editable />
-          <Link to='/resume/'>
-            <Button type='link'>
-              <Icon type='edit' />
-              Edit your full resume
-            </Button>
-          </Link>
-        </Col>
+const HomeStudentScreen: FC<IProps> = () => (
+  <div className='container'>
+    <SEO title='Home' description='Home Studant Screen' />
+    <Row gutter={24}>
+      <Col sm={24} md={12}>
+        <NoticeBoard />
+        <br />
+        <ProfileCard editable />
+        <Link to='/resume/'>
+          <Button type='link'>
+            <Icon type='edit' />
+            Edit your full resume
+          </Button>
+        </Link>
+      </Col>
 
-        <Col sm={24} md={12}>
-          <JobApplication />
-          <br />
-          <CourseApplication />
-        </Col>
-      </Row>
-    </div>
-  );
-};
+      <Col sm={24} md={12}>
+        <JobApplication />
+        <br />
+        <CourseApplication />
+      </Col>
+    </Row>
+  </div>
+);
+
 
 
 export default HomeStudentScreen;
