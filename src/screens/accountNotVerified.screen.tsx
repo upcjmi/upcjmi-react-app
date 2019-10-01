@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
 import {Button, Result, Typography} from 'antd';
-import {IUserMeta} from '../types/api.type';
-import {reSendVerificationMailAPI} from '../helpers/api/api.helper';
+import {IUserMeta} from 'types/api.type';
+import {reSendVerificationMailAPI} from 'helpers/api/api.helper';
 
 interface IProps {
   user: IUserMeta;

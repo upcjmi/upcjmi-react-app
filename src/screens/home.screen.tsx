@@ -2,14 +2,14 @@ import React, {FC} from 'react';
 import {Tag, Typography} from 'antd';
 import {Link} from 'react-router-dom';
 
-import OverlayCarousel from '../components/overlayCarousel';
-import AboutUs from '../components/home/aboutUs';
-import {HOME_CAROUSEL} from '../constants/carousel/home.constant';
-import {BADGES} from '../constants/home/badges.constant';
+import OverlayCarousel from 'components/overlayCarousel';
+import AboutUs from 'components/home/aboutUs';
+import {HOME_CAROUSEL} from 'constants/carousel/home.constant';
+import {BADGES} from 'constants/home/badges.constant';
+import TopRecruiters from 'components/home/topRecruiters';
+import {selectScreen} from 'helpers/screen.helper';
+import {STUDENT_PORTAL_HOME_PATH} from 'constants/routes/main.paths.constant';
 import ContactScreen from './contact.screen';
-import TopRecruiters from '../components/home/topRecruiters';
-import {selectScreen} from '../helpers/screen.helper';
-import {STUDENT_PORTAL_HOME_PATH} from '../constants/routes/main.paths.constant';
 
 interface IProps {}
 

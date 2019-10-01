@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import {Typography, Icon, Row, Col} from 'antd';
 
-import {CONTACT} from '../constants/contact.constant';
-import ContactUs from '../components/contactUs';
+import {CONTACT} from 'constants/contact.constant';
+import ContactUs from 'components/contactUs';
 
 interface IProps {}
 

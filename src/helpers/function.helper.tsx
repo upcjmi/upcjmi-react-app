@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {Icon} from 'antd';
 // @ts-ignore
-import {ReactComponent as StackOverflowIcon} from '../assets/svgs/stackoverflow-icon.svg';
+import {ReactComponent as StackOverflowIcon} from 'assets/svgs/stackoverflow-icon.svg';
 
 export const get = (obj: any, key: any, defaultValue: any = null) => {
   try {

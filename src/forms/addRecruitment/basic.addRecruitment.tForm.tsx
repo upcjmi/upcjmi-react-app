@@ -1,4 +1,4 @@
-import {FORM_ELEMENT_TYPES} from '../../constants/formFields.constant';
+import {FORM_ELEMENT_TYPES} from 'constants/formFields.constant';
 
 
 const jobDetailsInitialValue = `TIP: Get a preview by clicking on _eye icon_ in the tool menu.

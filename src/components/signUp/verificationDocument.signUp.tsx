@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
 import {Typography} from 'antd';
-import XLink from '../xLink';
+import XLink from 'components/xLink';
 
-import FormCreator from '../formCreator';
-import {verificationDocumentTemplate} from '../../forms/signUp/verification.signUp.tForm';
-import {ISignUpData} from '../../types/signUp.type';
-import {PRIVACY_POLICY, TERMS_AND_CONDITION} from '../../constants/externalLinks.constant';
+import FormCreator from 'components/formCreator';
+import {verificationDocumentTemplate} from 'forms/signUp/verification.signUp.tForm';
+import {ISignUpData} from 'types/signUp.type';
+import {PRIVACY_POLICY, TERMS_AND_CONDITION} from 'constants/externalLinks.constant';
 
 interface IProps {
   action: any;

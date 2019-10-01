@@ -2,9 +2,9 @@ import React, {FC} from 'react';
 import {Result} from 'antd';
 import {connect} from 'react-redux';
 
-import SignIn from '../components/userAccountButton';
-import {IReduxState} from '../reducers';
-import {IDispatchFunction} from '../types/common.type';
+import SignIn from 'components/userAccountButton';
+import {IReduxState} from 'reducers';
+import {IDispatchFunction} from 'types/common.type';
 
 interface IStateProps {
   isAuthenticated: boolean;
