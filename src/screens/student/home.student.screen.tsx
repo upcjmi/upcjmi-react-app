@@ -2,12 +2,12 @@ import React, {FC, useEffect, useState} from 'react';
 import {Button, Card, Col, Descriptions, Icon, Row, Skeleton, Typography, Empty} from 'antd';
 import {Link} from 'react-router-dom';
 
-import ProfileCard from '../../components/student/profileCard.student';
-import {getAllJobsAppliedAPI} from '../../helpers/api/company.api.helper';
-import {openNotificationWithIcon} from '../../helpers/notification.helper';
-import {getAllAppliedCoursesAPI} from '../../helpers/api/core.api.helper';
-import NoticeBoard from '../../components/noticeBoard';
-import SEO from '../../components/seo';
+import ProfileCard from 'components/student/profileCard.student';
+import {getAllJobsAppliedAPI} from 'helpers/api/company.api.helper';
+import {openNotificationWithIcon} from 'helpers/notification.helper';
+import {getAllAppliedCoursesAPI} from 'helpers/api/core.api.helper';
+import NoticeBoard from 'components/noticeBoard';
+import SEO from 'components/seo';
 
 interface IProps {
 }

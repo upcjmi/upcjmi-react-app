@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import {Card} from 'antd';
 
-import SignInCard from '../components/signInCard';
-import SEO from '../components/seo';
+import SignInCard from 'components/signInCard';
+import SEO from 'components/seo';
 
 interface IProps {}
 

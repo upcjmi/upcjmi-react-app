@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
 import {Typography, Icon, Row, Col} from 'antd';
 
-import {CONTACT} from '../constants/contact.constant';
-import ContactUs from '../components/contactUs';
-import SEO from '../components/seo';
+import {CONTACT} from 'constants/contact.constant';
+import ContactUs from 'components/contactUs';
+import SEO from 'components/seo';
 
 interface IProps {}
 
