@@ -52,7 +52,8 @@
       "avatar_url": "https://avatars0.githubusercontent.com/u/54800516?v=4",
       "profile": "https://github.com/nashrahnaseem",
       "contributions": [
-        "content"
+        "content",
+        "code"
       ]
     },
     {
@@ -71,6 +72,15 @@
       "profile": "https://vishalkukreja.com",
       "contributions": [
         "content"
+      ]
+    },
+    {
+      "login": "brunodhr",
+      "name": "Bruno Filipe",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/37847186?v=4",
+      "profile": "https://www.linkedin.com/in/brunodhr/",
+      "contributions": [
+        "code"
       ]
     }
   ],
