@@ -4,6 +4,7 @@
   "theme_color": "#000000",
   "background_color": "#eeeeee",
   "name": "University Placement Cell, Jamia Millia Islamia",
+  "start_url": "/",
   "icons": [
     {
       "src": "/favicons/android-icon-36x36.png",

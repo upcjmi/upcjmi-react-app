@@ -36,7 +36,7 @@ const RecruitmentStudentScreen: FC<IProps> = (props: IProps) => {
       </Title>
       {jobs.length === 0 && !loading ? (
         <Card>
-          <Empty description='No courses are available yet' />
+          <Empty description='No jobs are available for now' />
         </Card>
       ) : null}
 

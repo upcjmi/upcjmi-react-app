@@ -15,5 +15,9 @@ export interface IStudentExtraDetails {
     student_id: string,
     course: string,
     year: number
-  }
+  },
+  grade: string;
+  grading_sys: string;
+  active_back_log: boolean;
+  previous_back_log: boolean;
 }
