@@ -10,6 +10,7 @@ import {IUserMeta} from '../../types/api.type';
 import SideDrawerForm from '../sideDrawerForm';
 import ExtraDetailsChange from './extraDetailsChange.student';
 import {GetProfileIcon} from '../../helpers/function.helper';
+import {getCourseName} from '../../helpers/courses';
 
 
 interface IStateProps {
@@ -100,7 +101,7 @@ const ProfileCardStudent: FC<IProps> =
         <br />
         <Text>
           <b>
-            {extraDetails.student.course}
+            {getCourseName(extraDetails.student.course)}
           &nbsp;&nbsp;&middot;&nbsp;&nbsp;
             {`${getYear(extraDetails.student.year)} year`}
           </b>
