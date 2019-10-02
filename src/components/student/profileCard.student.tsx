@@ -11,8 +11,6 @@ import SideDrawerForm from 'components/sideDrawerForm';
 import {getCourseName} from 'helpers/courses';
 import {GetProfileIcon} from 'helpers/function.helper';
 import ExtraDetailsChange from './extraDetailsChange.student';
-import {GetProfileIcon} from 'helpers/function.helper';
-import {getCourseName} from 'helpers/courses';
 
 interface IStateProps {
   extraDetails: IStudentExtraDetails | undefined | null;
@@ -99,46 +97,47 @@ const ProfileCardStudent: FC<IProps> = ({
         <Text>
           <b>
             {getCourseName(extraDetails.student.course)}
-          &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-          {`${getYear(extraDetails.student.year)} year`}
-        </b>
-      </Text>
-      <Paragraph type='secondary'>{extraDetails.about}</Paragraph>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          position: 'relative',
-          left: -15,
-        }}>
-        {extraDetails.profiles.map(profile => (
-          <a
-            href={profile.link}
-            style={{fontSize: 30, color: '#666'}}
-            rel='noopener noreferrer'
-            target='_blank'>
-            <GetProfileIcon type={profile.type} />
-          </a>
-        ))}
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            {`${getYear(extraDetails.student.year)} year`}
+          </b>
+        </Text>
+        <Paragraph type='secondary'>{extraDetails.about}</Paragraph>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            position: 'relative',
+            left: -15,
+          }}>
+          {extraDetails.profiles.map(profile => (
+            <a
+              href={profile.link}
+              style={{fontSize: 30, color: '#666'}}
+              rel='noopener noreferrer'
+              target='_blank'>
+              <GetProfileIcon type={profile.type} />
+            </a>
+          ))}
+        </div>
+        <div>
+          Skills:&nbsp;&nbsp;
+          {extraDetails.skills.map(skill => (
+            <Tag>{skill}</Tag>
+          ))}
+        </div>
+        {editable ? (
+          <SideDrawerForm
+            render={() => (
+              // @ts-ignore
+              <ExtraDetailsChange action='edit' />
+            )}>
+            <Button style={{float: 'right'}} type='link'>
+              <Icon type='edit' />
+              Edit
+            </Button>
+          </SideDrawerForm>
+        ) : null}
       </div>
-      <div>
-        Skills:&nbsp;&nbsp;
-        {extraDetails.skills.map(skill => (
-          <Tag>{skill}</Tag>
-        ))}
-      </div>
-      {editable ? (
-        <SideDrawerForm
-          render={() => (
-            // @ts-ignore
-            <ExtraDetailsChange action='edit' />
-          )}>
-          <Button style={{float: 'right'}} type='link'>
-            <Icon type='edit' />
-            Edit
-          </Button>
-        </SideDrawerForm>
-      ) : null}
     </Card>
   );
 };

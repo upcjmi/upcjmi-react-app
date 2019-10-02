@@ -10,7 +10,7 @@ export const openNotificationWithIcon = (
   notification[type]({
     message,
     description: desc,
-    top: 70
+    top: 70,
   });
 };
 export const htmlNotification = (
@@ -55,15 +55,7 @@ export const signingInErrorNotification = (
 export const signUpWithGoogleFailed = () =>
   openNotificationWithIcon('error', 'Sign Up with Google failed', 'Please try again.');
 
-export const cannotConnectToServerNotification = () =>
-  notification.error({
-    message: 'Error connecting to server',
-    description:
-      'Try refreshing page. After refresh if problem persist clear data and cookies. ' +
-      'If problem doesn\'t resolve mail to faisalmanzer11@gmail.com.',
-    duration: 1000,
-    placement: 'bottomRight',
-  });
+export const cannotConnectToServerNotification = () => {};
 
 export const userExistsWithThisEmail = (email: string) =>
   openNotificationWithIcon(
@@ -83,20 +75,19 @@ export const apiErrorNotification = (
   message: string,
   error: any,
 ): void => {
-  if(error.data !== undefined){
+  if (error.data !== undefined) {
     const errorData = error.data.detail;
-    if(typeof errorData === 'string')
-      openNotificationWithIcon(type, message, errorData);
-    else{
+    if (typeof errorData === 'string') openNotificationWithIcon(type, message, errorData);
+    else {
       const errorDetail = Object.keys(errorData).map((errorO: any) => {
         return errorO.map((errorOO: any) => {
-          return `${errorOO}\n`
-        })
+          return `${errorOO}\n`;
+        });
       });
 
       htmlNotification(type, message, `The following error occurred\n${errorDetail}`);
     }
   } else {
-    openNotificationWithIcon(type, message, 'An unknown error occurred')
+    openNotificationWithIcon(type, message, 'An unknown error occurred');
   }
 };

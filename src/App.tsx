@@ -32,12 +32,12 @@ class App extends Component<IProps, IState> {
 
   componentDidMount = (): void => {
     window.addEventListener('resize', this.updateDimensions);
-    window.addEventListener('hashchange', this.scrollTop)
+    window.addEventListener('hashchange', this.scrollTop);
   };
 
   componentWillUnmount = (): void => {
     window.removeEventListener('resize', this.updateDimensions);
-    window.removeEventListener('hashchange', this.scrollTop)
+    window.removeEventListener('hashchange', this.scrollTop);
   };
 
   updateDimensions = (): void => {

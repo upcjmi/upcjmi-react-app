@@ -1,6 +1,5 @@
 import React, {Suspense, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {Spin} from 'antd';
 import {Route, Switch} from 'react-router-dom';
 
 import {IRoute} from 'types/common.type';
@@ -11,7 +10,7 @@ import AppHeader from 'components/appHeader';
 import {checkUserAction} from 'actions/auth.action';
 import Screen from 'components/screen';
 import Footer from 'components/footer';
-
+import A2hsPrompt from './components/a2hsPrompt';
 
 interface IStateProps {
   routes: Array<IRoute>;
@@ -24,7 +23,7 @@ interface IDispatchProps {
 
 interface IProps extends IStateProps, IDispatchProps {}
 
-const Main = ({routes, checkUser, connected}: IProps) => {
+const Main = ({routes, checkUser}: IProps) => {
   useEffect(() => {
     checkUser();
   }, [checkUser]);
@@ -32,6 +31,7 @@ const Main = ({routes, checkUser, connected}: IProps) => {
   return (
     <Suspense fallback={<LoadingScreen />}>
       <AppHeader />
+      <A2hsPrompt />
       <main>
         <Switch>
           {routes.map((route, index) => (
@@ -46,28 +46,13 @@ const Main = ({routes, checkUser, connected}: IProps) => {
         </Switch>
       </main>
       <Footer />
-      {connected === null? (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            backgroundColor: '#EEEEEE',
-            zIndex: 2000,
-          }}
-        >
-          <div className='loading-screen'>
-            <Spin size='large' tip='Connecting to server...' />
-          </div>
-        </div>
-      ) : null}
     </Suspense>
   );
 };
 
 const mapStateToProps = (state: any): IStateProps => ({
   routes: state.navigator.routes,
-  connected: state.navigator.connected
+  connected: state.navigator.connected,
 });
 
 const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
