@@ -157,7 +157,7 @@ const CourseApplication: FC<IProps> = () => {
               >
                 <Link to='/courses/'>
                   <Button>
-                    Find Jobs
+                    Find Course
                   </Button>
                 </Link>
               </Empty>

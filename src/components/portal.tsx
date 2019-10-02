@@ -46,7 +46,8 @@ const Portal: FC<IProps> = (props: IProps) => {
 
   if (!isAuthenticated) return <NotAuthorisedScreen />;
   if (user && user.type !== allowedType) return <NotAuthorisedScreen />;
-  if(user && !user.account.account_verified) return <AccountNotVerifiedScreen user={user} />;
+  if(user && !(user.account.account_verified && user.account.email_verified))
+    return <AccountNotVerifiedScreen user={user} />;
 
   return (
     <div className='portal'>
