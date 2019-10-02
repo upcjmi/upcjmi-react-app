@@ -1,9 +1,9 @@
 {
-  "short_name": "UPC JMI",
+  "short_name": "University Placement Cell",
   "display": "standalone",
   "theme_color": "#3a811d",
   "background_color": "#eeeeee",
-  "name": "University Placement Cell, Jamia Millia Islamia",
+  "name": "University Placement Cell, JMI",
   "start_url": "/",
   "icons": [
     {
