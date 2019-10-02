@@ -2,11 +2,12 @@ import React, {FC, useState, useEffect} from 'react';
 import {Typography, Tabs, Descriptions, Card, Collapse, Skeleton, Result} from 'antd';
 import {withRouter} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import {applyToJobAPI, getJobDetailsAPI} from '../../helpers/api/company.api.helper';
-import FormCreator from '../../components/formCreator';
-import {applicationFormTemplate} from '../../forms/student/application.student.tForm';
-import {htmlNotification, openNotificationWithIcon} from '../../helpers/notification.helper';
-import {captchaFormTemplate} from '../../forms/captcha.tForm';
+import {applyToJobAPI, getJobDetailsAPI} from 'helpers/api/company.api.helper';
+import FormCreator from 'components/formCreator';
+import {applicationFormTemplate} from 'forms/student/application.student.tForm';
+import {htmlNotification, openNotificationWithIcon} from 'helpers/notification.helper';
+import {captchaFormTemplate} from 'forms/captcha.tForm';
+import {getCourseName} from 'helpers/courses';
 
 interface IProps {
   match: any;
@@ -153,7 +154,7 @@ const JobDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) => {
         <Descriptions title='Basic info'>
           <Descriptions.Item label='Package'>{pay}</Descriptions.Item>
           <Descriptions.Item label='Courses Allowed'>
-            {courses.map((course: string) => `${course}, `)}
+            {courses.map((course: string) => `${getCourseName(course)}, `)}
           </Descriptions.Item>
           <Descriptions.Item label='Apply By'>
             {(new Date(close)).toLocaleString()}

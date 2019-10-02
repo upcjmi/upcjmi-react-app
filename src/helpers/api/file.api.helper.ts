@@ -1,5 +1,5 @@
+import {BASE_URL} from 'constants/credentials.constant';
 import {loadOpenUrl} from './loader.api.helper';
-import {BASE_URL} from '../../constants/credentials.constant';
 
 const FILE = 'utils/file/';
 

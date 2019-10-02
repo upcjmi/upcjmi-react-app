@@ -1,7 +1,7 @@
 import React, {FC, useState, useEffect} from 'react';
 import {Typography, Skeleton, Card, Empty} from 'antd';
-import CompanyDrives from '../../components/student/companyDrives.student';
-import {getAllCompaniesAPI} from '../../helpers/api/company.api.helper';
+import CompanyDrives from 'components/student/companyDrives.student';
+import {getAllCompaniesAPI} from 'helpers/api/company.api.helper';
 
 interface IProps {
 }
@@ -36,7 +36,7 @@ const RecruitmentStudentScreen: FC<IProps> = (props: IProps) => {
       </Title>
       {jobs.length === 0 && !loading ? (
         <Card>
-          <Empty description='No courses are available yet' />
+          <Empty description='No jobs are available for now' />
         </Card>
       ) : null}
 

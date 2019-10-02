@@ -1,5 +1,5 @@
-import {CAPTCHA, FORM_ELEMENT_TYPES} from '../constants/formFields.constant';
-import {get} from '../helpers/function.helper';
+import {CAPTCHA, FORM_ELEMENT_TYPES} from 'constants/formFields.constant';
+import {get} from 'helpers/function.helper';
 
 
 export const contactTForm =
@@ -33,7 +33,7 @@ export const contactTForm =
       rules: [{required: true}],
       options: {
         'S': 'Student',
-        'C': 'Company repesentative',
+        'C': 'Company representative',
         'V': 'Visitor',
       },
     }, {

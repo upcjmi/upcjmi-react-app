@@ -1,11 +1,11 @@
-import {ICarousel} from '../../types/common.type';
+import {ICarousel} from 'types/common.type';
 
-const VCWithPM = require('../../assets/carousel/home/vc-with-pm.jpg');
-const VCWithPresident = require('../../assets/carousel/home/vc-with-president.jpg');
-const EmphasisoTeam = require('../../assets/carousel/home/emphasiso-team.jpg');
-const PlacementTeam = require('../../assets/carousel/home/placement-team.jpg');
-const TPO = require('../../assets/carousel/home/tpo.jpg');
-const TPOReceivingAward = require('../../assets/carousel/home/tpo-receving-award.jpg');
+const VCWithPM = require('assets/carousel/home/vc-with-pm.jpg');
+const VCWithPresident = require('assets/carousel/home/vc-with-president.jpg');
+const EmphasisoTeam = require('assets/carousel/home/emphasiso-team.jpg');
+const PlacementTeam = require('assets/carousel/home/placement-team.jpg');
+const TPO = require('assets/carousel/home/tpo.jpg');
+const TPOReceivingAward = require('assets/carousel/home/tpo-receving-award.jpg');
 
 export const HOME_CAROUSEL: Array<ICarousel> = [
   {

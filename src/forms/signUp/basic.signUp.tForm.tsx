@@ -1,7 +1,7 @@
-import {FORM_ELEMENT_TYPES} from '../../constants/formFields.constant';
-import {get} from '../../helpers/function.helper';
+import {FORM_ELEMENT_TYPES} from 'constants/formFields.constant';
+import {get} from 'helpers/function.helper';
 // eslint-disable-next-line import/named
-import {allCoursesOption} from '../../constants/allOfferedCourses';
+import {allCoursesOption} from 'constants/allOfferedCourses';
 
 export const basicSignUpTForm =
   // eslint-disable-next-line no-unused-vars
