@@ -3,14 +3,14 @@ import {Spin, Button} from 'antd';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import {ISignUpData} from '../../types/signUp.type';
-import {signUpStudentAPI} from '../../helpers/api/api.helper';
+import {ISignUpData} from 'types/signUp.type';
+import {signUpStudentAPI} from 'helpers/api/api.helper';
 import {
   signUpFailedNotification,
   signUpSuccessfullNotification,
-} from '../../helpers/notification.helper';
-import {signIn} from '../../actions/auth.action';
-import {IReduxState} from '../../reducers';
+} from 'helpers/notification.helper';
+import {signIn} from 'actions/auth.action';
+import {IReduxState} from 'reducers';
 import SignInCard from '../signInCard';
 
 interface IStateProps {
@@ -73,7 +73,7 @@ const CreatingSignUp: FC<IProps> = ({
           </div>
         );
       default:
-        return 'Unkonw signin up status';
+        return 'Unknown signing up status';
     }
   };
 

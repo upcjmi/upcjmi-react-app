@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {CarouselProps} from 'antd/es/carousel';
 import {Carousel} from 'antd';
-import {ICarousel} from '../types/common.type';
+import {ICarousel} from 'types/common.type';
 
 interface IProps {
   overlay: FC;

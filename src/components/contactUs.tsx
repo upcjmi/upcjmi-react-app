@@ -1,10 +1,10 @@
 import React, {FC, useState} from 'react';
 import {Icon, Result} from 'antd';
 
+import {contactTForm} from 'forms/contact.tForm';
+import {contactFormAPI} from 'helpers/api/api.helper';
+import {openNotificationWithIcon} from 'helpers/notification.helper';
 import FormCreator from './formCreator';
-import {contactTForm} from '../forms/contact.tForm';
-import {contactFormAPI} from '../helpers/api/api.helper';
-import {openNotificationWithIcon} from '../helpers/notification.helper';
 
 interface IProps {
 }

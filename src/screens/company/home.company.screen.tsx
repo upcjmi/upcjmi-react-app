@@ -9,11 +9,11 @@ import {
   Descriptions,
 } from 'antd';
 
-import {IDispatchFunction} from '../../types/common.type';
-import {IReduxState} from '../../reducers';
-import {IUserMeta} from '../../types/api.type';
-import NotAuthorisedScreen from '../403.screen';
-import NoticeBoard from '../../components/noticeBoard';
+import {IDispatchFunction} from 'types/common.type';
+import {IReduxState} from 'reducers';
+import {IUserMeta} from 'types/api.type';
+import NotAuthorisedScreen from 'screens/403.screen';
+import NoticeBoard from 'components/noticeBoard';
 
 interface IStateProps {
   user: IUserMeta | undefined;

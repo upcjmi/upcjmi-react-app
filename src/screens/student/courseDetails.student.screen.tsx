@@ -2,10 +2,10 @@ import React, {FC, useEffect, useState} from 'react';
 import {Skeleton, Typography, Result, Descriptions} from 'antd';
 import {withRouter} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import {applyToCourseAPI, courseDetailsAPI} from '../../helpers/api/core.api.helper';
-import {captchaFormTemplate} from '../../forms/captcha.tForm';
-import FormCreator from '../../components/formCreator';
-import {openNotificationWithIcon} from '../../helpers/notification.helper';
+import {applyToCourseAPI, courseDetailsAPI} from 'helpers/api/core.api.helper';
+import {captchaFormTemplate} from 'forms/captcha.tForm';
+import FormCreator from 'components/formCreator';
+import {openNotificationWithIcon} from 'helpers/notification.helper';
 
 
 interface IProps {

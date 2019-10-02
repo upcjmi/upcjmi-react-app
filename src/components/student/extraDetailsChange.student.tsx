@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import {Typography, Form, Input, DatePicker, Tag, Button, Select, Icon, Checkbox} from 'antd';
 import moment from 'moment';
 
-import {openNotificationWithIcon} from '../../helpers/notification.helper';
-import {saveStudentExtraDataAPI} from '../../helpers/api/student.api.helper';
-import {IReduxState} from '../../reducers';
-import {IStudentExtraDetails} from '../../types/student.api.type';
-import {loadStudentExtraDetails} from '../../actions/student.action';
+import {openNotificationWithIcon} from 'helpers/notification.helper';
+import {saveStudentExtraDataAPI} from 'helpers/api/student.api.helper';
+import {IReduxState} from 'reducers';
+import {IStudentExtraDetails} from 'types/student.api.type';
+import {loadStudentExtraDetails} from 'actions/student.action';
 
 const {Title} = Typography;
 const {Option} = Select;
@@ -100,7 +100,7 @@ const LinkDisplay: FC<ILinkDisplayProps> = ({type, link, onChange, remove}: ILin
       >
         <Option value='W'>Link</Option>
         <Option value='G'>GitHub</Option>
-        <Option value='B'>Beehance</Option>
+        <Option value='B'>Behance</Option>
         <Option value='S'>StackOverFlow</Option>
         <Option value='M'>Medium</Option>
       </Select>

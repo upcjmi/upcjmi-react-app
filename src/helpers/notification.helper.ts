@@ -60,7 +60,7 @@ export const cannotConnectToServerNotification = () =>
     message: 'Error connecting to server',
     description:
       'Try refreshing page. After refresh if problem persist clear data and cookies. ' +
-      'If problem doesnt resolve mail to faisalmanzer11@gmail.com.',
+      'If problem doesn\'t resolve mail to faisalmanzer11@gmail.com.',
     duration: 1000,
     placement: 'bottomRight',
   });
@@ -73,7 +73,7 @@ export const userExistsWithThisEmail = (email: string) =>
   );
 
 export const signUpSuccessfullNotification = () =>
-  openNotificationWithIcon('success', 'Account created you successfull');
+  openNotificationWithIcon('success', 'Account created you successfully');
 
 export const signUpFailedNotification = (detail: string) =>
   htmlNotification('error', 'Failed to create account', detail);
@@ -94,9 +94,9 @@ export const apiErrorNotification = (
         })
       });
 
-      htmlNotification(type, message, `The following error occured\n${errorDetail}`);
+      htmlNotification(type, message, `The following error occurred\n${errorDetail}`);
     }
   } else {
-    openNotificationWithIcon(type, message, 'An unkown error occured')
+    openNotificationWithIcon(type, message, 'An unknown error occurred')
   }
 };

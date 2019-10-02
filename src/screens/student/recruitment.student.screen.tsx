@@ -1,7 +1,7 @@
 import React, {FC, useState, useEffect} from 'react';
 import {Typography, Skeleton, Card, Empty} from 'antd';
-import CompanyDrives from '../../components/student/companyDrives.student';
-import {getAllCompaniesAPI} from '../../helpers/api/company.api.helper';
+import CompanyDrives from 'components/student/companyDrives.student';
+import {getAllCompaniesAPI} from 'helpers/api/company.api.helper';
 
 interface IProps {
 }
