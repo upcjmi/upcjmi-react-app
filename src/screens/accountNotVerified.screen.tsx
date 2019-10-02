@@ -2,8 +2,7 @@ import React, {FC, useState, useEffect} from 'react';
 import {Button, Result, Typography} from 'antd';
 
 import {IUserMeta} from 'types/api.type';
-import {reSendVerificationMailAPI} from 'helpers/api/api.helper';
-
+import {resendVerificationMailAPI} from 'helpers/api/api.helper';
 
 interface IProps {
   user: IUserMeta;
@@ -18,7 +17,7 @@ const SendMailButton: FC<any> = ({email}) => {
     setTimeout(() => {
       setNextActive(nextActive * 2);
       setStatus('not-sent');
-    }, nextActive)
+    }, nextActive);
   }, [nextActive, status]);
 
   switch (status) {
@@ -33,12 +32,11 @@ const SendMailButton: FC<any> = ({email}) => {
               await resendVerificationMailAPI();
               setStatus('sent');
             } catch (e) {
-              setStatus('error')
+              setStatus('error');
             }
           }}
-          loading={status === 'sending'}
-        >
-          {status === 'sending'? 'Sending you mail' : 'Send Verification Mail'}
+          loading={status === 'sending'}>
+          {status === 'sending' ? 'Sending you mail' : 'Send Verification Mail'}
         </Button>
       );
     case 'error':
@@ -50,17 +48,19 @@ const SendMailButton: FC<any> = ({email}) => {
           {email}
           <br />
           Retry after &nbsp;
-          {nextActive/60000}
+          {nextActive / 60000}
           mins
         </div>
-      )
+      );
   }
 };
 
 const {Title, Text} = Typography;
 const Message: FC<IProps> = ({user}: IProps) => (
   <div style={{textAlign: 'left'}}>
-    <Title level={3} style={{textAlign: 'center'}}>Verification Process</Title>
+    <Title level={3} style={{textAlign: 'center'}}>
+      Verification Process
+    </Title>
 
     <Title level={4} disabled={user.account.email_verified}>
       1. Verification of email
@@ -74,29 +74,27 @@ const Message: FC<IProps> = ({user}: IProps) => (
     <br />
     <br />
     <div className='center-hv'>
-      {user.account.email_verified? (
-        <Text disabled>
-          Your email is already verified
-        </Text>
-      ) : <SendMailButton email={user.email} />}
+      {user.account.email_verified ? (
+        <Text disabled>Your email is already verified</Text>
+      ) : (
+        <SendMailButton email={user.email} />
+      )}
     </div>
     <br />
     <br />
 
-    <Title level={4}>
-      2. Verification of documents
-    </Title>
+    <Title level={4}>2. Verification of documents</Title>
     <Text disabled={user.account.account_verified}>
-      We will manully verify your document by your respective department.
-      This process will take 1-2 days.
+      We will manully verify your document by your respective department. This process will take 1-2
+      days.
       <br />
       <br />
       <div className='center-hv'>
-        {user.account.account_verified? (
-          <Text disabled>
-            Your account is already verified
-          </Text>
-        ) : 'We will notify you after completion of process.'}
+        {user.account.account_verified ? (
+          <Text disabled>Your account is already verified</Text>
+        ) : (
+          'We will notify you after completion of process.'
+        )}
       </div>
     </Text>
   </div>
@@ -113,6 +111,5 @@ const AccountNotVerifiedScreen: FC<IProps> = ({user}: IProps) => (
     </div>
   </div>
 );
-
 
 export default AccountNotVerifiedScreen;

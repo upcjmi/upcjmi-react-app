@@ -21,7 +21,7 @@ const NotAuthorisedScreen: FC<IProps> = ({isAuthenticated}: IProps) => (
       title='403'
       subTitle={
         isAuthenticated
-          ? 'Sorry, but you don't have permission to view this screen.'
+          ? "Sorry, but you don't have permission to view this screen."
           : 'You need to sign in to view this screen.'
       }
       extra={
