@@ -11,6 +11,8 @@ import SideDrawerForm from 'components/sideDrawerForm';
 import {getCourseName} from 'helpers/courses';
 import {GetProfileIcon} from 'helpers/function.helper';
 import ExtraDetailsChange from './extraDetailsChange.student';
+import {GetProfileIcon} from 'helpers/function.helper';
+import {getCourseName} from 'helpers/courses';
 
 interface IStateProps {
   extraDetails: IStudentExtraDetails | undefined | null;
@@ -93,11 +95,10 @@ const ProfileCardStudent: FC<IProps> = ({
             <Text strong>{extraDetails.tag_line}</Text>
           </div>
         </div>
-      </div>
-      <br />
-      <Text>
-        <b>
-          {getCourseName(extraDetails.student.course)}
+        <br />
+        <Text>
+          <b>
+            {getCourseName(extraDetails.student.course)}
           &nbsp;&nbsp;&middot;&nbsp;&nbsp;
           {`${getYear(extraDetails.student.year)} year`}
         </b>
