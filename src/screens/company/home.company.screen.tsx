@@ -9,12 +9,12 @@ import {
   Descriptions,
 } from 'antd';
 
-import {IDispatchFunction} from '../../types/common.type';
-import {IReduxState} from '../../reducers';
-import {IUserMeta} from '../../types/api.type';
+import {IDispatchFunction} from 'types/common.type';
+import {IReduxState} from 'reducers';
+import {IUserMeta} from 'types/api.type';
 import NotAuthorisedScreen from '../403.screen';
-import NoticeBoard from '../../components/noticeBoard';
-import SEO from '../../components/seo'
+import NoticeBoard from 'components/noticeBoard';
+import SEO from 'components/seo'
 
 interface IStateProps {
   user: IUserMeta | undefined;
