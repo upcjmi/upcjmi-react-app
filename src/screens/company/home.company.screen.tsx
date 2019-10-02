@@ -9,11 +9,12 @@ import {
   Descriptions,
 } from 'antd';
 
-import {IDispatchFunction} from '../../types/common.type';
-import {IReduxState} from '../../reducers';
-import {IUserMeta} from '../../types/api.type';
+import {IDispatchFunction} from 'types/common.type';
+import {IReduxState} from 'reducers';
+import {IUserMeta} from 'types/api.type';
 import NotAuthorisedScreen from '../403.screen';
-import NoticeBoard from '../../components/noticeBoard';
+import NoticeBoard from 'components/noticeBoard';
+import SEO from 'components/seo'
 
 interface IStateProps {
   user: IUserMeta | undefined;
@@ -35,6 +36,7 @@ const HomeCompanyScreen: FC<IProps> = (props: IProps) => {
 
   return (
     <div className='container'>
+      <SEO title='Home' description='Home Company Screen' />
       <Row gutter={24}>
         <Col sm={24} md={12}>
           <Card>

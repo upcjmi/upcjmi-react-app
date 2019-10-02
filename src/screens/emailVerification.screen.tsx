@@ -1,8 +1,8 @@
 import React, {FC, useState, useEffect} from 'react';
 import {Spin, Result, Icon} from 'antd';
 import {withRouter} from 'react-router-dom';
-import {verifyEmailAPI} from '../helpers/api/api.helper';
-import {openNotificationWithIcon} from '../helpers/notification.helper';
+import {verifyEmailAPI} from 'helpers/api/api.helper';
+import {openNotificationWithIcon} from 'helpers/notification.helper';
 
 interface IProps {
   match: any
@@ -49,7 +49,7 @@ const EmailVerificationScreen: FC<IProps> = ({match}: any) => {
     return (
       <Result
         status='warning'
-        title='Trouble verifing your email'
+        title='Trouble verifying your email'
       />
     )
   };

@@ -1,8 +1,8 @@
 import React, {FC, useState, useEffect} from 'react';
 import {Button, Card, Descriptions, Skeleton, Typography, Empty} from 'antd';
 import {Link} from 'react-router-dom';
-import {openNotificationWithIcon} from '../../helpers/notification.helper';
-import {getAllAvailableCourseAPI} from '../../helpers/api/core.api.helper';
+import {openNotificationWithIcon} from 'helpers/notification.helper';
+import {getAllAvailableCourseAPI} from 'helpers/api/core.api.helper';
 
 interface IProps {
 }
@@ -55,7 +55,7 @@ const CoursesStudentScreen: FC<IProps> = (props: IProps) => {
       </Title>
       {courses.length === 0 && !loading? (
         <Card>
-          <Empty description='No courses are available yet' />
+          <Empty description='No courses are available for now' />
         </Card>
       ) : null}
       {courses.map(course => (

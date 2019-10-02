@@ -3,16 +3,16 @@ import {Button, Typography} from 'antd';
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import EmailSignIn from './auth/email.signIn';
-import GoogleSignIn from './auth/google.signIn';
+import {IReduxState} from 'reducers';
+import {IUserMeta} from 'types/api.type';
 import {
   COMPANY_PORTAL_HOME_PATH,
   HOME_PATH,
   SIGN_UP_PATH,
   STUDENT_PORTAL_HOME_PATH,
-} from '../constants/routes/main.paths.constant';
-import {IReduxState} from '../reducers';
-import {IUserMeta} from '../types/api.type';
+} from 'constants/routes/main.paths.constant';
+import EmailSignIn from './auth/email.signIn';
+import GoogleSignIn from './auth/google.signIn';
 
 interface IStateProps {
   isAuthenticated: boolean;

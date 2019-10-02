@@ -2,9 +2,9 @@ import React, {FC} from 'react';
 import {connect} from 'react-redux';
 import {GoogleLogin} from 'react-google-login';
 import {Button} from 'antd';
-import {GOOGLE_OAUTH_CLIENT_ID} from '../constants/credentials.constant';
-import {IGoogleSignInResponseHacked} from '../types/api.type';
-import {errorGettingUserInfoNotification} from '../helpers/notification.helper';
+import {GOOGLE_OAUTH_CLIENT_ID} from 'constants/credentials.constant';
+import {IGoogleSignInResponseHacked} from 'types/api.type';
+import {errorGettingUserInfoNotification} from 'helpers/notification.helper';
 
 interface IStateProps {}
 

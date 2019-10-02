@@ -1,6 +1,6 @@
 {
   "name": "upcjmi",
-  "version": "0.2.1",
+  "version": "0.3.5",
   "private": false,
   "license": "Apache-2.0",
   "homepage": "https://upcjmi.com",
@@ -65,6 +65,7 @@
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/react-google-recaptcha": "^1.1.0",
+    "@types/react-helmet": "^5.0.11",
     "@types/react-html-parser": "^2.0.1",
     "@types/react-redux": "^7.1.2",
     "@types/react-router-dom": "^4.3.5",
@@ -87,14 +88,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "eslint --fix src/**/*.{js,jsx,ts,tsx} && git add -A"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
-      "pretty-quick — staged",
+      "pretty-quick —-staged",
       "eslint --fix",
-      "git add -A"
+      "git add"
     ]
   }
 }

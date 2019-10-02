@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {connect} from 'react-redux';
 import {Result} from 'antd';
-import SignIn from '../components/userAccountButton';
+import SignIn from 'components/userAccountButton';
 
 interface IStateProps {
   isAuthenticated: boolean;
@@ -18,7 +18,7 @@ const OnlyPublic: FC<IProps> = ({isAuthenticated}: IProps) => (
       title='403'
       subTitle={
         isAuthenticated
-          ? 'Sorry, but you dont have permission to view this screen.'
+          ? 'Sorry, but you don't have permission to view this screen.'
           : 'You need to sign in to view this screen.'
       }
       extra={

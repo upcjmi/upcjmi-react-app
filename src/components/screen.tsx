@@ -1,5 +1,5 @@
 import React, {FC, useEffect, Suspense} from 'react';
-import LoadingScreen from '../screens/loading.screen';
+import LoadingScreen from 'screens/loading.screen';
 
 interface IProps {
   title: string | undefined;

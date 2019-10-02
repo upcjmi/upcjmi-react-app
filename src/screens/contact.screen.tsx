@@ -1,8 +1,9 @@
 import React, {FC} from 'react';
 import {Typography, Icon, Row, Col} from 'antd';
 
-import {CONTACT} from '../constants/contact.constant';
-import ContactUs from '../components/contactUs';
+import {CONTACT} from 'constants/contact.constant';
+import ContactUs from 'components/contactUs';
+import SEO from 'components/seo';
 
 interface IProps {}
 
@@ -10,6 +11,7 @@ const {Title} = Typography;
 
 const ContactScreen: FC<IProps> = () => (
   <div id='contact'>
+    <SEO title='Contact' description='Contact Screen' />
     <Row>
       <Col xs={24} md={12} className='container'>
         <Title>Contact Us</Title>

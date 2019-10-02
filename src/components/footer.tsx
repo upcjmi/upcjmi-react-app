@@ -1,8 +1,5 @@
 import React, {FC} from 'react';
 import {Typography, Row, Col, Icon} from 'antd';
-import packageJson from '../../package.json';
-
-import XLink from './xLink';
 import {
   BUG_REPORT,
   FEATURE_REQUEST,
@@ -10,7 +7,10 @@ import {
   PRIVACY_POLICY,
   REPO_LINK, TERMS_AND_CONDITION,
   UNIVERSITY_PLACEMENT_CELL,
-} from '../constants/externalLinks.constant';
+} from 'constants/externalLinks.constant';
+import XLink from './xLink';
+
+import packageJson from '../../package.json';
 
 interface IProps {
 }
@@ -27,7 +27,7 @@ const Footer: FC<IProps> = (props: IProps) => (
             External links
         </Title>
         <XLink href={UNIVERSITY_PLACEMENT_CELL}>
-            Placement cell on Jamia&#39;s officail site
+            Placement cell on Jamia&#39;s official site
         </XLink>
         <XLink href={JAMIA_MILLIA_ISLAMIA}>Jamia Millia Islamia</XLink>
         <XLink href={PRIVACY_POLICY}>Privacy policy</XLink>
