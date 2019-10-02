@@ -29,9 +29,12 @@ Read our [Code of conduct](/CODE_OF_CONDUCT.md) and [Contributing guidelines](/C
     <td align="center"><a href="http://alhacen.cf"><img src="https://avatars3.githubusercontent.com/u/15712390?v=4" width="100px;" alt="AHMAD HASSAN ANSARI"/><br /><sub><b>AHMAD HASSAN ANSARI</b></sub></a><br /><a href="https://github.com/Faisal-Manzer/upcjmi-react-app/commits?author=alhaqhassan" title="Code">💻</a> <a href="#design-alhaqhassan" title="Design">🎨</a></td>
     <td align="center"><a href="http://asher-toufeeq.me"><img src="https://avatars3.githubusercontent.com/u/32986474?v=4" width="100px;" alt="Asher Toufeeq"/><br /><sub><b>Asher Toufeeq</b></sub></a><br /><a href="#security-ashertoufeeq" title="Security">🛡️</a> <a href="https://github.com/Faisal-Manzer/upcjmi-react-app/commits?author=ashertoufeeq" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/1arshan"><img src="https://avatars0.githubusercontent.com/u/48045961?v=4" width="100px;" alt="1arshan"/><br /><sub><b>1arshan</b></sub></a><br /><a href="https://github.com/Faisal-Manzer/upcjmi-react-app/commits?author=1arshan" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/nashrahnaseem"><img src="https://avatars0.githubusercontent.com/u/54800516?v=4" width="100px;" alt="Nashrah Naseem"/><br /><sub><b>Nashrah Naseem</b></sub></a><br /><a href="#content-nashrahnaseem" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/nashrahnaseem"><img src="https://avatars0.githubusercontent.com/u/54800516?v=4" width="100px;" alt="Nashrah Naseem"/><br /><sub><b>Nashrah Naseem</b></sub></a><br /><a href="#content-nashrahnaseem" title="Content">🖋</a> <a href="https://github.com/Faisal-Manzer/upcjmi-react-app/commits?author=nashrahnaseem" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Aeonwolf"><img src="https://avatars2.githubusercontent.com/u/55657017?v=4" width="100px;" alt="Mikah"/><br /><sub><b>Mikah</b></sub></a><br /><a href="#content-Aeonwolf" title="Content">🖋</a></td>
     <td align="center"><a href="https://vishalkukreja.com"><img src="https://avatars1.githubusercontent.com/u/183714?v=4" width="100px;" alt="Vishal Kukreja"/><br /><sub><b>Vishal Kukreja</b></sub></a><br /><a href="#content-vishalkukreja" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://www.linkedin.com/in/brunodhr/"><img src="https://avatars3.githubusercontent.com/u/37847186?v=4" width="100px;" alt="Bruno Filipe"/><br /><sub><b>Bruno Filipe</b></sub></a><br /><a href="https://github.com/Faisal-Manzer/upcjmi-react-app/commits?author=brunodhr" title="Code">💻</a></td>
   </tr>
 </table>
 
