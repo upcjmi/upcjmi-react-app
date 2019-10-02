@@ -2,7 +2,7 @@ import {notification} from 'antd';
 import reactHtmlParser from 'react-html-parser';
 
 export const openNotificationWithIcon = (
-  type: 'warning' | 'success' | 'error',
+  type: 'warning' | 'success' | 'error' | 'info',
   message: string,
   desc: string = '',
 ): void => {

@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
-import {Button, Drawer, Typography} from 'antd';
+import {Button, Drawer, Typography, message, Modal} from 'antd';
+import {openNotificationWithIcon} from '../helpers/notification.helper';
+import {selectScreen} from '../helpers/screen.helper';
 
 interface IProps {}
 
 interface IState {
   installPrompt: any;
   isA2HSVisible: boolean;
+  installing: boolean;
 }
 
 const {Title, Text} = Typography;
@@ -17,19 +20,24 @@ class A2hsPrompt extends Component<IProps, IState> {
     this.state = {
       installPrompt: null,
       isA2HSVisible: false,
+      installing: false,
     };
   }
 
   componentDidMount = (): void => {
-    window.addEventListener('beforeinstallprompt', this.handelPWAInstallPrompt);
+    window.addEventListener('beforeinstallprompt', this.beforeInstall);
+    window.addEventListener('appinstalled', this.onInstall);
   };
 
   componentWillUnmount = (): void => {
-    window.addEventListener('beforeinstallprompt', this.handelPWAInstallPrompt);
+    window.removeEventListener('beforeinstallprompt', this.beforeInstall);
+    window.removeEventListener('appinstalled', this.onInstall);
   };
 
-  handelPWAInstallPrompt = (e: any): void => {
+  beforeInstall = (e: any): void => {
     e.preventDefault();
+    // eslint-disable-next-line no-unused-vars
+    const deferredPrompt = e;
 
     this.setState({
       installPrompt: e,
@@ -42,6 +50,41 @@ class A2hsPrompt extends Component<IProps, IState> {
     }, 1000 * 30);
   };
 
+  handelNotNow = () => {
+    this.setState({
+      isA2HSVisible: false,
+    });
+    openNotificationWithIcon(
+      'info',
+      'We will miss you...',
+      'In case you change your mind, go to Options > Add to Home Screen',
+    );
+  };
+
+  handelPWAInstallPrompt = (): void => {
+    const {installPrompt} = this.state;
+
+    if (installPrompt) {
+      installPrompt.prompt().then((choiceResult: any) => {
+        if (choiceResult.outcome === 'accepted') {
+          this.setState({
+            installing: true,
+          });
+        } else {
+          this.handelNotNow();
+        }
+      });
+    }
+  };
+
+  onInstall = (): void => {
+    message.success('Install successful');
+    this.setState({
+      installing: false,
+      isA2HSVisible: false,
+    });
+  };
+
   toggle = (): void => {
     const {isA2HSVisible} = this.state;
 
@@ -51,33 +94,35 @@ class A2hsPrompt extends Component<IProps, IState> {
   };
 
   render() {
-    const {isA2HSVisible, installPrompt} = this.state;
+    const {isA2HSVisible, installing} = this.state;
+    const AttentionSeeker = selectScreen(Drawer, Drawer, Modal);
 
     return (
-      <Drawer visible={isA2HSVisible} placement='bottom' closable={false}>
-        <Title level={3}>Access all Job/Internships offline.</Title>
-        <Text>Install our web app, it wont take any space in your phone.</Text>
+      <AttentionSeeker
+        visible={isA2HSVisible}
+        placement='bottom'
+        centered
+        footer={null}
+        closable={false}>
+        <Title level={3}>Access all our job/internships offline</Title>
+        <Text>Install our web app, it wont take any space on your device.</Text>
         <br />
         <br />
         <div style={{textAlign: 'center'}}>
-          <Button size='small' type='link' onClick={this.toggle}>
+          <Button size='small' type='link' onClick={this.handelNotNow}>
             Not Now
           </Button>
           <br />
           <Button
+            loading={installing}
             style={{width: '100%'}}
             size='large'
             type='primary'
-            onClick={() => {
-              if (installPrompt)
-                installPrompt.prompt().then(() => {
-                  this.toggle();
-                });
-            }}>
-            Install
+            onClick={this.handelPWAInstallPrompt}>
+            {installing ? 'Installing...' : 'Install'}
           </Button>
         </div>
-      </Drawer>
+      </AttentionSeeker>
     );
   }
 }
