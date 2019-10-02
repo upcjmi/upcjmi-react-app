@@ -33,7 +33,8 @@
       "avatar_url": "https://avatars3.githubusercontent.com/u/32986474?v=4",
       "profile": "http://asher-toufeeq.me",
       "contributions": [
-        "security"
+        "security",
+        "code"
       ]
     },
     {
@@ -43,6 +44,33 @@
       "profile": "https://github.com/1arshan",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "nashrahnaseem",
+      "name": "Nashrah Naseem",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/54800516?v=4",
+      "profile": "https://github.com/nashrahnaseem",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "Aeonwolf",
+      "name": "Mikah",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/55657017?v=4",
+      "profile": "https://github.com/Aeonwolf",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "vishalkukreja",
+      "name": "Vishal Kukreja",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/183714?v=4",
+      "profile": "https://vishalkukreja.com",
+      "contributions": [
+        "content"
       ]
     }
   ],

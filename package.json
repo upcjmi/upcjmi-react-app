@@ -87,14 +87,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "eslint --fix src/**/*.{js,jsx,ts,tsx} && git add -A"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
-      "pretty-quick — staged",
+      "pretty-quick —-staged",
       "eslint --fix",
-      "git add -A"
+      "git add"
     ]
   }
 }
