@@ -6,12 +6,12 @@ import OverlayCarousel from 'components/overlayCarousel';
 import AboutUs from 'components/home/aboutUs';
 import {HOME_CAROUSEL} from 'constants/carousel/home.constant';
 import {BADGES} from 'constants/home/badges.constant';
-import ContactScreen from './contact.screen';
 import TopRecruiters from 'components/home/topRecruiters';
-import SEO from 'components/seo';
 
 import {selectScreen} from 'helpers/screen.helper';
 import {STUDENT_PORTAL_HOME_PATH} from 'constants/routes/main.paths.constant';
+
+import ContactScreen from './contact.screen';
 
 interface IProps {}
 
@@ -56,7 +56,6 @@ const CarouselOverlayComponent = () => (
 
 const HomeScreen: FC<IProps> = () => (
   <>
-    <SEO title='Home' description='Home screen' />
     <OverlayCarousel
       overlay={CarouselOverlayComponent}
       images={HOME_CAROUSEL}

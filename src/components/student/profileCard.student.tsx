@@ -76,7 +76,7 @@ const ProfileCardStudent: FC<IProps> = ({
 
   return (
     <Card>
-      <div style={{display: 'flex'}}>
+      <div>
         <div
           style={{
             display: 'flex',

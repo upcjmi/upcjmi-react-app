@@ -1,20 +1,12 @@
 import React, {FC} from 'react';
 import {connect} from 'react-redux';
-import {
-  Typography,
-  Row,
-  Col,
-  Card,
-  Button,
-  Descriptions,
-} from 'antd';
+import {Typography, Row, Col, Card, Button, Descriptions} from 'antd';
 
 import {IDispatchFunction} from 'types/common.type';
 import {IReduxState} from 'reducers';
 import {IUserMeta} from 'types/api.type';
-import NotAuthorisedScreen from '../403.screen';
 import NoticeBoard from 'components/noticeBoard';
-import SEO from 'components/seo'
+import NotAuthorisedScreen from '../403.screen';
 
 interface IStateProps {
   user: IUserMeta | undefined;
@@ -36,20 +28,17 @@ const HomeCompanyScreen: FC<IProps> = (props: IProps) => {
 
   return (
     <div className='container'>
-      <SEO title='Home' description='Home Company Screen' />
       <Row gutter={24}>
         <Col sm={24} md={12}>
           <Card>
             <div>
-              <Title>
-                  Hike Pvt. Ltd.
-              </Title>
+              <Title>Hike Pvt. Ltd.</Title>
             </div>
             <Text>
-              OYO Homes & Hotels, commonly known as OYO,
-              is the world’s third-largest, one of China’s top two and the
-              fastest growing hospitality chain of leased and franchised hotels, homes & living spaces.
-              Founded in 2013 by Ritesh Agarwal, OYO initially consisted mainly of budget hotels.
+              OYO Homes & Hotels, commonly known as OYO, is the world’s third-largest, one of
+              China’s top two and the fastest growing hospitality chain of leased and franchised
+              hotels, homes & living spaces. Founded in 2013 by Ritesh Agarwal, OYO initially
+              consisted mainly of budget hotels.
             </Text>
             <Button type='link' icon='edit' style={{float: 'right'}}>
               Edit
@@ -61,36 +50,25 @@ const HomeCompanyScreen: FC<IProps> = (props: IProps) => {
         </Col>
       </Row>
       <br />
-      <Title level={2}>
-        Drafts
-      </Title>
+      <Title level={2}>Drafts</Title>
       <Card>
         <Descriptions title='Android developer'>
-          <Descriptions.Item label='Type'>
-            Recruitment
-          </Descriptions.Item>
+          <Descriptions.Item label='Type'>Recruitment</Descriptions.Item>
           <Descriptions.Item label='Last updated at'>
-            {(new Date('')).toLocaleString()}
+            {new Date('').toLocaleString()}
           </Descriptions.Item>
-          <Descriptions.Item label='Rounds'>
-            5
-          </Descriptions.Item>
-          <Descriptions.Item label='Last updated at'>
-            Courses Allowed
-          </Descriptions.Item>
+          <Descriptions.Item label='Rounds'>5</Descriptions.Item>
+          <Descriptions.Item label='Last updated at'>Courses Allowed</Descriptions.Item>
           <Descriptions.Item label='Application opens on'>
-            {(new Date('')).toLocaleString()}
+            {new Date('').toLocaleString()}
           </Descriptions.Item>
           <Descriptions.Item label='Application closes on'>
-            {(new Date('')).toLocaleString()}
+            {new Date('').toLocaleString()}
           </Descriptions.Item>
         </Descriptions>
 
-        <Button type='primary'>
-          Edit/Publish Draft
-        </Button>
+        <Button type='primary'>Edit/Publish Draft</Button>
       </Card>
-
     </div>
   );
 };
