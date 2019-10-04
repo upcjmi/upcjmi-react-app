@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Row, Col} from 'antd';
 
-import {
-  HOME_PATH,
-} from 'constants/routes/main.paths.constant';
+import {HOME_PATH} from 'constants/routes/main.paths.constant';
 import {selectScreen} from 'helpers/screen.helper';
 import HeaderPills from './headerPills';
 import MobileDrawer from './mobileDrawer';
@@ -66,7 +64,7 @@ class AppHeader extends Component<IProps, IState> {
 
     return (
       <>
-        <header className={`${!visible ? 'nav-up' : ''}`} style={{zIndex: 1}}>
+        <header className={`${!visible ? 'nav-up' : ''}`}>
           <Row style={{flex: 1}}>
             <Link to={HOME_PATH}>
               <Col
@@ -76,11 +74,11 @@ class AppHeader extends Component<IProps, IState> {
                 className='logo-container'
                 style={{justifyContent: selectScreen('center', 'center', null)}}>
                 <img src={JamiaLogo} alt='University Placement Cell, Logo' />
-              &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;
                 <div style={{color: '#000000', fontSize: '0.9rem'}}>
                   <b>University Placement Cell</b>
                   <br />
-                Jamia Millia Islamia
+                  Jamia Millia Islamia
                 </div>
               </Col>
             </Link>
