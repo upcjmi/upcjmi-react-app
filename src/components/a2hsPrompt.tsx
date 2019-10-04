@@ -36,18 +36,17 @@ class A2hsPrompt extends Component<IProps, IState> {
 
   beforeInstall = (e: any): void => {
     e.preventDefault();
-    // eslint-disable-next-line no-unused-vars
     const deferredPrompt = e;
 
     this.setState({
-      installPrompt: e,
+      installPrompt: deferredPrompt,
     });
 
     setTimeout(() => {
       this.setState({
         isA2HSVisible: true,
       });
-    }, 1000 * 30);
+    }, 1000 * 20);
   };
 
   handelNotNow = () => {
