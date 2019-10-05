@@ -1,24 +1,34 @@
-# University Placement Cell
+![][team]
+
+# University Placement Cell, Jamia Millia Islamia ![](public/favicons/android-icon-48x48.png)
+
 [![][website status]][official site]
 <br>
-- Submit application bugs [here][submit bug] 
+
+- Submit application bugs [here][submit bug]
 - Submit feature request [here][submit feature request]
 
 NOTE: You should only submit issues related to application.
 
-## About Jamia Millia Islamia
-Jamia Millia Islamia was founded at Aligarh in the United Province, India in 1920 during the Khilafat and  Non-Cooperation Movement in response to Gandhiji's call to boycott government supported educational institutions. JMI moved from Aligarh to Delhi in the year 1925 and was made a central university by Parliamentary act of 1988. Today, Jamia Millia Islamia is one of the most prominent and promising central university of the country.  JMI was recently awarded an 'A' Grade by NAAC (National Assessment and Accreditation Council).
+## Jamia Millia Islamia
 
-## About University Placement Cell, JMI
+Jamia Millia Islamia was founded at Aligarh in the United Province, India in 1920 during the Khilafat and Non-Cooperation Movement in response to Gandhiji's call to boycott government supported educational institutions. JMI moved from Aligarh to Delhi in the year 1925 and was made a central university by Parliamentary act of 1988. Today, Jamia Millia Islamia is one of the most prominent and promising central university of the country. JMI was recently awarded an 'A' Grade by NAAC (National Assessment and Accreditation Council).
+
+## University Placement Cell
+
 University Placement Cell makes a bridge to fill the gap between the stringent competition in the industry and talent available in the college. University Placement Cell provides co-ordination among the students, departments, and companies. It contacts different companies for the student's placements and internships. It provides training for skill, personality development and more.
 
 ## Contributing to repository
+
 Read our [Code of conduct](/CODE_OF_CONDUCT.md) and [Contributing guidelines](/CONTRIBUTING.md)
 
 ### Maintainer
-  - [@Faisal-Manzer](https://github.com/Faisal-Manzer)
-  
-### Contributors 
+
+- [@Faisal-Manzer](https://github.com/Faisal-Manzer)
+
+### Contributors
+
+Thanks goes to these wonderful people ([emoji key][emoji key]):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -40,12 +50,12 @@ Read our [Code of conduct](/CODE_OF_CONDUCT.md) and [Contributing guidelines](/C
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-
 [official site]: https://upcjmi.com
-
 [submit bug]: https://github.com/Faisal-Manzer/upcjmi-react-app/issues/new?assignees=alhaqhassan&labels=bug&template=bug_report.md&title=
 [submit feature request]: https://github.com/Faisal-Manzer/upcjmi-react-app/issues/new?assignees=Faisal-Manzer&labels=enhancement&template=feature_request.md&title=
-
 [website status]: https://img.shields.io/website?down_message=down&up_message=running&url=https%3A%2F%2Fupcjmi.com
+[team]: src/assets/carousel/home/emphasiso-team.jpg
+[emoji key]: https://allcontributors.org/docs/en/emoji-key
