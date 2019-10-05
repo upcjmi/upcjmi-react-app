@@ -1,7 +1,5 @@
 ![][team]
 
-# University Placement Cell, Jamia Millia Islamia ![](public/favicons/android-icon-48x48.png)
-
 [![][website status]][official site]
 <br>
 
@@ -57,5 +55,5 @@ Thanks goes to these wonderful people ([emoji key][emoji key]):
 [submit bug]: https://github.com/Faisal-Manzer/upcjmi-react-app/issues/new?assignees=alhaqhassan&labels=bug&template=bug_report.md&title=
 [submit feature request]: https://github.com/Faisal-Manzer/upcjmi-react-app/issues/new?assignees=Faisal-Manzer&labels=enhancement&template=feature_request.md&title=
 [website status]: https://img.shields.io/website?down_message=down&up_message=running&url=https%3A%2F%2Fupcjmi.com
-[team]: src/assets/carousel/home/emphasiso-team.jpg
+[team]: public/readme-team.jpg
 [emoji key]: https://allcontributors.org/docs/en/emoji-key
