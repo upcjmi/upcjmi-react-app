@@ -1,6 +1,6 @@
 export interface IStudentProfileLinks {
-  type: string;
-  link: string
+  type: 'G' | 'W' | 'S' | 'B' | 'M' | 'L';
+  link: string;
 }
 
 export interface IStudentExtraDetails {
@@ -8,14 +8,14 @@ export interface IStudentExtraDetails {
   tag_line: string;
   about: string;
   skills: Array<string>;
-  dob: '',
+  dob: '';
   gender: 'M' | 'F';
   student: {
     roll: string;
-    student_id: string,
-    course: string,
-    year: number
-  },
+    student_id: string;
+    course: string;
+    year: number;
+  };
   grade: string;
   grading_sys: string;
   active_back_log: boolean;
