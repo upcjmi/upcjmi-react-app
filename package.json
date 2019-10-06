@@ -1,6 +1,6 @@
 {
   "name": "upcjmi",
-  "version": "0.4.1",
+  "version": "0.5.3",
   "private": false,
   "license": "Apache-2.0",
   "homepage": "https://upcjmi.com",
@@ -34,6 +34,9 @@
     "eject": "react-scripts eject",
     "predeploy": "yarn run build && cp build/index.html build/404.html && cp CNAME build/CNAME",
     "deploy": "gh-pages -d build -m",
+    "aws:sync": "aws s3 sync build/ s3://upcjmi --cache-control max-age=172800 --delete",
+    "aws:invalidate": "aws configure set preview.cloudfront true && aws cloudfront create-invalidation --distribution-id E2JT16QJ1F7YLO --paths /index.html /service-worker.js",
+    "aws:deploy": "yarn predeploy && yarn aws:sync && yarn aws:invalidate",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
@@ -78,13 +81,13 @@
     "lint-staged": "^9.2.5",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
-    "babel-plugin-import": "^1.12.1",
-    "customize-cra": "^0.6.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
-    "react-app-rewired": "^2.1.3",
     "source-map-explorer": "^2.0.1",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.3",
+    "babel-plugin-import": "^1.12.1",
+    "react-app-rewired": "^2.1.3",
+    "customize-cra": "^0.6.0"
   },
   "husky": {
     "hooks": {
