@@ -1,0 +1,2 @@
+(window.webpackJsonpupcjmi=window.webpackJsonpupcjmi||[]).push([[32],{801:function(e,n,t){"use strict";t.r(n);t(114);var a=t(61),i=t(0),c=t.n(i),u=a.a.Title;n.default=function(e){return c.a.createElement("div",{className:"container"},c.a.createElement(u,null,"Privacy Policy"),"This is yet to be updated")}}}]);
+//# sourceMappingURL=32.95f4e2a0.chunk.js.map
