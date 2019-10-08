@@ -1,92 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%//favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="University Placement Cell, Jamia Millia Islamia - Official Portal."
-    />
-    <link rel="apple-touch-icon" sizes="57x57" href="%PUBLIC_URL%/favicons//apple-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="60x60" href="%PUBLIC_URL%/favicons//apple-icon-60x60.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="/%PUBLIC_URL%/favicons/apple-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="%PUBLIC_URL%/favicons//apple-icon-76x76.png" />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="%PUBLIC_URL%/favicons//apple-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="%PUBLIC_URL%/favicons//apple-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="%PUBLIC_URL%/favicons//apple-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="%PUBLIC_URL%/favicons//apple-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="%PUBLIC_URL%/favicons//apple-icon-180x180.png"
-    />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="Placement Cell" />
+<head>
+  <meta charset="utf-8"/>
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="%PUBLIC_URL%/favicons//android-icon-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="%PUBLIC_URL%/favicons//favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="%PUBLIC_URL%/favicons//favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="%PUBLIC_URL%/favicons//favicon-16x16.png"
-    />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="%PUBLIC_URL%/favicons//ms-icon-144x144.png" />
-    <meta name="theme-color" content="#3a811d" />
-    <meta name="msapplication-navbutton-color" content="#3a811d" />
-    <title>Welcome to UPC-JMI</title>
+  <meta name="description" content="University Placement Cell, Jamia Millia Islamia - Official Portal."/>
+  <link rel="apple-touch-icon" sizes="57x57" href="%PUBLIC_URL%/favicons/apple-icon-57x57.png"/>
+  <link rel="apple-touch-icon" sizes="60x60" href="%PUBLIC_URL%/favicons/apple-icon-60x60.png"/>
+  <link rel="apple-touch-icon" sizes="72x72" href="%PUBLIC_URL%/favicons/apple-icon-72x72.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="%PUBLIC_URL%/favicons/apple-icon-76x76.png"/>
+  <link rel="apple-touch-icon" sizes="114x114" href="%PUBLIC_URL%/favicons/apple-icon-114x114.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="%PUBLIC_URL%/favicons/apple-icon-120x120.png"/>
+  <link rel="apple-touch-icon" sizes="144x144" href="%PUBLIC_URL%/favicons/apple-icon-144x144.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/favicons/apple-icon-152x152.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/favicons/apple-icon-180x180.png"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-title" content="Placement Cell"/>
 
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
+  <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/favicons/android-icon-192x192.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicons/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="96x96" href="%PUBLIC_URL%/favicons/favicon-96x96.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicons/favicon-16x16.png"/>
+
+
+  <meta name="msapplication-TileColor" content="#ffffff"/>
+  <meta name="msapplication-TileImage" content="%PUBLIC_URL%/favicons/ms-icon-144x144.png"/>
+  <meta name="msapplication-navbutton-color" content="#3a811d"/>
+
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
+  <meta name="theme-color" content="#3a811d"/>
+
+
+  <title>Welcome to UPC-JMI</title>
+
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+  <script>
       var OneSignal = window.OneSignal || [];
-      OneSignal.push(function() {
-        OneSignal.init({
-          appId: 'd081395e-d73e-4d29-aa7f-5d483a2d4d12',
-          notifyButton: {
-            enable: false,
-          },
-        });
+      OneSignal.push(function () {
+          OneSignal.init({
+              appId: 'd081395e-d73e-4d29-aa7f-5d483a2d4d12',
+              notifyButton: {
+                  enable: false,
+              },
+          });
       });
-    </script>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+  </script>
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+</body>
 </html>

@@ -42,11 +42,9 @@ class A2hsPrompt extends Component<IProps, IState> {
       installPrompt: deferredPrompt,
     });
 
-    setTimeout(() => {
-      this.setState({
-        isA2HSVisible: true,
-      });
-    }, 1000 * 20);
+    this.setState({
+      isA2HSVisible: true,
+    });
   };
 
   handelNotNow = () => {
