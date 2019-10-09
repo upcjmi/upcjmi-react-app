@@ -13,77 +13,50 @@ interface IStateProps {}
 interface IDispatchProps {}
 
 interface IProps extends IStateProps, IDispatchProps {
-  collapsed: boolean;
-  toggle(): void;
   routes: Array<ISidebarRoute>;
   match: string;
 }
 
 const JamiaLogo = require('assets/svgs/jamia-logo.svg');
 
-const SideBar: FC<IProps> = ({collapsed, toggle, routes}: IProps) => {
-  const desktopButton = (
-    <a
-      href='#!'
-      className='collapse-button'
-      onClick={e => {
-        e.preventDefault();
-        toggle();
-      }}>
-      <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
-    </a>
-  );
-
-  const mobileButton = (
-    // eslint-disable-next-line jsx-a11y/interactive-supports-focus
-    <div
-      role='button'
-      onClick={e => {
-        e.preventDefault();
-        toggle();
-      }}
-      onKeyDown={toggle}
-      className='collapse-button-mobile'>
-      <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
-    </div>
-  );
-
+const SideBar: FC<IProps> = ({routes}: IProps) => {
   return (
     <>
-      {selectScreen(mobileButton, null)}
       <div
         style={{
           position: 'fixed',
           top: 0,
-          left: collapsed ? selectScreen('-100vw', 0) : 0,
           height: '100vh',
           transition: 'left 0.2s',
           zIndex: 1,
         }}>
-        <div style={{height: 64, backgroundColor: '#FFFFFF'}} className='logo-container center-hv'>
-          <img src={JamiaLogo} alt='University Placement Cell, Logo' />
-        </div>
+        {selectScreen(
+          null,
+          <div
+            style={{height: 64, backgroundColor: '#FFFFFF', width: 80}}
+            className='logo-container center-hv'>
+            <img src={JamiaLogo} alt='University Placement Cell, Logo' />
+          </div>,
+        )}
         <Menu
-          mode='inline'
+          mode={selectScreen('horizontal', 'vertical')}
           theme='light'
-          inlineCollapsed={selectScreen(false, collapsed)}
-          className='full-page'
+          inlineCollapsed={selectScreen(null, true)}
+          className={selectScreen(null, 'full-page')}
           style={{
-            width: selectScreen('100vw', collapsed ? 80 : 256),
+            width: selectScreen('100vw', 80),
+            bottom: selectScreen(0, null),
+            position: 'fixed',
+            zIndex: 20,
           }}>
           {routes.map((route: any, index: number) => (
             <Menu.Item key={index.toString()}>
-              <Link
-                to={route.path}
-                onClick={() => {
-                  selectScreen(toggle, () => {})();
-                }}>
+              <Link to={route.path}>
                 <Icon type={route.icon} />
-                <span>{route.name}</span>
+                {selectScreen(null, <span>{route.name}</span>)}
               </Link>
             </Menu.Item>
           ))}
-          {selectScreen(null, desktopButton)}
         </Menu>
       </div>
     </>
