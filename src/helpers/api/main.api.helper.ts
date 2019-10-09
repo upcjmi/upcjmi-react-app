@@ -8,11 +8,11 @@ import {IObject} from 'types/common.type';
 import {BASE_URL} from 'constants/credentials.constant';
 import {
   signInAgainNotification,
-  errorGettingUserInfoNotification
+  errorGettingUserInfoNotification,
 } from 'helpers/notification.helper';
 
 axios.defaults.baseURL = BASE_URL;
-axios.defaults.headers.get['Content-Type'] = 'application/x-www-urlencoded';
+axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded';
 
 const REFRESH_ACCESS_TOKEN = 'auth/token/refresh/';
 
@@ -32,7 +32,7 @@ const getAccessToken = () => {
     if (!data) return reject('No User found');
 
     let accessToken = '';
-    let expires = new Date(data.expires * 1000);
+    const expires = new Date(data.expires * 1000);
     const currentTime = new Date();
 
     if (expires > currentTime) {
@@ -46,14 +46,13 @@ const getAccessToken = () => {
           },
         });
         accessToken = newToken.access;
-        expires = new Date(newToken.expires * 1000);
 
         reactLocalStorage.setObject(API_TOKENS, {
           tokens: {
             ...data.tokens,
             access: accessToken,
           },
-          expires,
+          expires: newToken.expires,
         });
       } catch (e) {
         try {

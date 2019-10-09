@@ -1,7 +1,7 @@
 import {IEmail, IPing, ISignInToken, IUserExists, IUserMeta} from 'types/api.type';
 import {ISignUpData} from 'types/signUp.type';
 import {IContactForm} from 'types/apiData.types';
-import {loadOpenUrl, loadSecureUrl} from './loader.api.helper';
+import {loadOpenUrl, loadSecureUrl} from './main.api.helper';
 
 const UPing = 'ping/';
 
@@ -38,10 +38,11 @@ export const signInWithGoogleAPI = (id: string, token: string): Promise<ISignInT
     data: {id, token},
   });
 
-export const contactFormAPI = (data: IContactForm): Promise<any> => loadOpenUrl(UContact, {
-  method: 'post',
-  data
-});
+export const contactFormAPI = (data: IContactForm): Promise<any> =>
+  loadOpenUrl(UContact, {
+    method: 'post',
+    data,
+  });
 
 export const getUserMetaDetailAPI = (): Promise<IUserMeta> => loadSecureUrl(UUserMetaDetails);
 export const doesUserExistsAPI = (email: string): Promise<IUserExists> =>
@@ -51,10 +52,10 @@ export const doesUserExistsAPI = (email: string): Promise<IUserExists> =>
     },
   });
 
-export const verifyEmailAPI = (hash: string): Promise<IEmail> => loadOpenUrl(UVerifyEmail, {
-  method: 'post',
-  data: {hash}
-});
+export const verifyEmailAPI = (hash: string): Promise<IEmail> =>
+  loadOpenUrl(UVerifyEmail, {
+    method: 'post',
+    data: {hash},
+  });
 
-export const resendVerificationMailAPI = (): Promise<void> =>
-  loadSecureUrl(USendVerificationMail);
+export const resendVerificationMailAPI = (): Promise<void> => loadSecureUrl(USendVerificationMail);

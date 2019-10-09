@@ -27,61 +27,56 @@ interface IProps extends IStateProps, IDispatchProps {
   allowedType: 'C' | 'S';
 }
 
-
 const Portal: FC<IProps> = (props: IProps) => {
-  const {user, isAuthenticated, match, allowedType,
-    extraRoutes, sideRoutes, baseLocation = '/#/portal/'} = props;
-  const [collapsed, setCollapsed] = useState(selectScreen(true, false));
+  const {
+    user,
+    isAuthenticated,
+    match,
+    allowedType,
+    extraRoutes,
+    sideRoutes,
+    baseLocation = '/portal/',
+  } = props;
+  // const [collapsed, setCollapsed] = useState(true);
 
-  const toggle = () => setCollapsed(!collapsed);
-
+  // const toggle = () => setCollapsed(!collapsed);
 
   useEffect(() => {
     document.getElementsByTagName('footer')[0].classList.add('footer-hide');
 
     return () => {
       document.getElementsByTagName('footer')[0].classList.remove('footer-hide');
-    }
+    };
   });
 
   if (!isAuthenticated) return <NotAuthorisedScreen />;
   if (user && user.type !== allowedType) return <NotAuthorisedScreen />;
-  if(user && !(user.account.account_verified && user.account.email_verified))
+  if (user && !(user.account.account_verified && user.account.email_verified))
     return <AccountNotVerifiedScreen user={user} />;
 
   return (
     <div className='portal'>
       <BrowserRouter basename={baseLocation}>
         <SideBar
-          collapsed={collapsed}
-          toggle={toggle}
+          // collapsed={collapsed}
+          // toggle={toggle}
           routes={sideRoutes}
           match={match.path}
         />
         <div
           className='full-page'
           style={{
-            paddingLeft: selectScreen(0, collapsed? 80 : 256 ),
+            paddingLeft: selectScreen(0, 80),
             transition: '0.4s',
-            opacity: collapsed? 1 : selectScreen(0, 1),
+            // opacity: collapsed? 1 : selectScreen(0, 1),
           }}>
           <Suspense fallback={<LoadingScreen />}>
             <Switch>
               {sideRoutes.map((route, index) => (
-                <Route
-                  key={index.toString()}
-                  exact
-                  path={route.path}
-                  component={route.screen}
-                />
+                <Route key={index.toString()} exact path={route.path} component={route.screen} />
               ))}
               {extraRoutes.map((route, index) => (
-                <Route
-                  key={index.toString()}
-                  exact
-                  path={route.path}
-                  component={route.screen}
-                />
+                <Route key={index.toString()} exact path={route.path} component={route.screen} />
               ))}
               <Route component={NotFoundScreen} homeRoute={baseLocation} />
             </Switch>
@@ -103,7 +98,9 @@ const mapDispatchToProps = (dispatch: IDispatchFunction): IDispatchProps => ({})
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withRouter(
-  // @ts-ignore
-  Portal
-));
+)(
+  withRouter(
+    // @ts-ignore
+    Portal,
+  ),
+);

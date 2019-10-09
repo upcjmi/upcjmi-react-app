@@ -7,16 +7,15 @@ import FormCreator from 'components/formCreator';
 import {applicationFormTemplate} from 'forms/student/application.student.tForm';
 import {htmlNotification, openNotificationWithIcon} from 'helpers/notification.helper';
 import {captchaFormTemplate} from 'forms/captcha.tForm';
-import {getCourseName} from 'helpers/courses';
+// import {getCourseName} from 'helpers/courses';
 
 interface IProps {
   match: any;
   history: any;
 }
 
-
 const {Title, Text} = Typography;
-const { TabPane } = Tabs;
+const {TabPane} = Tabs;
 const {Panel} = Collapse;
 
 const applicationConfirmation = `# Notice
@@ -42,46 +41,46 @@ const JobDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) => {
     rounds: [
       {
         title: '',
-        details: ''
-      }
+        details: '',
+      },
     ],
     company: {
       name: '',
-      about: ''
+      about: '',
     },
     application_format: '',
     application_required: true,
-    can_apply: false
+    can_apply: false,
   });
 
   useEffect(() => {
     const load = async () => {
-      try{
+      try {
         const {company, job} = match.params;
         const data = await getJobDetailsAPI(company, job);
         setJobDetails(data);
         setLoading(false);
       } catch (e) {
-        setStatus(e.status)
+        setStatus(e.status);
       }
     };
 
     load();
   }, [match]);
 
-  if(status !== 0)
+  if (status !== 0)
     return (
       <div className='container full-page center-hv'>
         <Result
           // @ts-ignore
           status={status.toString()}
           title={status.toString()}
-          subTitle={status === 404? 'This page does not exist' : null}
+          subTitle={status === 404 ? 'This page does not exist' : null}
         />
       </div>
     );
 
-  if(loading)
+  if (loading)
     return (
       <div className='container' style={{backgroundColor: '#eee'}}>
         <Card>
@@ -91,10 +90,16 @@ const JobDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) => {
     );
 
   const {
-    title, package: pay,
+    title,
+    package: pay,
     courses_allowed: courses,
-    close, about, rounds, company, application_required: applicationRequired,
-    application_format: application, can_apply: canApply
+    close,
+    about,
+    rounds,
+    company,
+    application_required: applicationRequired,
+    application_format: application,
+    can_apply: canApply,
   } = jobDetails;
 
   const onSubmit = async (data: any) => {
@@ -104,17 +109,8 @@ const JobDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) => {
       openNotificationWithIcon('success', 'Your form is submitted successfully');
       history.push('');
     } catch (e) {
-      if(e.status === 406)
-        htmlNotification(
-          'warning',
-          'You applied to this prior'
-        );
-      else
-        htmlNotification(
-          'error',
-          'Correct the error given below',
-          e.data.detail
-        )
+      if (e.status === 406) htmlNotification('warning', 'You applied to this prior');
+      else htmlNotification('error', 'Correct the error given below', e.data.detail);
     }
   };
 
@@ -125,7 +121,7 @@ const JobDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) => {
       formLayout={{}}
       submitButtonText='APPLY NOW'
       initialValue={async () => ({
-        'application': application
+        application,
       })}
       onSubmit={(objForm: any) => onSubmit(objForm.getFieldsValue())}
     />
@@ -134,17 +130,16 @@ const JobDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) => {
     <FormCreator
       formTemplate={captchaFormTemplate}
       submitButtonText='APPLY NOW'
-      onSubmit={(objForm: any) => onSubmit({
-        ...objForm.getFieldsValue(),
-        'application': ''
-      })}
+      onSubmit={(objForm: any) =>
+        onSubmit({
+          ...objForm.getFieldsValue(),
+          application: '',
+        })}
     />
   );
 
   return (
-    <div
-      className='container'
-    >
+    <div className='container'>
       <Title>
         {title}
         {' - '}
@@ -153,19 +148,17 @@ const JobDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) => {
       <Card>
         <Descriptions title='Basic info'>
           <Descriptions.Item label='Package'>{pay}</Descriptions.Item>
-          <Descriptions.Item label='Courses Allowed'>
-            {courses.map((course: string) => `${getCourseName(course)}, `)}
-          </Descriptions.Item>
-          <Descriptions.Item label='Apply By'>
-            {(new Date(close)).toLocaleString()}
-          </Descriptions.Item>
+          {/* <Descriptions.Item label='Courses Allowed'> */}
+          {/*  {courses.map((course: string) => `${getCourseName(course)}, `)} */}
+          {/* </Descriptions.Item> */}
+          <Descriptions.Item label='Apply By'>{new Date(close).toLocaleString()}</Descriptions.Item>
         </Descriptions>
         <br />
         <br />
         <Title level={3}>
-          About The Company (
+About The Company (
           {company.name}
-          )
+)
         </Title>
         <Text>
           <ReactMarkdown source={company.about} />
@@ -187,18 +180,15 @@ const JobDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) => {
             ))}
           </Collapse>
         </TabPane>
-        {
-          canApply? (
-            <TabPane tab='Apply' key='3'>
-              <ReactMarkdown source={applicationConfirmation} />
-              {applicationForm}
-            </TabPane>
-          ) : null
-        }
+        {canApply ? (
+          <TabPane tab='Apply' key='3'>
+            <ReactMarkdown source={applicationConfirmation} />
+            {applicationForm}
+          </TabPane>
+        ) : null}
       </Tabs>
     </div>
   );
 };
-
 
 export default withRouter(JobDetailsStudentScreen);

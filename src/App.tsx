@@ -7,7 +7,7 @@ import React, {Component} from 'react';
 import {applyMiddleware, createStore} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-import {HashRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 import rootReducer from 'reducers';
 import Main from 'main';
