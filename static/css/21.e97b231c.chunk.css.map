@@ -1,1 +1,0 @@
-{"version":3,"sources":["sidebar.scss"],"names":[],"mappings":"AAAA,iBACE,iBAAkB,CAClB,QAAS,CACT,iBAAkB,CAClB,qBAAuB,CACvB,UAAc,CACd,YAAa,CACb,UAAW","file":"21.e97b231c.chunk.css","sourcesContent":[".collapse-button{\n  position: absolute;\n  bottom: 0;\n  text-align: center;\n  background-color: black;\n  color: #ffffff;\n  padding: 10px;\n  width: 100%;\n}\n"]}

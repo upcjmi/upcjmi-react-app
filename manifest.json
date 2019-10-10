@@ -1,9 +1,9 @@
 {
-  "short_name": "University Placement Cell",
+  "name": "Placement Cell, JMI",
+  "short_name": "Placement Cell",
   "display": "standalone",
   "theme_color": "#3a811d",
-  "background_color": "#eeeeee",
-  "name": "University Placement Cell, JMI",
+  "background_color": "#ffffff",
   "start_url": "/",
   "icons": [
     {
