@@ -32,21 +32,15 @@ class App extends Component<IProps, IState> {
 
   componentDidMount = (): void => {
     window.addEventListener('resize', this.updateDimensions);
-    window.addEventListener('hashchange', this.scrollTop);
   };
 
   componentWillUnmount = (): void => {
     window.removeEventListener('resize', this.updateDimensions);
-    window.removeEventListener('hashchange', this.scrollTop);
   };
 
   updateDimensions = (): void => {
     // eslint-disable-next-line react/no-unused-state
     this.setState({width: window.innerWidth});
-  };
-
-  scrollTop = (): void => {
-    window.scrollTo(0, 0);
   };
 
   render() {

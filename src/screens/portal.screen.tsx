@@ -1,37 +1,39 @@
 import React, {FC} from 'react';
-import {Result} from 'antd';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 import {IReduxState} from 'reducers';
 import {IDispatchFunction} from 'types/common.type';
 import SignInScreen from './signIn.screen';
+import {IUserMeta} from '../types/api.type';
+import {
+  COMPANY_PORTAL_HOME_PATH,
+  STUDENT_PORTAL_HOME_PATH,
+} from '../constants/routes/main.paths.constant';
 
 interface IStateProps {
-  isAuthenticated: boolean;
+  user: IUserMeta | undefined;
 }
 
 interface IDispatchProps {}
 
 interface IProps extends IStateProps, IDispatchProps {}
 
-const NotAuthorisedScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
-  if (isAuthenticated)
-    return (
-      <div className='full-page center-hv'>
-        <Result
-          status='403'
-          title='403'
-          subTitle={"Sorry, but you don't have permission to view this screen."}
-          extra='Try signing out and signing in with different account.'
-        />
-      </div>
-    );
+const PortalScreen: FC<IProps> = ({user}: IProps) => {
+  const type = user ? user.type : '';
 
-  return <SignInScreen />;
+  switch (type) {
+    case 'S':
+      return <Redirect to={STUDENT_PORTAL_HOME_PATH} />;
+    case 'C':
+      return <Redirect to={COMPANY_PORTAL_HOME_PATH} />;
+    default:
+      return <SignInScreen />;
+  }
 };
 
 const mapStateToProps = (state: IReduxState): IStateProps => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
 });
 
 // eslint-disable-next-line no-unused-vars
@@ -40,4 +42,4 @@ const mapDispatchToProps = (dispatch: IDispatchFunction): IDispatchProps => ({})
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(NotAuthorisedScreen);
+)(PortalScreen);

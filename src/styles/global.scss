@@ -45,7 +45,7 @@ main {
   min-height: $full-page-height;
 }
 
-.drawer-handel{
+.drawer-handel {
   position: fixed;
   top: 0;
   right: 0;
@@ -63,24 +63,20 @@ main {
   border-right: #999999 solid 1px;
 }
 
-.ant-menu-item-selected{
+.ant-menu-item-selected {
   background-color: #eeeeee !important;
 }
 
-.footer-hide{
+.footer-hide {
   display: none;
 }
 
-main .portal{
+main .portal {
   background-color: #f0f1f2;
   padding-bottom: 64px;
 }
 
-.ant-menu.full-page{
+.ant-menu.full-page {
   border-right: 0 solid #000c17;
   z-index: -10;
-}
-
-.ant-menu-item-selected{
-  background-color: #ffffff !important;
 }
