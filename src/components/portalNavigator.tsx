@@ -62,7 +62,7 @@ const PortalNavigator: FC<IProps> = ({routes}: IProps) => {
     );
 
   return (
-    <Popover placement='topRight' title={null} content={menu} trigger='click'>
+    <Popover placement='topRight' title={null} content={menu} trigger='hover'>
       <div role='button' className='collapse-button-mobile'>
         <Icon type='menu' />
       </div>
