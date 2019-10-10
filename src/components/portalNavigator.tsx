@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Icon, Menu, Popover} from 'antd';
@@ -20,6 +20,17 @@ interface IProps extends IStateProps, IDispatchProps {
 const JamiaLogo = require('assets/svgs/jamia-logo.svg');
 
 const PortalNavigator: FC<IProps> = ({routes}: IProps) => {
+  const [visible, setVisible] = useState(false);
+  const hide = () => setVisible(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', hide);
+
+    return () => {
+      window.removeEventListener('scroll', hide);
+    };
+  }, []);
+
   const menu = (
     <>
       <Menu
@@ -33,7 +44,6 @@ const PortalNavigator: FC<IProps> = ({routes}: IProps) => {
           <Menu.Item key={index.toString()}>
             <Link to={route.path}>
               <Icon type={route.icon} />
-              {/* {selectScreen(null, <span>{route.name}</span>)} */}
               <span>{route.name}</span>
             </Link>
           </Menu.Item>
@@ -62,7 +72,13 @@ const PortalNavigator: FC<IProps> = ({routes}: IProps) => {
     );
 
   return (
-    <Popover placement='topRight' title={null} content={menu} trigger='hover'>
+    <Popover
+      placement='topRight'
+      title={null}
+      content={menu}
+      trigger='click'
+      visible={visible}
+      onVisibleChange={visible1 => setVisible(visible1)}>
       <div role='button' className='collapse-button-mobile'>
         <Icon type='menu' />
       </div>

@@ -80,3 +80,22 @@ main .portal {
   border-right: 0 solid #000c17;
   z-index: -10;
 }
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+*:not(input, textarea, .CodeMirror) {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+img {
+  pointer-events: none;
+}

@@ -21,7 +21,8 @@ import {API_TOKENS, SIGNED_IN_TYPE} from 'constants/localStorage.constant';
 
 import {IAccessToken, ISignInToken, IUserMeta} from 'types/api.type';
 import {
-  CONNECTED_WITH_SERVER, COULD_NOT_CONNECT_TO_SERVER,
+  CONNECTED_WITH_SERVER,
+  COULD_NOT_CONNECT_TO_SERVER,
   SIGN_IN_INITIATED,
   SIGN_IN_SUCCESS,
   SIGN_OUT,
@@ -38,13 +39,12 @@ const saveToken = (token: IAccessToken): void => {
   });
 };
 
-const saveSignIn = (user: IUserMeta, signedWith: ISignInOptions = 'U', silent: boolean=false) =>
+const saveSignIn = (user: IUserMeta, signedWith: ISignInOptions = 'U', silent: boolean = false) =>
   // eslint-disable-next-line no-unused-vars
   async (dispatch: Dispatch, getState: IGetStateFunction) => {
     dispatch({type: SIGN_IN_SUCCESS, user, signedWith});
     reactLocalStorage.set(SIGNED_IN_TYPE, signedWith);
-    if(!silent)
-      signInSuccessNotification(user.name);
+    if (!silent) signInSuccessNotification(user.name);
   };
 
 const makeUserSignIn = (apiCall: any, signedWith: ISignInOptions = 'U') => async (
@@ -59,10 +59,8 @@ const makeUserSignIn = (apiCall: any, signedWith: ISignInOptions = 'U') => async
     saveSignIn(user, signedWith)(dispatch, getState);
   } catch (e) {
     dispatch({type: SIGNING_IN_FAILED});
-    if(e && e.data !== undefined)
-      signingInErrorNotification(e.data.detail);
-    else
-      signingInErrorNotification(undefined);
+    if (e && e.data !== undefined) signingInErrorNotification(e.data.detail);
+    else signingInErrorNotification(undefined);
   }
 };
 
@@ -106,7 +104,6 @@ const ping = () => async (dispatch: Dispatch, getState: IGetStateFunction) => {
   }
 };
 
-
 export const checkUserAction = () => async (dispatch: Dispatch, getState: IGetStateFunction) => {
   if (reactLocalStorage.get(API_TOKENS)) {
     try {
@@ -118,7 +115,7 @@ export const checkUserAction = () => async (dispatch: Dispatch, getState: IGetSt
       ping()(dispatch, getState);
     }
   } else {
-    ping()(dispatch, getState)
+    ping()(dispatch, getState);
   }
 };
 

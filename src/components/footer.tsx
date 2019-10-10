@@ -5,40 +5,36 @@ import {
   FEATURE_REQUEST,
   JAMIA_MILLIA_ISLAMIA,
   PRIVACY_POLICY,
-  REPO_LINK, TERMS_AND_CONDITION,
+  REPO_LINK,
+  TERMS_AND_CONDITION,
   UNIVERSITY_PLACEMENT_CELL,
 } from 'constants/externalLinks.constant';
 import XLink from './xLink';
 
 import packageJson from '../../package.json';
 
-interface IProps {
-}
+interface IProps {}
 
 const {Title} = Typography;
-
 
 // eslint-disable-next-line no-unused-vars
 const Footer: FC<IProps> = (props: IProps) => (
   <footer>
     <Row>
       <Col xs={24} md={12}>
-        <Title level={4}>
-            External links
-        </Title>
-        <XLink href={UNIVERSITY_PLACEMENT_CELL}>
-            Placement cell on Jamia&#39;s official site
-        </XLink>
+        <Title level={4}>External links</Title>
+        <XLink href={UNIVERSITY_PLACEMENT_CELL}>Placement cell on Jamia&#39;s official site</XLink>
         <XLink href={JAMIA_MILLIA_ISLAMIA}>Jamia Millia Islamia</XLink>
         <XLink href={PRIVACY_POLICY}>Privacy policy</XLink>
         <XLink href={TERMS_AND_CONDITION}>Terms and Condition</XLink>
       </Col>
       <Col xs={24} md={12}>
         <Title level={4}>
-          Application v
+Application v
           {packageJson.version}
         </Title>
         This is an open source application.
+        <br />
         <XLink href={REPO_LINK}>
           <Icon type='github' />
           &nbsp; GitHub Repository
@@ -50,12 +46,9 @@ const Footer: FC<IProps> = (props: IProps) => (
     <br />
     <br />
     <div className='center-hv'>
-      <Title level={4}>
-        &copy; 2019 University Placement Cell, Jamia Millia Islamia
-      </Title>
+      <Title level={4}>&copy; 2019 University Placement Cell, Jamia Millia Islamia</Title>
     </div>
   </footer>
 );
-
 
 export default Footer;

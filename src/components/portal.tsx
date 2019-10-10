@@ -55,18 +55,12 @@ const Portal: FC<IProps> = (props: IProps) => {
     <>
       <div className='portal'>
         <BrowserRouter basename={baseLocation}>
-          <SideBar
-            // collapsed={collapsed}
-            // toggle={toggle}
-            routes={sideRoutes}
-            match={match.path}
-          />
+          <SideBar routes={sideRoutes} match={match.path} />
           <div
             className='full-page'
             style={{
               paddingLeft: selectScreen(0, 80),
               transition: '0.4s',
-              // opacity: collapsed? 1 : selectScreen(0, 1),
             }}>
             <Suspense fallback={<LoadingScreen />}>
               <Switch>
