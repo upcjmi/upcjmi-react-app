@@ -39,8 +39,9 @@ class App extends Component<IProps, IState> {
   };
 
   updateDimensions = (): void => {
-    // eslint-disable-next-line react/no-unused-state
-    this.setState({width: window.innerWidth});
+    const {width: oldWidth} = this.state;
+
+    if (oldWidth !== window.innerWidth) this.setState({width: window.innerWidth});
   };
 
   render() {
