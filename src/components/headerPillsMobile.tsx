@@ -16,7 +16,7 @@ interface IState {
 
 const {Title} = Typography;
 
-class MobileDrawer extends React.Component<IProps, IState> {
+class HeaderPillsMobile extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
 
@@ -66,7 +66,6 @@ class MobileDrawer extends React.Component<IProps, IState> {
               <Title level={4}>University Placement Cell</Title>
             </Link>
           </div>
-
           <HeaderPills mode='vertical' />
         </Drawer>
       </div>
@@ -75,4 +74,4 @@ class MobileDrawer extends React.Component<IProps, IState> {
 }
 
 // @ts-ignore
-export default withRouter(MobileDrawer);
+export default withRouter(HeaderPillsMobile);

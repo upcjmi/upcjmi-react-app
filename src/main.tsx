@@ -1,6 +1,6 @@
 import React, {Suspense, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, withRouter} from 'react-router-dom';
 
 import {IRoute} from 'types/common.type';
 
@@ -21,12 +21,18 @@ interface IDispatchProps {
   checkUser(): any;
 }
 
-interface IProps extends IStateProps, IDispatchProps {}
+interface IProps extends IStateProps, IDispatchProps {
+  history: any;
+}
 
-const Main = ({routes, checkUser}: IProps) => {
+const Main = ({routes, checkUser, history}: IProps) => {
   useEffect(() => {
     checkUser();
   }, [checkUser]);
+
+  history.listen(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <Suspense fallback={<LoadingScreen />}>
@@ -62,4 +68,5 @@ const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Main);
+  // @ts-ignore
+)(withRouter(Main));

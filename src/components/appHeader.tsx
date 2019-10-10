@@ -5,7 +5,7 @@ import {Row, Col} from 'antd';
 import {HOME_PATH} from 'constants/routes/main.paths.constant';
 import {selectScreen} from 'helpers/screen.helper';
 import HeaderPills from './headerPills';
-import MobileDrawer from './mobileDrawer';
+import MobileDrawer from './headerPillsMobile';
 
 const JamiaLogo = require('assets/svgs/jamia-logo.svg');
 

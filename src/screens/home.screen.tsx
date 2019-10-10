@@ -9,7 +9,7 @@ import {BADGES} from 'constants/home/badges.constant';
 import TopRecruiters from 'components/home/topRecruiters';
 
 import {selectScreen} from 'helpers/screen.helper';
-import {STUDENT_PORTAL_HOME_PATH} from 'constants/routes/main.paths.constant';
+import {PORTAL_HOME_PATH, STUDENT_PORTAL_HOME_PATH} from 'constants/routes/main.paths.constant';
 
 import ContactScreen from './contact.screen';
 
@@ -22,11 +22,20 @@ const quickLink = (
     <Title level={4} style={{color: '#eeeeee', display: 'inline-block'}}>
       Quick Links:
     </Title>
-    <a href='#!' style={{color: '#cccccc'}}>
+    <Link to={`${STUDENT_PORTAL_HOME_PATH}courses/`} style={{color: '#cccccc'}}>
       Courses Offered &nbsp;
       <Tag color='#87d068'>New</Tag>
-    </a>
-    <Link to={STUDENT_PORTAL_HOME_PATH} style={{color: '#CCC'}}>
+    </Link>
+    <Link to={`${STUDENT_PORTAL_HOME_PATH}jobs/`} style={{color: '#cccccc'}}>
+      Jobs &nbsp;
+      <Tag color='#87d068'>New</Tag>
+    </Link>
+    <Link to={`${STUDENT_PORTAL_HOME_PATH}internships/`} style={{color: '#cccccc'}}>
+      Internships &nbsp;
+      <Tag color='#87d068'>New</Tag>
+    </Link>
+    <br />
+    <Link to={PORTAL_HOME_PATH} style={{color: '#CCC'}}>
       Placements and Internship Portal
     </Link>
   </div>

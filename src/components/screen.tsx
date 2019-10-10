@@ -8,7 +8,7 @@ interface IProps {
 
 const Screen: FC<IProps> = ({title, screen: ScreenComponent}: IProps) => {
   useEffect(() => {
-    document.title = title || 'University Placement Cell, Jamia Millia Islamia';
+    document.title = `${title} || University Placement Cell, Jamia Millia Islamia`;
   }, [title]);
 
   return (
