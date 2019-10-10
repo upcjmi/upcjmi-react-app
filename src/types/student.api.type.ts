@@ -8,7 +8,7 @@ export interface IStudentExtraDetails {
   tag_line: string;
   about: string;
   skills: Array<string>;
-  dob: '';
+  dob: string | number;
   gender: 'M' | 'F';
   student: {
     roll: string;

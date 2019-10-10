@@ -15,7 +15,7 @@ import {
   Row,
   Col,
   Switch,
-  Cascader
+  Cascader,
 } from 'antd';
 import {connect} from 'react-redux';
 
@@ -62,9 +62,9 @@ const blockFormItemLayout = {
     },
     sm: {
       span: 24,
-      offset: 0
-    }
-  }
+      offset: 0,
+    },
+  },
 };
 
 const blockElements = [
@@ -72,7 +72,7 @@ const blockElements = [
   FORM_ELEMENT_TYPES.CASCADER,
   FORM_ELEMENT_TYPES.TEXTAREA,
   FORM_ELEMENT_TYPES.FILE_DRAG_DROP,
-  FORM_ELEMENT_TYPES.CAPTCHA
+  FORM_ELEMENT_TYPES.CAPTCHA,
 ];
 
 class FormCreator extends Component {
@@ -95,7 +95,6 @@ class FormCreator extends Component {
       else openNotificationWithIcon('error', 'Please Correct the error displayed in forms.');
     });
   };
-
 
   componentDidMount() {
     const {initialValue} = this.props;
@@ -133,8 +132,7 @@ class FormCreator extends Component {
       formTemplate = formTemplate(state, this.state.initialValues, extraData, this.props.form);
     }
 
-    const buttonPlacement = buttonType === 'block'? blockFormItemLayout : tailFormItemLayout;
-
+    const buttonPlacement = buttonType === 'block' ? blockFormItemLayout : tailFormItemLayout;
 
     return (
       <Form onSubmit={this.handleSubmit} {...formLayout}>
@@ -231,7 +229,9 @@ class FormCreator extends Component {
                   data={file => ({
                     upload_id: file.uid,
                   })}
-                  onRemove={file => removeFileFromServer(file.response.identifier, file.uid)}
+                  onRemove={file =>
+                    file.response ? removeFileFromServer(file.response.identifier, file.uid) : true
+                  }
                   onChange={obj => {
                     const files = [];
                     obj.fileList.map(file => {
@@ -245,8 +245,7 @@ class FormCreator extends Component {
                       [name]: files,
                     });
                   }}
-                  {...kwargs}
-                >
+                  {...kwargs}>
                   <p className="ant-upload-drag-icon">
                     <Icon type="inbox" />
                   </p>
@@ -261,13 +260,11 @@ class FormCreator extends Component {
               itemInput = <Switch {...kwargs} />;
               break;
             case FORM_ELEMENT_TYPES.HIDDEN:
-              itemInput = <input type='hidden' />;
+              itemInput = <input type="hidden" />;
               break;
             case FORM_ELEMENT_TYPES.CASCADER:
-              itemInput = <input type='hidden' />;
-              extraComponent = <Cascader
-                {...kwargs}
-              />;
+              itemInput = <input type="hidden" />;
+              extraComponent = <Cascader {...kwargs} />;
               break;
             default:
               itemInput = <Input {...kwargs} />;
@@ -292,9 +289,8 @@ class FormCreator extends Component {
                 marginBottom: 20,
               }}
               extra={desc}
-              labelCol={blockElements.includes(element)? {span: 24} : formItemLayout.labelCol}
-              wrapperCol={blockElements.includes(element)? {span: 24} : formItemLayout.wrapperCol}
-            >
+              labelCol={blockElements.includes(element) ? {span: 24} : formItemLayout.labelCol}
+              wrapperCol={blockElements.includes(element) ? {span: 24} : formItemLayout.wrapperCol}>
               {extraComponent}
               {getFieldDecorator(formItem.name, {
                 preserve: true,
@@ -304,25 +300,25 @@ class FormCreator extends Component {
           );
         })}
         <Form.Item {...buttonPlacement}>
-        {onCancel ? (
-          <Button
-            style={{
-              width: buttonType === 'block' ? '100%' : null,
-            }}
-            size='large'
-            onClick={() => onCancel(this.props.form)}
-            htmlType="button">
-            {cancelButtonText || 'Cancel'}
-          </Button>
-        ) : null}
+          {onCancel ? (
+            <Button
+              style={{
+                width: buttonType === 'block' ? '100%' : null,
+              }}
+              size="large"
+              onClick={() => onCancel(this.props.form)}
+              htmlType="button">
+              {cancelButtonText || 'Cancel'}
+            </Button>
+          ) : null}
         </Form.Item>
 
         <Form.Item {...buttonPlacement}>
-        <Button
+          <Button
             onClick={this.handleSubmit}
             type="primary"
             htmlType="submit"
-            size='large'
+            size="large"
             style={{
               width: buttonType === 'block' ? '100%' : null,
             }}>

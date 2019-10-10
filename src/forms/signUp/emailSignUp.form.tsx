@@ -52,7 +52,7 @@ class EmailSignUpForm extends React.Component<IProps> {
           {getFieldDecorator('email', {
             initialValue: get(data.account, 'email'),
             rules: [
-              {required: true, message: 'Please input your email!', },
+              {required: true, message: 'Please input your email!'},
               {type: 'email', message: 'Enter a valid email!'},
               {validator: usernameValidator},
             ],
@@ -82,7 +82,7 @@ class EmailSignUpForm extends React.Component<IProps> {
               prefix={<Icon type='lock' style={{color: 'rgba(0,0,0,.25)'}} />}
               type='password'
               placeholder='Password'
-              autocomplete='new-password'
+              autoComplete='new-password'
             />,
           )}
         </Form.Item>
@@ -104,16 +104,12 @@ class EmailSignUpForm extends React.Component<IProps> {
               prefix={<Icon type='safety' style={{color: 'rgba(0,0,0,.25)'}} />}
               type='password'
               placeholder='Confirm Password'
-              autocomplete='new-password'
+              autoComplete='new-password'
             />,
           )}
         </Form.Item>
         <Form.Item>
-          <Button
-            type='primary'
-            htmlType='submit'
-            className='login-form-button'
-            >
+          <Button type='primary' htmlType='submit' className='login-form-button'>
             Next
           </Button>
         </Form.Item>

@@ -2,6 +2,7 @@ import {FORM_ELEMENT_TYPES} from 'constants/formFields.constant';
 import {get} from 'helpers/function.helper';
 // eslint-disable-next-line import/named
 import {allCoursesOption} from 'constants/allOfferedCourses';
+import {getCourse} from '../../helpers/courses';
 
 export const basicSignUpTForm =
   // eslint-disable-next-line no-unused-vars
@@ -42,21 +43,32 @@ export const basicSignUpTForm =
       type: FORM_ELEMENT_TYPES.INPUT,
       rules: [
         {required: true},
-        {pattern: /^\d{8,9}$/, message: 'Not valid student is, ' +
-            'normally student id is of 8 or 9 digit'},
+        {
+          pattern: /^\d{8,9}$/,
+          message: 'Not valid Student ID, normally Student ID is of 8 or 9 digit',
+        },
       ],
     },
     {
       label: 'Course',
       name: 'course',
-      initialValue: get(initialValues, 'course'),
+      initialValue: (() => {
+        const hash = get(initialValues, 'course');
+        if (hash) {
+          const course = getCourse(hash);
+          course[2] = hash;
+          return course;
+        }
+
+        return hash;
+      })(),
       kwargs: {
         placeholder: 'ex: Undergraduate / B.Tech. / Civil Engineering',
         options: allCoursesOption,
         showSearch: true,
         onChange: (value: Array<string>) => {
-          form.setFieldsValue({'course': value[2]})
-        }
+          form.setFieldsValue({course: value[2]});
+        },
       },
       type: FORM_ELEMENT_TYPES.CASCADER,
       rules: [{required: true}],
@@ -64,7 +76,7 @@ export const basicSignUpTForm =
     {
       label: 'Year',
       name: 'year',
-      initialValue: get(initialValues, 'year') || '2',
+      initialValue: get(initialValues, 'year'),
       type: FORM_ELEMENT_TYPES.SELECT,
       rules: [{required: true}],
       options: {
@@ -74,16 +86,16 @@ export const basicSignUpTForm =
         '4': '4th year',
         '5': '5th year',
       },
+      kwargs: {
+        placeholder: '2nd year',
+      },
     },
     {
       label: 'Number',
       name: 'phone_number',
       type: FORM_ELEMENT_TYPES.INPUT,
       initialValue: get(initialValues, 'phone_number'),
-      rules: [
-        {required: true},
-        {pattern: /^\d{10}$/, message: 'Not a Valid Indian Phone Number'}
-      ],
+      rules: [{required: true}, {pattern: /^\d{10}$/, message: 'Not a Valid Indian Phone Number'}],
       kwargs: {
         addonBefore: '+91',
       },

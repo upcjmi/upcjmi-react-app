@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {Typography, Form, Input, DatePicker, Tag, Button, Select, Icon, Checkbox} from 'antd';
 import moment from 'moment';
 
@@ -19,7 +19,6 @@ interface ITagProps {
 }
 
 const TagEditor: FC<ITagProps> = ({tags, change, addText}: ITagProps) => {
-
   const [inputVisible, setVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
@@ -29,7 +28,7 @@ const TagEditor: FC<ITagProps> = ({tags, change, addText}: ITagProps) => {
     if (index > -1) {
       newTags.splice(index, 1);
     }
-    change(newTags)
+    change(newTags);
   };
 
   const addTag = (e: any) => {
@@ -42,35 +41,36 @@ const TagEditor: FC<ITagProps> = ({tags, change, addText}: ITagProps) => {
 
   return (
     <div>
-      {tags.map((tag) => {
+      {tags.map(tag => {
         return (
-          <Tag key={tag} closable onClose={() => removeTag(tag)}>{tag}</Tag>
-        )
+          <Tag key={tag} closable onClose={() => removeTag(tag)}>
+            {tag}
+          </Tag>
+        );
       })}
-      {inputVisible? (
+      {inputVisible ? (
         <Input
           value={inputValue}
           placeholder={addText}
           size='small'
           onChange={e => setInputValue(e.target.value)}
           onPressEnter={addTag}
-          style={{ width: 150 }}
+          style={{width: 150}}
           autoFocus
         />
-      ): (
+      ) : (
         <Button
           size='small'
           type='dashed'
           icon='plus'
           onClick={() => {
             setVisible(true);
-          }}
-        >
+          }}>
           {addText}
         </Button>
       )}
     </div>
-  )
+  );
 };
 
 interface ILinkDisplayProps {
@@ -81,23 +81,21 @@ interface ILinkDisplayProps {
 }
 
 const LinkDisplay: FC<ILinkDisplayProps> = ({type, link, onChange, remove}: ILinkDisplayProps) => {
-
   const setProfile = (nType: string, nLink: string) => {
     onChange({
       type: nType,
-      link: nLink
-    })
+      link: nLink,
+    });
   };
 
   return (
-    <Input.Group compact style={{ width: '100%' }}>
+    <Input.Group compact style={{width: '100%'}}>
       <Select
         value={type}
-        style={{ width: '30%' }}
+        style={{width: '30%'}}
         onChange={(value: string) => {
           setProfile(value, link);
-        }}
-      >
+        }}>
         <Option value='W'>Link</Option>
         <Option value='G'>GitHub</Option>
         <Option value='B'>Behance</Option>
@@ -105,21 +103,21 @@ const LinkDisplay: FC<ILinkDisplayProps> = ({type, link, onChange, remove}: ILin
         <Option value='M'>Medium</Option>
       </Select>
       <Input
-        style={{ width: '60%' }}
+        style={{width: '60%'}}
         placeholder='https://example.com'
         value={link}
         onChange={(e: any) => setProfile(type, e.target.value)}
       />
       {/* eslint-disable-next-line max-len */}
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-      <span style={{ width: '10%', textAlign: 'center' }} onClick={remove}>
+      <span style={{width: '10%', textAlign: 'center'}} onClick={remove}>
         <Icon type='delete' />
       </span>
     </Input.Group>
   );
 };
 
-interface IProfile{
+interface IProfile {
   type: string;
   link: string;
 }
@@ -133,16 +131,16 @@ const LinkEditor: FC<ILinkEditorProps> = ({links, change}: ILinkEditorProps) => 
   const setProfile = (index: number, link: any) => {
     const newLinks = links;
     newLinks[index] = link;
-    change(newLinks)
+    change(newLinks);
   };
 
   const addProfile = () => {
     const newLinks = links;
     newLinks.push({
       type: 'W',
-      link: ''
+      link: '',
     });
-    change(newLinks)
+    change(newLinks);
   };
 
   const removeProfile = (index: number) => {
@@ -166,7 +164,7 @@ const LinkEditor: FC<ILinkEditorProps> = ({links, change}: ILinkEditorProps) => 
         Add Profile
       </Button>
     </div>
-  )
+  );
 };
 
 interface IStateProps {
@@ -174,7 +172,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-  loadExtraData: any
+  loadExtraData: any;
 }
 
 interface IProps extends IStateProps, IDispatchProps {
@@ -182,190 +180,190 @@ interface IProps extends IStateProps, IDispatchProps {
   form: any;
 }
 
-const ExtraDetailsChangeStudent: FC<IProps> =
-  ({action, form, extraDetails, loadExtraData}: IProps) => {
-    const {getFieldDecorator, setFieldsValue, getFieldValue, getFieldsValue} = form;
-    let details: IStudentExtraDetails = {
-      tag_line: '',
-      about: '',
-      dob: '',
-      gender: 'M',
-      skills: [],
-      profiles: [],
-      student: {
-        roll: '',
-        student_id: '',
-        course: '',
-        year: 1,
-      },
-      grade: '',
-      grading_sys: '',
-      active_back_log: false,
-      previous_back_log: false
-    };
-
-    if(extraDetails !== null && extraDetails !== undefined)
-      details = extraDetails;
-
-    const handelSubmit = (e: any) => {
-      e.preventDefault();
-      const {validateFields} = form;
-
-      validateFields(async (err: any) => {
-        if (!err){
-          const data = getFieldsValue();
-          try{
-            await saveStudentExtraDataAPI(data, action);
-            loadExtraData();
-            openNotificationWithIcon('success', 'Saved your details')
-          } catch (error) {
-            openNotificationWithIcon('error', 'There are errors in saving your details.')
-          }
-        }
-        else openNotificationWithIcon('error', 'Please Correct the error displayed in forms.');
-      });
-    };
-
-    return (
-      <div>
-        <Title>
-        Extra details
-        </Title>
-        <br />
-        <Form onSubmit={handelSubmit} hideRequiredMark>
-
-          <Form.Item label='Tag line (short description)'>
-            {getFieldDecorator('tag_line', {
-              rules: [{required: true, max: 50}],
-              initialValue: details.tag_line
-            })(<Input type='text' placeholder='Write about you self in 1 line (50 characters)' />)}
-          </Form.Item>
-
-          <Form.Item label='About'>
-            {getFieldDecorator('about', {
-              rules: [{required: true, max: 400}],
-              initialValue: details.about
-            })(
-              <Input.TextArea
-                placeholder='Tell about yourself in 1 paragraph (400 characters)'
-                autosize
-            />
-            )}
-          </Form.Item>
-
-          <Form.Item label='Date of Birth'>
-            {getFieldDecorator('dob', {
-              rules: [{required: true}],
-              initialValue: details.dob,
-            })(<Input type='hidden' />)}
-            <DatePicker
-              format='YYYY-MM-DD'
-            // value={details.dob}
-              defaultValue={moment(details.dob, 'YYYY-MM-DD')}
-              onChange={(date, dateString) => setFieldsValue({'dob': dateString})}
-          />
-          </Form.Item>
-
-          <Form.Item label='Gender'>
-            {getFieldDecorator('gender', {
-              rules: [{required: true}],
-              initialValue: details.gender
-            })(
-              <Select>
-                <Option value='M'>Male</Option>
-                <Option value='F'>Female</Option>
-              </Select>
-            )}
-          </Form.Item>
-
-          <Form.Item label='Your Skills' style={{marginBottom: 0}}>
-            {getFieldDecorator('skills', {
-              rules: [{required: true}],
-              initialValue: details.skills
-            })(<Input type='hidden' />)}
-            <TagEditor
-              tags={getFieldValue('skills')}
-              change={(skills: Array<string>) => {
-                setFieldsValue({'skills': skills})
-              }}
-              addText='Add New Skill'
-          />
-          </Form.Item>
-          <Form.Item label='Your Profiles' style={{marginBottom: 0}}>
-            {getFieldDecorator('profiles', {
-              rules: [{required: true}],
-              initialValue: details.profiles
-            })(<Input type='hidden' />)}
-            <LinkEditor
-              links={getFieldValue('profiles')}
-              change={(profiles: Array<string>) => {
-                setFieldsValue({'profiles': profiles})
-              }}
-          />
-          </Form.Item>
-
-          <Form.Item label='Grading System'>
-            {getFieldDecorator('grading_sys', {
-              rules: [{required: true}],
-              initialValue: 'CPI',
-            })(
-              <Select>
-                <Option value='CPI'>
-                CPI
-                </Option>
-              </Select>
-            )}
-          </Form.Item>
-
-          <Form.Item label='Grade'>
-            {getFieldDecorator('grade', {
-              rules: [{required: true}],
-              initialValue: details.grade
-            })(<Input />)}
-          </Form.Item>
-
-          <Form.Item label='Active backlog'>
-            {getFieldDecorator('active_back_log', {
-              rules: [{required: true}],
-              initialValue: details.active_back_log
-            })(
-              <Checkbox onChange={(e) => {
-                setFieldsValue({'active_back_log': e.target.checked})
-              }}
-            />)}
-          </Form.Item>
-
-          <Form.Item label='Previous backlog'>
-            {getFieldDecorator('previous_back_log', {
-              rules: [{required: true}],
-              initialValue: details.previous_back_log
-            })(
-              <Checkbox onChange={(e) => {
-                setFieldsValue({'previous_back_log': e.target.checked})
-              }}
-            />)}
-          </Form.Item>
-
-
-          <br />
-          <br />
-          <Button type='primary' style={{width: '100%'}} onClick={handelSubmit}>
-          Save
-          </Button>
-        </Form>
-      </div>
-    );
+const ExtraDetailsChangeStudent: FC<IProps> = ({
+  action,
+  form,
+  extraDetails,
+  loadExtraData,
+}: IProps) => {
+  const {getFieldDecorator, setFieldsValue, getFieldValue, getFieldsValue} = form;
+  let details: IStudentExtraDetails = {
+    tag_line: '',
+    about: '',
+    dob: '1998-12-11',
+    gender: 'M',
+    skills: [],
+    profiles: [],
+    student: {
+      roll: '',
+      student_id: '',
+      course: '',
+      year: 1,
+    },
+    grade: '',
+    grading_sys: '',
+    active_back_log: false,
+    previous_back_log: false,
   };
 
+  if (extraDetails !== null && extraDetails !== undefined) details = extraDetails;
+
+  const handelSubmit = (e: any) => {
+    e.preventDefault();
+    const {validateFields} = form;
+
+    validateFields(async (err: any) => {
+      if (!err) {
+        const data = getFieldsValue();
+        try {
+          await saveStudentExtraDataAPI(data, action);
+          loadExtraData();
+          openNotificationWithIcon('success', 'Saved your details');
+        } catch (error) {
+          openNotificationWithIcon('error', 'There are errors in saving your details.');
+        }
+      } else openNotificationWithIcon('error', 'Please Correct the error displayed in forms.');
+    });
+  };
+
+  return (
+    <div>
+      <Title>Extra details</Title>
+      <br />
+      <Form onSubmit={handelSubmit} hideRequiredMark>
+        <Form.Item label='Tag line (short description)'>
+          {getFieldDecorator('tag_line', {
+            rules: [{required: true, max: 50}],
+            initialValue: details.tag_line,
+          })(<Input type='text' placeholder='Write about you self in 1 line (50 characters)' />)}
+        </Form.Item>
+
+        <Form.Item label='About'>
+          {getFieldDecorator('about', {
+            rules: [{required: true, max: 400}],
+            initialValue: details.about,
+          })(
+            <Input.TextArea
+              placeholder='Tell about yourself in 1 paragraph (400 characters)'
+              autosize
+            />,
+          )}
+        </Form.Item>
+
+        <Form.Item label='Date of Birth'>
+          {getFieldDecorator('dob', {
+            rules: [{required: true}],
+            initialValue: details.dob,
+          })(<Input type='hidden' />)}
+          <DatePicker
+            format='YYYY-MM-DD'
+            // value={details.dob}
+            defaultValue={moment(details.dob, 'YYYY-MM-DD')}
+            onChange={(date, dateString) => setFieldsValue({dob: dateString})}
+          />
+        </Form.Item>
+
+        <Form.Item label='Gender'>
+          {getFieldDecorator('gender', {
+            rules: [{required: true}],
+            initialValue: details.gender,
+          })(
+            <Select>
+              <Option value='M'>Male</Option>
+              <Option value='F'>Female</Option>
+            </Select>,
+          )}
+        </Form.Item>
+
+        <Form.Item label='Your Skills' style={{marginBottom: 0}}>
+          {getFieldDecorator('skills', {
+            rules: [{required: true}],
+            initialValue: details.skills,
+          })(<Input type='hidden' />)}
+          <TagEditor
+            tags={getFieldValue('skills')}
+            change={(skills: Array<string>) => {
+              setFieldsValue({skills});
+            }}
+            addText='Add New Skill'
+          />
+        </Form.Item>
+        <Form.Item label='Your Profiles' style={{marginBottom: 0}}>
+          {getFieldDecorator('profiles', {
+            rules: [{required: true}],
+            initialValue: details.profiles,
+          })(<Input type='hidden' />)}
+          <LinkEditor
+            links={getFieldValue('profiles')}
+            change={(profiles: Array<string>) => {
+              setFieldsValue({profiles});
+            }}
+          />
+        </Form.Item>
+
+        <Form.Item label='Grading System'>
+          {getFieldDecorator('grading_sys', {
+            rules: [{required: true}],
+            initialValue: 'CPI',
+          })(
+            <Select>
+              <Option value='CPI'>CPI</Option>
+            </Select>,
+          )}
+        </Form.Item>
+
+        <Form.Item label='Grade'>
+          {getFieldDecorator('grade', {
+            rules: [{required: true}],
+            initialValue: details.grade,
+          })(<Input />)}
+        </Form.Item>
+
+        <Form.Item label='Active backlog'>
+          {getFieldDecorator('active_back_log', {
+            rules: [{required: true}],
+            initialValue: details.active_back_log,
+          })(
+            <Checkbox
+              onChange={e => {
+                setFieldsValue({active_back_log: e.target.checked});
+              }}
+            />,
+          )}
+        </Form.Item>
+
+        <Form.Item label='Previous backlog'>
+          {getFieldDecorator('previous_back_log', {
+            rules: [{required: true}],
+            initialValue: details.previous_back_log,
+          })(
+            <Checkbox
+              onChange={e => {
+                setFieldsValue({previous_back_log: e.target.checked});
+              }}
+            />,
+          )}
+        </Form.Item>
+
+        <br />
+        <br />
+        <Button type='primary' style={{width: '100%'}} onClick={handelSubmit}>
+          Save
+        </Button>
+      </Form>
+    </div>
+  );
+};
 
 const mapStateToProps = (state: IReduxState): IStateProps => ({
-  extraDetails: state.student.extraDetails
+  extraDetails: state.student.extraDetails,
 });
 
 const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
-  loadExtraData: () => dispatch(loadStudentExtraDetails())
+  loadExtraData: () => dispatch(loadStudentExtraDetails()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  Form.create({})(ExtraDetailsChangeStudent)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Form.create({})(ExtraDetailsChangeStudent));

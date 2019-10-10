@@ -40,7 +40,13 @@ const JobApplication: FC<IProps> = () => {
     load();
   }, []);
 
-  if (loading) return <Skeleton />;
+  if (loading)
+    return (
+      <div>
+        <Title level={3}>Your job applications</Title>
+        <Skeleton />
+      </div>
+    );
 
   return (
     <div>

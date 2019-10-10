@@ -29,13 +29,12 @@ company will see your resume which is at the time of application**
 *If any of the above fails your access of portal can be blocked*
 `;
 
-const JobDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) => {
+const RecruitmentDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) => {
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState(0);
   const [jobDetails, setJobDetails] = useState({
     title: '',
     package: '',
-    courses_allowed: [],
     close: '',
     about: '',
     rounds: [
@@ -92,7 +91,6 @@ const JobDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) => {
   const {
     title,
     package: pay,
-    courses_allowed: courses,
     close,
     about,
     rounds,
@@ -148,9 +146,6 @@ const JobDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) => {
       <Card>
         <Descriptions title='Basic info'>
           <Descriptions.Item label='Package'>{pay}</Descriptions.Item>
-          {/* <Descriptions.Item label='Courses Allowed'> */}
-          {/*  {courses.map((course: string) => `${getCourseName(course)}, `)} */}
-          {/* </Descriptions.Item> */}
           <Descriptions.Item label='Apply By'>{new Date(close).toLocaleString()}</Descriptions.Item>
         </Descriptions>
         <br />
@@ -172,7 +167,7 @@ About The Company (
           <ReactMarkdown source={about} />
         </TabPane>
         <TabPane tab='Rounds' key='2'>
-          <Collapse defaultActiveKey={['0']} accordion>
+          <Collapse defaultActiveKey={[]} accordion>
             {rounds.map((round, index) => (
               <Panel header={`${index + 1}. ${round.title}`} key={index.toString()}>
                 <ReactMarkdown source={round.details} />
@@ -191,4 +186,4 @@ About The Company (
   );
 };
 
-export default withRouter(JobDetailsStudentScreen);
+export default withRouter(RecruitmentDetailsStudentScreen);
