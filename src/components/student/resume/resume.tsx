@@ -26,7 +26,7 @@ const Resume: FC<IProps> = (props: IProps) => (
               style={{
                 marginLeft: selectScreen(0, 5, 10),
               }}>
-              <Title style={{marginBottom: 0}}>Faisal Mazer</Title>
+              <Title className='margin-bottom-0'>Faisal Mazer</Title>
               <Text strong>An Undergraduate Technology Passionate.</Text>
             </div>
           </div>
@@ -37,10 +37,8 @@ const Resume: FC<IProps> = (props: IProps) => (
           &nbsp; Faisal-Manzer
         </div>
       </Col>
-      <Col sm={24} md={12} style={{textAlign: 'justify'}}>
-        <div style={{textAlign: 'right', fontWeight: 'bold'}}>
-          B.Tech. Civil Engineering · 2nd year
-        </div>
+      <Col sm={24} md={12} className='align-justify'>
+        <div className='align-right font-weight-bold'>B.Tech. Civil Engineering · 2nd year</div>
         Having a dream to create new technologies. Currently working with web development and app
         development. Successfully hosted web apps to the cloud and submitted mobile applications to
         Google PlayStore and Apple AppStore. Designing basic UI with the sketch app. Worked with

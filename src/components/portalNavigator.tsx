@@ -52,17 +52,8 @@ const PortalNavigator: FC<IProps> = ({routes}: IProps) => {
 
   if (selectScreen(false, true))
     return (
-      <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          height: '100vh',
-          transition: 'left 0.2s',
-          zIndex: 1,
-        }}>
-        <div
-          style={{height: 64, backgroundColor: '#FFFFFF', width: 80}}
-          className='logo-container center-hv'>
+      <div className='portal-side-nav'>
+        <div className='logo-container center-hv white'>
           <img src={JamiaLogo} alt='University Placement Cell, Logo' />
         </div>
         {menu}

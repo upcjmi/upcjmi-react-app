@@ -19,23 +19,23 @@ const {Title} = Typography;
 
 const quickLink = (
   <div className='space-child'>
-    <Title level={4} style={{color: '#eeeeee', display: 'inline-block'}}>
+    <Title level={4} className='grey-text lighten-3 inline-block'>
       Quick Links:
     </Title>
-    <Link to={`${STUDENT_PORTAL_HOME_PATH}courses/`} style={{color: '#cccccc'}}>
+    <Link to={`${STUDENT_PORTAL_HOME_PATH}courses/`} className='linkType-1'>
       Courses Offered &nbsp;
       <Tag color='#87d068'>New</Tag>
     </Link>
-    <Link to={`${STUDENT_PORTAL_HOME_PATH}jobs/`} style={{color: '#cccccc'}}>
+    <Link to={`${STUDENT_PORTAL_HOME_PATH}jobs/`} className='linkType-1'>
       Jobs &nbsp;
       <Tag color='#87d068'>New</Tag>
     </Link>
-    <Link to={`${STUDENT_PORTAL_HOME_PATH}internships/`} style={{color: '#cccccc'}}>
+    <Link to={`${STUDENT_PORTAL_HOME_PATH}internships/`} className='linkType-1'>
       Internships &nbsp;
       <Tag color='#87d068'>New</Tag>
     </Link>
     <br />
-    <Link to={PORTAL_HOME_PATH} style={{color: '#CCC'}}>
+    <Link to={PORTAL_HOME_PATH} className='linkType-1'>
       Placements and Internship Portal
     </Link>
   </div>

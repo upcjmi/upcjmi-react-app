@@ -9,11 +9,11 @@ interface IProps {}
 const {Title} = Typography;
 
 const AboutUs: FC<IProps> = () => (
-  <div id='about-us' className='container full-page center-hv' style={{backgroundColor: '#eeeeee'}}>
+  <div id='about-us' className='container full-page center-hv grey lighten-3'>
     <div>
       <Title>About Us</Title>
       <Row>
-        <Col sm={24} md={18} style={{fontSize: '1.3rem', textAlign: 'justify'}}>
+        <Col sm={24} md={18} className='about-us-col'>
           Jamia Millia Islamia was founded at Aligarh in the United Province, India in 1920 during
           the Khilafat and &nbsp;
           {/* eslint-disable-next-line react/no-unescaped-entities */}
@@ -25,8 +25,8 @@ const AboutUs: FC<IProps> = () => (
           JMI was recently awarded an 'A' Grade by NAAC (National Assessment and Accreditation
           Council).
         </Col>
-        <Col sm={24} md={6} style={{textAlign: 'center'}}>
-          <img src={JamiaLogo} alt='University Placement Cell, Logo' style={{maxHeight: 200}} />
+        <Col sm={24} md={6} className='center'>
+          <img src={JamiaLogo} alt='University Placement Cell, Logo' className='jmi-logo1' />
         </Col>
       </Row>
 
@@ -36,7 +36,7 @@ const AboutUs: FC<IProps> = () => (
 
       <Row>
         {ABOUT_US_PEOPLE.map(({image, name, position}, index) => (
-          <Col sm={24} md={8} style={{textAlign: 'center'}} key={index.toString()}>
+          <Col sm={24} md={8} className='center' key={index.toString()}>
             <img src={image} alt={name} />
             <br />
             <Title level={3}>{name}</Title>

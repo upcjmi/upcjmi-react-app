@@ -44,7 +44,7 @@ const AccountSignUp: FC<IProps> = ({action, data, next}: IProps) => {
       <br />
       <br />
 
-      <div style={{textAlign: 'center'}}>OR</div>
+      <div className='center'>OR</div>
       <br />
       {SignUpForm}
     </div>

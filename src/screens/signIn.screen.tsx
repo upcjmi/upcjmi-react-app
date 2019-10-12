@@ -6,8 +6,8 @@ import SignInCard from 'components/signInCard';
 interface IProps {}
 
 const SignInScreen: FC<IProps> = () => (
-  <div className='full-page center-hv' style={{backgroundColor: '#EEEEEE'}}>
-    <Card style={{maxWidth: '95vw', width: 450}}>
+  <div className='full-page center-hv grey lighten-3'>
+    <Card className='signinScreen-card'>
       <SignInCard />
     </Card>
   </div>

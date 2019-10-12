@@ -89,7 +89,7 @@ const ProfileCardStudent: FC<IProps> = ({
             style={{
               marginLeft: selectScreen(0, 5, 10),
             }}>
-            <Title style={{marginBottom: 0}}>{user.name}</Title>
+            <Title className='margin-bottom-0'>{user.name}</Title>
             <Text strong>{extraDetails.tag_line}</Text>
           </div>
         </div>
@@ -102,19 +102,9 @@ const ProfileCardStudent: FC<IProps> = ({
           </b>
         </Text>
         <Paragraph type='secondary'>{extraDetails.about}</Paragraph>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            position: 'relative',
-            left: -15,
-          }}>
+        <div className='profile-extra-details'>
           {extraDetails.profiles.map(profile => (
-            <a
-              href={profile.link}
-              style={{fontSize: 30, color: '#666'}}
-              rel='noopener noreferrer'
-              target='_blank'>
+            <a href={profile.link} rel='noopener noreferrer' target='_blank'>
               <GetProfileIcon type={profile.type} />
             </a>
           ))}
@@ -131,7 +121,7 @@ const ProfileCardStudent: FC<IProps> = ({
               // @ts-ignore
               <ExtraDetailsChange action='edit' />
             )}>
-            <Button style={{float: 'right'}} type='link'>
+            <Button className='float-right' type='link'>
               <Icon type='edit' />
               Edit
             </Button>

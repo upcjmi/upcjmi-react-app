@@ -43,12 +43,12 @@ const SignInCard: FC<IProps> = ({isAuthenticated, user}: IProps) => {
       <GoogleSignIn />
       <br />
       <br />
-      <div style={{textAlign: 'center'}}>OR</div>
+      <div className='center'>OR</div>
       <br />
       <EmailSignIn />
       <br />
       <Link to={SIGN_UP_PATH}>
-        <Button type='dashed' style={{width: '100%'}} icon='user-add' size='large'>
+        <Button type='dashed' className='full-width' icon='user-add' size='large'>
           Create New Account
         </Button>
       </Link>

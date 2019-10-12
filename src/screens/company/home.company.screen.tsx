@@ -40,7 +40,7 @@ const HomeCompanyScreen: FC<IProps> = (props: IProps) => {
               hotels, homes & living spaces. Founded in 2013 by Ritesh Agarwal, OYO initially
               consisted mainly of budget hotels.
             </Text>
-            <Button type='link' icon='edit' style={{float: 'right'}}>
+            <Button type='link' icon='edit' className='float-right'>
               Edit
             </Button>
           </Card>

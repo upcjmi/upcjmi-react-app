@@ -285,9 +285,7 @@ class FormCreator extends Component {
               }
               colon={false}
               key={index.toString()}
-              style={{
-                marginBottom: 20,
-              }}
+              className="margin-bottom-20"
               extra={desc}
               labelCol={blockElements.includes(element) ? {span: 24} : formItemLayout.labelCol}
               wrapperCol={blockElements.includes(element) ? {span: 24} : formItemLayout.wrapperCol}>

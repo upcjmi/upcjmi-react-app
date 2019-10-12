@@ -38,9 +38,9 @@ const GoogleSignIn: FC<IProps> = (props: IProps) => {
           disabled={renderProps.disabled}
           type='primary'
           icon={inProgress ? 'loading' : 'google'}
-          style={{width: '100%', backgroundColor: renderProps.disabled? '#eeeeee' :'#000000'}}
-          size='large'
-        >
+          className='full-width'
+          style={{backgroundColor: renderProps.disabled ? '#eeeeee' : '#000000'}}
+          size='large'>
           Sign In With Google
         </Button>
       )}

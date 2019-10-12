@@ -20,27 +20,18 @@ export const generalFilter = (input: string, option: any) =>
 export const GetProfileIcon: FC<IProps> = ({type}: any): any => {
   switch (type) {
     case 'G':
-      return <Icon type='github' theme='filled' style={{marginLeft: 15}} />;
+      return <Icon type='github' theme='filled' className='margin-left-15' />;
     case 'W':
-      return <Icon type='link' style={{marginLeft: 15}} />;
+      return <Icon type='link' className='margin-left-15' />;
     case 'S':
-      return (
-        <StackOverflowIcon
-          style={{
-            fill: '#595959',
-            height: 30,
-            width: 30,
-            marginLeft: 15,
-          }}
-        />
-      );
+      return <StackOverflowIcon className='StackOverflowIcon' />;
     case 'B':
-      return <Icon type='behance' theme='filled' style={{marginLeft: 15}} />;
+      return <Icon type='behance' theme='filled' className='margin-left-15' />;
     case 'M':
-      return <Icon type='mail' theme='filled' style={{marginLeft: 15}} />;
+      return <Icon type='mail' theme='filled' className='margin-left-15' />;
     case 'L':
-      return <Icon type='linkedin' theme='filled' style={{marginLeft: 15}} />;
+      return <Icon type='linkedin' theme='filled' className='margin-left-15' />;
     default:
-      return <Icon type='link' theme='filled' style={{marginLeft: 15}} />;
+      return <Icon type='link' theme='filled' className='margin-left-15' />;
   }
 };

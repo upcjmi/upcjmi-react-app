@@ -60,7 +60,7 @@ class EmailSignUpForm extends React.Component<IProps> {
           })(
             // @ts-ignore
             <Input
-              prefix={<Icon type='user' style={{color: 'rgba(0,0,0,.25)'}} />}
+              prefix={<Icon type='user' className='input-prefix' />}
               placeholder='Email'
               type='email'
               autoComplete='username email'
@@ -79,7 +79,7 @@ class EmailSignUpForm extends React.Component<IProps> {
           })(
             // @ts-ignore
             <Input
-              prefix={<Icon type='lock' style={{color: 'rgba(0,0,0,.25)'}} />}
+              prefix={<Icon type='lock' className='input-prefix' />}
               type='password'
               placeholder='Password'
               autoComplete='new-password'
@@ -101,7 +101,7 @@ class EmailSignUpForm extends React.Component<IProps> {
           })(
             // @ts-ignore
             <Input
-              prefix={<Icon type='safety' style={{color: 'rgba(0,0,0,.25)'}} />}
+              prefix={<Icon type='safety' className='input-prefix' />}
               type='password'
               placeholder='Confirm Password'
               autoComplete='new-password'
