@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const OverlayCarousel: FC<IProps> = ({overlay: Overlay, images, carousel}: IProps) => (
-  <div style={{position: 'relative'}}>
+  <div className='position-relative'>
     <div className='overlay'>
       <Overlay />
     </div>

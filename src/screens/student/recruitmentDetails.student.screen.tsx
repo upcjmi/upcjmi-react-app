@@ -81,7 +81,7 @@ const RecruitmentDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) =
 
   if (loading)
     return (
-      <div className='container' style={{backgroundColor: '#eee'}}>
+      <div className='container grey lighten-3'>
         <Card>
           <Skeleton />
         </Card>

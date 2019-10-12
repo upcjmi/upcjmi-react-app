@@ -7,9 +7,7 @@ interface IProps {}
 const {Title} = Typography;
 
 const TopRecruiters: FC<IProps> = () => (
-  <div
-    style={{textAlign: 'center', borderBottom: '1px solid #eeeeee'}}
-    className='full-page container center-hv'>
+  <div className='full-page container center-hv center top-recruiter-col'>
     <div>
       <Title>Our Top Recruiters</Title>
 
@@ -18,9 +16,9 @@ const TopRecruiters: FC<IProps> = () => (
           <Col
             xs={24}
             md={8}
-            style={{textAlign: 'center', marginTop: 20, marginBottom: 20}}
+            className='center margin-bottom-20 margin-top-20'
             key={index.toString()}>
-            <img src={recruiter} alt='' style={{maxHeight: 50}} />
+            <img src={recruiter} alt='' className='max-height-50' />
           </Col>
         ))}
       </Row>

@@ -21,12 +21,12 @@ const {Item} = Menu;
 
 const HeaderPills: FC<IProps> = ({mode = 'horizontal', isAuthenticated}: IProps) => (
   <div>
-    <div className='header-pill center-hv' style={{height: '100%'}}>
+    <div className='header-pill center-hv full-height'>
       <SignIn />
     </div>
 
     <div className='header-pill'>
-      <Menu mode={mode} style={{border: 0}} selectedKeys={[]}>
+      <Menu mode={mode} className='no-border' selectedKeys={[]}>
         <Item key='contact'>
           <Link to={CONTACT_PATH}>
             <Icon type='phone' />

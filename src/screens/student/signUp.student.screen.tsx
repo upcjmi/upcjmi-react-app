@@ -41,7 +41,7 @@ const SignUpStudentScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
   const SignUpComponent: any = signUpNavigation[active].component;
 
   return (
-    <div className='container center-hv full-page' style={{backgroundColor: '#EEEEEE'}}>
+    <div className='container center-hv full-page grey lighten-3'>
       <div>
         <Alert
           message={
@@ -49,10 +49,10 @@ const SignUpStudentScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
             'If you are a company representative contact us on rsuri@jmi.ac.in.'
           }
           type='info'
-          style={{maxWidth: '95vw', width: 450}}
+          className='auth-container-type-1'
         />
         <br />
-        <Card style={{maxWidth: '95vw', width: 450}}>
+        <Card className='auth-container-type-1'>
           <Title>Create New Account</Title>
           <br />
           <Steps size='small' labelPlacement='vertical' current={active}>

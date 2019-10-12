@@ -107,14 +107,14 @@ class A2hsPrompt extends Component<IProps, IState> {
         <Text>Install our web app, it wont take any space on your device.</Text>
         <br />
         <br />
-        <div style={{textAlign: 'center'}}>
+        <div className='center'>
           <Button size='small' type='link' onClick={this.handelNotNow}>
             Not Now
           </Button>
           <br />
           <Button
             loading={installing}
-            style={{width: '100%'}}
+            className='full-width'
             size='large'
             type='primary'
             onClick={this.handelPWAInstallPrompt}>

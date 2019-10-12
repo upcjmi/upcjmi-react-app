@@ -13,7 +13,7 @@ const ContactScreen: FC<IProps> = () => (
     <Row>
       <Col xs={24} md={12} className='container'>
         <Title>Contact Us</Title>
-        <Title level={4} style={{fontWeight: 'normal'}}>
+        <Title level={4} className='font-weight-normal'>
           {CONTACT.address.map(line => (
             <div key={line}>
               {line}
@@ -54,9 +54,7 @@ const ContactScreen: FC<IProps> = () => (
     </Row>
     <iframe
       title='Way to University Placement Cell, Jamia Millia Islamia'
-      width='100%'
-      height='320px'
-      style={{marginLeft: 'auto', marginRight: 'auto'}}
+      className='google-map'
       id='gmap_canvas'
       src={
         'https://maps.google.com/maps?' +

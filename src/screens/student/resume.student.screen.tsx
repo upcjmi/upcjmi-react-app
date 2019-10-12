@@ -5,7 +5,7 @@ interface IProps {}
 
 // eslint-disable-next-line no-unused-vars
 const ResumeStudentScreen: FC<IProps> = (props: IProps) => (
-  <div className='container full-page' style={{backgroundColor: '#eee'}}>
+  <div className='container full-page grey lighten-3'>
     <Resume />
   </div>
 );

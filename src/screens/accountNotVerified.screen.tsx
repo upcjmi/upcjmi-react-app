@@ -43,7 +43,7 @@ const SendMailButton: FC<any> = ({email}) => {
       return 'An error occurred while sending your verification mail. Try again later.';
     default:
       return (
-        <div style={{textAlign: 'center'}}>
+        <div className='center'>
           Sent you a mail on &nbsp;
           {email}
           <br />
@@ -57,8 +57,8 @@ const SendMailButton: FC<any> = ({email}) => {
 
 const {Title, Text} = Typography;
 const Message: FC<IProps> = ({user}: IProps) => (
-  <div style={{textAlign: 'left'}}>
-    <Title level={3} style={{textAlign: 'center'}}>
+  <div className='align-left'>
+    <Title level={3} className='center'>
       Verification Process
     </Title>
 
@@ -102,7 +102,7 @@ const Message: FC<IProps> = ({user}: IProps) => (
 
 const AccountNotVerifiedScreen: FC<IProps> = ({user}: IProps) => (
   <div className='container center-hv full-page'>
-    <div style={{maxWidth: 600}}>
+    <div className='max-width-600'>
       <Result
         status='warning'
         title='You account is not yet verified'

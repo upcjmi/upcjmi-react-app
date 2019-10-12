@@ -75,7 +75,7 @@ class AppHeader extends Component<IProps, IState> {
                 style={{justifyContent: selectScreen('center', 'center', null)}}>
                 <img src={JamiaLogo} alt='University Placement Cell, Logo' />
                 &nbsp;&nbsp;&nbsp;
-                <div style={{color: '#000000', fontSize: '0.9rem'}}>
+                <div className='black-text font09rem'>
                   <b>University Placement Cell</b>
                   <br />
                   Jamia Millia Islamia

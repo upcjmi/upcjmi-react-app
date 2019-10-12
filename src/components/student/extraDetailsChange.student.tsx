@@ -55,7 +55,7 @@ const TagEditor: FC<ITagProps> = ({tags, change, addText}: ITagProps) => {
           size='small'
           onChange={e => setInputValue(e.target.value)}
           onPressEnter={addTag}
-          style={{width: 150}}
+          className='width-150'
           autoFocus
         />
       ) : (
@@ -89,10 +89,10 @@ const LinkDisplay: FC<ILinkDisplayProps> = ({type, link, onChange, remove}: ILin
   };
 
   return (
-    <Input.Group compact style={{width: '100%'}}>
+    <Input.Group compact className='full-width'>
       <Select
         value={type}
-        style={{width: '30%'}}
+        className='width-30pr'
         onChange={(value: string) => {
           setProfile(value, link);
         }}>
@@ -103,14 +103,14 @@ const LinkDisplay: FC<ILinkDisplayProps> = ({type, link, onChange, remove}: ILin
         <Option value='M'>Medium</Option>
       </Select>
       <Input
-        style={{width: '60%'}}
+        className='width-60pr'
         placeholder='https://example.com'
         value={link}
         onChange={(e: any) => setProfile(type, e.target.value)}
       />
       {/* eslint-disable-next-line max-len */}
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-      <span style={{width: '10%', textAlign: 'center'}} onClick={remove}>
+      <span className='center width-10pr' onClick={remove}>
         <Icon type='delete' />
       </span>
     </Input.Group>
@@ -160,7 +160,7 @@ const LinkEditor: FC<ILinkEditorProps> = ({links, change}: ILinkEditorProps) => 
           remove={() => removeProfile(index)}
         />
       ))}
-      <Button type='dashed' icon='plus' onClick={addProfile} style={{width: '100%'}}>
+      <Button type='dashed' icon='plus' onClick={addProfile} className='full-width'>
         Add Profile
       </Button>
     </div>
@@ -275,7 +275,7 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
           )}
         </Form.Item>
 
-        <Form.Item label='Your Skills' style={{marginBottom: 0}}>
+        <Form.Item label='Your Skills' className='margin-bottom-0'>
           {getFieldDecorator('skills', {
             rules: [{required: true}],
             initialValue: details.skills,
@@ -288,7 +288,7 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
             addText='Add New Skill'
           />
         </Form.Item>
-        <Form.Item label='Your Profiles' style={{marginBottom: 0}}>
+        <Form.Item label='Your Profiles' className='margin-bottom-0'>
           {getFieldDecorator('profiles', {
             rules: [{required: true}],
             initialValue: details.profiles,
@@ -347,7 +347,7 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
 
         <br />
         <br />
-        <Button type='primary' style={{width: '100%'}} onClick={handelSubmit}>
+        <Button type='primary' className='full-width' onClick={handelSubmit}>
           Save
         </Button>
       </Form>

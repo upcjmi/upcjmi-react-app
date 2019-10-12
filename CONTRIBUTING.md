@@ -21,7 +21,7 @@ Read and Follow [Code of Conduct](/CODE_OF_CONDUCT.md)
 ## Running locally
 
 ```shell script
-git clone https://github.com/Faisal-Manzer/upcjmi-react-app.git
+git clone https://github.com/upcjmi/upcjmi-react-app.git
 cd upcjmi-react-app
 yarn install
 yarn start

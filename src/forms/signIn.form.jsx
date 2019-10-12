@@ -32,7 +32,7 @@ class SignInForm extends React.Component {
             ],
           })(
             <Input
-              prefix={<Icon type='user' style={{color: 'rgba(0,0,0,.25)'}} />}
+              prefix={<Icon type='user' className='input-prefix' />}
               placeholder='Email'
               type='email'
               autoComplete='username email'
@@ -46,7 +46,7 @@ class SignInForm extends React.Component {
             rules: [{required: true, message: 'Please input your Password!'}],
           })(
             <Input
-              prefix={<Icon type='lock' style={{color: 'rgba(0,0,0,.25)'}} />}
+              prefix={<Icon type='lock' className='input-prefix' />}
               type='password'
               placeholder='Password'
               autoComplete='password'
@@ -57,8 +57,7 @@ class SignInForm extends React.Component {
           <Button
             htmlType='submit'
             className='login-form-button'
-            icon={inProgress ? 'loading' : 'login'}
-          >
+            icon={inProgress ? 'loading' : 'login'}>
             Sign In
           </Button>
           <a className='login-form-forgot' href='#!'>

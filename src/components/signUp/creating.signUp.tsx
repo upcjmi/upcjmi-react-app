@@ -5,10 +5,7 @@ import {connect} from 'react-redux';
 
 import {ISignUpData} from 'types/signUp.type';
 import {signUpStudentAPI} from 'helpers/api/api.helper';
-import {
-  signUpFailedNotification,
-  signUpSuccessfullNotification,
-} from 'helpers/notification.helper';
+import {signUpFailedNotification, signUpSuccessfullNotification} from 'helpers/notification.helper';
 import {signIn} from 'actions/auth.action';
 import {IReduxState} from 'reducers';
 import SignInCard from '../signInCard';
@@ -46,7 +43,7 @@ const CreatingSignUp: FC<IProps> = ({
         setStatus('signing');
         signInUser(data.account);
       } catch (e) {
-        signUpFailedNotification(e && e.data? e.data.detail : 'Unknown error occured');
+        signUpFailedNotification(e && e.data ? e.data.detail : 'Unknown error occured');
         setStatus('failed');
       }
     };
@@ -64,7 +61,7 @@ const CreatingSignUp: FC<IProps> = ({
         return <Spin tip='Signing you in' />;
       case 'failed':
         return (
-          <div style={{textAlign: 'center'}}>
+          <div className='center'>
             Failed to create account try again. Make sure all fields are correctly entered.
             <br />
             <Button onClick={startAgain} type='danger'>
@@ -78,7 +75,7 @@ const CreatingSignUp: FC<IProps> = ({
   };
 
   return (
-    <div style={{height: 300}} className='center-hv'>
+    <div className='height-300 center-hv'>
       <div>{spinner()}</div>
     </div>
   );
