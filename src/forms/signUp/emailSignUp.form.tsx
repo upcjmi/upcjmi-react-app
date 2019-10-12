@@ -40,9 +40,7 @@ class EmailSignUpForm extends React.Component<IProps> {
   };
 
   render() {
-    // eslint-disable-next-line react/prop-types
     const {form, data} = this.props;
-    // eslint-disable-next-line react/prop-types
     const {getFieldDecorator} = form;
 
     // @ts-ignore

@@ -7,7 +7,6 @@ import FormCreator from 'components/formCreator';
 import {applicationFormTemplate} from 'forms/student/application.student.tForm';
 import {htmlNotification, openNotificationWithIcon} from 'helpers/notification.helper';
 import {captchaFormTemplate} from 'forms/captcha.tForm';
-// import {getCourseName} from 'helpers/courses';
 
 interface IProps {
   match: any;

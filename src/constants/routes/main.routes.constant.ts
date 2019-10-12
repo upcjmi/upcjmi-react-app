@@ -1,5 +1,5 @@
 import {lazy} from 'react';
-import {IRoute} from '../../types/common.type';
+import {IRoute} from 'types/common.type';
 import {
   COMPANY_PORTAL_HOME_PATH,
   CONTACT_PATH,

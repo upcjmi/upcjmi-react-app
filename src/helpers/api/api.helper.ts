@@ -9,7 +9,6 @@ const USignInWithEmail = 'auth/sign-in/email/';
 const USignInWithGoogle = 'auth/sign-in/google/';
 
 const USignUpStudent = 'student/sign-up/';
-// const USignUpCompanyRepresentative = 'company/sign-up/';
 
 const UContact = 'contact/';
 

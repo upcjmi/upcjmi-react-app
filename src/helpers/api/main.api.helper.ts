@@ -5,13 +5,13 @@ import {reactLocalStorage} from 'reactjs-localstorage';
 import {API_TOKENS} from 'constants/localStorage.constant';
 import {IAccessToken} from 'types/api.type';
 import {IObject} from 'types/common.type';
-import {BASE_URL} from 'constants/credentials.constant';
+import {API_BASE_URL} from 'constants/credentials.constant';
 import {
   signInAgainNotification,
   errorGettingUserInfoNotification,
 } from 'helpers/notification.helper';
 
-axios.defaults.baseURL = BASE_URL;
+axios.defaults.baseURL = API_BASE_URL;
 axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded';
 
 const REFRESH_ACCESS_TOKEN = 'auth/token/refresh/';

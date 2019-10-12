@@ -9,7 +9,7 @@ export interface IUserMeta {
   account: {
     account_verified: boolean;
     email_verified: boolean;
-  }
+  };
 }
 
 export interface ISignInToken {
@@ -46,10 +46,6 @@ export interface IUserExists {
   exists: boolean;
 }
 
-export interface IVerifyEmail {
-  hash: string
-}
-
 export interface IEmail {
-  email: string
+  email: string;
 }

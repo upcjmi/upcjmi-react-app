@@ -4,44 +4,39 @@ import {Link} from 'react-router-dom';
 import {openNotificationWithIcon} from 'helpers/notification.helper';
 import {getAllAvailableCourseAPI} from 'helpers/api/core.api.helper';
 
-interface IProps {
-}
+interface IProps {}
 
 const {Title} = Typography;
-// eslint-disable-next-line no-unused-vars
-const CoursesStudentScreen: FC<IProps> = (props: IProps) => {
+const CoursesStudentScreen: FC<IProps> = () => {
   const [courses, setCourses] = useState([
     {
-      "id": 0,
-      "title": "",
-      "details": "",
-      "open": "",
-      "close": "",
-      "duration": "",
-      "start_date": "",
-      "end_date": ""
-    }]);
+      id: 0,
+      title: '',
+      details: '',
+      open: '',
+      close: '',
+      duration: '',
+      start_date: '',
+      end_date: '',
+    },
+  ]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const load = async () => {
-      try{
+      try {
         const data = await getAllAvailableCourseAPI();
         setCourses(data);
         setLoading(false);
       } catch (e) {
-        openNotificationWithIcon(
-          'error',
-          'Some unknown error occurred',
-          'Try refreshing the page'
-        )
+        openNotificationWithIcon('error', 'Some unknown error occurred', 'Try refreshing the page');
       }
     };
 
     load();
   }, []);
 
-  if(loading)
+  if (loading)
     return (
       <div className='container'>
         <Skeleton />
@@ -50,10 +45,8 @@ const CoursesStudentScreen: FC<IProps> = (props: IProps) => {
 
   return (
     <div className='container'>
-      <Title>
-        Courses offered
-      </Title>
-      {courses.length === 0 && !loading? (
+      <Title>Courses offered</Title>
+      {courses.length === 0 && !loading ? (
         <Card>
           <Empty description='No courses are available for now' />
         </Card>
@@ -63,19 +56,16 @@ const CoursesStudentScreen: FC<IProps> = (props: IProps) => {
           <Descriptions title={course.title}>
             <Descriptions.Item label='Duration'>{course.duration}</Descriptions.Item>
             <Descriptions.Item label='Apply By'>
-              {(new Date(course.close)).toLocaleString()}
+              {new Date(course.close).toLocaleString()}
             </Descriptions.Item>
           </Descriptions>
           <Link to={`/courses/${course.id}/`}>
-            <Button type='primary'>
-              View all details
-            </Button>
+            <Button type='primary'>View all details</Button>
           </Link>
         </Card>
       ))}
     </div>
   );
 };
-
 
 export default CoursesStudentScreen;

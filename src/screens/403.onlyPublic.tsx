@@ -7,9 +7,7 @@ interface IStateProps {
   isAuthenticated: boolean;
 }
 
-interface IDispatchProps {}
-
-interface IProps extends IStateProps, IDispatchProps {}
+interface IProps extends IStateProps {}
 
 const OnlyPublic: FC<IProps> = ({isAuthenticated}: IProps) => (
   <div className='full-page center-hv'>
@@ -32,10 +30,4 @@ const mapStateToProps = (state: any): IStateProps => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-// eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch: any): IDispatchProps => ({});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(OnlyPublic);
+export default connect(mapStateToProps)(OnlyPublic);

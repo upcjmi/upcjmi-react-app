@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {BrowserRouter, Route, Switch, withRouter} from 'react-router-dom';
 import {Result} from 'antd';
 
-import {IDispatchFunction, IRoute, ISidebarRoute} from 'types/common.type';
+import {IRoute, ISidebarRoute} from 'types/common.type';
 import {IReduxState} from 'reducers';
 import {IUserMeta} from 'types/api.type';
 import NotAuthorisedScreen from 'screens/403.screen';
@@ -19,9 +19,7 @@ interface IStateProps {
   connected: boolean | null;
 }
 
-interface IDispatchProps {}
-
-interface IProps extends IStateProps, IDispatchProps {
+interface IProps extends IStateProps {
   match: any;
   sideRoutes: Array<ISidebarRoute>;
   extraRoutes: Array<IRoute>;
@@ -98,13 +96,7 @@ const mapStateToProps = (state: IReduxState): IStateProps => ({
   connected: state.navigator.connected,
 });
 
-// eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch: IDispatchFunction): IDispatchProps => ({});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(
+export default connect(mapStateToProps)(
   withRouter(
     // @ts-ignore
     Portal,

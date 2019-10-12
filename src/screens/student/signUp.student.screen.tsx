@@ -10,9 +10,7 @@ interface IStateProps {
   isAuthenticated: boolean;
 }
 
-interface IDispatchProps {}
-
-interface IProps extends IStateProps, IDispatchProps {}
+interface IProps extends IStateProps {}
 
 const emptyData = {
   basic: {},
@@ -22,7 +20,6 @@ const emptyData = {
 const {Title} = Typography;
 const {Step} = Steps;
 
-// eslint-disable-next-line no-unused-vars
 const SignUpStudentScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
   const [active, setActive] = useState(0);
   const [data, setData] = useState(emptyData);
@@ -79,10 +76,4 @@ const mapStateToProps = (state: IReduxState): IStateProps => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-// eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch: any): IDispatchProps => ({});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SignUpStudentScreen);
+export default connect(mapStateToProps)(SignUpStudentScreen);

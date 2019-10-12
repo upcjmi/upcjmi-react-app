@@ -3,16 +3,13 @@ import {Result} from 'antd';
 import {connect} from 'react-redux';
 
 import {IReduxState} from 'reducers';
-import {IDispatchFunction} from 'types/common.type';
 import SignInScreen from './signIn.screen';
 
 interface IStateProps {
   isAuthenticated: boolean;
 }
 
-interface IDispatchProps {}
-
-interface IProps extends IStateProps, IDispatchProps {}
+interface IProps extends IStateProps {}
 
 const NotAuthorisedScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
   if (isAuthenticated)
@@ -34,10 +31,4 @@ const mapStateToProps = (state: IReduxState): IStateProps => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-// eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch: IDispatchFunction): IDispatchProps => ({});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(NotAuthorisedScreen);
+export default connect(mapStateToProps)(NotAuthorisedScreen);

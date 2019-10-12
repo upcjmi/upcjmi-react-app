@@ -13,7 +13,7 @@ interface IProps {
 
 const {Title} = Typography;
 
-const BasicSignUp: FC<IProps> = ({action, data, next}: IProps) => {
+const BasicSignUpStudent: FC<IProps> = ({action, data, next}: IProps) => {
   const form = (
     // @ts-ignore
     <FormCreator
@@ -44,4 +44,4 @@ const BasicSignUp: FC<IProps> = ({action, data, next}: IProps) => {
   );
 };
 
-export default BasicSignUp;
+export default BasicSignUpStudent;

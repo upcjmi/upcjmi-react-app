@@ -14,7 +14,7 @@ interface IProps {
 
 const {Title} = Typography;
 
-const AccountSignUp: FC<IProps> = ({action, data, next}: IProps) => {
+const AccountSignUpStudent: FC<IProps> = ({action, data, next}: IProps) => {
   const saveData = async (signInData: any) => {
     const {exists} = await doesUserExistsAPI(signInData.email);
     if (!exists) {
@@ -51,4 +51,4 @@ const AccountSignUp: FC<IProps> = ({action, data, next}: IProps) => {
   );
 };
 
-export default AccountSignUp;
+export default AccountSignUpStudent;

@@ -1,15 +1,9 @@
 import React, {FC} from 'react';
 
-interface IProps {
-}
+interface IProps {}
 
-
-// eslint-disable-next-line no-unused-vars
-const InternshipsStudentScreen: FC<IProps> = (props: IProps) => (
-  <div className='container'>
-    Internship search coming soon
-  </div>
+const InternshipsStudentScreen: FC<IProps> = () => (
+  <div className='container'>Internship search coming soon</div>
 );
-
 
 export default InternshipsStudentScreen;

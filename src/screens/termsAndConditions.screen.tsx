@@ -1,17 +1,13 @@
 import React, {FC} from 'react';
 import {Typography} from 'antd';
 
-interface IProps {
-}
+interface IProps {}
 
 const {Title} = Typography;
 
-// eslint-disable-next-line no-unused-vars
-const TermsAndConditionsScreen: FC<IProps> = (props: IProps) => (
+const TermsAndConditionsScreen: FC<IProps> = () => (
   <div className='container'>
-    <Title>
-      Terms and Condition
-    </Title>
+    <Title>Terms and Condition</Title>
     This is yet to be updated
   </div>
 );

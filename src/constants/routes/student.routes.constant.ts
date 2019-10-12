@@ -1,5 +1,5 @@
 import {lazy} from 'react';
-import {IRoute, ISidebarRoute} from '../../types/common.type';
+import {IRoute, ISidebarRoute} from 'types/common.type';
 
 export const studentSideRoutes: Array<ISidebarRoute> = [
   {

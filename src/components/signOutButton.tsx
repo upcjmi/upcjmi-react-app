@@ -10,9 +10,7 @@ interface IStateProps {
   signedWith: ISignInOptions;
 }
 
-interface IDispatchProps {}
-
-interface IProps extends IStateProps, IDispatchProps {
+interface IProps extends IStateProps {
   redirect?: boolean;
 }
 

@@ -3,14 +3,11 @@ import {Typography, Skeleton, Card, Empty} from 'antd';
 import CompanyDrives from 'components/student/companyDrives.student';
 import {getAllCompaniesAPI} from 'helpers/api/company.api.helper';
 
-interface IProps {
-}
-
+interface IProps {}
 
 const {Title} = Typography;
 
-// eslint-disable-next-line no-unused-vars
-const RecruitmentStudentScreen: FC<IProps> = (props: IProps) => {
+const RecruitmentStudentScreen: FC<IProps> = () => {
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -31,23 +28,22 @@ const RecruitmentStudentScreen: FC<IProps> = (props: IProps) => {
 
   return (
     <div className='container'>
-      <Title>
-        Recruitment Drives
-      </Title>
+      <Title>Recruitment Drives</Title>
       {jobs.length === 0 && !loading ? (
         <Card>
           <Empty description='No jobs are available for now' />
         </Card>
       ) : null}
 
-      {loading? (
+      {loading ? (
         <Card>
           <Skeleton />
         </Card>
-      ) : jobs}
+      ) : (
+        jobs
+      )}
     </div>
   );
 };
-
 
 export default RecruitmentStudentScreen;

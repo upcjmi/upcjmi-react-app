@@ -25,7 +25,6 @@ class App extends Component<IProps, IState> {
     super(props);
 
     this.state = {
-      // eslint-disable-next-line react/no-unused-state
       width: window.innerWidth,
     };
   }

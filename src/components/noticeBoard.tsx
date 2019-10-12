@@ -5,7 +5,7 @@ interface IProps {}
 
 const {Title} = Typography;
 
-const NoticeBoard: FC<IProps> = (props: IProps) => (
+const NoticeBoard: FC<IProps> = () => (
   <div>
     <Title level={3}>Notice Board</Title>
     <Card className='overflow-scroll height-300' />

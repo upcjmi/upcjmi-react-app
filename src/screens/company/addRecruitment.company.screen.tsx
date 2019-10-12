@@ -8,7 +8,7 @@ interface IProps {}
 const {Title} = Typography;
 const {Step} = Steps;
 
-const AddRecruitmentCompanyScreen: FC<IProps> = (props: IProps) => (
+const AddRecruitmentCompanyScreen: FC<IProps> = () => (
   <div className='container'>
     <Row gutter={24}>
       <Col sm={24} md={12} offset={selectScreen(0, 6)}>

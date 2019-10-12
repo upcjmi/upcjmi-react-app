@@ -1,7 +1,7 @@
 body {
   font-family: Avenir, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
-    'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif,
+  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
   font-size: 1.1rem;
   overflow-x: hidden;
 }
@@ -89,161 +89,202 @@ main .portal {
 
 *:not(input, textarea, .CodeMirror) {
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  -o-user-select: none;
   user-select: none;
 }
 
 img {
   pointer-events: none;
 }
-.full-width{
+
+.full-width {
   width: 100%
 }
-.full-height{
-  height:100%
+
+.full-height {
+  height: 100%
 }
-.black{
+
+.black {
   background-color: #000;
 }
-.white{
+
+.white {
   background-color: #fff;
 }
-.center{
+
+.center {
   text-align: center;
 }
-.align-justify{
+
+.align-justify {
   text-align: justify;
 }
-.black-text{
-  color:#000;
+
+.black-text {
+  color: #000;
 }
-.white-text{
-  color:#fff;
+
+.white-text {
+  color: #fff;
 }
-.no-border{
-  border:0px
+
+.no-border {
+  border: 0
 }
-.grey.lighten-3{
-  background-color:#eee
+
+.grey.lighten-3 {
+  background-color: #eee
 }
-.grey-text.lighten-3{
-  color:#eee
+
+.grey-text.lighten-3 {
+  color: #eee
 }
-.over-flow{
+
+.over-flow {
   overflow: scroll;
 }
-.position-relative{
+
+.position-relative {
   position: relative;
 }
-.float-right{
-  float:right;
+
+.float-right {
+  float: right;
 }
-.float-left{
-  float:left
+
+.float-left {
+  float: left
 }
-.input-prefix{
-  color: rgba(0,0,0,.25);
+
+.input-prefix {
+  color: rgba(0, 0, 0, .25);
 }
-.StackOverflowIcon{
+
+.StackOverflowIcon {
   fill: #595959;
   height: 30px;
   width: 30px;
   margin-left: 15px;
 }
-.margin-left-15{
+
+.margin-left-15 {
   margin-left: 15px;
 }
-.linkType-1{
-  color:#cccccc
+
+.linkType-1 {
+  color: #cccccc
 }
-.inline-block{
+
+.inline-block {
   display: inline-block;
 }
-.google-map{
-  width:100%;
-  height:320px;
+
+.google-map {
+  width: 100%;
+  height: 320px;
   margin-left: auto;
   margin-right: auto;
 }
-.font09rem{
-  font-size:0.9rem;
+
+.font09rem {
+  font-size: 0.9rem;
 }
-.font-weight-normal{
-  font-weight:normal
+
+.font-weight-normal {
+  font-weight: normal
 }
-.font-weight-bold{
+
+.font-weight-bold {
   font-weight: bold;
 }
-.about-us-col{
+
+.about-us-col {
   font-size: 1.3rem;
   text-align: justify;
 }
-.jmi-logo1{
+
+.jmi-logo1 {
   max-height: 200px
 }
-.height-300{
-  height:300px;
+
+.height-300 {
+  height: 300px;
 }
-.max-height-50{
+
+.max-height-50 {
   max-height: 50px
 }
-.signinScreen-card{
+
+.signinScreen-card {
   max-width: 95vw;
   width: 450px
 }
-.auth-container-type-1{
+
+.auth-container-type-1 {
   max-width: 95vw;
   width: 450px
 }
-.max-width-600{
-  max-width:600px;
+
+.max-width-600 {
+  max-width: 600px;
 }
-.margin-bottom-0{
-  margin-bottom: 0px;
+
+.margin-bottom-0 {
+  margin-bottom: 0;
 }
-.margin-bottom-20{
+
+.margin-bottom-20 {
   margin-bottom: 20px;
 }
-.margin-top-20{
+
+.margin-top-20 {
   margin-top: 20px
 }
-.width-30pr{
-  width:30%;
+
+.width-30pr {
+  width: 30%;
 }
-.width-60pr{
-  width:60%;
+
+.width-60pr {
+  width: 60%;
 }
-.width-10pr{
-  width:10%;
+
+.width-10pr {
+  width: 10%;
 }
-.width-150{
-  width:150px
+
+.width-150 {
+  width: 150px
 }
-.portal-side-nav{
+
+.portal-side-nav {
   position: fixed;
   top: 0;
   height: 100vh;
   transition: left 0.2s;
   z-index: 1;
 }
-.portal-side-nav .logo-container{
+
+.portal-side-nav .logo-container {
   height: 64px;
   background-color: #ffffff;
   width: 80px;
 }
-.top-recruiter-col{
+
+.top-recruiter-col {
   border-bottom: 1px solid #eeeeee;
 }
-.profile-extra-details{
+
+.profile-extra-details {
   display: flex;
-  alignItems: center;
+  align-items: center;
   position: relative;
   left: -15ps
 }
-.profile-extra-details a{
-  font-size: 30;
-  color: red;  
+
+.profile-extra-details a {
+  font-size: 30px;
+  color: red;
 }

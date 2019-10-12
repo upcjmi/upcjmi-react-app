@@ -18,7 +18,7 @@
  Jamia Millia Islamia, New Delhi - 110025
 
  University Placement Cell, hereby disclaims all copyright interest in the program
- `upcjmi-react-app' is written by Faisal Manzer.
+ `upcjmi-react-app' is written by Faisal Manzer <faisal_manzer@yahoo.in>.
  */
 
 import React from 'react';
@@ -30,7 +30,4 @@ import * as serviceWorker from 'serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.register();

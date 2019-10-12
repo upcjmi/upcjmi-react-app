@@ -1,16 +1,11 @@
 import React, {FC, useEffect, useState} from 'react';
-import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Icon, Menu, Popover} from 'antd';
 
 import {ISidebarRoute} from 'types/common.type';
 import {selectScreen} from 'helpers/screen.helper';
 
-interface IStateProps {}
-
-interface IDispatchProps {}
-
-interface IProps extends IStateProps, IDispatchProps {
+interface IProps {
   routes: Array<ISidebarRoute>;
   match: string;
 }
@@ -75,13 +70,4 @@ const PortalNavigator: FC<IProps> = ({routes}: IProps) => {
   );
 };
 
-// eslint-disable-next-line no-unused-vars
-const mapStateToProps = (state: any): IStateProps => ({});
-
-// eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch: any): IDispatchProps => ({});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(PortalNavigator);
+export default PortalNavigator;
