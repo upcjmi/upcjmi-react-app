@@ -4,7 +4,7 @@ import {Card, Typography, Alert, Steps, Icon} from 'antd';
 import {IReduxState} from 'reducers';
 import LoadingScreen from 'screens/loading.screen';
 import OnlyPublic from 'screens/403.onlyPublic';
-import {signUpNavigation} from 'constants/signUp';
+import {signUpNavigation} from 'constants/signUpNavigation.constant';
 
 interface IStateProps {
   isAuthenticated: boolean;
@@ -46,7 +46,7 @@ const SignUpStudentScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
         <Alert
           message={
             'This is only for students. ' +
-            'If you are a company representative contact us via mail.'
+            'If you are a company representative contact us on rsuri@jmi.ac.in.'
           }
           type='info'
           style={{maxWidth: '95vw', width: 450}}

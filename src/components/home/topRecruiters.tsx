@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {Typography, Row, Col} from 'antd';
-import {TOP_RECRUITERS} from 'constants/home/topRecruiters.constant';
+import {TOP_RECRUITERS} from 'constants/home/topRecruiters.home.constant';
 
 interface IProps {}
 

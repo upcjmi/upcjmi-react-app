@@ -5,11 +5,10 @@ import {verifyEmailAPI} from 'helpers/api/api.helper';
 import {openNotificationWithIcon} from 'helpers/notification.helper';
 
 interface IProps {
-  match: any
+  match: any;
 }
 
 const EmailVerificationScreen: FC<IProps> = ({match}: any) => {
-
   const [verifing, setVerifing] = useState(true);
   const [email, setEmail] = useState('');
 
@@ -28,7 +27,7 @@ const EmailVerificationScreen: FC<IProps> = ({match}: any) => {
   });
 
   const display = () => {
-    if(verifing)
+    if (verifing)
       return (
         <>
           <Spin size='large' tip='Verifying your email' />
@@ -36,29 +35,22 @@ const EmailVerificationScreen: FC<IProps> = ({match}: any) => {
         </>
       );
 
-    if(email !== '')
+    if (email !== '')
       return (
         <Result
           icon={<Icon type='smile' theme='twoTone' />}
           status='success'
-          title={`You email ${email} has been verified`}
+          title={`Your email ${email} has been verified`}
           extra='Continue by signing in.'
         />
       );
 
-    return (
-      <Result
-        status='warning'
-        title='Trouble verifying your email'
-      />
-    )
+    return <Result status='warning' title='Trouble verifying your email' />;
   };
 
   return (
     <div className='container center-hv full-page'>
-      <div>
-        {display()}
-      </div>
+      <div>{display()}</div>
     </div>
   );
 };

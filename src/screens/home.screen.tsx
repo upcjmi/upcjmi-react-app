@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom';
 
 import OverlayCarousel from 'components/overlayCarousel';
 import AboutUs from 'components/home/aboutUs';
-import {HOME_CAROUSEL} from 'constants/carousel/home.constant';
-import {BADGES} from 'constants/home/badges.constant';
+import {HOME_CAROUSEL} from 'constants/home/carousel.home.constant';
+import {BADGES} from 'constants/home/badges.home.constant';
 import TopRecruiters from 'components/home/topRecruiters';
 
 import {selectScreen} from 'helpers/screen.helper';

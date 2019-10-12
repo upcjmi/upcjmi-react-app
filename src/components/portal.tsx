@@ -1,6 +1,7 @@
 import React, {FC, Suspense, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter, Route, Switch, withRouter} from 'react-router-dom';
+import {Result} from 'antd';
 
 import {IDispatchFunction, IRoute, ISidebarRoute} from 'types/common.type';
 import {IReduxState} from 'reducers';
@@ -15,6 +16,7 @@ import SideBar from './portalNavigator';
 interface IStateProps {
   user: IUserMeta | undefined;
   isAuthenticated: boolean;
+  connected: boolean | null;
 }
 
 interface IDispatchProps {}
@@ -36,6 +38,7 @@ const Portal: FC<IProps> = (props: IProps) => {
     extraRoutes,
     sideRoutes,
     baseLocation = '/portal/',
+    connected,
   } = props;
 
   useEffect(() => {
@@ -45,6 +48,15 @@ const Portal: FC<IProps> = (props: IProps) => {
       document.getElementsByTagName('footer')[0].classList.remove('footer-hide');
     };
   });
+
+  if (connected === null) return <LoadingScreen />;
+
+  if (!connected)
+    return (
+      <div className='full-page center-hv'>
+        <Result status='500' />
+      </div>
+    );
 
   if (!isAuthenticated) return <NotAuthorisedScreen />;
   if (user && user.type !== allowedType) return <NotAuthorisedScreen />;
@@ -83,6 +95,7 @@ const Portal: FC<IProps> = (props: IProps) => {
 const mapStateToProps = (state: IReduxState): IStateProps => ({
   user: state.auth.user,
   isAuthenticated: state.auth.isAuthenticated,
+  connected: state.navigator.connected,
 });
 
 // eslint-disable-next-line no-unused-vars

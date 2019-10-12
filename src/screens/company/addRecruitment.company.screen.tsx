@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {Typography, Card, Col, Row, Steps, Icon} from 'antd';
 import BasicAddRecruitment from 'components/company/addRecruitment/basic.addRecruitment';
-import {selectScreen} from '../../helpers/screen.helper';
+import {selectScreen} from 'helpers/screen.helper';
 
 interface IProps {}
 
@@ -17,7 +17,7 @@ const AddRecruitmentCompanyScreen: FC<IProps> = (props: IProps) => (
           <Steps size='small' labelPlacement='vertical'>
             <Step title='Basic Details' icon={<Icon type='solution' />} />
             <Step title='Rounds' icon={<Icon type='profile' />} />
-            <Step title='Data Request' icon={<Icon type='smile-o' />} />
+            <Step title='Eligibility' icon={<Icon type='smile-o' />} />
           </Steps>
           <br />
           <BasicAddRecruitment />
