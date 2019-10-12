@@ -1,8 +1,8 @@
 {
   "name": "upcjmi",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "private": false,
-  "license": "Apache-2.0",
+  "license": "GPL-2.0",
   "homepage": "https://upcjmi.com",
   "dependencies": {
     "antd": "^3.23.6",
@@ -32,7 +32,7 @@
     "typescript": "^3.6.4"
   },
   "scripts": {
-    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "analyze": "yarn build && source-map-explorer 'build/static/js/*.js'",
     "start": "sh -ac 'source .env.development'; react-app-rewired start",
     "build": "sh -ac 'source .env.production'; react-app-rewired build",
     "test": "react-app-rewired test",

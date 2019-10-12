@@ -4,8 +4,6 @@ import {Link} from 'react-router-dom';
 import {Icon, Menu, Popover} from 'antd';
 
 import {ISidebarRoute} from 'types/common.type';
-
-import 'styles/sidebar.scss';
 import {selectScreen} from 'helpers/screen.helper';
 
 interface IStateProps {}

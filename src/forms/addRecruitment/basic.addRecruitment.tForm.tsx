@@ -1,6 +1,5 @@
 import {FORM_ELEMENT_TYPES} from 'constants/formFields.constant';
 
-
 const jobDetailsInitialValue = `TIP: Get a preview by clicking on _eye icon_ in the tool menu.
 # ![Logo URL](http://bit.ly/2mHv0do) Company name
 ## Roles & Responsibilities
@@ -37,36 +36,33 @@ export const basicAddRecruitmentTForm =
       label: 'Base Package',
       name: 'package',
       kwargs: {
-        placeholder: 'ex: 25LPA',
+        placeholder: 'ex: 25',
+        prefix: 'Rs. ',
+        suffix: 'Lakhs Per Annum',
       },
       type: FORM_ELEMENT_TYPES.INPUT,
-      rules: [
-        {required: true},
-      ],
+      rules: [{required: true}],
     },
-
     {
       label: 'Questions required',
       name: 'application_required',
       type: FORM_ELEMENT_TYPES.SWITCH,
-      help: 'Ask some basic question from candidates before application'
+      help: 'Ask some basic question from candidates before application',
     },
     {
       label: 'Job Description',
       name: 'about',
       initialValue: jobDetailsInitialValue,
       type: FORM_ELEMENT_TYPES.MARKDOWN,
-      rules: [
-        {required: true},
-      ],
-    }, {
-      label: form.getFieldValue('application_required')? 'Questions' : '',
+      rules: [{required: true}],
+    },
+    {
+      label: form.getFieldValue('application_required') ? 'Questions' : '',
       name: 'application',
       initialValue: questionInitialValue,
-      type: form.getFieldValue('application_required')?
-        FORM_ELEMENT_TYPES.MARKDOWN : FORM_ELEMENT_TYPES.HIDDEN,
-      rules: [
-        {required: form.getFieldValue('application_required')},
-      ],
+      type: form.getFieldValue('application_required')
+        ? FORM_ELEMENT_TYPES.MARKDOWN
+        : FORM_ELEMENT_TYPES.HIDDEN,
+      rules: [{required: form.getFieldValue('application_required')}],
     },
   ];
