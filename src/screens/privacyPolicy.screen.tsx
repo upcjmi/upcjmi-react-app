@@ -1,20 +1,15 @@
 import React, {FC} from 'react';
 import {Typography} from 'antd';
 
-interface IProps {
-}
+interface IProps {}
 
 const {Title} = Typography;
 
-// eslint-disable-next-line no-unused-vars
-const PrivacyPolicyScreen: FC<IProps> = (props: IProps) => (
+const PrivacyPolicyScreen: FC<IProps> = () => (
   <div className='container'>
-    <Title>
-      Privacy Policy
-    </Title>
+    <Title>Privacy Policy</Title>
     This is yet to be updated
   </div>
 );
-
 
 export default PrivacyPolicyScreen;

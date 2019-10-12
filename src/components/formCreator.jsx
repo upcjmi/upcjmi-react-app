@@ -332,10 +332,5 @@ const mapStateToProps = state => ({
   state,
 });
 
-const mapDispatchToProps = dispatch => ({});
-
 const WrappedFormCreator = Form.create({})(FormCreator);
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(WrappedFormCreator);
+export default connect(mapStateToProps)(WrappedFormCreator);

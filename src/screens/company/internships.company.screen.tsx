@@ -1,14 +1,7 @@
 import React, {FC} from 'react';
 
-interface IProps {
-}
+interface IProps {}
 
-
-const InternshipsCompanyScreen: FC<IProps> = (props: IProps) => (
-  <div>
-    InternshipsCompanyScreen
-  </div>
-);
-
+const InternshipsCompanyScreen: FC<IProps> = () => <div>InternshipsCompanyScreen</div>;
 
 export default InternshipsCompanyScreen;

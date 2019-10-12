@@ -30,8 +30,7 @@ const DefaultSignOut: FC<IProps> = ({signOut, history, redirect = true}: IProps)
   </Button>
 );
 
-// eslint-disable-next-line no-unused-vars
-const mapStateToProps = (state: any): IStateProps => ({});
+const mapStateToProps = (): IStateProps => ({});
 
 const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
   signOut: redirect => dispatch(signOutAction(redirect)),

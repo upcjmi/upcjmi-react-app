@@ -4,100 +4,98 @@ import {get} from 'helpers/function.helper';
 import {allCoursesOption} from 'constants/allOfferedCourses';
 import {getCourse} from 'helpers/courses';
 
-export const basicSignUpTForm =
-  // eslint-disable-next-line no-unused-vars
-  (state: any, initialValues: any, extraValues: any, form: any) => [
-    {
-      label: 'Name',
-      name: 'name',
-      initialValue: get(initialValues, 'name'),
-      kwargs: {
-        placeholder: 'ex: Faisal Manzer',
-      },
-      type: FORM_ELEMENT_TYPES.INPUT,
-      rules: [{required: true}],
+export const basicSignUpTForm = (state: any, initialValues: any, extraValues: any, form: any) => [
+  {
+    label: 'Name',
+    name: 'name',
+    initialValue: get(initialValues, 'name'),
+    kwargs: {
+      placeholder: 'ex: Faisal Manzer',
     },
-    {
-      label: 'Roll number',
-      name: 'roll',
-      initialValue: get(initialValues, 'roll'),
-      kwargs: {
-        placeholder: 'ex: 17BCE064',
-      },
-      type: FORM_ELEMENT_TYPES.INPUT,
-      rules: [
-        {required: true},
-        {
-          pattern: /(20)?\d{2}\w+\d{3}/,
-          message: 'Roll number is not in valid pattern. ',
-        },
-      ],
+    type: FORM_ELEMENT_TYPES.INPUT,
+    rules: [{required: true}],
+  },
+  {
+    label: 'Roll number',
+    name: 'roll',
+    initialValue: get(initialValues, 'roll'),
+    kwargs: {
+      placeholder: 'ex: 17BCE064',
     },
-    {
-      label: 'Student ID',
-      name: 'student_id',
-      initialValue: get(initialValues, 'student_id'),
-      kwargs: {
-        placeholder: 'ex: 20177089',
+    type: FORM_ELEMENT_TYPES.INPUT,
+    rules: [
+      {required: true},
+      {
+        pattern: /(20)?\d{2}\w+\d{3}/,
+        message: 'Roll number is not in valid pattern. ',
       },
-      type: FORM_ELEMENT_TYPES.INPUT,
-      rules: [
-        {required: true},
-        {
-          pattern: /^\d{8,9}$/,
-          message: 'Not valid Student ID, normally Student ID is of 8 or 9 digit',
-        },
-      ],
+    ],
+  },
+  {
+    label: 'Student ID',
+    name: 'student_id',
+    initialValue: get(initialValues, 'student_id'),
+    kwargs: {
+      placeholder: 'ex: 20177089',
     },
-    {
-      label: 'Course',
-      name: 'course',
-      initialValue: (() => {
-        const hash = get(initialValues, 'course');
-        if (hash) {
-          const course = getCourse(hash);
-          course[2] = hash;
-          return course;
-        }
+    type: FORM_ELEMENT_TYPES.INPUT,
+    rules: [
+      {required: true},
+      {
+        pattern: /^\d{8,9}$/,
+        message: 'Not valid Student ID, normally Student ID is of 8 or 9 digit',
+      },
+    ],
+  },
+  {
+    label: 'Course',
+    name: 'course',
+    initialValue: (() => {
+      const hash = get(initialValues, 'course');
+      if (hash) {
+        const course = getCourse(hash);
+        course[2] = hash;
+        return course;
+      }
 
-        return hash;
-      })(),
-      kwargs: {
-        placeholder: 'ex: Undergraduate / B.Tech. / Civil Engineering',
-        options: allCoursesOption,
-        showSearch: true,
-        onChange: (value: Array<string>) => {
-          form.setFieldsValue({course: value[2]});
-        },
-      },
-      type: FORM_ELEMENT_TYPES.CASCADER,
-      rules: [{required: true}],
-    },
-    {
-      label: 'Year',
-      name: 'year',
-      initialValue: get(initialValues, 'year'),
-      type: FORM_ELEMENT_TYPES.SELECT,
-      rules: [{required: true}],
-      options: {
-        '1': '1st year',
-        '2': '2nd year',
-        '3': '3rd year',
-        '4': '4th year',
-        '5': '5th year',
-      },
-      kwargs: {
-        placeholder: '2nd year',
+      return hash;
+    })(),
+    kwargs: {
+      placeholder: 'ex: Undergraduate / B.Tech. / Civil Engineering',
+      options: allCoursesOption,
+      showSearch: true,
+      onChange: (value: Array<string>) => {
+        form.setFieldsValue({course: value[2]});
       },
     },
-    {
-      label: 'Number',
-      name: 'phone_number',
-      type: FORM_ELEMENT_TYPES.INPUT,
-      initialValue: get(initialValues, 'phone_number'),
-      rules: [{required: true}, {pattern: /^\d{10}$/, message: 'Not a Valid Indian Phone Number'}],
-      kwargs: {
-        addonBefore: '+91',
-      },
+    type: FORM_ELEMENT_TYPES.CASCADER,
+    rules: [{required: true}],
+  },
+  {
+    label: 'Year',
+    name: 'year',
+    initialValue: get(initialValues, 'year'),
+    type: FORM_ELEMENT_TYPES.SELECT,
+    rules: [{required: true}],
+    options: {
+      '1': '1st year',
+      '2': '2nd year',
+      '3': '3rd year',
+      '4': '4th year',
+      '5': '5th year',
     },
-  ];
+    kwargs: {
+      placeholder: '2nd year',
+    },
+  },
+  {
+    label: 'Number',
+    name: 'phone_number',
+    type: FORM_ELEMENT_TYPES.INPUT,
+    initialValue: get(initialValues, 'phone_number'),
+    rules: [{required: true}, {pattern: /^\d{10}$/, message: 'Not a Valid Indian Phone Number'}],
+    kwargs: {
+      addonBefore: '+91',
+    },
+  },
+];

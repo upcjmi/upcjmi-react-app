@@ -17,8 +17,7 @@ interface IProps {}
 
 const {Title} = Typography;
 
-// eslint-disable-next-line no-unused-vars
-const Footer: FC<IProps> = (props: IProps) => (
+const Footer: FC<IProps> = () => (
   <footer>
     <Row>
       <Col xs={24} md={12}>

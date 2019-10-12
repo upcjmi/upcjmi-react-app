@@ -1,5 +1,5 @@
 import {LazyExoticComponent} from 'react';
-import {IReduxState} from 'reducers';
+// import {IReduxState} from 'reducers';
 
 export interface IReducerAction {
   type: string;
@@ -23,7 +23,7 @@ export interface ISidebarRoute {
   screen?: LazyExoticComponent<any>;
   icon: string;
   name: string;
-  children?: Array<ISidebarRoute>
+  children?: Array<ISidebarRoute>;
 }
 
 export interface ICarousel {
@@ -31,9 +31,9 @@ export interface ICarousel {
   caption: string;
 }
 
-export interface IGetStateFunction {
-  (): IReduxState;
-}
+// export interface IGetStateFunction {
+//   (): IReduxState;
+// }
 
 export interface IObject {
   [key: string]: any;

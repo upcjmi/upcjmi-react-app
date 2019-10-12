@@ -2,7 +2,6 @@ import React, {FC} from 'react';
 import {connect} from 'react-redux';
 import {Typography, Row, Col, Card, Button, Descriptions} from 'antd';
 
-import {IDispatchFunction} from 'types/common.type';
 import {IReduxState} from 'reducers';
 import {IUserMeta} from 'types/api.type';
 import NoticeBoard from 'components/noticeBoard';
@@ -13,9 +12,7 @@ interface IStateProps {
   isAuthenticated: boolean;
 }
 
-interface IDispatchProps {}
-
-interface IProps extends IStateProps, IDispatchProps {}
+interface IProps extends IStateProps {}
 
 const {Title, Text} = Typography;
 
@@ -78,10 +75,4 @@ const mapStateToProps = (state: IReduxState): IStateProps => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-// eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch: IDispatchFunction): IDispatchProps => ({});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(HomeCompanyScreen);
+export default connect(mapStateToProps)(HomeCompanyScreen);

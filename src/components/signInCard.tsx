@@ -19,9 +19,7 @@ interface IStateProps {
   user: IUserMeta | undefined;
 }
 
-interface IDispatchProps {}
-
-interface IProps extends IStateProps, IDispatchProps {}
+interface IProps extends IStateProps {}
 
 const {Title} = Typography;
 

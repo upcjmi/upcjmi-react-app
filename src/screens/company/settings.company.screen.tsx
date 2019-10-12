@@ -1,14 +1,7 @@
 import React, {FC} from 'react';
 
-interface IProps {
-}
+interface IProps {}
 
-
-const SettingsCompanyScreen: FC<IProps> = (props: IProps) => (
-  <div>
-    SettingsCompanyScreen
-  </div>
-);
-
+const SettingsCompanyScreen: FC<IProps> = () => <div>SettingsCompanyScreen</div>;
 
 export default SettingsCompanyScreen;

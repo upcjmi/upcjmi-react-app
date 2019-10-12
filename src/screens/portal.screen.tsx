@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
 import {IReduxState} from 'reducers';
-import {IDispatchFunction} from 'types/common.type';
 import SignInScreen from './signIn.screen';
 import {IUserMeta} from '../types/api.type';
 import {
@@ -15,9 +14,7 @@ interface IStateProps {
   user: IUserMeta | undefined;
 }
 
-interface IDispatchProps {}
-
-interface IProps extends IStateProps, IDispatchProps {}
+interface IProps extends IStateProps {}
 
 const PortalScreen: FC<IProps> = ({user}: IProps) => {
   const type = user ? user.type : '';
@@ -36,10 +33,4 @@ const mapStateToProps = (state: IReduxState): IStateProps => ({
   user: state.auth.user,
 });
 
-// eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch: IDispatchFunction): IDispatchProps => ({});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(PortalScreen);
+export default connect(mapStateToProps)(PortalScreen);

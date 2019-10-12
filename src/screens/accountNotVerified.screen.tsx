@@ -8,8 +8,12 @@ interface IProps {
   user: IUserMeta;
 }
 
-// @ts-ignore
-const SendMailButton: FC<any> = ({email}) => {
+interface ISendMailButtonProps {
+  email: string;
+}
+
+// TODO: Add countdown
+const SendMailButton: FC<ISendMailButtonProps> = ({email}: ISendMailButtonProps) => {
   const [status, setStatus] = useState('sent');
   const [nextActive, setNextActive] = useState(1000 * 60 * 2);
 
@@ -40,7 +44,7 @@ const SendMailButton: FC<any> = ({email}) => {
         </Button>
       );
     case 'error':
-      return 'An error occurred while sending your verification mail. Try again later.';
+      return <div>An error occurred while sending your verification mail. Try again later.</div>;
     default:
       return (
         <div className='center'>

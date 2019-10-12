@@ -8,8 +8,9 @@ import {GOOGLE_OAUTH_CLIENT_ID} from 'constants/credentials.constant';
 import {IReduxState} from 'reducers';
 import {signOutAction} from 'actions/auth.action';
 
-// eslint-disable-next-line no-undef
-interface IStateProps {}
+interface IStateProps {
+  isAuthenticated: boolean;
+}
 
 interface IDispatchProps {
   signOut(redirect: any): any;

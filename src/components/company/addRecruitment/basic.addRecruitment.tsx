@@ -7,7 +7,7 @@ interface IProps {}
 
 const {Title} = Typography;
 
-const BasicAddRecruitment: FC<IProps> = (props: IProps) => {
+const BasicAddRecruitment: FC<IProps> = () => {
   const form = (
     // @ts-ignore
     <FormCreator formTemplate={basicAddRecruitmentTForm} submitButtonText='Save and Next' />

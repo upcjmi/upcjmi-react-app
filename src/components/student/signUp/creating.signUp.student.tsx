@@ -8,7 +8,7 @@ import {signUpStudentAPI} from 'helpers/api/api.helper';
 import {signUpFailedNotification, signUpSuccessfullNotification} from 'helpers/notification.helper';
 import {signIn} from 'actions/auth.action';
 import {IReduxState} from 'reducers';
-import SignInCard from '../signInCard';
+import SignInCard from '../../signInCard';
 
 interface IStateProps {
   isAuthenticated: boolean;
@@ -24,7 +24,7 @@ interface IProps extends IStateProps, IDispatchProps {
   startAgain: any;
 }
 
-const CreatingSignUp: FC<IProps> = ({
+const CreatingSignUpStudent: FC<IProps> = ({
   data,
   action,
   startAgain,
@@ -94,5 +94,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps,
-  )(CreatingSignUp),
+  )(CreatingSignUpStudent),
 );

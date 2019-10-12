@@ -23,8 +23,7 @@ const EmailSignIn: FC<IProps> = (props: IProps) => {
   );
 };
 
-// eslint-disable-next-line no-unused-vars
-const mapStateToProps = (state: any): IStateProps => ({});
+const mapStateToProps = (): IStateProps => ({});
 
 const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
   signIn: (email, password) => dispatch(signInWithEmailAction(email, password)),

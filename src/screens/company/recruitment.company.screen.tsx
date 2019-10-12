@@ -2,8 +2,7 @@ import React, {FC} from 'react';
 import {Typography, Button, Table} from 'antd';
 import {Link} from 'react-router-dom';
 
-interface IProps {
-}
+interface IProps {}
 
 const {Title} = Typography;
 
@@ -27,14 +26,12 @@ const columns = [
     title: 'Selected students',
     dataIndex: 'selected',
     key: 'selected',
-  }
+  },
 ];
 
-const RecruitmentCompanyScreen: FC<IProps> = (props: IProps) => (
+const RecruitmentCompanyScreen: FC<IProps> = () => (
   <div className='container'>
-    <Title>
-      Recruitment
-    </Title>
+    <Title>Recruitment</Title>
     <Link to='/recruitment/add/'>
       <Button type='primary' icon='plus'>
         Add Recruitment
@@ -45,6 +42,5 @@ const RecruitmentCompanyScreen: FC<IProps> = (props: IProps) => (
     <Table columns={columns} dataSource={[]} />
   </div>
 );
-
 
 export default RecruitmentCompanyScreen;

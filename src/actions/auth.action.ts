@@ -2,7 +2,7 @@ import {Dispatch} from 'redux';
 // @ts-ignore
 import {reactLocalStorage} from 'reactjs-localstorage';
 
-import {IGetStateFunction, ISignInOptions} from 'types/common.type';
+import {ISignInOptions} from 'types/common.type';
 import {HOME_PATH} from 'constants/routes/main.paths.constant';
 import {
   cannotConnectToServerNotification,
@@ -29,8 +29,7 @@ import {
   SIGNING_IN_FAILED,
 } from './index';
 
-// eslint-disable-next-line no-unused-vars
-const fakeRedirect = (path: string): void => {};
+const fakeRedirect = (): void => {};
 
 const saveToken = (token: IAccessToken): void => {
   reactLocalStorage.setObject(API_TOKENS, {
@@ -39,24 +38,25 @@ const saveToken = (token: IAccessToken): void => {
   });
 };
 
-const saveSignIn = (user: IUserMeta, signedWith: ISignInOptions = 'U', silent: boolean = false) =>
-  // eslint-disable-next-line no-unused-vars
-  async (dispatch: Dispatch, getState: IGetStateFunction) => {
-    dispatch({type: SIGN_IN_SUCCESS, user, signedWith});
-    reactLocalStorage.set(SIGNED_IN_TYPE, signedWith);
-    if (!silent) signInSuccessNotification(user.name);
-  };
+const saveSignIn = (
+  user: IUserMeta,
+  signedWith: ISignInOptions = 'U',
+  silent: boolean = false,
+) => async (dispatch: Dispatch) => {
+  dispatch({type: SIGN_IN_SUCCESS, user, signedWith});
+  reactLocalStorage.set(SIGNED_IN_TYPE, signedWith);
+  if (!silent) signInSuccessNotification(user.name);
+};
 
 const makeUserSignIn = (apiCall: any, signedWith: ISignInOptions = 'U') => async (
   dispatch: Dispatch,
-  getState: IGetStateFunction,
 ) => {
   try {
     dispatch({type: SIGN_IN_INITIATED});
     const {user, token}: ISignInToken = await apiCall();
     saveToken(token);
     dispatch({type: SIGN_IN_SUCCESS, user, signedWith});
-    saveSignIn(user, signedWith)(dispatch, getState);
+    saveSignIn(user, signedWith)(dispatch);
   } catch (e) {
     dispatch({type: SIGNING_IN_FAILED});
     if (e && e.data !== undefined) signingInErrorNotification(e.data.detail);
@@ -66,35 +66,32 @@ const makeUserSignIn = (apiCall: any, signedWith: ISignInOptions = 'U') => async
 
 export const signInWithEmailAction = (email: string, password: string) => async (
   dispatch: Dispatch,
-  getState: IGetStateFunction,
 ) => {
   const apiCall = () => signInWithEmailAPI(email, password);
-  makeUserSignIn(apiCall, 'E')(dispatch, getState);
+  makeUserSignIn(apiCall, 'E')(dispatch);
 };
 
 export const signInWithGoogleAction = (id: string, googleToken: string) => async (
   dispatch: Dispatch,
-  getState: IGetStateFunction,
 ) => {
   const apiCall = () => signInWithGoogleAPI(id, googleToken);
-  makeUserSignIn(apiCall, 'G')(dispatch, getState);
+  makeUserSignIn(apiCall, 'G')(dispatch);
 };
 
-export const signIn = (account: any) => (dispatch: Dispatch, getState: IGetStateFunction) => {
+export const signIn = (account: any) => (dispatch: Dispatch) => {
   switch (account.type) {
     case 'E':
-      signInWithEmailAction(account.email, account.password)(dispatch, getState);
+      signInWithEmailAction(account.email, account.password)(dispatch);
       break;
     case 'G':
-      signInWithGoogleAction(account.id, account.token)(dispatch, getState);
+      signInWithGoogleAction(account.id, account.token)(dispatch);
       break;
     default:
       openNotificationWithIcon('error', 'Unknown signing');
   }
 };
 
-// eslint-disable-next-line no-unused-vars
-const ping = () => async (dispatch: Dispatch, getState: IGetStateFunction) => {
+const ping = () => async (dispatch: Dispatch) => {
   try {
     await pingAPI();
     dispatch({type: CONNECTED_WITH_SERVER});
@@ -104,18 +101,18 @@ const ping = () => async (dispatch: Dispatch, getState: IGetStateFunction) => {
   }
 };
 
-export const checkUserAction = () => async (dispatch: Dispatch, getState: IGetStateFunction) => {
+export const checkUserAction = () => async (dispatch: Dispatch) => {
   if (reactLocalStorage.get(API_TOKENS)) {
     try {
       const user = await getUserMetaDetailAPI();
-      saveSignIn(user, reactLocalStorage.get(SIGNED_IN_TYPE), true)(dispatch, getState);
+      saveSignIn(user, reactLocalStorage.get(SIGNED_IN_TYPE), true)(dispatch);
       dispatch({type: CONNECTED_WITH_SERVER});
     } catch (e) {
       localStorage.clear();
-      ping()(dispatch, getState);
+      ping()(dispatch);
     }
   } else {
-    ping()(dispatch, getState);
+    ping()(dispatch);
   }
 };
 

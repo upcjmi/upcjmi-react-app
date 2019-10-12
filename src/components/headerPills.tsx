@@ -11,9 +11,7 @@ interface IStateProps {
   isAuthenticated: boolean;
 }
 
-interface IDispatchProps {}
-
-interface IProps extends IStateProps, IDispatchProps {
+interface IProps extends IStateProps {
   mode: 'vertical' | 'horizontal';
 }
 
@@ -57,11 +55,4 @@ const mapStateToProps = (state: IReduxState): IStateProps => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-// eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch: any): IDispatchProps => ({});
-
-// @ts-ignore
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(HeaderPills);
+export default connect(mapStateToProps)(HeaderPills);

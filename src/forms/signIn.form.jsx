@@ -5,9 +5,7 @@ import {connect} from 'react-redux';
 class SignInForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
-    // eslint-disable-next-line react/prop-types
     const {form, signIn} = this.props;
-    // eslint-disable-next-line react/prop-types
     const {validateFields} = form;
     validateFields((err, values) => {
       if (!err) {
@@ -17,9 +15,7 @@ class SignInForm extends React.Component {
   };
 
   render() {
-    // eslint-disable-next-line react/prop-types
     const {form, inProgress} = this.props;
-    // eslint-disable-next-line react/prop-types
     const {getFieldDecorator} = form;
 
     return (

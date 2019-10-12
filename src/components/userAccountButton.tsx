@@ -11,9 +11,7 @@ interface IStateProps {
   isAuthenticated: boolean;
 }
 
-interface IDispatchProps {}
-
-interface IProps extends IStateProps, IDispatchProps {}
+interface IProps extends IStateProps {}
 
 const UserAccountButton: FC<IProps> = (props: IProps) => {
   const {isAuthenticated} = props;

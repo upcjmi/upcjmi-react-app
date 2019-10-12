@@ -15,7 +15,7 @@ interface IProps {
 
 const {Title} = Typography;
 
-const VerificationDocumentSignUp: FC<IProps> = ({action, data, next}: IProps) => {
+const VerificationDocumentSignUpStudent: FC<IProps> = ({action, data, next}: IProps) => {
   const form = (
     // @ts-ignore
     <FormCreator
@@ -41,9 +41,17 @@ const VerificationDocumentSignUp: FC<IProps> = ({action, data, next}: IProps) =>
     <div>
       <Title>Verification Documents</Title>
       By clicking on &quot;Create my account&quot; you agree to our
-      <XLink href={TERMS_AND_CONDITION} newLine={false}> terms and conditions </XLink>
+      <XLink href={TERMS_AND_CONDITION} newLine={false}>
+        {' '}
+        terms and conditions
+        {' '}
+      </XLink>
       and
-      <XLink href={PRIVACY_POLICY} newLine={false}> privacy policy. </XLink>
+      <XLink href={PRIVACY_POLICY} newLine={false}>
+        {' '}
+        privacy policy.
+        {' '}
+      </XLink>
       <br />
       We are tracking your activity for any suspicious or illegal activity.
       <br />
@@ -53,4 +61,4 @@ const VerificationDocumentSignUp: FC<IProps> = ({action, data, next}: IProps) =>
   );
 };
 
-export default VerificationDocumentSignUp;
+export default VerificationDocumentSignUpStudent;
