@@ -1,12 +1,7 @@
 import {lazy} from 'react';
+import {INavigation} from 'types/common.type';
 
-interface INavigation {
-  title: string;
-  icon: string;
-  component: any;
-}
-
-export const signUpNavigation: Array<INavigation> = [
+export const signUpSteps: Array<INavigation> = [
   {
     title: 'Account',
     icon: 'user',

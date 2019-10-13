@@ -1,7 +1,7 @@
 body {
   font-family: Avenir, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
-  'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif,
-  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+    'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
   font-size: 1.1rem;
   overflow-x: hidden;
 }
@@ -99,11 +99,11 @@ img {
 }
 
 .full-width {
-  width: 100%
+  width: 100%;
 }
 
 .full-height {
-  height: 100%
+  height: 100%;
 }
 
 .black {
@@ -131,15 +131,15 @@ img {
 }
 
 .no-border {
-  border: 0
+  border: 0;
 }
 
 .grey.lighten-3 {
-  background-color: #eee
+  background-color: #eee;
 }
 
 .grey-text.lighten-3 {
-  color: #eee
+  color: #eee;
 }
 
 .over-flow {
@@ -155,11 +155,11 @@ img {
 }
 
 .float-left {
-  float: left
+  float: left;
 }
 
 .input-prefix {
-  color: rgba(0, 0, 0, .25);
+  color: rgba(0, 0, 0, 0.25);
 }
 
 .StackOverflowIcon {
@@ -174,7 +174,7 @@ img {
 }
 
 .linkType-1 {
-  color: #cccccc
+  color: #cccccc;
 }
 
 .inline-block {
@@ -193,7 +193,7 @@ img {
 }
 
 .font-weight-normal {
-  font-weight: normal
+  font-weight: normal;
 }
 
 .font-weight-bold {
@@ -206,7 +206,7 @@ img {
 }
 
 .jmi-logo1 {
-  max-height: 200px
+  max-height: 200px;
 }
 
 .height-300 {
@@ -214,17 +214,17 @@ img {
 }
 
 .max-height-50 {
-  max-height: 50px
+  max-height: 50px;
 }
 
 .signinScreen-card {
   max-width: 95vw;
-  width: 450px
+  width: 450px;
 }
 
 .auth-container-type-1 {
   max-width: 95vw;
-  width: 450px
+  width: 450px;
 }
 
 .max-width-600 {
@@ -240,7 +240,7 @@ img {
 }
 
 .margin-top-20 {
-  margin-top: 20px
+  margin-top: 20px;
 }
 
 .width-30pr {
@@ -256,7 +256,7 @@ img {
 }
 
 .width-150 {
-  width: 150px
+  width: 150px;
 }
 
 .portal-side-nav {
@@ -281,7 +281,7 @@ img {
   display: flex;
   align-items: center;
   position: relative;
-  left: -15ps
+  left: -15ps;
 }
 
 .profile-extra-details a {

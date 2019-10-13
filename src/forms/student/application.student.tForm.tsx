@@ -1,4 +1,4 @@
-import {CAPTCHA, FORM_ELEMENT_TYPES} from 'constants/formFields.constant';
+import {CAPTCHA, FORM_ELEMENT} from 'constants/formFields.constant';
 import {get} from 'helpers/function.helper';
 
 export const applicationFormTemplate = (state: any, initialValues: any) => [
@@ -6,7 +6,7 @@ export const applicationFormTemplate = (state: any, initialValues: any) => [
     label: 'Application',
     name: 'application',
     initialValue: get(initialValues, 'application', ''),
-    type: FORM_ELEMENT_TYPES.MARKDOWN,
+    type: FORM_ELEMENT.MARKDOWN,
     rules: [
       {required: true},
       {

@@ -5,7 +5,6 @@ import {reactLocalStorage} from 'reactjs-localstorage';
 import {ISignInOptions} from 'types/common.type';
 import {HOME_PATH} from 'constants/routes/main.paths.constant';
 import {
-  cannotConnectToServerNotification,
   openNotificationWithIcon,
   signingInErrorNotification,
   signInSuccessNotification,
@@ -96,7 +95,6 @@ const ping = () => async (dispatch: Dispatch) => {
     await pingAPI();
     dispatch({type: CONNECTED_WITH_SERVER});
   } catch (e) {
-    cannotConnectToServerNotification();
     dispatch({type: COULD_NOT_CONNECT_TO_SERVER});
   }
 };

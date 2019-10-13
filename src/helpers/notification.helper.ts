@@ -55,7 +55,15 @@ export const signingInErrorNotification = (
 export const signUpWithGoogleFailed = () =>
   openNotificationWithIcon('error', 'Sign Up with Google failed', 'Please try again.');
 
-export const cannotConnectToServerNotification = () => {};
+export const cannotConnectToServerNotification = () =>
+  notification.error({
+    message: 'Error connecting to server',
+    description:
+      'Try refreshing page. After refresh if problem persist clear data and cookies. ' +
+      'If problem doesnt resolve mail to faisal@upcjmi.com',
+    duration: 1000,
+    placement: 'bottomRight',
+  });
 
 export const userExistsWithThisEmail = (email: string) =>
   openNotificationWithIcon(
