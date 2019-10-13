@@ -1,6 +1,6 @@
 import {message} from 'antd';
 
-import {FORM_ELEMENT_TYPES, CAPTCHA} from 'constants/formFields.constant';
+import {FORM_ELEMENT, CAPTCHA} from 'constants/formFields.constant';
 import {get} from 'helpers/function.helper';
 import {studentDocumentUploadURL} from 'helpers/api/file.api.helper';
 
@@ -10,7 +10,7 @@ export const verificationDocumentTemplate = (state: any, initialValues: any) => 
     name: 'documents',
     initialValue: get(initialValues.values, 'documents'),
 
-    type: FORM_ELEMENT_TYPES.FILE_DRAG_DROP,
+    type: FORM_ELEMENT.FILE_DRAG_DROP,
     rules: [
       {
         required: true,

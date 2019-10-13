@@ -1,4 +1,4 @@
-import {FORM_ELEMENT_TYPES} from 'constants/formFields.constant';
+import {FORM_ELEMENT} from 'constants/formFields.constant';
 import {get} from 'helpers/function.helper';
 // eslint-disable-next-line import/named
 import {allCoursesOption} from 'constants/allOfferedCourses';
@@ -12,7 +12,7 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
     kwargs: {
       placeholder: 'ex: Faisal Manzer',
     },
-    type: FORM_ELEMENT_TYPES.INPUT,
+    type: FORM_ELEMENT.INPUT,
     rules: [{required: true}],
   },
   {
@@ -22,7 +22,7 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
     kwargs: {
       placeholder: 'ex: 17BCE064',
     },
-    type: FORM_ELEMENT_TYPES.INPUT,
+    type: FORM_ELEMENT.INPUT,
     rules: [
       {required: true},
       {
@@ -38,7 +38,7 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
     kwargs: {
       placeholder: 'ex: 20177089',
     },
-    type: FORM_ELEMENT_TYPES.INPUT,
+    type: FORM_ELEMENT.INPUT,
     rules: [
       {required: true},
       {
@@ -68,14 +68,14 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
         form.setFieldsValue({course: value[2]});
       },
     },
-    type: FORM_ELEMENT_TYPES.CASCADER,
+    type: FORM_ELEMENT.CASCADER,
     rules: [{required: true}],
   },
   {
     label: 'Year',
     name: 'year',
     initialValue: get(initialValues, 'year'),
-    type: FORM_ELEMENT_TYPES.SELECT,
+    type: FORM_ELEMENT.SELECT,
     rules: [{required: true}],
     options: {
       '1': '1st year',
@@ -91,7 +91,7 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
   {
     label: 'Number',
     name: 'phone_number',
-    type: FORM_ELEMENT_TYPES.INPUT,
+    type: FORM_ELEMENT.INPUT,
     initialValue: get(initialValues, 'phone_number'),
     rules: [{required: true}, {pattern: /^\d{10}$/, message: 'Not a Valid Indian Phone Number'}],
     kwargs: {

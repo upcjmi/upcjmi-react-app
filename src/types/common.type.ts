@@ -7,9 +7,9 @@ export interface IReducerAction {
   [key: string]: any;
 }
 
-export interface IDispatchFunction {
-  (action: IReducerAction): any;
-}
+// export interface IDispatchFunction {
+//   (action: IReducerAction): any;
+// }
 
 export interface IRoute {
   path: string;
@@ -40,3 +40,9 @@ export interface IObject {
 }
 
 export type ISignInOptions = 'E' | 'G' | 'U';
+
+export interface INavigation {
+  title: string;
+  icon: string;
+  component: any;
+}

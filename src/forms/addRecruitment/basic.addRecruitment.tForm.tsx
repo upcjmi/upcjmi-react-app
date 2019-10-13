@@ -1,4 +1,5 @@
-import {FORM_ELEMENT_TYPES} from 'constants/formFields.constant';
+import {FORM_ELEMENT} from 'constants/formFields.constant';
+import {get} from 'helpers/function.helper';
 
 const jobDetailsInitialValue = `TIP: Get a preview by clicking on _eye icon_ in the tool menu.
 # ![Logo URL](http://bit.ly/2mHv0do) Company name
@@ -12,8 +13,7 @@ About a paragraph about this role.. or
 frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
 allowfullscreen></iframe>
 
-## Skills & Qualifications for this Role
-Oh typo here will be marked as red 😀`;
+## Skills & Qualifications for this Role`;
 
 const questionInitialValue = `## Why should you be hired for this job?
 Space for answer...
@@ -31,43 +31,55 @@ export const basicAddRecruitmentTForm = (
   {
     label: 'Title',
     name: 'title',
+    initialValue: get(initialValues, 'title'),
     kwargs: {
       placeholder: 'ex: Junior Software Engineer',
     },
-    type: FORM_ELEMENT_TYPES.INPUT,
+    type: FORM_ELEMENT.INPUT,
     rules: [{required: true}],
   },
   {
     label: 'Base Package',
     name: 'package',
+    initialValue: get(initialValues, 'package'),
     kwargs: {
       placeholder: 'ex: 25',
       prefix: 'Rs. ',
       suffix: 'Lakhs Per Annum',
     },
-    type: FORM_ELEMENT_TYPES.INPUT,
+    type: FORM_ELEMENT.INPUT,
     rules: [{required: true}],
+  },
+  {
+    label: 'Application open',
+    name: 'start_end',
+    initialValue: get(initialValues, 'start_end'),
+    type: FORM_ELEMENT.RANGE_PICKER,
+    rules: [{required: true}],
+    kwargs: {
+      showTime: {format: 'h:mm a'},
+      format: 'YYYY-MM-DD h:mm a',
+    },
   },
   {
     label: 'Questions required',
     name: 'application_required',
-    type: FORM_ELEMENT_TYPES.SWITCH,
+    initialValue: get(initialValues, 'application_required'),
+    type: FORM_ELEMENT.SWITCH,
     help: 'Ask some basic question from candidates before application',
   },
   {
     label: 'Job Description',
     name: 'about',
-    initialValue: jobDetailsInitialValue,
-    type: FORM_ELEMENT_TYPES.MARKDOWN,
+    initialValue: get(initialValues, 'about', jobDetailsInitialValue),
+    type: FORM_ELEMENT.MARKDOWN,
     rules: [{required: true}],
   },
   {
     label: form.getFieldValue('application_required') ? 'Questions' : '',
     name: 'application',
-    initialValue: questionInitialValue,
-    type: form.getFieldValue('application_required')
-      ? FORM_ELEMENT_TYPES.MARKDOWN
-      : FORM_ELEMENT_TYPES.HIDDEN,
+    initialValue: get(initialValues, 'application', questionInitialValue),
+    type: form.getFieldValue('application_required') ? FORM_ELEMENT.MARKDOWN : FORM_ELEMENT.HIDDEN,
     rules: [{required: form.getFieldValue('application_required')}],
   },
 ];

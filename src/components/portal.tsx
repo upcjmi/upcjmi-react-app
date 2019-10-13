@@ -1,7 +1,7 @@
 import React, {FC, Suspense, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter, Route, Switch, withRouter} from 'react-router-dom';
-import {Result} from 'antd';
+import {BrowserRouter, Link, Route, Switch, withRouter} from 'react-router-dom';
+import {Button, Result} from 'antd';
 
 import {IRoute, ISidebarRoute} from 'types/common.type';
 import {IReduxState} from 'reducers';
@@ -12,6 +12,8 @@ import NotFoundScreen from 'screens/404.screen';
 import LoadingScreen from 'screens/loading.screen';
 import {selectScreen} from 'helpers/screen.helper';
 import SideBar from './portalNavigator';
+import {HOME_PATH} from '../constants/routes/main.paths.constant';
+import {cannotConnectToServerNotification} from '../helpers/notification.helper';
 
 interface IStateProps {
   user: IUserMeta | undefined;
@@ -49,12 +51,22 @@ const Portal: FC<IProps> = (props: IProps) => {
 
   if (connected === null) return <LoadingScreen />;
 
-  if (!connected)
+  if (!connected) {
+    cannotConnectToServerNotification();
     return (
       <div className='full-page center-hv'>
-        <Result status='500' />
+        <Result
+          status='500'
+          subTitle='Could not connect to server, try refreshing the page'
+          extra={(
+            <Link to={HOME_PATH}>
+              <Button type='primary'>Home</Button>
+            </Link>
+          )}
+        />
       </div>
     );
+  }
 
   if (!isAuthenticated) return <NotAuthorisedScreen />;
   if (user && user.type !== allowedType) return <NotAuthorisedScreen />;

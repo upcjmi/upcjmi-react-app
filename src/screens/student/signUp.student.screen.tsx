@@ -2,9 +2,9 @@ import React, {FC, useState, Suspense} from 'react';
 import {connect} from 'react-redux';
 import {Card, Typography, Alert, Steps, Icon} from 'antd';
 import {IReduxState} from 'reducers';
-import LoadingScreen from 'screens/loading.screen';
 import OnlyPublic from 'screens/403.onlyPublic';
-import {signUpNavigation} from 'constants/signUpNavigation.constant';
+import {signUpSteps} from 'steps/signUp.steps';
+import LoadingComponentScreen from 'screens/loadingComponent.screen';
 
 interface IStateProps {
   isAuthenticated: boolean;
@@ -35,7 +35,7 @@ const SignUpStudentScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
     setActive(0);
   };
 
-  const SignUpComponent: any = signUpNavigation[active].component;
+  const SignUpComponent: any = signUpSteps[active].component;
 
   return (
     <div className='container center-hv full-page grey lighten-3'>
@@ -53,11 +53,11 @@ const SignUpStudentScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
           <Title>Create New Account</Title>
           <br />
           <Steps size='small' labelPlacement='vertical' current={active}>
-            {signUpNavigation.slice(0, 3).map(({title, icon}, index) => (
+            {signUpSteps.slice(0, 3).map(({title, icon}, index) => (
               <Step title={title} icon={<Icon type={icon} />} key={index.toString()} />
             ))}
           </Steps>
-          <Suspense fallback={<LoadingScreen />}>
+          <Suspense fallback={<LoadingComponentScreen />}>
             <SignUpComponent
               next={next}
               action={setData}
@@ -76,4 +76,5 @@ const mapStateToProps = (state: IReduxState): IStateProps => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
+// @ts-ignore
 export default connect(mapStateToProps)(SignUpStudentScreen);

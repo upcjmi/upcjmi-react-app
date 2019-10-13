@@ -20,7 +20,7 @@ import {
 import {connect} from 'react-redux';
 
 import SimpleMDE from 'react-simplemde-editor';
-import {FORM_ELEMENT_TYPES} from '../constants/formFields.constant';
+import {FORM_ELEMENT} from '../constants/formFields.constant';
 
 import 'easymde/dist/easymde.min.css';
 import {openNotificationWithIcon} from '../helpers/notification.helper';
@@ -67,13 +67,7 @@ const blockFormItemLayout = {
   },
 };
 
-const blockElements = [
-  FORM_ELEMENT_TYPES.MARKDOWN,
-  FORM_ELEMENT_TYPES.CASCADER,
-  FORM_ELEMENT_TYPES.TEXTAREA,
-  FORM_ELEMENT_TYPES.FILE_DRAG_DROP,
-  FORM_ELEMENT_TYPES.CAPTCHA,
-];
+const blockElements = [FORM_ELEMENT.MARKDOWN, FORM_ELEMENT.FILE_DRAG_DROP];
 
 class FormCreator extends Component {
   constructor(props) {
@@ -122,6 +116,7 @@ class FormCreator extends Component {
       cancelButtonText,
       buttonType,
       formLayout = formItemLayout,
+      extraActions,
     } = this.props;
     let {formTemplate} = this.props;
     const {loaded} = this.state;
@@ -144,7 +139,7 @@ class FormCreator extends Component {
           let extraComponent = null;
 
           switch (element) {
-            case FORM_ELEMENT_TYPES.CAPTCHA:
+            case FORM_ELEMENT.CAPTCHA:
               const changeValue = (value = '') =>
                 setFieldsValue({
                   captcha: value,
@@ -159,13 +154,13 @@ class FormCreator extends Component {
               );
               itemInput = <input type="hidden" value={getFieldValue('captcha')} />;
               break;
-            case FORM_ELEMENT_TYPES.INPUT:
+            case FORM_ELEMENT.INPUT:
               itemInput = <Input {...kwargs} />;
               break;
-            case FORM_ELEMENT_TYPES.INPUT_NUMBER:
+            case FORM_ELEMENT.INPUT_NUMBER:
               itemInput = <InputNumber {...kwargs} />;
               break;
-            case FORM_ELEMENT_TYPES.MARKDOWN:
+            case FORM_ELEMENT.MARKDOWN:
               itemInput = (
                 <SimpleMDE
                   onChange={value => {
@@ -174,7 +169,7 @@ class FormCreator extends Component {
                 />
               );
               break;
-            case FORM_ELEMENT_TYPES.SELECT:
+            case FORM_ELEMENT.SELECT:
               const options = [];
               Object.keys(formItem.options).forEach((key, index) => {
                 options.push(
@@ -187,7 +182,7 @@ class FormCreator extends Component {
               });
               itemInput = <Select {...kwargs}>{options}</Select>;
               break;
-            case FORM_ELEMENT_TYPES.RADIO:
+            case FORM_ELEMENT.RADIO:
               const options1 = [];
               Object.keys(formItem.options).forEach((key, index) => {
                 options1.push(
@@ -198,31 +193,20 @@ class FormCreator extends Component {
               });
               itemInput = <Radio.Group>{options1}</Radio.Group>;
               break;
-            case FORM_ELEMENT_TYPES.PASSWORD:
+            case FORM_ELEMENT.PASSWORD:
               itemInput = <Input.Password {...kwargs} />;
               break;
-            case FORM_ELEMENT_TYPES.MONTH_PICKER:
-              itemInput = (
-                <MonthPicker
-                  {...kwargs}
-                  format="MM/YYYY"
-                  // defaultValue={moment(kwargs['value'], kwargs['format'])}
-                />
-              );
+            case FORM_ELEMENT.MONTH_PICKER:
+              itemInput = <MonthPicker format="MM/YYYY" {...kwargs} />;
               break;
-            case FORM_ELEMENT_TYPES.RANGE_PICKER:
-              itemInput = (
-                <RangePicker
-                  {...kwargs}
-                  format="YYYY-MM-DD"
-                  // defaultValue={moment(kwargs['value'], kwargs['format'])}
-                />
-              );
+
+            case FORM_ELEMENT.RANGE_PICKER:
+              itemInput = <RangePicker format="YYYY-MM-DD" {...kwargs} />;
               break;
-            case FORM_ELEMENT_TYPES.TEXTAREA:
+            case FORM_ELEMENT.TEXTAREA:
               itemInput = <Input.TextArea {...kwargs} />;
               break;
-            case FORM_ELEMENT_TYPES.FILE_DRAG_DROP:
+            case FORM_ELEMENT.FILE_DRAG_DROP:
               extraComponent = (
                 <Upload.Dragger
                   action={getFileHandlerURL()}
@@ -256,13 +240,13 @@ class FormCreator extends Component {
               fieldOptions.initialValue = '';
               itemInput = <input type="hidden" value={getFieldValue(name)} />;
               break;
-            case FORM_ELEMENT_TYPES.SWITCH:
+            case FORM_ELEMENT.SWITCH:
               itemInput = <Switch {...kwargs} />;
               break;
-            case FORM_ELEMENT_TYPES.HIDDEN:
+            case FORM_ELEMENT.HIDDEN:
               itemInput = <input type="hidden" />;
               break;
-            case FORM_ELEMENT_TYPES.CASCADER:
+            case FORM_ELEMENT.CASCADER:
               itemInput = <input type="hidden" />;
               extraComponent = <Cascader {...kwargs} />;
               break;
@@ -298,30 +282,28 @@ class FormCreator extends Component {
           );
         })}
         <Form.Item {...buttonPlacement}>
-          {onCancel ? (
+          <Button.Group>
             <Button
+              onClick={this.handleSubmit}
+              type="primary"
+              htmlType="submit"
               style={{
                 width: buttonType === 'block' ? '100%' : null,
-              }}
-              size="large"
-              onClick={() => onCancel(this.props.form)}
-              htmlType="button">
-              {cancelButtonText || 'Cancel'}
+              }}>
+              {submitButtonText || 'Submit'}
             </Button>
-          ) : null}
-        </Form.Item>
-
-        <Form.Item {...buttonPlacement}>
-          <Button
-            onClick={this.handleSubmit}
-            type="primary"
-            htmlType="submit"
-            size="large"
-            style={{
-              width: buttonType === 'block' ? '100%' : null,
-            }}>
-            {submitButtonText || 'Submit'}
-          </Button>
+            {onCancel ? (
+              <Button
+                style={{
+                  width: buttonType === 'block' ? '100%' : null,
+                }}
+                onClick={() => onCancel(this.props.form)}
+                htmlType="button">
+                {cancelButtonText || 'Cancel'}
+              </Button>
+            ) : null}
+            {extraActions}
+          </Button.Group>
         </Form.Item>
       </Form>
     );

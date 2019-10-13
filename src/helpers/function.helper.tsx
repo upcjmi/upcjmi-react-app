@@ -4,11 +4,11 @@ import {Icon} from 'antd';
 import {ReactComponent as StackOverflowIcon} from 'assets/svgs/stackoverflow-icon.svg';
 
 export const get = (obj: any, key: any, defaultValue: any = null) => {
-  try {
+  if (key in obj) {
     return obj[key];
-  } catch (e) {
-    return defaultValue;
   }
+
+  return defaultValue;
 };
 
 interface IProps {

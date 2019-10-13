@@ -1,30 +1,61 @@
-import React, {FC} from 'react';
+import React, {FC, useState, Suspense} from 'react';
 import {Typography, Card, Col, Row, Steps, Icon} from 'antd';
-import BasicAddRecruitment from 'components/company/addRecruitment/basic.addRecruitment';
 import {selectScreen} from 'helpers/screen.helper';
+import {addRecruitmentSteps} from 'steps/addRecruitment.steps';
+import LoadingComponentScreen from 'screens/loadingComponent.screen';
 
 interface IProps {}
 
 const {Title} = Typography;
 const {Step} = Steps;
 
-const AddRecruitmentCompanyScreen: FC<IProps> = () => (
-  <div className='container'>
-    <Row gutter={24}>
-      <Col sm={24} md={12} offset={selectScreen(0, 6)}>
-        <Card>
-          <Title>New Recruitment</Title>
-          <Steps size='small' labelPlacement='vertical'>
-            <Step title='Basic Details' icon={<Icon type='solution' />} />
-            <Step title='Rounds' icon={<Icon type='profile' />} />
-            <Step title='Eligibility' icon={<Icon type='smile-o' />} />
-          </Steps>
-          <br />
-          <BasicAddRecruitment />
-        </Card>
-      </Col>
-    </Row>
-  </div>
-);
+const emptyData = {
+  basic: {},
+  rounds: [],
+  eligibility: {},
+};
+
+const AddRecruitmentCompanyScreen: FC<IProps> = () => {
+  const [active, setActive] = useState(2);
+  const [data, setData] = useState(emptyData);
+
+  const next = () => {
+    window.scrollTo(0, 0);
+    setActive(active + 1);
+  };
+  const previous = () => setActive(active - 1);
+  const startAgain = () => {
+    setActive(0);
+  };
+
+  const AddRecruitmentComponent = addRecruitmentSteps[active].component;
+
+  return (
+    <div className='container'>
+      <Row gutter={24}>
+        <Col sm={24} md={12} offset={selectScreen(0, 6)}>
+          <Card>
+            <Title>New Recruitment</Title>
+            <Steps size='small' labelPlacement='vertical' current={active}>
+              {addRecruitmentSteps.slice(0, 3).map(({title, icon}, index) => (
+                <Step title={title} icon={<Icon type={icon} />} key={index.toString()} />
+              ))}
+            </Steps>
+            <br />
+            <Suspense fallback={<LoadingComponentScreen />}>
+              <AddRecruitmentComponent
+                next={next}
+                action={setData}
+                data={data}
+                previous={previous}
+                startAgain={startAgain}
+              />
+            </Suspense>
+          </Card>
+        </Col>
+      </Row>
+    </div>
+  );
+};
 
 export default AddRecruitmentCompanyScreen;
