@@ -1,4 +1,4 @@
-import {FORM_ELEMENT} from 'constants/formFields.constant';
+import {COURSES, FORM_ELEMENT} from 'constants/formFields.constant';
 import {get} from 'helpers/function.helper';
 // eslint-disable-next-line import/named
 import {allCoursesOption} from 'constants/allOfferedCourses';
@@ -48,28 +48,7 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
     ],
   },
   {
-    label: 'Course',
-    name: 'course',
-    initialValue: (() => {
-      const hash = get(initialValues, 'course');
-      if (hash) {
-        const course = getCourse(hash);
-        course[2] = hash;
-        return course;
-      }
-
-      return hash;
-    })(),
-    kwargs: {
-      placeholder: 'ex: Undergraduate / B.Tech. / Civil Engineering',
-      options: allCoursesOption,
-      showSearch: true,
-      onChange: (value: Array<string>) => {
-        form.setFieldsValue({course: value[2]});
-      },
-    },
-    type: FORM_ELEMENT.CASCADER,
-    rules: [{required: true}],
+    ...COURSES(initialValues, form),
   },
   {
     label: 'Year',
