@@ -1,3 +1,7 @@
+import {get} from '../helpers/function.helper';
+import {getCourse} from '../helpers/courses';
+import {allCoursesOption} from './allOfferedCourses';
+
 export const FORM_ELEMENT = {
   INPUT: 'input',
   INPUT_NUMBER: 'input-number',
@@ -29,3 +33,28 @@ export const CAPTCHA = {
     },
   ],
 };
+
+export const COURSES = (initialValues: any, form: any) => ({
+  label: 'Course',
+  name: 'course',
+  initialValue: (() => {
+    const hash = get(initialValues, 'course');
+    if (hash) {
+      const course = getCourse(hash);
+      course[2] = hash;
+      return course;
+    }
+
+    return hash;
+  })(),
+  kwargs: {
+    placeholder: 'ex: Undergraduate / B.Tech. / Civil Engineering',
+    options: allCoursesOption,
+    showSearch: true,
+    onChange: (value: Array<string>) => {
+      form.setFieldsValue({course: value[2]});
+    },
+  },
+  type: FORM_ELEMENT.CASCADER,
+  rules: [{required: true}],
+});

@@ -1,4 +1,9 @@
-![][team]
+<h1 style="text-align: center" align="center">
+  <img src="/public/favicons/apple-icon-180x180.png" alt="Jamia Millia Islamia logo" height=100 width=100>
+  <br>
+  University Placement Cell <br>
+  Jamia Millia Islamia
+</h1>
 
 [![][website status]][official site]
 <br>
