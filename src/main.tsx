@@ -11,6 +11,7 @@ import {checkUserAction} from 'actions/auth.action';
 import Screen from 'components/screen';
 import Footer from 'components/footer';
 import A2hsPrompt from './components/a2hsPrompt';
+import ErrorBoundary from './components/errorBoundry';
 
 interface IStateProps {
   routes: Array<IRoute>;
@@ -35,24 +36,26 @@ const Main = ({routes, checkUser, history}: IProps) => {
   });
 
   return (
-    <Suspense fallback={<LoadingScreen />}>
-      <AppHeader />
-      <A2hsPrompt />
-      <main>
-        <Switch>
-          {routes.map((route, index) => (
-            <Route
-              exact={route.exact === undefined ? true : route.exact}
-              path={route.path}
-              component={() => <Screen title={route.title} screen={route.screen} />}
-              key={index.toString()}
-            />
-          ))}
-          <Route component={NotFoundScreen} />
-        </Switch>
-      </main>
-      <Footer />
-    </Suspense>
+    <ErrorBoundary>
+      <Suspense fallback={<LoadingScreen />}>
+        <AppHeader />
+        <A2hsPrompt />
+        <main>
+          <Switch>
+            {routes.map((route, index) => (
+              <Route
+                exact={route.exact === undefined ? true : route.exact}
+                path={route.path}
+                component={() => <Screen title={route.title} screen={route.screen} />}
+                key={index.toString()}
+              />
+            ))}
+            <Route component={NotFoundScreen} />
+          </Switch>
+        </main>
+        <Footer />
+      </Suspense>
+    </ErrorBoundary>
   );
 };
 

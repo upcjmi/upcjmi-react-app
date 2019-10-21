@@ -46,7 +46,7 @@ class A2hsPrompt extends Component<IProps, IState> {
       this.setState({
         isA2HSVisible: true,
       });
-    }, 45 * 1000);
+    }, 100);
   };
 
   handelNotNow = () => {
