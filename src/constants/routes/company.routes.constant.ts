@@ -1,6 +1,7 @@
 import {lazy} from 'react';
 import {IRoute, ISidebarRoute} from 'types/common.type';
 
+const isProduction = process.env.NODE_ENV === 'production';
 export const companySideRoutes: Array<ISidebarRoute> = [
   {
     name: 'Home',
@@ -12,19 +13,25 @@ export const companySideRoutes: Array<ISidebarRoute> = [
     name: 'Recruitment',
     icon: 'appstore',
     path: '/recruitment/',
-    screen: lazy(() => import('screens/company/recruitment.company.screen')),
+    screen: isProduction
+      ? lazy(() => import('screens/weAreWorking.screen'))
+      : lazy(() => import('screens/company/recruitment.company.screen')),
   },
   {
     name: 'Internships',
     icon: 'rocket',
     path: '/internships/',
-    screen: lazy(() => import('screens/company/internships.company.screen')),
+    screen: isProduction
+      ? lazy(() => import('screens/weAreWorking.screen'))
+      : lazy(() => import('screens/company/internships.company.screen')),
   },
   {
     name: 'Account Settings',
     icon: 'setting',
     path: '/settings/',
-    screen: lazy(() => import('screens/company/settings.company.screen')),
+    screen: isProduction
+      ? lazy(() => import('screens/weAreWorking.screen'))
+      : lazy(() => import('screens/company/settings.company.screen')),
   },
 ];
 
@@ -32,6 +39,8 @@ export const companyExtraRoutes: Array<IRoute> = [
   {
     title: 'Add Recruitment',
     path: '/recruitment/add/',
-    screen: lazy(() => import('screens/company/addRecruitment.company.screen')),
+    screen: isProduction
+      ? lazy(() => import('screens/weAreWorking.screen'))
+      : lazy(() => import('screens/company/addRecruitment.company.screen')),
   },
 ];

@@ -4,8 +4,12 @@ import {Icon} from 'antd';
 import {ReactComponent as StackOverflowIcon} from 'assets/svgs/stackoverflow-icon.svg';
 
 export const get = (obj: any, key: any, defaultValue: any = null) => {
-  if (key in obj) {
-    return obj[key];
+  try {
+    if (key in obj) {
+      return obj[key];
+    }
+  } catch (e) {
+    //  nothing to do
   }
 
   return defaultValue;
@@ -14,6 +18,7 @@ export const get = (obj: any, key: any, defaultValue: any = null) => {
 interface IProps {
   type: 'G' | 'W' | 'S' | 'B' | 'M' | 'L';
 }
+
 export const generalFilter = (input: string, option: any) =>
   option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0;
 
