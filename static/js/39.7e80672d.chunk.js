@@ -1,0 +1,2 @@
+(this.webpackJsonpupcjmi=this.webpackJsonpupcjmi||[]).push([[39],{816:function(n,e,t){"use strict";t.r(e);var c=t(0),i=t.n(c);e.default=function(){return i.a.createElement("div",null,"SettingsCompanyScreen")}}}]);
+//# sourceMappingURL=39.7e80672d.chunk.js.map
