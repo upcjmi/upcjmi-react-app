@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import {connect} from 'react-redux';
-import {Typography, Form, Input, DatePicker, Tag, Button, Select, Icon, Checkbox} from 'antd';
+import {Typography, Form, Input, DatePicker, Tag, Button, Select, Icon} from 'antd';
 import moment from 'moment';
 
 import {openNotificationWithIcon} from 'helpers/notification.helper';
@@ -33,7 +33,9 @@ const TagEditor: FC<ITagProps> = ({tags, change, addText}: ITagProps) => {
 
   const addTag = (e: any) => {
     const newTags = tags;
-    newTags.push(e.target.value);
+    const {value} = e.target;
+    if (value.length <= 0) return;
+    newTags.push(value);
     change(newTags);
     setVisible(false);
     setInputValue('');
@@ -55,6 +57,7 @@ const TagEditor: FC<ITagProps> = ({tags, change, addText}: ITagProps) => {
           size='small'
           onChange={e => setInputValue(e.target.value)}
           onPressEnter={addTag}
+          onBlur={addTag}
           className='width-150'
           autoFocus
         />
@@ -89,10 +92,10 @@ const LinkDisplay: FC<ILinkDisplayProps> = ({type, link, onChange, remove}: ILin
   };
 
   return (
-    <Input.Group compact className='full-width'>
+    <Input.Group compact style={{width: '100%', display: 'block'}}>
       <Select
         value={type}
-        className='width-30pr'
+        style={{width: '30%'}}
         onChange={(value: string) => {
           setProfile(value, link);
         }}>
@@ -103,14 +106,14 @@ const LinkDisplay: FC<ILinkDisplayProps> = ({type, link, onChange, remove}: ILin
         <Option value='M'>Medium</Option>
       </Select>
       <Input
-        className='width-60pr'
+        style={{width: '60%'}}
         placeholder='https://example.com'
         value={link}
         onChange={(e: any) => setProfile(type, e.target.value)}
       />
       {/* eslint-disable-next-line max-len */}
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-      <span className='center width-10pr' onClick={remove}>
+      <span className='center' style={{width: '10%'}} onClick={remove}>
         <Icon type='delete' />
       </span>
     </Input.Group>
@@ -299,50 +302,6 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
               setFieldsValue({profiles});
             }}
           />
-        </Form.Item>
-
-        <Form.Item label='Grading System'>
-          {getFieldDecorator('grading_sys', {
-            rules: [{required: true}],
-            initialValue: 'CPI',
-          })(
-            <Select>
-              <Option value='CPI'>CPI</Option>
-            </Select>,
-          )}
-        </Form.Item>
-
-        <Form.Item label='Grade'>
-          {getFieldDecorator('grade', {
-            rules: [{required: true}],
-            initialValue: details.grade,
-          })(<Input />)}
-        </Form.Item>
-
-        <Form.Item label='Active backlog'>
-          {getFieldDecorator('active_back_log', {
-            rules: [{required: true}],
-            initialValue: details.active_back_log,
-          })(
-            <Checkbox
-              onChange={e => {
-                setFieldsValue({active_back_log: e.target.checked});
-              }}
-            />,
-          )}
-        </Form.Item>
-
-        <Form.Item label='Previous backlog'>
-          {getFieldDecorator('previous_back_log', {
-            rules: [{required: true}],
-            initialValue: details.previous_back_log,
-          })(
-            <Checkbox
-              onChange={e => {
-                setFieldsValue({previous_back_log: e.target.checked});
-              }}
-            />,
-          )}
         </Form.Item>
 
         <br />

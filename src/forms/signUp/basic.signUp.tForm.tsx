@@ -1,8 +1,5 @@
 import {COURSES, FORM_ELEMENT} from 'constants/formFields.constant';
 import {get} from 'helpers/function.helper';
-// eslint-disable-next-line import/named
-// import {allCoursesOption} from 'constants/allOfferedCourses';
-// import {getCourse} from 'helpers/courses';
 
 export const basicSignUpTForm = (state: any, initialValues: any, extraValues: any, form: any) => [
   {
