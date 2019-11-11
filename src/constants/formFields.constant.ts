@@ -50,7 +50,6 @@ export const COURSES = (initialValues: any, form: any) => ({
   kwargs: {
     placeholder: 'ex: Undergraduate / B.Tech. / Civil Engineering',
     options: allCoursesOption,
-    showSearch: true,
     onChange: (value: Array<string>) => {
       form.setFieldsValue({course: value[2]});
     },

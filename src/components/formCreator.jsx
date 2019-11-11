@@ -128,6 +128,8 @@ class FormCreator extends Component {
     }
 
     const buttonPlacement = buttonType === 'block' ? blockFormItemLayout : tailFormItemLayout;
+    const ButtonGroup =
+      buttonType === 'block' ? ({children}) => <div>{children}</div> : Button.Group;
 
     return (
       <Form onSubmit={this.handleSubmit} {...formLayout}>
@@ -180,7 +182,13 @@ class FormCreator extends Component {
                   />,
                 );
               });
-              itemInput = <Select {...kwargs}>{options}</Select>;
+              const filterOption = (input, option) =>
+                option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0;
+              itemInput = (
+                <Select {...kwargs} filterOption={filterOption}>
+                  {options}
+                </Select>
+              );
               break;
             case FORM_ELEMENT.RADIO:
               const options1 = [];
@@ -248,7 +256,14 @@ class FormCreator extends Component {
               break;
             case FORM_ELEMENT.CASCADER:
               itemInput = <input type="hidden" />;
-              extraComponent = <Cascader {...kwargs} />;
+              const filter = (inputValue, path) => {
+                for (let i = 0; i < path.length; i++) {
+                  if (path[i].label.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0)
+                    return true;
+                }
+                return false;
+              };
+              extraComponent = <Cascader showSearch={{filter: filter}} {...kwargs} />;
               break;
             default:
               itemInput = <Input {...kwargs} />;
@@ -281,8 +296,9 @@ class FormCreator extends Component {
             </Form.Item>
           );
         })}
+
         <Form.Item {...buttonPlacement}>
-          <Button.Group>
+          <ButtonGroup style={{width: buttonType === 'block' ? '100%' : null}}>
             <Button
               onClick={this.handleSubmit}
               type="primary"
@@ -303,7 +319,7 @@ class FormCreator extends Component {
               </Button>
             ) : null}
             {extraActions}
-          </Button.Group>
+          </ButtonGroup>
         </Form.Item>
       </Form>
     );

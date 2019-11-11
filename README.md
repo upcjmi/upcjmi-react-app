@@ -5,7 +5,7 @@
   Jamia Millia Islamia
 </h1>
 
-[![][website status]][official site]
+[![][website status]][official site] [![Netlify Status](https://api.netlify.com/api/v1/badges/e6d1c71d-5424-4b4e-a4ce-9aca76cff848/deploy-status)](https://app.netlify.com/sites/upcjmi/deploys)
 <br>
 
 - Submit application bugs [here][submit bug]
