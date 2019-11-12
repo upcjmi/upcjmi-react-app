@@ -7,7 +7,7 @@
   "dependencies": {
     "antd": "^3.23.6",
     "axios": "^0.19.0",
-    "jamia-all-courses": "^1.1.0",
+    "jamia-all-courses": "^1.2.0",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
     "prettier": "^1.18.2",

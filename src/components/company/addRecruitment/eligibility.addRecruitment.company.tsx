@@ -1,6 +1,8 @@
 import React, {FC, useState} from 'react';
 import {Typography, Cascader, Button, Select} from 'antd';
 import {allCoursesOption} from 'constants/allOfferedCourses';
+// @ts-ignore
+import {getCourse} from 'jamia-all-courses';
 
 interface IProps {
   action: any;
@@ -17,20 +19,41 @@ interface ISubProps {
 const {Title} = Typography;
 const {Option} = Select;
 
-const Course: FC<ISubProps> = ({onChange, remove}: ISubProps) => {
+const Course: FC<ISubProps> = ({onChange, remove, defaultValue}: ISubProps) => {
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+  const paddedDefaultValue = () => {
+    if (defaultValue) {
+      const course = getCourse(defaultValue);
+      course[2] = defaultValue;
+      return course;
+    }
+
+    return null;
+  };
+
   return (
     <div>
       <Cascader
+        changeOnSelect
+        allowClear
         options={allCoursesOption}
         onChange={(value: Array<string>) => {
-          onChange(value[2]);
+          if (value[2]) {
+            onChange(value[2]);
+            // forceUpdate();
+          }
         }}
+        defaultValue={paddedDefaultValue()}
         style={{width: '90%'}}
         placeholder='ex: Undergraduate / B.Tech. / Civil Engineering'
       />
       <Button
         icon='delete'
-        onClick={remove}
+        onClick={() => {
+          remove();
+          forceUpdate();
+        }}
         style={{width: '10%', textAlign: 'center'}}
         type='link'
       />
@@ -38,102 +61,44 @@ const Course: FC<ISubProps> = ({onChange, remove}: ISubProps) => {
   );
 };
 
-const Year: FC<ISubProps> = ({onChange, remove, defaultValue}: ISubProps) => {
-  return (
-    <>
-      <Select defaultValue={defaultValue} style={{width: 120}} onChange={onChange}>
-        <Option value='1'>1st year</Option>
-        <Option value='2'>2nd year</Option>
-        <Option value='3'>3rd year</Option>
-        <Option value='4'>4th year</Option>
-        <Option value='5'>5th year</Option>
-      </Select>
-      <Button icon='delete' onClick={remove} style={{width: 30, textAlign: 'center'}} type='link' />
-    </>
-  );
-};
-
 const EligibilityAddRecruitmentCompany: FC<IProps> = ({action, data, next}: IProps) => {
-  const [eligibility, setEligibility] = useState({
-    courses: [''],
-    year: ['3'],
-    grade_gte: 0,
-    grading_sys: 'CPI',
-    allow_active_backlog: true,
-    allow_past_backlog: true,
-  });
+  const [courses, setCourses] = useState([]);
+  const [years, setYear] = useState(['3']);
 
-  console.log(eligibility);
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
 
   const courseChange = (index: number, value: string) => {
-    const xcourses = eligibility.courses.slice();
+    const xcourses = courses.slice();
     // @ts-ignore
     xcourses[index] = value;
 
-    setEligibility({
-      ...eligibility,
-      courses: xcourses,
-    });
+    setCourses(xcourses);
   };
 
   const removeCourse = (index: number) => {
-    let xcourses = eligibility.courses.slice();
-    xcourses = xcourses.splice(index, 1);
+    // let xcourses = courses.slice();
+    // xcourses = xcourses.splice(index, 1);
 
-    setEligibility({
-      ...eligibility,
-      courses: xcourses,
-    });
+    setCourses(courses.filter((value, i) => i !== index));
+    forceUpdate();
   };
 
   const addCourse = () => {
-    const xcourses = eligibility.courses.slice();
+    const xcourses = courses.slice();
     // @ts-ignore
-    xcourses.push('');
+    xcourses.push(null);
 
-    setEligibility({
-      ...eligibility,
-      courses: xcourses,
-    });
-  };
-
-  const changeYear = (index: number, year: string) => {
-    const years = eligibility.year.slice();
-    years[index] = year;
-
-    setEligibility({
-      ...eligibility,
-      year: years,
-    });
-  };
-
-  const removeYear = (index: number) => {
-    let years = eligibility.year.slice();
-    years = years.splice(index, 1);
-
-    setEligibility({
-      ...eligibility,
-      year: years,
-    });
-  };
-
-  const addYear = () => {
-    const years = eligibility.year.slice();
-    // @ts-ignore
-    years.push('3');
-
-    setEligibility({
-      ...eligibility,
-      year: years,
-    });
+    setCourses(xcourses);
   };
 
   return (
     <div>
       <Title level={3}>Eligibility</Title>
-      {eligibility.courses.map((course, index) => (
+      {courses.map((course, index) => (
         <Course
-          key={index.toString()}
+          key={course}
+          defaultValue={course}
           onChange={(value: string) => courseChange(index, value)}
           remove={() => removeCourse(index)}
         />
@@ -145,17 +110,37 @@ const EligibilityAddRecruitmentCompany: FC<IProps> = ({action, data, next}: IPro
       <br />
       <br />
       Year: &nbsp;&nbsp;&nbsp;
-      {eligibility.year.map((year, index) => (
-        <Year
-          key={index.toString()}
-          defaultValue={year}
-          onChange={(value: string) => changeYear(index, value)}
-          remove={() => removeYear(index)}
-        />
-      ))}
-      <Button icon='plus' onClick={addYear} style={{float: 'right'}}>
-        Add Year
-      </Button>
+      <Select
+        defaultValue={years}
+        style={{width: '100%'}}
+        onChange={(value: Array<String>) => {
+          // @ts-ignore
+          setYear(value);
+        }}
+        mode='multiple'>
+        <Option value='1' key='1'>
+          1st year
+        </Option>
+        <Option value='2' key='2'>
+          2nd year
+        </Option>
+        <Option value='3' key='3'>
+          3rd year
+        </Option>
+        <Option value='4' key='4'>
+          4th year
+        </Option>
+        <Option value='5' key='5'>
+          5th year
+        </Option>
+      </Select>
+      <br />
+      <br />
+      <div>
+        <Button style={{width: '100%'}} size='large' type='primary'>
+          Save
+        </Button>
+      </div>
     </div>
   );
 };

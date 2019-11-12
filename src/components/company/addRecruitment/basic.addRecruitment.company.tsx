@@ -17,6 +17,7 @@ const BasicAddRecruitmentCompany: FC<IProps> = ({action, data, next}: IProps) =>
     <FormCreator
       formTemplate={basicAddRecruitmentTForm}
       submitButtonText='Save and Next'
+      buttonType='block'
       onSubmit={(objForm: any) => {
         action({
           ...data,

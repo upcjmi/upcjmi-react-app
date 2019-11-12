@@ -53,6 +53,7 @@ class SignInForm extends React.Component {
           <Button
             htmlType='submit'
             className='login-form-button'
+            type='primary'
             icon={inProgress ? 'loading' : 'login'}>
             Sign In
           </Button>

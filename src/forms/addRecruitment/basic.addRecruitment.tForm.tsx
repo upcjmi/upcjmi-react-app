@@ -39,16 +39,22 @@ export const basicAddRecruitmentTForm = (
     rules: [{required: true}],
   },
   {
-    label: 'Base Package',
+    label: 'Base Package (CTC)',
     name: 'package',
     initialValue: get(initialValues, 'package'),
     kwargs: {
       placeholder: 'ex: 25',
-      prefix: 'Rs. ',
-      suffix: 'Lakhs Per Annum',
+      addonBefore: 'Rs. ',
+      addonAfter: 'Lakhs Per Annum',
     },
     type: FORM_ELEMENT.INPUT,
-    rules: [{required: true}],
+    rules: [
+      {required: true},
+      {
+        pattern: /^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$/,
+        message: 'Not a valid package. Package can only be floating point numbers.',
+      },
+    ],
   },
   {
     label: 'Application open',
@@ -59,6 +65,7 @@ export const basicAddRecruitmentTForm = (
     kwargs: {
       showTime: {format: 'h:mm a'},
       format: 'YYYY-MM-DD h:mm a',
+      placeholder: 'Start & End Datetime',
     },
   },
   {

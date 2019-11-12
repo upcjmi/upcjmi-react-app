@@ -1,5 +1,5 @@
 import React, {FC, useState, Suspense} from 'react';
-import {Typography, Card, Col, Row, Steps, Icon} from 'antd';
+import {Typography, Card, Col, Row, Steps, Icon, Alert} from 'antd';
 import {selectScreen} from 'helpers/screen.helper';
 import {addRecruitmentSteps} from 'steps/addRecruitment.steps';
 import LoadingComponentScreen from 'screens/loadingComponent.screen';
@@ -16,7 +16,7 @@ const emptyData = {
 };
 
 const AddRecruitmentCompanyScreen: FC<IProps> = () => {
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(0);
   const [data, setData] = useState(emptyData);
 
   const next = () => {
@@ -34,6 +34,11 @@ const AddRecruitmentCompanyScreen: FC<IProps> = () => {
     <div className='container'>
       <Row gutter={24}>
         <Col sm={24} md={12} offset={selectScreen(0, 6)}>
+          <Alert
+            message='After adding a requirement it takes 1-2 working days for processing. '
+            type='info'
+          />
+          <br />
           <Card>
             <Title>New Recruitment</Title>
             <Steps size='small' labelPlacement='vertical' current={active}>
