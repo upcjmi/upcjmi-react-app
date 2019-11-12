@@ -298,8 +298,11 @@ class FormCreator extends Component {
         })}
 
         <Form.Item {...buttonPlacement}>
-          <ButtonGroup style={{width: buttonType === 'block' ? '100%' : null}}>
+          <ButtonGroup
+            style={{width: buttonType === 'block' ? '100%' : null}}
+            size={buttonType === 'block' ? 'large' : null}>
             <Button
+              size={buttonType === 'block' ? 'large' : null}
               onClick={this.handleSubmit}
               type="primary"
               htmlType="submit"
@@ -310,6 +313,7 @@ class FormCreator extends Component {
             </Button>
             {onCancel ? (
               <Button
+                size={buttonType === 'block' ? 'large' : null}
                 style={{
                   width: buttonType === 'block' ? '100%' : null,
                 }}

@@ -40,7 +40,7 @@ const RoundAddRecruitment: FC<IProps> = ({action, data, next}: IProps) => {
 
   const onSave = () => {
     if (rounds.length === 0) {
-      openNotificationWithIcon('error', 'There should be at least one round', 'Add one round');
+      openNotificationWithIcon('error', 'There should be at least one round', 'Please add a round');
       return;
     }
 
