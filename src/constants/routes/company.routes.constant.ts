@@ -33,6 +33,12 @@ export const companySideRoutes: Array<ISidebarRoute> = [
       ? lazy(() => import('screens/weAreWorking.screen'))
       : lazy(() => import('screens/company/settings.company.screen')),
   },
+  {
+    name: 'Recruitement Details',
+    icon: 'setting',
+    path: '/recruitment/details/',
+    screen: lazy(() => import('screens/company/recruitementDetails.company.screen')),
+  },
 ];
 
 export const companyExtraRoutes: Array<IRoute> = [

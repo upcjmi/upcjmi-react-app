@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from 'react';
 import {Typography, Button, Table} from 'antd';
 import {Link} from 'react-router-dom';
-import {getAllJobsAppliedAPI} from '../../helpers/api/company.api.helper';
+import {allJobsByCompany} from '../../helpers/api/company.api.helper';
 import {openNotificationWithIcon} from '../../helpers/notification.helper';
 
 interface IProps {}
@@ -15,19 +15,20 @@ const columns = [
     key: 'title',
   },
   {
+    title: 'Ongoing Round',
+    dataIndex: 'current_round_name',
+    key: 'current_round_name',
+  },
+  {
     title: 'Next Round',
-    dataIndex: 'next_round',
-    key: 'nextRound',
+    dataIndex: 'next_round_name',
+    key: 'next_round_name',
   },
+
   {
-    title: 'Ongoing Round ',
-    dataIndex: 'round',
-    key: 'round',
-  },
-  {
-    title: 'Selected students',
-    dataIndex: 'selected',
-    key: 'selected',
+    title: 'Students Applied',
+    dataIndex: 'applications',
+    key: 'applications',
   },
 ];
 
@@ -38,7 +39,7 @@ const RecruitmentCompanyScreen: FC<IProps> = () => {
   useEffect(() => {
     const load = async () => {
       try {
-        setData(await getAllJobsAppliedAPI());
+        setData(await allJobsByCompany());
         setLoading(false);
       } catch (e) {
         console.log(e);
@@ -47,7 +48,7 @@ const RecruitmentCompanyScreen: FC<IProps> = () => {
     };
 
     load();
-  });
+  },[]);
 
   return (
     <div className='container'>
@@ -59,7 +60,7 @@ const RecruitmentCompanyScreen: FC<IProps> = () => {
       </Link>
       <br />
       <br />
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={data} loading={loading} />
     </div>
   );
 };
