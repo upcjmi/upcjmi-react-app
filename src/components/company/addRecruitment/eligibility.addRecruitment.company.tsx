@@ -3,6 +3,7 @@ import {Typography, Cascader, Button, Select} from 'antd';
 import {allCoursesOption} from 'constants/allOfferedCourses';
 // @ts-ignore
 import {getCourse} from 'jamia-all-courses';
+import {openNotificationWithIcon} from 'helpers/notification.helper';
 
 interface IProps {
   action: any;
@@ -62,8 +63,8 @@ const Course: FC<ISubProps> = ({onChange, remove, defaultValue}: ISubProps) => {
 };
 
 const EligibilityAddRecruitmentCompany: FC<IProps> = ({action, data, next}: IProps) => {
-  const [courses, setCourses] = useState([]);
-  const [years, setYear] = useState(['3']);
+  const [courses, setCourses] = useState(data.eligibility.courses);
+  const [years, setYear] = useState(data.eligibility.years);
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -77,10 +78,7 @@ const EligibilityAddRecruitmentCompany: FC<IProps> = ({action, data, next}: IPro
   };
 
   const removeCourse = (index: number) => {
-    // let xcourses = courses.slice();
-    // xcourses = xcourses.splice(index, 1);
-
-    setCourses(courses.filter((value, i) => i !== index));
+    setCourses(courses.filter((value: string, i: number) => i !== index));
     forceUpdate();
   };
 
@@ -92,10 +90,25 @@ const EligibilityAddRecruitmentCompany: FC<IProps> = ({action, data, next}: IPro
     setCourses(xcourses);
   };
 
+  const onSave = () => {
+    if (years.length > 0 && courses.length > 0 && courses[0] !== null) {
+      action({
+        ...data,
+        eligibility: {
+          year: years,
+          courses,
+        },
+      });
+      next();
+    } else {
+      openNotificationWithIcon('error', 'At least one course/year is required');
+    }
+  };
+
   return (
     <div>
       <Title level={3}>Eligibility</Title>
-      {courses.map((course, index) => (
+      {courses.map((course: string, index: number): any => (
         <Course
           key={course}
           defaultValue={course}
@@ -137,7 +150,7 @@ const EligibilityAddRecruitmentCompany: FC<IProps> = ({action, data, next}: IPro
       <br />
       <br />
       <div>
-        <Button style={{width: '100%'}} size='large' type='primary'>
+        <Button style={{width: '100%'}} size='large' type='primary' onClick={onSave}>
           Save
         </Button>
       </div>

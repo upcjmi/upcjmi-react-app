@@ -21,4 +21,9 @@ export const addRecruitmentSteps: Array<INavigation> = [
       import('components/company/addRecruitment/eligibility.addRecruitment.company'),
     ),
   },
+  {
+    title: 'Saving',
+    icon: 'save',
+    component: lazy(() => import('components/company/addRecruitment/save.addRecruitment.company')),
+  },
 ];

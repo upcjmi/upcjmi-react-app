@@ -23,9 +23,10 @@ export const FORM_ELEMENT = {
 export const SUBMIT_FORM = 'SUBMIT_FORM';
 
 export const CAPTCHA = {
-  type: FORM_ELEMENT.CAPTCHA,
+  type: process.env.NODE_ENV === 'production' ? FORM_ELEMENT.CAPTCHA : FORM_ELEMENT.HIDDEN,
   name: 'captcha',
   label: 'Captcha',
+  initialValue: 'pass',
   rules: [
     {
       required: process.env.NODE_ENV === 'production',
