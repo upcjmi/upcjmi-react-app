@@ -12,7 +12,10 @@ const {Step} = Steps;
 const emptyData = {
   basic: {},
   rounds: [],
-  eligibility: {},
+  eligibility: {
+    years: [],
+    courses: [],
+  },
 };
 
 const AddRecruitmentCompanyScreen: FC<IProps> = () => {
@@ -31,34 +34,32 @@ const AddRecruitmentCompanyScreen: FC<IProps> = () => {
   const AddRecruitmentComponent = addRecruitmentSteps[active].component;
 
   return (
-    <div className='container'>
-      <Row gutter={24}>
-        <Col sm={24} md={12} offset={selectScreen(0, 6)}>
-          <Alert
-            message='After adding a requirement it takes 1-2 working days for processing. '
-            type='info'
-          />
+    <div className='center-hv full-page container'>
+      <div className='signinScreen-card' style={{width: 600}}>
+        <Alert
+          message='After adding a requirement it takes 1-2 working days for processing. '
+          type='info'
+        />
+        <br />
+        <Card>
+          <Title>New Recruitment</Title>
+          <Steps size='small' labelPlacement='vertical' current={active}>
+            {addRecruitmentSteps.slice(0, 3).map(({title, icon}, index) => (
+              <Step title={title} icon={<Icon type={icon} />} key={index.toString()} />
+            ))}
+          </Steps>
           <br />
-          <Card>
-            <Title>New Recruitment</Title>
-            <Steps size='small' labelPlacement='vertical' current={active}>
-              {addRecruitmentSteps.slice(0, 3).map(({title, icon}, index) => (
-                <Step title={title} icon={<Icon type={icon} />} key={index.toString()} />
-              ))}
-            </Steps>
-            <br />
-            <Suspense fallback={<LoadingComponentScreen />}>
-              <AddRecruitmentComponent
-                next={next}
-                action={setData}
-                data={data}
-                previous={previous}
-                startAgain={startAgain}
-              />
-            </Suspense>
-          </Card>
-        </Col>
-      </Row>
+          <Suspense fallback={<LoadingComponentScreen />}>
+            <AddRecruitmentComponent
+              next={next}
+              action={setData}
+              data={data}
+              previous={previous}
+              startAgain={startAgain}
+            />
+          </Suspense>
+        </Card>
+      </div>
     </div>
   );
 };

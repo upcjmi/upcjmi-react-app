@@ -12,10 +12,9 @@ import {
   Upload,
   Radio,
   InputNumber,
-  Row,
-  Col,
   Switch,
   Cascader,
+  TimePicker,
 } from 'antd';
 import {connect} from 'react-redux';
 
@@ -206,6 +205,9 @@ class FormCreator extends Component {
               break;
             case FORM_ELEMENT.MONTH_PICKER:
               itemInput = <MonthPicker format="MM/YYYY" {...kwargs} />;
+              break;
+            case FORM_ELEMENT.DATE_TIME_PICKER:
+              itemInput = <DatePicker showTime {...kwargs} />;
               break;
 
             case FORM_ELEMENT.RANGE_PICKER:

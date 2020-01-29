@@ -45,7 +45,7 @@ export const basicAddRecruitmentTForm = (
     kwargs: {
       placeholder: 'ex: 25',
       addonBefore: 'Rs. ',
-      addonAfter: 'Lakhs Per Annum',
+      addonAfter: 'LPA',
     },
     type: FORM_ELEMENT.INPUT,
     rules: [
@@ -58,14 +58,24 @@ export const basicAddRecruitmentTForm = (
   },
   {
     label: 'Application open',
-    name: 'start_end',
-    initialValue: get(initialValues, 'start_end'),
-    type: FORM_ELEMENT.RANGE_PICKER,
+    name: 'open',
+    initialValue: get(initialValues, 'open'),
+    type: FORM_ELEMENT.DATE_TIME_PICKER,
     rules: [{required: true}],
     kwargs: {
       showTime: {format: 'h:mm a'},
       format: 'YYYY-MM-DD h:mm a',
-      placeholder: 'Start & End Datetime',
+    },
+  },
+  {
+    label: 'Application ends',
+    name: 'close',
+    initialValue: get(initialValues, 'close'),
+    type: FORM_ELEMENT.DATE_TIME_PICKER,
+    rules: [{required: true}],
+    kwargs: {
+      showTime: {format: 'h:mm a'},
+      format: 'YYYY-MM-DD h:mm a',
     },
   },
   {
@@ -84,7 +94,7 @@ export const basicAddRecruitmentTForm = (
   },
   {
     label: form.getFieldValue('application_required') ? 'Questions' : '',
-    name: 'application',
+    name: 'application_format',
     initialValue: get(initialValues, 'application', questionInitialValue),
     type: form.getFieldValue('application_required') ? FORM_ELEMENT.MARKDOWN : FORM_ELEMENT.HIDDEN,
     rules: [{required: form.getFieldValue('application_required')}],

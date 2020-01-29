@@ -24,9 +24,20 @@ export const roundAddRecruitmentTForm = (state: any, initialValues: any) => [
   },
   {
     label: 'Starts on',
-    name: 'start_end',
-    initialValue: get(initialValues, 'start_end'),
-    type: FORM_ELEMENT.RANGE_PICKER,
+    name: 'open',
+    initialValue: get(initialValues, 'start'),
+    type: FORM_ELEMENT.DATE_TIME_PICKER,
+    rules: [{required: true}],
+    kwargs: {
+      showTime: {format: 'h:mm a'},
+      format: 'YYYY-MM-DD h:mm a',
+    },
+  },
+  {
+    label: 'Ends on',
+    name: 'close',
+    initialValue: get(initialValues, 'end'),
+    type: FORM_ELEMENT.DATE_TIME_PICKER,
     rules: [{required: true}],
     kwargs: {
       showTime: {format: 'h:mm a'},
