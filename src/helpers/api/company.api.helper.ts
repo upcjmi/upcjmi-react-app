@@ -19,4 +19,8 @@ export const applyToJobAPI = (company: number, job: number, data: any): Promise<
 
 export const getAllJobsAppliedAPI = (): Promise<any> => loadSecureUrl(UAllAppliedJobs);
 
-export const saveNewJobAPI = (data: any): Promise<any> => loadSecureUrl('');
+export const saveNewJobAPI = (data: any): Promise<any> => loadSecureUrl(`/company/job/add/`, {
+  method: 'post',
+  data,
+});
+//  /company/job/add/
