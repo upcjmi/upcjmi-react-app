@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Typography, Button, Table} from 'antd';
+import {Typography, Button, Table, Tag} from 'antd';
 import {Link} from 'react-router-dom';
 import {allJobsByCompany} from '../../helpers/api/company.api.helper';
 import {openNotificationWithIcon} from '../../helpers/notification.helper';
@@ -13,6 +13,7 @@ const columns = [
     title: 'Title',
     dataIndex: 'title',
     key: 'title',
+    render: (title: string) => <Link to='1/'>{title}</Link>,
   },
   {
     title: 'Ongoing Round',
@@ -24,11 +25,42 @@ const columns = [
     dataIndex: 'next_round_name',
     key: 'next_round_name',
   },
-
   {
-    title: 'Students Applied',
+    title: 'Applications',
     dataIndex: 'applications',
     key: 'applications',
+  },
+  {
+    title: 'Status',
+    dataIndex: 'review_status',
+    key: 'review_status',
+    render: (status: string) => {
+      let color = status.length > 5 ? 'geekblue' : 'green';
+      let text = '';
+      switch (status) {
+        case 'I':
+          color = 'geekblue';
+          text = 'In Review';
+          break;
+        case 'A':
+          color = 'green';
+          text = 'Approved';
+          break;
+
+        case 'R':
+          color = 'red';
+          text = 'Not Approved';
+          break;
+        default:
+          color = 'black';
+          text = 'Unknown';
+      }
+      return (
+        <Tag color={color} key={status}>
+          {text.toUpperCase()}
+        </Tag>
+      );
+    },
   },
 ];
 
@@ -48,7 +80,7 @@ const RecruitmentCompanyScreen: FC<IProps> = () => {
     };
 
     load();
-  },[]);
+  }, []);
 
   return (
     <div className='container'>

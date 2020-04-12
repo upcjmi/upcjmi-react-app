@@ -1,12 +1,12 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Button, Card, Col, Descriptions, Icon, Row, Skeleton, Typography, Empty} from 'antd';
+import {Button, Card, Col, Descriptions, Row, Skeleton, Typography, Empty} from 'antd';
 import {Link} from 'react-router-dom';
 
 import ProfileCard from 'components/student/profileCard.student';
 import {getAllJobsAppliedAPI} from 'helpers/api/company.api.helper';
 import {openNotificationWithIcon} from 'helpers/notification.helper';
 import {getAllAppliedCoursesAPI} from 'helpers/api/core.api.helper';
-import NoticeBoard from 'components/noticeBoard';
+// import NoticeBoard from 'components/noticeBoard';
 
 interface IProps {}
 
@@ -37,7 +37,7 @@ const JobApplication: FC<IProps> = () => {
       }
     };
 
-    load();
+    load().then();
   }, []);
 
   if (loading)
@@ -163,15 +163,15 @@ const HomeStudentScreen: FC<IProps> = () => (
   <div className='container'>
     <Row gutter={24}>
       <Col sm={24} md={12}>
-        <NoticeBoard />
+        {/* <NoticeBoard /> */}
         <br />
         <ProfileCard editable />
-        <Link to='/resume/'>
-          <Button type='link'>
-            <Icon type='edit' />
-            Edit your full resume
-          </Button>
-        </Link>
+        {/* <Link to='/resume/'> */}
+        {/*  <Button type='link'> */}
+        {/*    <Icon type='edit' /> */}
+        {/*    Edit your full resume */}
+        {/*  </Button> */}
+        {/* </Link> */}
       </Col>
 
       <Col sm={24} md={12}>
