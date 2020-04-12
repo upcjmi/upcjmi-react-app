@@ -231,7 +231,7 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
 
   return (
     <div>
-      <Title>Extra details</Title>
+      <Title>Details</Title>
       <br />
       <Form onSubmit={handelSubmit} hideRequiredMark>
         <Form.Item label='Tag line (short description)'>
