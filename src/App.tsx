@@ -12,7 +12,9 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import rootReducer from 'reducers';
 import Main from 'main';
 
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+// @ts-ignore
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line
+export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 interface IProps {}
 

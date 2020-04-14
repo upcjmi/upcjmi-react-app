@@ -3,7 +3,6 @@ import {Redirect} from 'react-router-dom';
 import {Spin, Button} from 'antd';
 import {saveNewJobAPI} from 'helpers/api/company.api.helper';
 import {openNotificationWithIcon} from 'helpers/notification.helper';
-import {COMPANY_PORTAL_HOME_PATH} from '../../../constants/routes/main.paths.constant';
 
 interface IProps {
   action: any;
@@ -46,7 +45,7 @@ const SaveAddRecruitmentCompany: FC<IProps> = ({action, data, next}: IProps) => 
           </div>
         );
       case 'saved':
-        return <Redirect to={COMPANY_PORTAL_HOME_PATH} />;
+        return <Redirect to='/' />;
       default:
         return 'Unknown Status Code';
     }
