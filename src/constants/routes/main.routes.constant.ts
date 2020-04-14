@@ -9,8 +9,10 @@ import {
   PRIVACY_POLICY_PATH,
   SIGN_IN_PATH,
   SIGN_UP_PATH,
+  FORGET_PASSWORD_PATH,
   STUDENT_PORTAL_HOME_PATH,
   TERMS_AND_CONDITION_PATH,
+  FORGET_PASSWORD_VERIFY,
 } from './main.paths.constant';
 
 export const COMMON_ROUTES: Array<IRoute> = [
@@ -51,6 +53,16 @@ export const COMMON_ROUTES: Array<IRoute> = [
     path: SIGN_UP_PATH,
     title: 'Create new student account',
     screen: lazy(() => import('screens/student/signUp.student.screen')),
+  },
+  {
+    path: FORGET_PASSWORD_PATH,
+    title: 'Forget Password for student account',
+    screen: lazy(() => import('screens/forgetPassword.screen')),
+  },
+  {
+    path: FORGET_PASSWORD_VERIFY,
+    title: 'Verify OTP for student account',
+    screen: lazy(() => import('screens/verifyForgetPasswordOTP.screen')),
   },
   {
     path: TERMS_AND_CONDITION_PATH,
