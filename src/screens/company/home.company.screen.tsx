@@ -5,6 +5,7 @@ import {Typography, Row, Col, Card, Button, Descriptions} from 'antd';
 import {IReduxState} from 'reducers';
 import {IUserMeta} from 'types/api.type';
 import NoticeBoard from 'components/noticeBoard';
+import CompanyDetail from 'components/company/companyDetail.company';
 import NotAuthorisedScreen from '../403.screen';
 
 interface IStateProps {
@@ -14,7 +15,7 @@ interface IStateProps {
 
 interface IProps extends IStateProps {}
 
-const {Title, Text} = Typography;
+const {Title} = Typography;
 
 const HomeCompanyScreen: FC<IProps> = (props: IProps) => {
   const {user, isAuthenticated} = props;
@@ -27,20 +28,7 @@ const HomeCompanyScreen: FC<IProps> = (props: IProps) => {
     <div className='container'>
       <Row gutter={24}>
         <Col sm={24} md={12}>
-          <Card>
-            <div>
-              <Title>Hike Pvt. Ltd.</Title>
-            </div>
-            <Text>
-              OYO Homes & Hotels, commonly known as OYO, is the world’s third-largest, one of
-              China’s top two and the fastest growing hospitality chain of leased and franchised
-              hotels, homes & living spaces. Founded in 2013 by Ritesh Agarwal, OYO initially
-              consisted mainly of budget hotels.
-            </Text>
-            <Button type='link' icon='edit' className='float-right'>
-              Edit
-            </Button>
-          </Card>
+          <CompanyDetail />
         </Col>
         <Col sm={24} md={12}>
           <NoticeBoard />

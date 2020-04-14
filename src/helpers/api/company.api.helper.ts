@@ -2,7 +2,7 @@ import {IAllCompany} from 'types/company.api.type';
 import {loadSecureUrl} from './main.api.helper';
 
 const UAllCompanies = 'company/';
-const UAllAppliedJobs = 'company/applied/jobs/';
+const UAllAppliedJobs = 'company/job/applied/';
 
 export const getAllCompaniesAPI = (): Promise<IAllCompany> => loadSecureUrl(UAllCompanies);
 export const getJobBasicDetailsAPI = (company: number): Promise<any> =>
@@ -25,4 +25,5 @@ export const saveNewJobAPI = (data: any): Promise<any> =>
     data,
   });
 export const allJobsByCompany = (): Promise<any> => loadSecureUrl('/company/job/all/');
-//  /company/job/add/
+
+export const companyDetail = (id: number): Promise<any> => loadSecureUrl(`/company/${id}/`);

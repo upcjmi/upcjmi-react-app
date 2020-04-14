@@ -66,26 +66,38 @@ const RoundAddRecruitment: FC<IProps> = ({action, data, next}: IProps) => {
   return (
     <div>
       <Title level={3}>Rounds</Title>
-      <Collapse accordion bordered={false} expandIconPosition='right' destroyInactivePanel>
-        {rounds.map((round, index) => {
-          const form = (
-            // @ts-ignore
-            <FormCreator
-              formTemplate={roundAddRecruitmentTForm}
-              submitButtonText='Save'
-              cancelButtonText={<Icon type='delete' />}
-              onCancel={() => removeRound(index)}
-              onSubmit={(objForm: any) => updateRound(index, objForm.getFieldsValue())}
-              initialValue={async () => rounds[index]}
-            />
-          );
-          return (
-            <Panel header={`${index + 1}. ${round.title}`} key={index.toString()}>
-              {form}
-            </Panel>
-          );
-        })}
-      </Collapse>
+      {rounds.length <= 0 ? (
+        <div>Add a round to continue</div>
+      ) : (
+        <Collapse
+          accordion
+          bordered={false}
+          expandIconPosition='right'
+          defaultActiveKey={['0']}
+          destroyInactivePanel>
+          {rounds.map((round, index) => {
+            const form = (
+              // @ts-ignore
+              <FormCreator
+                formTemplate={roundAddRecruitmentTForm}
+                submitButtonText='Save'
+                cancelButtonText={<Icon type='delete' />}
+                onCancel={() => removeRound(index)}
+                onSubmit={(objForm: any) => updateRound(index, objForm.getFieldsValue())}
+                initialValue={async () => rounds[index]}
+              />
+            );
+            return (
+              <Panel
+                header={`${index + 1}. ${round.title || 'New Round (unsaved)'}`}
+                key={index.toString()}
+                forceRender>
+                {form}
+              </Panel>
+            );
+          })}
+        </Collapse>
+      )}
       <br />
       <br />
       <Button size='large' className='full-width' icon='plus' onClick={addRound}>
