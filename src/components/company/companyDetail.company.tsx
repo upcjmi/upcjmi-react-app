@@ -19,6 +19,7 @@ const CompanyDetail: FC<IProps> = ({id}) => {
 
   useEffect(() => {
     const load = async () => {
+      // @ts-ignore
       const data = await companyDetail(id);
 
       setDetails(data);
