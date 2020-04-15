@@ -7,7 +7,6 @@ const UAllAppliedJobs = 'company/job/applied/';
 export const getAllCompaniesAPI = (): Promise<IAllCompany> => loadSecureUrl(UAllCompanies);
 export const getJobBasicDetailsAPI = (company: number): Promise<any> =>
   loadSecureUrl(`company/${company}/job/`);
-
 export const getJobDetailsAPI = (company: number, job: number): Promise<any> =>
   loadSecureUrl(`company/${company}/job/${job}/`);
 
@@ -27,3 +26,9 @@ export const saveNewJobAPI = (data: any): Promise<any> =>
 export const allJobsByCompany = (): Promise<any> => loadSecureUrl('/company/job/all/');
 
 export const companyDetail = (id: number): Promise<any> => loadSecureUrl(`/company/${id}/`);
+
+export const getAllApplications = (jobId: number): Promise<any> =>
+  loadSecureUrl(`company/job/${jobId}/applications/`);
+
+export const getAllRounds = (jobId: number): Promise<any> =>
+  loadSecureUrl(`company/job/${jobId}/rounds/`);
