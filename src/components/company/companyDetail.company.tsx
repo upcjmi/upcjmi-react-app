@@ -51,7 +51,7 @@ const CompanyDetail: FC<IProps> = ({id}) => {
             about={details.about}
             action='add'
             id={id}
-            onSave={e => {
+            onSave={(e: any) => {
               setDetails(e);
             }}
           />
