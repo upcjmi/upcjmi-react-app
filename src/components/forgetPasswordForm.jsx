@@ -1,6 +1,13 @@
 import React from 'react';
 import {Form, Icon, Input, Button} from 'antd';
 import {connect} from 'react-redux';
+import {requestForgetPasswordOTP, resetPasswordOTP} from '../helpers/api/api.helper';
+import {signInWithEmailAction} from '../actions/auth.action';
+import {
+  passwordChangedSuccessfully,
+  errorInChangingPassword,
+  verifyPasswordIsNotSame,
+} from '../helpers/notification.helper';
 
 class ForgetPasswordForm extends React.Component {
   constructor(props) {
@@ -10,18 +17,33 @@ class ForgetPasswordForm extends React.Component {
     };
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
     const {form, signIn} = this.props;
     const {validateFields} = form;
-    validateFields((err, values) => {
+    validateFields(async (err, values) => {
       if (!err) {
-        // signIn(values.email);
+        if (values.password === values.verifyPassword) {
+          resetPasswordOTP({
+            email: values.email,
+            otp: values.otp,
+            new_password: values.password,
+          })
+            .then(() => {
+              passwordChangedSuccessfully();
+              signIn(values.email, values.password);
+            })
+            .catch(() => {
+              errorInChangingPassword();
+            });
+        } else {
+          verifyPasswordIsNotSame();
+        }
       }
     });
   };
 
-  getOTP = () => {
+  getOTP = async () => {
     this.setState(
       {
         shouldGetOTP: false,
@@ -34,6 +56,9 @@ class ForgetPasswordForm extends React.Component {
         }, 5000);
       },
     );
+    const {form} = this.props;
+    const {getFieldValue} = form;
+    await requestForgetPasswordOTP(getFieldValue('email'));
   };
 
   render() {
@@ -65,7 +90,7 @@ class ForgetPasswordForm extends React.Component {
           {getFieldDecorator('otp', {
             rules: [
               {required: true, message: 'Please input your OTP!'},
-              {type: 'otp', message: 'Enter a valid OTP!'},
+              {message: 'Enter a valid OTP!'},
             ],
           })(
             <div
@@ -97,7 +122,7 @@ class ForgetPasswordForm extends React.Component {
           {getFieldDecorator('password', {
             rules: [
               {required: true, message: 'Please input your password!'},
-              {type: 'email', message: 'Enter a valid password!'},
+              {message: 'Enter a valid password!'},
             ],
           })(
             <Input
@@ -115,7 +140,7 @@ class ForgetPasswordForm extends React.Component {
           {getFieldDecorator('verifyPassword', {
             rules: [
               {required: true, message: 'Please input your verify password!'},
-              {type: 'email', message: 'Enter a valid verify password!'},
+              {message: 'Enter a valid verify password!'},
             ],
           })(
             <Input
@@ -148,4 +173,11 @@ const mapStateToProps = state => ({
   inProgress: state.auth.inProgress,
 });
 
-export default connect(mapStateToProps)(Form.create({name: 'forget-password'})(ForgetPasswordForm));
+const mapDispatchToProps = dispatch => ({
+  signIn: (email, password) => dispatch(signInWithEmailAction(email, password)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Form.create({name: 'forget-password'})(ForgetPasswordForm));

@@ -14,9 +14,11 @@ const UContact = 'contact/';
 
 const UUserMetaDetails = 'auth/user/meta/';
 const UUserExits = 'auth/user/exists/';
-
 const UVerifyEmail = 'auth/verify/email/';
 const USendVerificationMail = 'auth/verify/email/send/';
+
+const ForgetPasswordReqOTP = '/auth/reset-password/send/';
+const ResetPassword = '/auth/reset-password/';
 
 export const pingAPI = (): Promise<IPing> => loadOpenUrl(UPing);
 
@@ -55,6 +57,18 @@ export const verifyEmailAPI = (hash: string): Promise<IEmail> =>
   loadOpenUrl(UVerifyEmail, {
     method: 'post',
     data: {hash},
+  });
+
+export const requestForgetPasswordOTP = (email: any) =>
+  loadOpenUrl(ForgetPasswordReqOTP, {
+    method: 'post',
+    data: {email},
+  });
+
+export const resetPasswordOTP = (obj: any) =>
+  loadOpenUrl(ResetPassword, {
+    method: 'post',
+    data: obj,
   });
 
 export const resendVerificationMailAPI = (): Promise<void> => loadSecureUrl(USendVerificationMail);

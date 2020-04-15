@@ -57,7 +57,7 @@ class SignInForm extends React.Component {
             icon={inProgress ? 'loading' : 'login'}>
             Sign In
           </Button>
-          <a className='login-form-forgot' href='#!'>
+          <a className='login-form-forgot' href='/forget-password'>
             Forgot password
           </a>
         </Form.Item>

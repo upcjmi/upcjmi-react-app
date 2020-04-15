@@ -73,4 +73,9 @@ export const COMMON_ROUTES: Array<IRoute> = [
     title: 'Verify your email',
     screen: lazy(() => import('screens/emailVerification.screen')),
   },
+  {
+    title: 'Recruitment details',
+    path: '/farzi/:id/',
+    screen: lazy(() => import('screens/company/recruitmentDetail.company.screen')),
+  },
 ];
