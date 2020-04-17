@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {Avatar, Card, Tag, Typography, Skeleton} from 'antd';
 
 import {selectScreen} from 'helpers/screen.helper';
-import {getCourseName} from 'helpers/courses';
 import {GetProfileIcon} from 'helpers/function.helper';
 import {openNotificationWithIcon} from '../helpers/notification.helper';
 import {getStudentExtraDetailsWithId} from '../helpers/api/student.api.helper';
 
 const {Title, Text, Paragraph} = Typography;
+const Markdown = require('react-markdown');
 
 const getYear = year => {
   switch (year) {
@@ -96,7 +96,7 @@ const StudentModalCard = ({id, user}) => {
         <br />
         <div>
           Why Should We Hire You?&nbsp;&nbsp;
-          <Paragraph type='secondary'>{user.application}</Paragraph>
+          <Markdown source={user.application} />
         </div>
       </div>
     </Card>

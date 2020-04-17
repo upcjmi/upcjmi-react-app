@@ -62,6 +62,7 @@ const ProfileCardStudent: FC<IProps> = ({
       <Card>
         <Title level={4}>You have not added your extra info yet</Title>
         <SideDrawerForm
+          trigger
           render={() => (
             // @ts-ignore
             <ExtraDetailsChange action='add' />
@@ -141,7 +142,4 @@ const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
   loadExtraDetails: () => dispatch(loadStudentExtraDetails()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ProfileCardStudent);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileCardStudent);
