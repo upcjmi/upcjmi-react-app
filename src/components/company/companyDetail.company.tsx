@@ -1,9 +1,10 @@
 import React, {FC, useState, useEffect} from 'react';
 import {Typography, Card, Button, Skeleton} from 'antd';
 import {connect} from 'react-redux';
-
+import SideDrawerForm from 'components/sideDrawerForm';
 import {IReduxState} from 'reducers';
 import {companyDetail} from 'helpers/api/company.api.helper';
+import ExtraDetailsChange from './extraDetailsChange.company';
 
 const {Title, Text} = Typography;
 
@@ -42,9 +43,26 @@ const CompanyDetail: FC<IProps> = ({id}) => {
         <Title>{details.name}</Title>
       </div>
       <Text>{details.about}</Text>
-      <Button type='link' icon='edit' className='float-right'>
-        Edit
-      </Button>
+      <SideDrawerForm
+        render={() => (
+          // @ts-ignore
+          <ExtraDetailsChange
+            name={details.name}
+            about={details.about}
+            action='add'
+            id={id}
+            onSave={(e: any) => {
+              setDetails(e);
+            }}
+          />
+        )}>
+        {
+          // {setDetails({name:e.name,about:e.about})}
+        }
+        <Button type='primary' size='large'>
+          edit
+        </Button>
+      </SideDrawerForm>
     </Card>
   );
 };
