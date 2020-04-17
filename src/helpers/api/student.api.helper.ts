@@ -17,8 +17,8 @@ export const saveStudentExtraDataAPI = (
     data,
   });
 
-export const getStudentResume = (): Promise<IReusmeData> => loadSecureUrl(UResume);
-export const updateStudnetResume = (data: IReusmeData): Promise<any> =>
+export const getStudentResume = (): Promise<any> => loadSecureUrl(UResume);
+export const updateStudnetResume = (data: any): Promise<any> =>
   loadSecureUrl(UResume, {
     method: 'post',
     data,
