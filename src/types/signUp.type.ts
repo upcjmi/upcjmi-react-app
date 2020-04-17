@@ -27,8 +27,16 @@ export interface IBasicStudentSignUpData {
   captcha: string;
 }
 
+export interface IBasicForgetPasswordData {
+  email: string;
+}
+
 export interface ISignUpData {
   account?: IEmailAccount | IGoogleAccount | {};
   // eslint-disable-next-line no-undef
   basic?: Partial<IBasicStudentSignUpData>;
+}
+export interface IForgetPasswordData {
+  // eslint-disable-next-line no-undef
+  basic?: Partial<IBasicForgetPasswordData>;
 }
