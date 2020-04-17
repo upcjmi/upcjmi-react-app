@@ -8,6 +8,9 @@ const UResume = '/student/resume/';
 export const getStudentExtraDetailsAPI = (): Promise<IStudentExtraDetails> =>
   loadSecureUrl(UStudentExtraDetails);
 
+export const getStudentExtraDetailsWithId = (id: number): Promise<IStudentExtraDetails> =>
+  loadSecureUrl(`${UStudentExtraDetails}${id}/`);
+
 export const saveStudentExtraDataAPI = (
   data: IStudentExtraDetails,
   action: string,
