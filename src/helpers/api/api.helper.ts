@@ -46,6 +46,7 @@ export const contactFormAPI = (data: IContactForm): Promise<any> =>
   });
 
 export const getUserMetaDetailAPI = (): Promise<IUserMeta> => loadSecureUrl(UUserMetaDetails);
+
 export const doesUserExistsAPI = (email: string): Promise<IUserExists> =>
   loadOpenUrl(UUserExits, {
     params: {
