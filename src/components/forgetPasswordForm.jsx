@@ -103,7 +103,7 @@ class ForgetPasswordForm extends React.Component {
               <Input
                 prefix={<Icon type='safety' className='input-prefix' />}
                 placeholder='OTP'
-                type='otp'
+                type='number'
                 autoCapitalize='none'
                 autoCorrect='off'
               />
@@ -146,7 +146,7 @@ class ForgetPasswordForm extends React.Component {
             <Input
               prefix={<Icon type='lock' className='input-prefix' />}
               placeholder='Verify Password'
-              type='verifyPassword'
+              type='password'
               autoCapitalize='none'
               autoCorrect='off'
             />,
