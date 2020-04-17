@@ -41,15 +41,32 @@ class Resume extends React.Component {
     let i = 0;
     let tmp1;
     console.log(this.props.data);
-    const arr=["basics",0,"work",1,"skills",1,"achievements",0,"links",1,"education",1,"languages",0,"hobby",0];
-    for(i=0;i<arr.length;i+=2){
-      if(tmp.old[arr[i]]===undefined){
-        tmp1=arr[i]
-        //console.log(tmp1)
-        tmp.old[arr[i]]=(arr[i+1])?[{}]:{}
+    const arr = [
+      'basics',
+      0,
+      'work',
+      1,
+      'skills',
+      1,
+      'achievements',
+      0,
+      'links',
+      1,
+      'education',
+      1,
+      'languages',
+      0,
+      'hobby',
+      0,
+    ];
+    for (i = 0; i < arr.length; i += 2) {
+      if (tmp.old[arr[i]] === undefined) {
+        tmp1 = arr[i];
+        // console.log(tmp1)
+        tmp.old[arr[i]] = arr[i + 1] ? [{}] : {};
       }
     }
-      console.log(tmp)
+    console.log(tmp);
     this.state = tmp;
   }
 
