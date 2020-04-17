@@ -75,6 +75,14 @@ export const userExistsWithThisEmail = (email: string) =>
 export const signUpSuccessfullNotification = () =>
   openNotificationWithIcon('success', 'Account created you successfully');
 
+export const passwordChangedSuccessfully = () =>
+  openNotificationWithIcon('success', 'Password Changed successfully');
+export const errorInChangingPassword = () =>
+  openNotificationWithIcon('error', 'Error in Changing Password');
+
+export const verifyPasswordIsNotSame = () =>
+  openNotificationWithIcon('error', 'Verify Password Is Not Same');
+
 export const signUpFailedNotification = (detail: string) =>
   htmlNotification('error', 'Failed to create account', detail);
 

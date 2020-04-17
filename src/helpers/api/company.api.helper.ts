@@ -1,13 +1,12 @@
-import {IAllCompany} from 'types/company.api.type';
+import {IAllCompany, ICompanyExtraDetails} from 'types/company.api.type';
 import {loadSecureUrl} from './main.api.helper';
 
 const UAllCompanies = 'company/';
 const UAllAppliedJobs = 'company/job/applied/';
-
+const UCompanyExtraDetails = '/company/';
 export const getAllCompaniesAPI = (): Promise<IAllCompany> => loadSecureUrl(UAllCompanies);
 export const getJobBasicDetailsAPI = (company: number): Promise<any> =>
   loadSecureUrl(`company/${company}/job/`);
-
 export const getJobDetailsAPI = (company: number, job: number): Promise<any> =>
   loadSecureUrl(`company/${company}/job/${job}/`);
 
@@ -24,6 +23,26 @@ export const saveNewJobAPI = (data: any): Promise<any> =>
     method: 'post',
     data,
   });
+export const saveCompanyExtraDataAPI = (
+  data: ICompanyExtraDetails,
+  action: string,
+  id: number,
+): Promise<ICompanyExtraDetails> =>
+  loadSecureUrl(`${UCompanyExtraDetails + id.toString()}/`, {
+    method: action === 'edit' ? 'patch' : 'put',
+    data,
+  });
 export const allJobsByCompany = (): Promise<any> => loadSecureUrl('/company/job/all/');
 
 export const companyDetail = (id: number): Promise<any> => loadSecureUrl(`/company/${id}/`);
+
+export const getAllApplications = (jobId: number): Promise<any> =>
+  loadSecureUrl(`company/job/${jobId}/applications/`);
+
+export const getAllRounds = (jobId: number): Promise<any> =>
+  loadSecureUrl(`company/job/${jobId}/rounds/`);
+export const selectStudentsForRound = (jobId: number, round: number, students: any): Promise<any> =>
+  loadSecureUrl(`/company/job/${jobId}/select/`, {
+    method: 'post',
+    data: {students, round},
+  });

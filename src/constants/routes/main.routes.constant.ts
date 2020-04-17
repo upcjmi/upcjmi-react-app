@@ -9,6 +9,7 @@ import {
   PRIVACY_POLICY_PATH,
   SIGN_IN_PATH,
   SIGN_UP_PATH,
+  FORGET_PASSWORD_PATH,
   STUDENT_PORTAL_HOME_PATH,
   TERMS_AND_CONDITION_PATH,
 } from './main.paths.constant';
@@ -53,6 +54,11 @@ export const COMMON_ROUTES: Array<IRoute> = [
     screen: lazy(() => import('screens/student/signUp.student.screen')),
   },
   {
+    path: FORGET_PASSWORD_PATH,
+    title: 'Forget Password for student account',
+    screen: lazy(() => import('screens/forgetPassword.screen')),
+  },
+  {
     path: TERMS_AND_CONDITION_PATH,
     title: 'Terms and Conditions',
     screen: lazy(() => import('screens/termsAndConditions.screen')),
@@ -66,5 +72,10 @@ export const COMMON_ROUTES: Array<IRoute> = [
     path: EMAIL_VERIFICATION_PATH,
     title: 'Verify your email',
     screen: lazy(() => import('screens/emailVerification.screen')),
+  },
+  {
+    title: 'Recruitment details',
+    path: '/farzi/:id/',
+    screen: lazy(() => import('screens/company/recruitmentDetail.company.screen')),
   },
 ];
