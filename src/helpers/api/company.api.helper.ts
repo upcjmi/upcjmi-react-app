@@ -41,3 +41,8 @@ export const getAllApplications = (jobId: number): Promise<any> =>
 
 export const getAllRounds = (jobId: number): Promise<any> =>
   loadSecureUrl(`company/job/${jobId}/rounds/`);
+export const selectStudentsForRound = (jobId: number, round: number, students: any): Promise<any> =>
+  loadSecureUrl(`/company/job/${jobId}/select/`, {
+    method: 'post',
+    data: {students, round},
+  });
