@@ -1,33 +1,42 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Table, Modal, Button} from 'antd';
+import {Table, Typography, Modal, Button, Row, Col, Select} from 'antd';
 import {connect} from 'react-redux';
-import {loadAllApplications, loadAllRounds} from '../../actions/company.action';
-import {getStudentExtraDetailsWithId} from '../../helpers/api/student.api.helper';
+import {getAllApplications, getAllRounds} from '../../helpers/api/company.api.helper';
+import {openNotificationWithIcon} from '../../helpers/notification.helper';
+import ProfileCardStudent from '../../components/student/profileCard.student';
+import StudentModalCard from '../../components/studentModalCard.company';
+
+const {Option} = Select;
+const {Title} = Typography;
 
 interface IProps {
   match: any;
   history: any;
-  getAllApplications: any;
-  getAllRounds: any;
 }
 
-const RecruitmentDetailCompanyScreen: FC<IProps> = ({
-  match,
-  getAllApplications,
-  getAllRounds,
-}: IProps) => {
+const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
   const [visible, changeVisible] = useState(false);
-  const [studentId, changeStudentId] = useState(0);
+  const [currentRound, changeCurrentRound] = useState(0);
+  const [studentId, changeStudentId] = useState(1);
+  const [allApplications, changeAllApplications] = useState([]);
+  const [allRounds, changeAllRounds] = useState([{id: 0, title: 'Coding Round'}]);
   useEffect(() => {
     const load = async () => {
       try {
         const {id} = match.params;
-        // await getAllApplications(id)
-        // await getAllRounds(id)
-        const data = await getStudentExtraDetailsWithId(1);
-        console.log('extrainfo', data);
+        const applications = await getAllApplications(id);
+        const rounds = await getAllRounds(id);
+        changeAllApplications(applications);
+        changeAllRounds(rounds);
+        console.log(applications, rounds);
+        // const data = await getStudentExtraDetailsWithId(1);
+        // console.log('extrainfo', data);
       } catch (e) {
-        console.error(e);
+        openNotificationWithIcon(
+          'warning',
+          'Unknown error occurred',
+          'Try signing out or refreshing page',
+        );
       }
     };
     load();
@@ -46,19 +55,28 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({
           type='link'
           onClick={() => {
             changeVisible(true);
-            changeStudentId(record.key);
+            changeStudentId(record.id);
           }}>
           {text}
         </Button>
       ),
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
+      title: 'Roll No.',
+      dataIndex: 'roll',
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
+      title: 'Course',
+      dataIndex: 'course',
+    },
+    {
+      title: 'Year',
+      dataIndex: 'year',
+    },
+    {
+      title: 'Applied At',
+      dataIndex: 'applied_at',
+      render: (text: any) => <p style={{margin: 0}}>{text.slice(0, 10)}</p>,
     },
   ];
   const rowSelection = {
@@ -70,46 +88,55 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({
       name: record.name,
     }),
   };
-
-  const data = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-    {
-      key: '4',
-      name: 'Disabled User',
-      age: 99,
-      address: 'Sidney No. 1 Lake Park',
-    },
-  ];
-
   return (
-    <div>
-      {/* {match.params.id} */}
-      <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
-      <Modal
-        title='Basic Modal'
-        visible={visible}
-        onOk={() => toggleModel(false)}
-        onCancel={() => toggleModel(false)}>
-        {studentId}
-        {/* <ProfileCardStudent editable={false} key={studentId} /> */}
-      </Modal>
+    <div className='container'>
+      <Row>
+        <Title>All Application</Title>
+      </Row>
+      <Row>
+        <Col xs={12} sm={12} md={4} lg={4} xl={4}>
+          <Title level={3}>Current Round : </Title>
+        </Col>
+        <Col xs={12} sm={12} md={4} lg={4} xl={4}>
+          <Title level={4}>{allRounds[currentRound].title}</Title>
+        </Col>
+      </Row>
+      <Row align='middle'>
+        <Col xs={12} sm={12} md={4} lg={4} xl={4}>
+          <Title level={3}>Select Round : </Title>
+        </Col>
+        <Col xs={12} sm={12} md={4} lg={4} xl={4}>
+          <Select defaultValue={0} onChange={(e: any) => changeCurrentRound(e)}>
+            {allRounds.map(item => (
+              <Option value={item.id - 1} key={item.id}>
+                {item.title}
+              </Option>
+            ))}
+          </Select>
+        </Col>
+        <Col xs={24} sm={24} md={4} lg={4} xl={4}>
+          <Button
+            onClick={() => {
+              console.log('Ggg');
+            }}
+            type='primary'>
+            Move Selected To Next Round
+          </Button>
+        </Col>
+      </Row>
+      <br />
+      <Row>
+        <Col>
+          <Table rowSelection={rowSelection} columns={columns} dataSource={allApplications} />
+          <Modal
+            title='Student Info'
+            visible={visible}
+            onOk={() => toggleModel(false)}
+            onCancel={() => toggleModel(false)}>
+            <StudentModalCard id={studentId} user={allApplications[studentId - 1]} />
+          </Modal>
+        </Col>
+      </Row>
     </div>
   );
 };
@@ -118,9 +145,6 @@ const mapStateToProps = (state: any) => ({
   inProgress: state.auth.inProgress,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
-  getAllApplications: (jobId: number) => dispatch(loadAllApplications(jobId)),
-  getAllRounds: (jobId: number) => dispatch(loadAllRounds(jobId)),
-});
+const mapDispatchToProps = (dispatch: any) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecruitmentDetailCompanyScreen);
