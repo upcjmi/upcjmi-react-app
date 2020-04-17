@@ -36,19 +36,37 @@ class Resume extends React.Component {
   constructor(props) {
     super(props);
     const tmp = {old: this.props.data};
+
     console.log(tmp);
-    const i = 0;
+    let i = 0;
     let tmp1;
     console.log(this.props.data);
-    // const arr=["basics",0,"work",1,"skills",1,"achievements",0,"links",1,"education",1,"languages",0,"hobby",0];
-    // for(i=0;i<arr.length;i+=2){
-    //   if(tmp.old[arr[i]]===undefined){
-    //     tmp1=arr[i]
-    //     //console.log(tmp1)
-    //     tmp.old[arr[i]]=(arr[i+1])?[{}]:{}
-    //   }
-    // }
-    //   console.log(tmp)
+    const arr = [
+      'basics',
+      0,
+      'work',
+      1,
+      'skills',
+      1,
+      'achievements',
+      0,
+      'links',
+      1,
+      'education',
+      1,
+      'languages',
+      0,
+      'hobby',
+      0,
+    ];
+    for (i = 0; i < arr.length; i += 2) {
+      if (tmp.old[arr[i]] === undefined) {
+        tmp1 = arr[i];
+        // console.log(tmp1)
+        tmp.old[arr[i]] = arr[i + 1] ? [{}] : {};
+      }
+    }
+    console.log(tmp);
     this.state = tmp;
   }
 
@@ -159,7 +177,9 @@ class Resume extends React.Component {
 
   componentDidMount(prevProps) {
     const resumeInputs = document.getElementsByClassName('resumeInput');
-    let i; let pAttribute; let pCursor;
+    let i;
+    let pAttribute;
+    let pCursor;
     for (i = 0; i < resumeInputs.length; i++) {
       if (resumeInputs[i].tagName == 'P') {
         resumeInputs[i].setAttribute('contenteditable', this.props.editable);
@@ -418,7 +438,8 @@ class Resume extends React.Component {
                       }}
                       className='contenteditableInput  resumeInput border size15'
                       style={{cursor: 'default'}}
-                      placeholder={value.type} />
+                      placeholder={value.type}
+                    />
                   </Col>
                   <Col xs={24} sm={16} md={16} lg={16} xl={16}>
                     <p
