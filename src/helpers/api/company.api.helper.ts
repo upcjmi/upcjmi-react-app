@@ -41,8 +41,25 @@ export const getAllApplications = (jobId: number): Promise<any> =>
 
 export const getAllRounds = (jobId: number): Promise<any> =>
   loadSecureUrl(`company/job/${jobId}/rounds/`);
-export const selectStudentsForRound = (jobId: number, round: number, students: any): Promise<any> =>
-  loadSecureUrl(`/company/job/${jobId}/select/`, {
+
+export const moveToNextRound = (jobId: number, students: any, round: number): Promise<any> =>
+  loadSecureUrl(`company/job/${jobId}/select/next/`, {
     method: 'post',
     data: {students, round},
   });
+
+export const rejectApplication = (jobId: number, students: any): Promise<any> =>
+  loadSecureUrl(`/company/job/${jobId}/select/reject/`, {
+    method: 'post',
+    data: {students},
+  });
+
+export const placeStudent = (jobId: number, students: any): Promise<any> =>
+  loadSecureUrl(`/company/job/${jobId}/select/place/`, {
+    method: 'post',
+    data: {students},
+  });
+
+// company/job/${id}/select/next/
+// company/job/${id}/select/reject/
+// company/job/${id}/select/place/

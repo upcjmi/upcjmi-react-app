@@ -5,6 +5,7 @@ import {selectScreen} from 'helpers/screen.helper';
 import {GetProfileIcon} from 'helpers/function.helper';
 import {openNotificationWithIcon} from '../helpers/notification.helper';
 import {getStudentExtraDetailsWithId} from '../helpers/api/student.api.helper';
+import {getCourse} from '../helpers/courses';
 
 const {Title, Text, Paragraph} = Typography;
 const Markdown = require('react-markdown');
@@ -74,7 +75,9 @@ const StudentModalCard = ({id, user}) => {
         <br />
         <Text>
           <b>
-            {user.course.slice(0, user.course.length - 7)}
+            {getCourse(user.course)
+              .join('/')
+              .replace(' Programmes', '')}
             &nbsp;&nbsp;&middot;&nbsp;&nbsp;
             {`${getYear(user.year)} year`}
           </b>

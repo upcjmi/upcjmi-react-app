@@ -23,6 +23,7 @@ const SideDrawerForm: FC<IProps> = ({title, children, trigger, render: Render}: 
         title={title}
         placement='right'
         closable
+        maskClosable={!trigger}
         onClose={() => setVisibility(false)}
         visible={visible}
         width={selectScreen(300, 400, 500)}>

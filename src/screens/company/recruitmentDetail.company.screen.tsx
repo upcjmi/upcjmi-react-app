@@ -1,12 +1,19 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Table, Typography, Modal, Button, Row, Col, Select} from 'antd';
+import {Table, Typography, Modal, Tabs, Button, Row, Col} from 'antd';
 import {connect} from 'react-redux';
-import {getAllApplications, getAllRounds} from '../../helpers/api/company.api.helper';
+import {
+  getAllApplications,
+  getAllRounds,
+  moveToNextRound,
+  placeStudent,
+  rejectApplication,
+} from '../../helpers/api/company.api.helper';
 import {openNotificationWithIcon} from '../../helpers/notification.helper';
 import StudentModalCard from '../../components/studentModalCard.company';
+import {getCourse} from '../../helpers/courses';
 
-const {Option} = Select;
 const {Title} = Typography;
+const {TabPane} = Tabs;
 
 interface IProps {
   match: any;
@@ -15,34 +22,48 @@ interface IProps {
 
 const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
   const [visible, changeVisible] = useState(false);
-  const [currentRound, changeCurrentRound] = useState(0);
+  const [selectedStudents, changeSelectedStudents] = useState([]);
   const [studentId, changeStudentId] = useState(1);
   const [allApplications, changeAllApplications] = useState([]);
   const [allRounds, changeAllRounds] = useState([{id: 0, title: 'Coding Round'}]);
+  const [activeTab, changeActiveTab] = useState('Applications');
+  const [loading, changeLoading] = useState(false);
+  const [reload, changeReload] = useState(false);
+  const filterApplications = (type: string, application: any) => {
+    return application.filter((i: any) => {
+      return i.status === type;
+    });
+  };
+  const {id} = match.params;
   useEffect(() => {
     const load = async () => {
+      changeLoading(true);
       try {
-        const {id} = match.params;
         const applications = await getAllApplications(id);
         const rounds = await getAllRounds(id);
         changeAllApplications(applications);
         changeAllRounds(rounds);
+        changeLoading(false);
         console.log(applications, rounds);
-        // const data = await getStudentExtraDetailsWithId(1);
-        // console.log('extrainfo', data);
       } catch (e) {
         openNotificationWithIcon(
           'warning',
           'Unknown error occurred',
           'Try signing out or refreshing page',
         );
+        changeLoading(false);
       }
     };
     load();
-  }, [match]);
+  }, [match, id, reload]);
 
   const toggleModel = (value: boolean) => {
     changeVisible(value);
+  };
+  const roundsFilter = (roundId: number, applications: any) => {
+    return applications.filter((i: any) => {
+      return i.round === roundId;
+    });
   };
 
   const columns = [
@@ -67,6 +88,13 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
     {
       title: 'Course',
       dataIndex: 'course',
+      render: (text: any, record: any) => (
+        <p>
+          {getCourse(text)
+            .join('/')
+            .replace(' Programmes', '')}
+        </p>
+      ),
     },
     {
       title: 'Year',
@@ -80,53 +108,144 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
   ];
   const rowSelection = {
     onChange: (selectedRowKeys: any, selectedRows: any) => {
-      console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+      const studentArray = selectedRows.map((i: any) => {
+        return i.student;
+      });
+      console.log(studentArray);
+      changeSelectedStudents(studentArray);
     },
     getCheckboxProps: (record: any) => ({
       disabled: record.name === 'Disabled User', // Column configuration not to be checked
       name: record.name,
     }),
   };
+
   return (
     <div className='container'>
       <Row>
         <Title>All Application</Title>
       </Row>
-      <Row>
-        <Col xs={12} sm={12} md={4} lg={4} xl={4}>
-          <Title level={3}>Current Round : </Title>
-        </Col>
-        <Col xs={12} sm={12} md={4} lg={4} xl={4}>
-          <Title level={4}>{allRounds[currentRound].title}</Title>
-        </Col>
-      </Row>
-      <Row align='middle'>
-        <Col xs={12} sm={12} md={4} lg={4} xl={4}>
-          <Title level={3}>Select Round : </Title>
-        </Col>
-        <Col xs={12} sm={12} md={4} lg={4} xl={4}>
-          <Select defaultValue={0} onChange={(e: any) => changeCurrentRound(e)}>
-            {allRounds.map(item => (
-              <Option value={item.id - 1} key={item.id}>
-                {item.title}
-              </Option>
-            ))}
-          </Select>
-        </Col>
-        <Col xs={24} sm={24} md={4} lg={4} xl={4}>
-          <Button
-            onClick={() => {
-              console.log('Ggg');
-            }}
-            type='primary'>
-            Move Selected To Next Round
-          </Button>
-        </Col>
+      <Row align='middle' justify='space-between'>
+        {activeTab === 'Applications' ? (
+          <Col xs={24} sm={24} md={5} lg={5} xl={5}>
+            <Button
+              onClick={async () => {
+                try {
+                  await rejectApplication(id, selectedStudents);
+                  changeReload(!reload);
+                } catch (e) {
+                  openNotificationWithIcon(
+                    'warning',
+                    'Unknown error occurred',
+                    'Try signing out or refreshing page',
+                  );
+                }
+              }}
+              type='primary'>
+              Reject Selected Applications
+            </Button>
+          </Col>
+        ) : null}
+        {/* eslint-disable-next-line radix */}
+        {activeTab !== 'Rejected' &&
+        activeTab !== 'Placed' &&
+        parseInt(activeTab, 10) !== allRounds.length - 1 ? (
+          <Col xs={24} sm={24} md={5} lg={5} xl={5}>
+            <Button
+              onClick={async () => {
+                try {
+                  // eslint-disable-next-line radix
+                  await moveToNextRound(
+                    id,
+                    selectedStudents,
+                    allRounds[parseInt(activeTab, 10) + 1].id,
+                  );
+                  changeReload(!reload);
+                } catch (e) {
+                  openNotificationWithIcon(
+                    'warning',
+                    'Unknown error occurred',
+                    'Try signing out or refreshing page',
+                  );
+                }
+              }}
+              type='primary'>
+              Move Selected To Next Round
+            </Button>
+          </Col>
+          ) : null}
+        {/* eslint-disable-next-line radix */}
+        {parseInt(activeTab) === allRounds.length - 1 ? (
+          <Col xs={24} sm={24} md={5} lg={5} xl={5}>
+            <Button
+              onClick={async () => {
+                try {
+                  await placeStudent(id, selectedStudents);
+                  changeReload(!reload);
+                } catch (e) {
+                  openNotificationWithIcon(
+                    'warning',
+                    'Unknown error occurred',
+                    'Try signing out or refreshing page',
+                  );
+                }
+              }}
+              type='primary'>
+              Place Selected Students
+            </Button>
+          </Col>
+        ) : null}
       </Row>
       <br />
       <Row>
         <Col>
-          <Table rowSelection={rowSelection} columns={columns} dataSource={allApplications} />
+          <Tabs
+            defaultActiveKey='Applications'
+            tabPosition='left'
+            onChange={(e: any) => {
+              changeActiveTab(e);
+            }}>
+            <TabPane tab='Applications' key='Applications'>
+              <Table
+                loading={loading}
+                rowSelection={rowSelection}
+                columns={columns}
+                dataSource={filterApplications('A', allApplications)}
+                key={filterApplications('A', allApplications).id}
+              />
+            </TabPane>
+            {allRounds.map((i, index) => {
+              const key = index.toString();
+              return (
+                <TabPane tab={i.title} key={key}>
+                  <Table
+                    loading={loading}
+                    rowSelection={rowSelection}
+                    columns={columns}
+                    dataSource={roundsFilter(i.id, filterApplications('O', allApplications))}
+                    key={roundsFilter(i.id, filterApplications('O', allApplications))}
+                  />
+                </TabPane>
+              );
+            })}
+            <TabPane tab='Placed' key='Placed'>
+              <Table
+                rowSelection={rowSelection}
+                columns={columns}
+                dataSource={filterApplications('P', allApplications)}
+                key={filterApplications('P', allApplications)}
+              />
+            </TabPane>
+            <TabPane tab='Rejected' key='Rejected'>
+              <Table
+                rowSelection={rowSelection}
+                loading={loading}
+                columns={columns}
+                key={filterApplications('R', allApplications)}
+                dataSource={filterApplications('R', allApplications)}
+              />
+            </TabPane>
+          </Tabs>
           <Modal
             title='Student Info'
             visible={visible}
