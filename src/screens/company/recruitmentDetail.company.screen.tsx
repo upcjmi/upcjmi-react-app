@@ -3,7 +3,6 @@ import {Table, Typography, Modal, Button, Row, Col, Select} from 'antd';
 import {connect} from 'react-redux';
 import {getAllApplications, getAllRounds} from '../../helpers/api/company.api.helper';
 import {openNotificationWithIcon} from '../../helpers/notification.helper';
-import ProfileCardStudent from '../../components/student/profileCard.student';
 import StudentModalCard from '../../components/studentModalCard.company';
 
 const {Option} = Select;
