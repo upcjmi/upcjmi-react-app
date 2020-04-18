@@ -45,4 +45,10 @@ export const companyExtraRoutes: Array<IRoute> = [
     path: '/recruitment/:id/',
     screen: lazy(() => import('screens/company/recruitmentDetail.company.screen')),
   },
+  {
+    title: 'Resume',
+    path: '/recruitment/resume/:id/',
+    screen: lazy(() => import('screens/company/viewResume')),
+  },
+
 ];

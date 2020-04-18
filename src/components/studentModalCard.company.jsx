@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Avatar, Card, Tag, Typography, Skeleton} from 'antd';
+import {Avatar, Card, Tag, Typography, Skeleton, Button} from 'antd';
 
 import {selectScreen} from 'helpers/screen.helper';
 import {GetProfileIcon} from 'helpers/function.helper';
+import {Link} from 'react-router-dom';
 import {openNotificationWithIcon} from '../helpers/notification.helper';
 import {getStudentExtraDetailsWithId} from '../helpers/api/student.api.helper';
 import {getCourse} from '../helpers/courses';
@@ -36,7 +37,6 @@ const StudentModalCard = ({id, user}) => {
       try {
         const data = await getStudentExtraDetailsWithId(id);
         await changeExtraDetails(data);
-        console.log('extrainfo', data);
       } catch (e) {
         openNotificationWithIcon(
           'warning',
@@ -102,6 +102,7 @@ const StudentModalCard = ({id, user}) => {
           <Markdown source={user.application} />
         </div>
       </div>
+      <Button><Link to={`/recruitment/resume/${user.student}/`}>View Resume</Link></Button>
     </Card>
   );
 };

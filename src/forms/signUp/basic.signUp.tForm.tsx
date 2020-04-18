@@ -7,7 +7,7 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
     name: 'name',
     initialValue: get(initialValues, 'name'),
     kwargs: {
-      placeholder: 'ex: Faisal Manzer',
+      placeholder: 'ex: Your Name',
     },
     type: FORM_ELEMENT.INPUT,
     rules: [{required: true}],
@@ -17,7 +17,7 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
     name: 'roll',
     initialValue: get(initialValues, 'roll'),
     kwargs: {
-      placeholder: 'ex: 17BCE064',
+      placeholder: 'ex: 17BCEXXX',
     },
     type: FORM_ELEMENT.INPUT,
     rules: [
@@ -33,7 +33,7 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
     name: 'student_id',
     initialValue: get(initialValues, 'student_id'),
     kwargs: {
-      placeholder: 'ex: 20177089',
+      placeholder: 'ex: 2018XXXX',
     },
     type: FORM_ELEMENT.INPUT,
     rules: [

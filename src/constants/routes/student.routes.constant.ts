@@ -27,17 +27,13 @@ export const studentSideRoutes: Array<ISidebarRoute> = [
     name: 'Courses',
     icon: 'book',
     path: '/courses/',
-    screen: isProduction
-      ? lazy(() => import('screens/weAreWorking.screen'))
-      : lazy(() => import('screens/student/courses.student.screen')),
+    screen:  lazy(() => import('screens/student/courses.student.screen')),
   },
   {
     name: 'Your Resume',
     icon: 'solution',
     path: '/resume/',
-    screen: isProduction
-      ? lazy(() => import('screens/weAreWorking.screen'))
-      : lazy(() => import('../../screens/student/resume.student.screen')),
+    screen:  lazy(() => import('../../screens/student/resume.student.screen')),
   },
   // {
   //   name: 'Account Settings',

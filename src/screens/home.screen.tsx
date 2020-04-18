@@ -30,10 +30,10 @@ const quickLink = (
       Jobs &nbsp;
       <Tag color='#87d068'>New</Tag>
     </Link>
-    <Link to={`${STUDENT_PORTAL_HOME_PATH}internships/`} className='linkType-1'>
-      Internships &nbsp;
-      <Tag color='#87d068'>New</Tag>
-    </Link>
+    {/* <Link to={`${STUDENT_PORTAL_HOME_PATH}internships/`} className='linkType-1'> */}
+    {/*  Internships &nbsp; */}
+    {/*  <Tag color='#87d068'>New</Tag> */}
+    {/* </Link> */}
     <br />
     <Link to={PORTAL_HOME_PATH} className='linkType-1'>
       Placements and Internship Portal
