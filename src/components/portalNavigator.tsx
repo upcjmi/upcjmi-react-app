@@ -30,7 +30,7 @@ const PortalNavigator: FC<IProps> = ({routes}: IProps) => {
         mode='vertical'
         theme='light'
         forceSubMenuRender
-        inlineCollapsed={selectScreen(null, true)}
+        inlineCollapsed={selectScreen(null, true,false,false)}
         className={selectScreen(null, 'full-page')}
         selectedKeys={[]}>
         {routes.map((route: any, index: number) => (

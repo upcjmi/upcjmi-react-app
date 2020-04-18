@@ -12,7 +12,7 @@ import {openNotificationWithIcon} from '../../helpers/notification.helper';
 import StudentModalCard from '../../components/studentModalCard.company';
 import {getCourse} from '../../helpers/courses';
 
-const {Title} = Typography;
+const {Title,Paragraph} = Typography;
 const {TabPane} = Tabs;
 
 interface IProps {
@@ -28,6 +28,9 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
   const [allRounds, changeAllRounds] = useState([{id: 0, title: 'Coding Round'}]);
   const [activeTab, changeActiveTab] = useState('Applications');
   const [loading, changeLoading] = useState(false);
+  const [reject, changeReject] = useState(false);
+  const [next, changeNext] = useState(false);
+  const [place, changePlace] = useState(false);
   const [reload, changeReload] = useState(false);
   const filterApplications = (type: string, application: any) => {
     return application.filter((i: any) => {
@@ -35,6 +38,7 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
     });
   };
   const {id} = match.params;
+
   useEffect(() => {
     const load = async () => {
       changeLoading(true);
@@ -56,6 +60,65 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
     };
     load();
   }, [match, id, reload]);
+
+  const confirmationModal = [
+    { visible:reject,
+      title:'Reject Selected Students',
+      details:'By clicking ok all the selected application will get rejected',
+      onOk:async () => {
+        try {
+          await rejectApplication(id, selectedStudents);
+          changeReload(!reload);
+        } catch (e) {
+          openNotificationWithIcon(
+            'warning',
+            'Unknown error occurred',
+            'Try signing out or refreshing page',
+          );
+        }
+      },
+      onCancel:()=>{changeReject(false)}
+    }, {
+      visible: next,
+      title:'Move Selected Students To Next Round',
+      details:'By clicking ok all the selected students will get upgraded to next round',
+      onOk:async () => {
+        try {
+          // eslint-disable-next-line radix
+          await moveToNextRound(
+            id,
+            selectedStudents,
+            allRounds[parseInt(activeTab, 10) + 1].id,
+          );
+          changeReload(!reload);
+        } catch (e) {
+          openNotificationWithIcon(
+            'warning',
+            'Unknown error occurred',
+            'Try signing out or refreshing page',
+          );
+        }
+      },
+      onCancel:()=>{changeNext(false)}
+    }, {
+      visible: place,
+      title:'Place Selected Students',
+      details:'By clicking ok all the selected students will get placed',
+      onOk:async () => {
+        try {
+          await placeStudent(id, selectedStudents);
+          changeReload(!reload);
+        } catch (e) {
+          openNotificationWithIcon(
+            'warning',
+            'Unknown error occurred',
+            'Try signing out or refreshing page',
+          );
+        }
+      },
+      onCancel:()=>{changePlace(false)}
+    },
+  ];
 
   const toggleModel = (value: boolean) => {
     changeVisible(value);
@@ -129,19 +192,8 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
         {activeTab === 'Applications' ? (
           <Col xs={24} sm={24} md={5} lg={5} xl={5}>
             <Button
-              onClick={async () => {
-                try {
-                  await rejectApplication(id, selectedStudents);
-                  changeReload(!reload);
-                } catch (e) {
-                  openNotificationWithIcon(
-                    'warning',
-                    'Unknown error occurred',
-                    'Try signing out or refreshing page',
-                  );
-                }
-              }}
-              type='primary'>
+              onClick={()=>{changeReject(true)}}
+              type='danger'>
               Reject Selected Applications
             </Button>
           </Col>
@@ -152,23 +204,7 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
         parseInt(activeTab, 10) !== allRounds.length - 1 ? (
           <Col xs={24} sm={24} md={5} lg={5} xl={5}>
             <Button
-              onClick={async () => {
-                try {
-                  // eslint-disable-next-line radix
-                  await moveToNextRound(
-                    id,
-                    selectedStudents,
-                    allRounds[parseInt(activeTab, 10) + 1].id,
-                  );
-                  changeReload(!reload);
-                } catch (e) {
-                  openNotificationWithIcon(
-                    'warning',
-                    'Unknown error occurred',
-                    'Try signing out or refreshing page',
-                  );
-                }
-              }}
+              onClick={()=>{changeNext(true)}}
               type='primary'>
               Move Selected To Next Round
             </Button>
@@ -178,18 +214,7 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
         {parseInt(activeTab) === allRounds.length - 1 ? (
           <Col xs={24} sm={24} md={5} lg={5} xl={5}>
             <Button
-              onClick={async () => {
-                try {
-                  await placeStudent(id, selectedStudents);
-                  changeReload(!reload);
-                } catch (e) {
-                  openNotificationWithIcon(
-                    'warning',
-                    'Unknown error occurred',
-                    'Try signing out or refreshing page',
-                  );
-                }
-              }}
+              onClick={()=>{changePlace(true)}}
               type='primary'>
               Place Selected Students
             </Button>
@@ -253,6 +278,21 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
             onCancel={() => toggleModel(false)}>
             <StudentModalCard id={studentId} user={allApplications[studentId - 1]} />
           </Modal>
+          {
+            confirmationModal.map((item,index)=>(
+              <Modal
+                key={item.title}
+                title={item.title}
+                visible={item.visible}
+                onOk={item.onOk}
+                onCancel={item.onCancel}>
+                <Paragraph>
+                  {item.details}
+                </Paragraph>
+              </Modal>
+            ))
+          }
+
         </Col>
       </Row>
     </div>

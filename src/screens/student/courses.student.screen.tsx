@@ -28,6 +28,7 @@ const CoursesStudentScreen: FC<IProps> = () => {
         const data = await getAllAvailableCourseAPI();
         setCourses(data);
         setLoading(false);
+        console.log(data,'dtat')
       } catch (e) {
         openNotificationWithIcon('error', 'Some unknown error occurred', 'Try refreshing the page');
       }

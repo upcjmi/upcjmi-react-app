@@ -81,7 +81,7 @@ const Portal: FC<IProps> = (props: IProps) => {
           <div
             className='full-page'
             style={{
-              paddingLeft: selectScreen(0, 80),
+              paddingLeft: selectScreen(0, 80,140,140),
               transition: '0.4s',
             }}>
             <Suspense fallback={<LoadingScreen />}>
