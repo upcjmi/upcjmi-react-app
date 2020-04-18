@@ -87,7 +87,7 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
         try {
           let roundId;
           // eslint-disable-next-line no-unused-expressions
-          activeTab === 'Applications'?roundId = 1:roundId=(parseInt(activeTab,10)+1);
+          activeTab === 'Applications'?roundId = 0:roundId=(parseInt(activeTab,10)+1);
           await moveToNextRound(
             id,
             selectedStudents,
