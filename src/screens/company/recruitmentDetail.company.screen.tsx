@@ -76,6 +76,7 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
             'Try signing out or refreshing page',
           );
         }
+        changeReject(false);
       },
       onCancel:()=>{changeReject(false)}
     }, {
@@ -84,20 +85,25 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
       details:'By clicking ok all the selected students will get upgraded to next round',
       onOk:async () => {
         try {
-          // eslint-disable-next-line radix
+          let roundId;
+          // eslint-disable-next-line no-unused-expressions
+          activeTab === 'Applications'?roundId = 1:roundId=(parseInt(activeTab,10)+1);
           await moveToNextRound(
             id,
             selectedStudents,
-            allRounds[parseInt(activeTab, 10) + 1].id,
+            allRounds[roundId].id,
           );
           changeReload(!reload);
         } catch (e) {
+          console.log(e,"ggg")
+
           openNotificationWithIcon(
             'warning',
             'Unknown error occurred',
             'Try signing out or refreshing page',
           );
         }
+        changeNext(false)
       },
       onCancel:()=>{changeNext(false)}
     }, {
@@ -115,6 +121,7 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
             'Try signing out or refreshing page',
           );
         }
+        changePlace(false)
       },
       onCancel:()=>{changePlace(false)}
     },
