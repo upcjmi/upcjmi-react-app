@@ -36,8 +36,8 @@ class Resume extends React.Component {
   constructor(props) {
     super(props);
     const tmp = {old: this.props.data};
-
-    console.log(tmp);
+    console.log(this.props .data,'Ggg')
+    console.log(tmp,"ggg");
     let i = 0;
     let tmp1;
     console.log(this.props.data);
@@ -70,8 +70,6 @@ class Resume extends React.Component {
     this.state = tmp;
   }
 
-  componentDidMount() {}
-
   onInputChange(e, i, f, index = 0) {
     // console.log(e)
     let tmp;
@@ -91,7 +89,7 @@ class Resume extends React.Component {
         case 'work':
           // console.log(f)
           tmp = e.innerHTML === undefined ? e : e.innerHTML;
-          if (parseInt(this.state.new.work.length) - 1 == index) {
+          if (parseInt(this.state.new.work.length,10) - 1 == index) {
             const asdf = this.state;
             asdf.new.work.push({
               company: '',

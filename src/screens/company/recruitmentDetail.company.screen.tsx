@@ -123,6 +123,10 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
   const toggleModel = (value: boolean) => {
     changeVisible(value);
   };
+  const getStudent = (sId:number) =>{
+    const data = allApplications.filter((item:any)=>{return item.student === sId})
+    return data[0]
+  }
   const roundsFilter = (roundId: number, applications: any) => {
     return applications.filter((i: any) => {
       return i.round === roundId;
@@ -138,7 +142,7 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
           type='link'
           onClick={() => {
             changeVisible(true);
-            changeStudentId(record.id);
+            changeStudentId(record.student);
           }}>
           {text}
         </Button>
@@ -151,7 +155,7 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
     {
       title: 'Course',
       dataIndex: 'course',
-      render: (text: any, record: any) => (
+      render: (text: any, ) => (
         <p>
           {getCourse(text)
             .join('/')
@@ -174,7 +178,6 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
       const studentArray = selectedRows.map((i: any) => {
         return i.student;
       });
-      console.log(studentArray);
       changeSelectedStudents(studentArray);
     },
     getCheckboxProps: (record: any) => ({
@@ -276,7 +279,7 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
             visible={visible}
             onOk={() => toggleModel(false)}
             onCancel={() => toggleModel(false)}>
-            <StudentModalCard id={studentId} user={allApplications[studentId - 1]} />
+            <StudentModalCard id={studentId} user={getStudent(studentId)} />
           </Modal>
           {
             confirmationModal.map((item,index)=>(
@@ -292,7 +295,6 @@ const RecruitmentDetailCompanyScreen: FC<IProps> = ({match}: IProps) => {
               </Modal>
             ))
           }
-
         </Col>
       </Row>
     </div>

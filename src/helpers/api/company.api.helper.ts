@@ -60,6 +60,8 @@ export const placeStudent = (jobId: number, students: any): Promise<any> =>
     data: {students},
   });
 
-// company/job/${id}/select/next/
-// company/job/${id}/select/reject/
-// company/job/${id}/select/place/
+export const fetchStudentResume = (id: number,): Promise<any> =>
+  loadSecureUrl(`/student/resume/${id}/`, {
+    method: 'get',
+  });
+
