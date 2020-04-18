@@ -1,4 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
+import {Redirect} from 'react-router-dom';
 import {Spin, Button} from 'antd';
 import {saveNewJobAPI} from 'helpers/api/company.api.helper';
 import {openNotificationWithIcon} from 'helpers/notification.helper';
@@ -19,7 +20,7 @@ const SaveAddRecruitmentCompany: FC<IProps> = ({action, data, next}: IProps) => 
         await saveNewJobAPI(data);
         openNotificationWithIcon('success', 'Job saved');
 
-        setStatus('loading');
+        setStatus('saved');
       } catch (e) {
         console.log(e);
         openNotificationWithIcon('error', 'Error in saving job');
@@ -34,6 +35,7 @@ const SaveAddRecruitmentCompany: FC<IProps> = ({action, data, next}: IProps) => 
     switch (status) {
       case 'progress':
         return <Spin tip='Saving the job' />;
+
       case 'failed':
         return (
           <div className='center'>
@@ -42,8 +44,10 @@ const SaveAddRecruitmentCompany: FC<IProps> = ({action, data, next}: IProps) => 
             <Button type='danger'>Please Try Again</Button>
           </div>
         );
+      case 'saved':
+        return <Redirect to='/' />;
       default:
-        return 'Unknown signing up status';
+        return 'Unknown Status Code';
     }
   };
 

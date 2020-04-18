@@ -1,6 +1,5 @@
 import React, {FC, useState, Suspense} from 'react';
-import {Typography, Card, Col, Row, Steps, Icon, Alert} from 'antd';
-import {selectScreen} from 'helpers/screen.helper';
+import {Typography, Card, Steps, Icon, Alert} from 'antd';
 import {addRecruitmentSteps} from 'steps/addRecruitment.steps';
 import LoadingComponentScreen from 'screens/loadingComponent.screen';
 

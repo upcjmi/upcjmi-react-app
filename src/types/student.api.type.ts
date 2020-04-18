@@ -21,3 +21,6 @@ export interface IStudentExtraDetails {
   active_back_log: boolean;
   previous_back_log: boolean;
 }
+export interface IReusmeData {
+  data: any;
+}

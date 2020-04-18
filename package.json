@@ -26,6 +26,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
     "analyze": "yarn build && source-map-explorer 'build/static/js/*.js'",
     "start": "sh -ac 'source .env.development'; react-app-rewired start",
     "build": "sh -ac 'source .env.production'; react-app-rewired build",

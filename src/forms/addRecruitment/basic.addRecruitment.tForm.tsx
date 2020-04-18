@@ -81,7 +81,7 @@ export const basicAddRecruitmentTForm = (
   {
     label: 'Questions required',
     name: 'application_required',
-    initialValue: get(initialValues, 'application_required'),
+    initialValue: get(initialValues, 'application_required',false),
     type: FORM_ELEMENT.SWITCH,
     help: 'Ask some basic question from candidates before application',
   },

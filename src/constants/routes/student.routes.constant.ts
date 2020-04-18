@@ -15,22 +15,22 @@ export const studentSideRoutes: Array<ISidebarRoute> = [
     path: '/recruitment/',
     screen: lazy(() => import('screens/student/recruitment.student.screen')),
   },
-  {
-    name: 'Internships',
-    icon: 'rocket',
-    path: '/internships/',
-    screen: isProduction
-      ? lazy(() => import('screens/weAreWorking.screen'))
-      : lazy(() => import('screens/student/internships.student.screen')),
-  },
-  {
-    name: 'Courses',
-    icon: 'book',
-    path: '/courses/',
-    screen: isProduction
-      ? lazy(() => import('screens/weAreWorking.screen'))
-      : lazy(() => import('screens/student/courses.student.screen')),
-  },
+  // {
+  //   name: 'Internships',
+  //   icon: 'rocket',
+  //   path: '/internships/',
+  //   screen: isProduction
+  //     ? lazy(() => import('screens/weAreWorking.screen'))
+  //     : lazy(() => import('screens/student/internships.student.screen')),
+  // },
+  // {
+  //   name: 'Courses',
+  //   icon: 'book',
+  //   path: '/courses/',
+  //   screen: isProduction
+  //     ? lazy(() => import('screens/weAreWorking.screen'))
+  //     : lazy(() => import('screens/student/courses.student.screen')),
+  // },
   {
     name: 'Your Resume',
     icon: 'solution',
@@ -39,14 +39,14 @@ export const studentSideRoutes: Array<ISidebarRoute> = [
       ? lazy(() => import('screens/weAreWorking.screen'))
       : lazy(() => import('../../screens/student/resume.student.screen')),
   },
-  {
-    name: 'Account Settings',
-    icon: 'setting',
-    path: '/settings/',
-    screen: isProduction
-      ? lazy(() => import('screens/weAreWorking.screen'))
-      : lazy(() => import('../../screens/student/settings.student.screen')),
-  },
+  // {
+  //   name: 'Account Settings',
+  //   icon: 'setting',
+  //   path: '/settings/',
+  //   screen: isProduction
+  //     ? lazy(() => import('screens/weAreWorking.screen'))
+  //     : lazy(() => import('../../screens/student/settings.student.screen')),
+  // },
 ];
 
 export const studentExtraRoutes: Array<IRoute> = [

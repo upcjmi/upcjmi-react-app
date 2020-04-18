@@ -1,0 +1,79 @@
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4caf50;
+  color: white;
+}
+.center {
+  text-align: center;
+}
+.contenteditableInput[placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #a6a6a6;
+  text-align: center;
+}
+.bold {
+  font-weight: bold;
+}
+.hidden {
+  display: none;
+}
+.contenteditableInput {
+  background-color: white;
+  text-align: center;
+  outline: none;
+  cursor: text;
+  margin: 0px;
+  padding: 15px 10px;
+  line-height: 10px;
+  overflow: hidden;
+}
+.bottom-border {
+  border-bottom: 0.1px solid #cccccc;
+}
+.l-r-border {
+  border-left: 0.1px solid #cccccc;
+  border-right: 0.1px solid #cccccc;
+}
+.margin-top5 {
+  margin-top: 5px;
+}
+.size15 {
+  font-size: 15px;
+}
+.bg-gray {
+  background-color: #f2f2f2;
+}
+.ant-calendar-picker-input {
+  padding: 15px 10px !important;
+  border-radius: 0 !important;
+  line-height: 10px !important;
+  background-color: white !important;
+}
+.size20 {
+  font-size: 20px;
+}
+.border {
+  border: solid #cccccc 0.1px;
+}
