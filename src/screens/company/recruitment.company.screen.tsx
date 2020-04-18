@@ -46,11 +46,15 @@ const columns = [
           color = 'green';
           text = 'Approved';
           break;
-
+        case 'S':
+          color = 'green';
+          text = 'Approved';
+          break;
         case 'R':
           color = 'red';
           text = 'Not Approved';
           break;
+
         default:
           color = 'black';
           text = 'Unknown';

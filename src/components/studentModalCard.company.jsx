@@ -102,7 +102,7 @@ const StudentModalCard = ({id, user}) => {
           <Markdown source={user.application} />
         </div>
       </div>
-      <Button><Link to={`/recruitment/resume/${user.student}/`}>View Resume</Link></Button>
+      <Button><Link to={`/recruitment/resume/${user.student}/`} target="_blank">View Resume</Link></Button>
     </Card>
   );
 };

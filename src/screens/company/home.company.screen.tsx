@@ -38,10 +38,12 @@ const HomeCompanyScreen: FC<IProps> = (props: IProps) => {
     };
     load();
   }, [])
-  const CardJobs = ()=>(
-    <Card>
-      {
-      [...data,...data,...data].map((i:any)=>(
+  const CardJobs = () => {
+    if(data[0])
+      return (
+        <Card>
+          {
+      data.map((i:any)=>(
         <Row justify='space-between'>
           <Col span={18}>
             <Title level={4}>{i.title}</Title>
@@ -55,9 +57,19 @@ const HomeCompanyScreen: FC<IProps> = (props: IProps) => {
           <br />
         </Row>
       ))
-    }
-    </Card>
-  )
+        }
+        </Card>
+      )
+    return (
+      <Card>
+        <Link to='/recruitment/add/'>
+          <Button type='primary' icon='plus'>
+          Add Recruitment
+          </Button>
+        </Link>
+      </Card>
+    )
+  }
   if (!isAuthenticated) return <NotAuthorisedScreen />;
 
   if (user && user.type !== 'C') return <NotAuthorisedScreen />;
