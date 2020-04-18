@@ -73,6 +73,7 @@ const RecruitmentCompanyScreen: FC<IProps> = () => {
       try {
         setData(await allJobsByCompany());
         setLoading(false);
+        console.log(data)
       } catch (e) {
         console.log(e);
         openNotificationWithIcon('error', 'An error occurred', 'Try refreshing your page');

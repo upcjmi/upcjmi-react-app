@@ -1,5 +1,5 @@
 import React, {FC, useState, useEffect} from 'react';
-import {Typography, Card, Button, Skeleton} from 'antd';
+import {Typography, Card, Button, Skeleton,Row,Col} from 'antd';
 import {connect} from 'react-redux';
 import SideDrawerForm from 'components/sideDrawerForm';
 import {IReduxState} from 'reducers';
@@ -22,7 +22,6 @@ const CompanyDetail: FC<IProps> = ({id}) => {
     const load = async () => {
       // @ts-ignore
       const data = await companyDetail(id);
-
       setDetails(data);
       setLoading(false);
     };
@@ -59,9 +58,13 @@ const CompanyDetail: FC<IProps> = ({id}) => {
         {
           // {setDetails({name:e.name,about:e.about})}
         }
-        <Button type='primary' size='large'>
-          edit
-        </Button>
+        <Row justify='end'>
+          <Col span={2} push={22}>
+            <Button type='link' size='large'>
+              edit
+            </Button>
+          </Col>
+        </Row>
       </SideDrawerForm>
     </Card>
   );
