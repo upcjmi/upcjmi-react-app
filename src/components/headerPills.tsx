@@ -49,7 +49,7 @@ const HeaderPills: FC<IProps> = ({mode = 'horizontal', isAuthenticated, user}: I
           <Item key='sign-up-student'>
             <Link to={SIGN_UP_PATH_STUDENT}>
               <Icon type='user-add' />
-              Student Sign Up
+              Create Student Account
             </Link>
           </Item>
         )}
@@ -57,7 +57,7 @@ const HeaderPills: FC<IProps> = ({mode = 'horizontal', isAuthenticated, user}: I
           <Item key='sign-up-company'>
             <Link to={SIGN_UP_PATH_COMPANY}>
               <Icon type='user-add' />
-              Company Sign Up
+              Create Company Account
             </Link>
           </Item>
         )}

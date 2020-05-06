@@ -42,7 +42,7 @@ const SignUpCompanyScreen = ({isAuthenticated}) => {
           message={(
             <p>
               This is only for company.
-              If you are a student representative create student account
+              If you are a student create student account
               <Link to={SIGN_UP_PATH_STUDENT}> here</Link>
             </p>
           )}

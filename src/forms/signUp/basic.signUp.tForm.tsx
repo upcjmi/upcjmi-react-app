@@ -95,16 +95,7 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
 export const basicSignUpTFormCompany =
   (state: any, initialValues: any,) => [
     {
-      label: 'Name',
-      name: 'name',
-      initialValue: get(initialValues, 'name'),
-      kwargs: {
-        placeholder: 'ex: Company Name',
-      },
-      type: FORM_ELEMENT.INPUT,
-      rules: [{required: true}],
-    },{
-      label: 'User Name',
+      label: 'Ypur Name',
       name: 'user_name',
       initialValue: get(initialValues, 'user_name'),
       kwargs: {
@@ -114,13 +105,23 @@ export const basicSignUpTFormCompany =
       rules: [{required: true}],
     },
     {
-      label: 'About',
+      label: 'Company Name',
+      name: 'name',
+      initialValue: get(initialValues, 'name'),
+      kwargs: {
+        placeholder: 'ex: Company Name',
+      },
+      type: FORM_ELEMENT.INPUT,
+      rules: [{required: true}],
+    },
+    {
+      label: 'About your company',
       name: 'about',
       initialValue: get(initialValues, 'about'),
       kwargs: {
         placeholder: 'ex: Company Details',
       },
-      type: FORM_ELEMENT.INPUT,
+      type: FORM_ELEMENT.TEXTAREA,
       rules: [{required: true}],
     },
     {
