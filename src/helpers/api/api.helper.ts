@@ -9,6 +9,7 @@ const USignInWithEmail = 'auth/sign-in/email/';
 const USignInWithGoogle = 'auth/sign-in/google/';
 
 const USignUpStudent = 'student/sign-up/';
+const USignUpCompany = 'company/sign-up/';
 
 const UContact = 'contact/';
 
@@ -24,6 +25,12 @@ export const pingAPI = (): Promise<IPing> => loadOpenUrl(UPing);
 
 export const signUpStudentAPI = (data: ISignUpData) =>
   loadOpenUrl(USignUpStudent, {
+    method: 'post',
+    data,
+  });
+
+export const signUpCompanyAPI = (data: ISignUpData) =>
+  loadOpenUrl(USignUpCompany, {
     method: 'post',
     data,
   });

@@ -1,20 +1,14 @@
-import React, {FC, useState, Suspense} from 'react';
+import React, { useState, Suspense} from 'react';
 import {connect} from 'react-redux';
 import {Card, Typography, Alert, Steps, Icon} from 'antd';
-import {IReduxState} from 'reducers';
 import OnlyPublic from 'screens/403.onlyPublic';
-import {signUpSteps} from 'steps/signUp.steps';
+import {signUpSteps} from 'steps/companySignUp.steps';
 import LoadingComponentScreen from 'screens/loadingComponent.screen';
 import {Link} from 'react-router-dom';
 import {
-  SIGN_UP_PATH_COMPANY,
+  SIGN_UP_PATH_STUDENT,
 } from '../../constants/routes/main.paths.constant';
 
-interface IStateProps {
-  isAuthenticated: boolean;
-}
-
-interface IProps extends IStateProps {}
 
 const emptyData = {
   basic: {},
@@ -24,11 +18,11 @@ const emptyData = {
 const {Title} = Typography;
 const {Step} = Steps;
 
-const SignUpStudentScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
+const SignUpCompanyScreen = ({isAuthenticated}) => {
   const [active, setActive] = useState(0);
   const [data, setData] = useState(emptyData);
 
-  if (isAuthenticated && active !== 3) return <OnlyPublic />;
+  if (isAuthenticated && active !== 2) return <OnlyPublic />;
 
   const next = () => {
     window.scrollTo(0, 0);
@@ -39,7 +33,7 @@ const SignUpStudentScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
     setActive(0);
   };
 
-  const SignUpComponent: any = signUpSteps[active].component;
+  const SignUpComponent = signUpSteps[active].component;
 
   return (
     <div className='container center-hv full-page grey lighten-3'>
@@ -47,9 +41,9 @@ const SignUpStudentScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
         <Alert
           message={(
             <p>
-                This is only for students.
-                If you are a company representative create company account
-              <Link to={SIGN_UP_PATH_COMPANY}> here</Link>
+              This is only for company.
+              If you are a student representative create student account
+              <Link to={SIGN_UP_PATH_STUDENT}> here</Link>
             </p>
           )}
           type='info'
@@ -60,7 +54,7 @@ const SignUpStudentScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
           <Title>Create New Account</Title>
           <br />
           <Steps size='small' labelPlacement='vertical' current={active}>
-            {signUpSteps.slice(0, 3).map(({title, icon}, index) => (
+            {signUpSteps.slice(0, 2).map(({title, icon}, index) => (
               <Step title={title} icon={<Icon type={icon} />} key={index.toString()} />
             ))}
           </Steps>
@@ -79,9 +73,9 @@ const SignUpStudentScreen: FC<IProps> = ({isAuthenticated}: IProps) => {
   );
 };
 
-const mapStateToProps = (state: IReduxState): IStateProps => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
 // @ts-ignore
-export default connect(mapStateToProps)(SignUpStudentScreen);
+export default connect(mapStateToProps)(SignUpCompanyScreen);

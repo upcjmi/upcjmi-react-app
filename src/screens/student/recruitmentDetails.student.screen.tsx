@@ -24,7 +24,7 @@ const applicationConfirmation = `# Notice
 - You confirm that you read all the details of this job and you are eligible for the same.
 - You also confirm to abide university rules and will abide to them.
 - **You can not edit your application later.**
-company will see your resume which is at the time of application**  
+company will see your resume which is at the time of application**
 *If any of the above fails your access of portal can be blocked*
 `;
 
@@ -184,5 +184,4 @@ About The Company (
     </div>
   );
 };
-
 export default withRouter(RecruitmentDetailsStudentScreen);

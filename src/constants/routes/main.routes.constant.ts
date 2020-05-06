@@ -8,10 +8,11 @@ import {
   PORTAL_HOME_PATH,
   PRIVACY_POLICY_PATH,
   SIGN_IN_PATH,
-  SIGN_UP_PATH,
   FORGET_PASSWORD_PATH,
   STUDENT_PORTAL_HOME_PATH,
   TERMS_AND_CONDITION_PATH,
+  SIGN_UP_PATH_STUDENT,
+  SIGN_UP_PATH_COMPANY,
 } from './main.paths.constant';
 
 export const COMMON_ROUTES: Array<IRoute> = [
@@ -49,9 +50,14 @@ export const COMMON_ROUTES: Array<IRoute> = [
     screen: lazy(() => import('screens/signIn.screen')),
   },
   {
-    path: SIGN_UP_PATH,
+    path: SIGN_UP_PATH_STUDENT,
     title: 'Create new student account',
     screen: lazy(() => import('screens/student/signUp.student.screen')),
+  },
+  {
+    path: SIGN_UP_PATH_COMPANY,
+    title: 'Create new company account',
+    screen: lazy(() => import('screens/company/signUp.company.screen')),
   },
   {
     path: FORGET_PASSWORD_PATH,

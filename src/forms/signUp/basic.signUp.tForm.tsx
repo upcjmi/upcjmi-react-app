@@ -1,4 +1,4 @@
-import {COURSES, FORM_ELEMENT} from 'constants/formFields.constant';
+import {COURSES, FORM_ELEMENT, CAPTCHA} from 'constants/formFields.constant';
 import {get} from 'helpers/function.helper';
 
 export const basicSignUpTForm = (state: any, initialValues: any, extraValues: any, form: any) => [
@@ -13,7 +13,23 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
     rules: [{required: true}],
   },
   {
-    label: 'Roll number',
+    label: 'Enrollment Number',
+    name: 'enrollment_id',
+    initialValue: get(initialValues, 'enrollment_id'),
+    kwargs: {
+      placeholder: 'ex: 18XXXXXX9',
+    },
+    type: FORM_ELEMENT.INPUT,
+    rules: [
+      {required: true},
+      {
+        pattern: /^\d{6,9}$/,
+        message: 'Enrollment number is not in valid pattern. ',
+      },
+    ],
+  },
+  {
+    label: 'Roll Number',
     name: 'roll',
     initialValue: get(initialValues, 'roll'),
     kwargs: {
@@ -75,3 +91,39 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
     },
   },
 ];
+
+export const basicSignUpTFormCompany =
+  (state: any, initialValues: any,) => [
+    {
+      label: 'Name',
+      name: 'name',
+      initialValue: get(initialValues, 'name'),
+      kwargs: {
+        placeholder: 'ex: Company Name',
+      },
+      type: FORM_ELEMENT.INPUT,
+      rules: [{required: true}],
+    },{
+      label: 'User Name',
+      name: 'user_name',
+      initialValue: get(initialValues, 'user_name'),
+      kwargs: {
+        placeholder: 'ex: Username',
+      },
+      type: FORM_ELEMENT.INPUT,
+      rules: [{required: true}],
+    },
+    {
+      label: 'About',
+      name: 'about',
+      initialValue: get(initialValues, 'about'),
+      kwargs: {
+        placeholder: 'ex: Company Details',
+      },
+      type: FORM_ELEMENT.INPUT,
+      rules: [{required: true}],
+    },
+    {
+      ...CAPTCHA,
+    },
+  ];

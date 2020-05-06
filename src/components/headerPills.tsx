@@ -3,7 +3,12 @@ import {connect} from 'react-redux';
 import {Icon, Menu} from 'antd';
 import {Link} from 'react-router-dom';
 
-import {CONTACT_PATH, PORTAL_HOME_PATH, SIGN_UP_PATH} from 'constants/routes/main.paths.constant';
+import {
+  CONTACT_PATH,
+  PORTAL_HOME_PATH,
+  SIGN_UP_PATH_COMPANY,
+  SIGN_UP_PATH_STUDENT,
+} from 'constants/routes/main.paths.constant';
 import {IReduxState} from 'reducers';
 import SignIn from './userAccountButton';
 import {IUserMeta} from '../types/api.type';
@@ -41,14 +46,21 @@ const HeaderPills: FC<IProps> = ({mode = 'horizontal', isAuthenticated, user}: I
             </Link>
           </Item>
         ) : (
-          <Item key='sign-up'>
-            <Link to={SIGN_UP_PATH}>
+          <Item key='sign-up-student'>
+            <Link to={SIGN_UP_PATH_STUDENT}>
               <Icon type='user-add' />
-              Create New Account
+              Student Sign Up
             </Link>
           </Item>
         )}
-
+        {isAuthenticated ? null: (
+          <Item key='sign-up-company'>
+            <Link to={SIGN_UP_PATH_COMPANY}>
+              <Icon type='user-add' />
+              Company Sign Up
+            </Link>
+          </Item>
+        )}
         {isAuthenticated && user ? (
           <Item key='user'>
             <Link to={PORTAL_HOME_PATH}>{user.name}</Link>

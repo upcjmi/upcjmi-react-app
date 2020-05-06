@@ -7,8 +7,8 @@ import {IReduxState} from 'reducers';
 import {IUserMeta} from 'types/api.type';
 import {
   COMPANY_PORTAL_HOME_PATH,
-  HOME_PATH,
-  SIGN_UP_PATH,
+  HOME_PATH, SIGN_UP_PATH_COMPANY,
+  SIGN_UP_PATH_STUDENT,
   STUDENT_PORTAL_HOME_PATH,
 } from 'constants/routes/main.paths.constant';
 import EmailSignIn from './auth/email.signIn';
@@ -24,6 +24,7 @@ interface IProps extends IStateProps {}
 const {Title} = Typography;
 
 const SignInCard: FC<IProps> = ({isAuthenticated, user}: IProps) => {
+  console.log(user,"gg");
   if (isAuthenticated && user) {
     switch (user.type) {
       case 'C':
@@ -45,9 +46,16 @@ const SignInCard: FC<IProps> = ({isAuthenticated, user}: IProps) => {
       <br />
       <EmailSignIn />
       <br />
-      <Link to={SIGN_UP_PATH}>
+      <Link to={SIGN_UP_PATH_STUDENT}>
         <Button type='dashed' className='full-width' icon='user-add' size='large'>
-          Create New Account
+          Create Student Account
+        </Button>
+      </Link>
+      <br />
+      <br />
+      <Link to={SIGN_UP_PATH_COMPANY}>
+        <Button type='dashed' className='full-width' icon='user-add' size='large'>
+          Create Company Account
         </Button>
       </Link>
     </div>

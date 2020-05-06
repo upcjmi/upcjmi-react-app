@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import {ISignUpData} from 'types/signUp.type';
-import {signUpStudentAPI} from 'helpers/api/api.helper';
+import {signUpCompanyAPI,} from 'helpers/api/api.helper';
 import {signUpFailedNotification, signUpSuccessfullNotification} from 'helpers/notification.helper';
 import {signIn} from 'actions/auth.action';
 import {IReduxState} from 'reducers';
@@ -37,12 +37,11 @@ const CreatingSignUpStudent: FC<IProps> = ({
     const save = async () => {
       action(data);
       try {
-
-        await signUpStudentAPI(data);
+        await signUpCompanyAPI(data);
         signUpSuccessfullNotification();
-
         setStatus('signing');
         signInUser(data.account);
+        console.log(data.account,"accout")
       } catch (e) {
         signUpFailedNotification(e && e.data ? e.data.detail : 'Unknown error occured');
         setStatus('failed');
@@ -51,6 +50,7 @@ const CreatingSignUpStudent: FC<IProps> = ({
 
     save();
   }, [data, action, signInUser]);
+  console.log(isAuthenticated,"auth")
 
   if (isAuthenticated) return <SignInCard />;
 
