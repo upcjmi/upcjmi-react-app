@@ -1,6 +1,6 @@
 /**
  University Placement Cell online Job/Internship portal (upcjmi-react-app).
- Copyright (C) 2019  University Placement Cell, Jamia Millia Islamia
+ Copyright (C) 2020  University Placement Cell, Jamia Millia Islamia
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

@@ -45,7 +45,7 @@ Application v
     <br />
     <br />
     <div className='center-hv'>
-      <Title level={4}>&copy; 2019 University Placement Cell, Jamia Millia Islamia</Title>
+      <Title level={4}>&copy; 2020 University Placement Cell, Jamia Millia Islamia</Title>
     </div>
   </footer>
 );
