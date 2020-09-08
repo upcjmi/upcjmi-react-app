@@ -12,6 +12,7 @@ import {selectScreen} from 'helpers/screen.helper';
 import {PORTAL_HOME_PATH, STUDENT_PORTAL_HOME_PATH} from 'constants/routes/main.paths.constant';
 
 import ContactScreen from './contact.screen';
+import Notice from '../components/home/notice';
 
 interface IProps {}
 
@@ -44,6 +45,7 @@ const quickLink = (
 const CarouselOverlayComponent = () => (
   <>
     {quickLink}
+
     <div className='welcome-text'>
       <Title level={2}>Welcome to,</Title>
       <Title>
@@ -52,7 +54,6 @@ const CarouselOverlayComponent = () => (
         <p>Jamia Millia Islamia</p>
       </Title>
     </div>
-
     <div className='badge-container' style={{display: selectScreen('none', 'none', null)}}>
       {BADGES.map(({badge, info}, index) => (
         <div key={index.toString()}>
@@ -70,6 +71,7 @@ const HomeScreen: FC<IProps> = () => (
       images={HOME_CAROUSEL}
       carousel={{dotPosition: 'bottom'}}
     />
+    <Notice />
     <AboutUs />
     <TopRecruiters />
     <ContactScreen />

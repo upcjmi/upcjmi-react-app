@@ -1,6 +1,17 @@
 import React, {FC, useState} from 'react';
 import {connect} from 'react-redux';
-import {Typography, Form, Input, DatePicker, Tag, Button, Select, Icon} from 'antd';
+import {
+  Typography,
+  Form,
+  Input,
+  DatePicker,
+  Tag,
+  Button,
+  Select,
+  Icon,
+  Upload,
+  message,
+} from 'antd';
 import moment from 'moment';
 
 import {openNotificationWithIcon} from 'helpers/notification.helper';
@@ -8,6 +19,7 @@ import {saveStudentExtraDataAPI} from 'helpers/api/student.api.helper';
 import {IReduxState} from 'reducers';
 import {IStudentExtraDetails} from 'types/student.api.type';
 import {loadStudentExtraDetails} from 'actions/student.action';
+import {getFileHandlerURL, removeFileFromServer} from '../../helpers/api/file.api.helper';
 
 const {Title} = Typography;
 const {Option} = Select;
@@ -228,6 +240,13 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
       } else openNotificationWithIcon('error', 'Please Correct the error displayed in forms.');
     });
   };
+  const normFile = (e: { fileList: any; }) => {
+    console.log('Upload event:', e);
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e && e.fileList;
+  };
 
   return (
     <div>
@@ -303,7 +322,6 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
             }}
           />
         </Form.Item>
-
         <br />
         <br />
         <Button type='primary' className='full-width' onClick={handelSubmit}>

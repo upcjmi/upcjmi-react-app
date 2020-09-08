@@ -229,7 +229,27 @@ img {
   font-size: 1.3rem;
   text-align: justify;
 }
-
+.notice-card-title{
+  font-size: 1rem;
+  color:#000000;
+  cursor: default;
+}
+.notice-card-title:hover{
+  text-decoration: underline;
+  cursor: default;
+}
+.notice-card-details{
+  font-size: .8rem;
+  margin-top: 10px;
+}
+.notice-card-date{
+  font-size: .6rem;
+}
+.card-notice{
+  text-align: start;
+  border-bottom: 1px #ddd solid;
+  margin-bottom: 10px;
+}
 .jmi-logo1 {
   max-height: 200px;
 }
@@ -319,4 +339,52 @@ img {
 .gutter-box {
   background: #00a0e9;
   padding: 5px 0;
+}
+
+.notice-container {
+  height: 70vh;
+  background-color: #fefefe;
+  margin-top: 1.3rem;
+  overflow: scroll;
+}
+
+.highlights {
+  height: 70vh;
+  overflow: scroll;
+}
+.mx{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.jmi-text-home{
+  color:#ffffff;
+  font-size: 17px;
+  background-color:#3A811D;
+  padding: 5px;
+  border-radius: 10px;
+}
+.highlight-text{
+  font-size: 1.1rem;
+  cursor: default;
+}
+.highlight-text:hover{
+  font-size: 1.1rem;
+  color:#000000;
+  text-decoration: underline;
+  cursor: default;
+}
+.read-more{
+  font-weight: bold;
+  cursor: default;
+}
+.read-more:hover{
+  text-decoration: underline;
+}
+.row{
+ display: flex;
+ flex:1;
+}
+.space-between{
+  justify-content: space-between;
 }
