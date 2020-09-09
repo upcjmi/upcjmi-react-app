@@ -54,3 +54,12 @@ export interface INotice {
   created:string,
   id:number
 }
+export interface ICoordinator {
+  department:string
+  email: string
+  id: number
+  name: string
+  phone: string
+  photo: string
+  type: string
+}

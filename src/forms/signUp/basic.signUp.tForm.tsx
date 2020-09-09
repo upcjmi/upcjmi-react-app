@@ -95,7 +95,7 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
 export const basicSignUpTFormCompany =
   (state: any, initialValues: any,) => [
     {
-      label: 'Ypur Name',
+      label: 'Your Name',
       name: 'user_name',
       initialValue: get(initialValues, 'user_name'),
       kwargs: {

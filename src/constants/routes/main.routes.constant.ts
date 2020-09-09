@@ -12,7 +12,7 @@ import {
   STUDENT_PORTAL_HOME_PATH,
   TERMS_AND_CONDITION_PATH,
   SIGN_UP_PATH_STUDENT,
-  SIGN_UP_PATH_COMPANY, NOTICE_PATH,
+  SIGN_UP_PATH_COMPANY, NOTICE_PATH, COORDINATORS,
 } from './main.paths.constant';
 
 export const COMMON_ROUTES: Array<IRoute> = [
@@ -83,5 +83,9 @@ export const COMMON_ROUTES: Array<IRoute> = [
     path: EMAIL_VERIFICATION_PATH,
     title: 'Verify your email',
     screen: lazy(() => import('screens/emailVerification.screen')),
+  },{
+    path: COORDINATORS,
+    title: 'Coordinators',
+    screen: lazy(() => import('screens/student/coordinators.student.screen')),
   },
 ];

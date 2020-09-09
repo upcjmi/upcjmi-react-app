@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Typography, Row, Col} from 'antd';
+import {Typography, Row, Col,Skeleton} from 'antd';
 import {INotice} from 'types/common.type';
 import {NoticeCard} from './noticeCard';
 import {getAllNotices} from '../../helpers/api/core.api.helper';
@@ -75,7 +75,6 @@ const Notice: FC<IProps> = () => {
       console.log(data,'api response');
       setAllNotices(data);
       console.log(allNotices,'notices');
-
     }
     getData()
   },[]);
@@ -83,17 +82,18 @@ const Notice: FC<IProps> = () => {
   return (
     <div id='notice' className='container full-page center-hv white lighten-3'>
       <div>
-        <Row gutter={32}>
+        <Row gutter={32} justify='start'>
           <Col sm={24} md={15}>
             <Title className='mx'>
               HighLights
             </Title>
             <div className='highlights'>
-              {allNotices.map((details,index)=>(
-                <Col span={24}>
+              <Col span={24}>
+                {allNotices.length > 0?allNotices.map((details,index)=>(
                   <NoticeCard {...details} />
-                </Col>
-              ))}
+                )):
+                  (<Skeleton loading title={{width:'90vw'}} />)}
+              </Col>
             </div>
           </Col>
           <Col sm={24} md={8}>

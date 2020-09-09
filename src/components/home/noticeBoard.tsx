@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Col,Typography} from 'antd';
+import {Col, Skeleton, Typography} from 'antd';
 import {NoticeCard} from 'components/home/noticeCard'
 import {INotice} from 'types/common.type';
 
@@ -15,11 +15,12 @@ export const NoticeBoard:FC<IProps> = ({noticesData}) => {
     <div>
       <Title className='mx'>Notice</Title>
       <div className='notice-container'>
-        {noticesData.map((details,index)=>(
+        {noticesData.length > 0?noticesData.map((details,index)=>(
           <Col span={24}>
             <NoticeCard {...details} />
           </Col>
-        ))}
+        )):
+          (<Skeleton loading title={{width:'100%'}} />)}
       </div>
     </div>
   );

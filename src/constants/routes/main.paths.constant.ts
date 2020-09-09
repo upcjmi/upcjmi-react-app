@@ -14,3 +14,4 @@ export const STUDENT_PORTAL_HOME_PATH = '/portal/student/';
 export const COMPANY_PORTAL_HOME_PATH = '/portal/company/';
 
 export const EMAIL_VERIFICATION_PATH = '/verification/email/:hash';
+export const COORDINATORS = '/coordinators';

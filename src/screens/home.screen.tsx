@@ -9,7 +9,11 @@ import {BADGES} from 'constants/home/badges.home.constant';
 import TopRecruiters from 'components/home/topRecruiters';
 
 import {selectScreen} from 'helpers/screen.helper';
-import {PORTAL_HOME_PATH, STUDENT_PORTAL_HOME_PATH} from 'constants/routes/main.paths.constant';
+import {
+  COORDINATORS,
+  PORTAL_HOME_PATH,
+  STUDENT_PORTAL_HOME_PATH,
+} from 'constants/routes/main.paths.constant';
 
 import ContactScreen from './contact.screen';
 import Notice from '../components/home/notice';
@@ -31,10 +35,10 @@ const quickLink = (
       Jobs &nbsp;
       <Tag color='#87d068'>New</Tag>
     </Link>
-    {/* <Link to={`${STUDENT_PORTAL_HOME_PATH}internships/`} className='linkType-1'> */}
-    {/*  Internships &nbsp; */}
-    {/*  <Tag color='#87d068'>New</Tag> */}
-    {/* </Link> */}
+    <Link to={`${COORDINATORS}`} className='linkType-1'>
+      Coordinators &nbsp;
+      <Tag color='#87d068'>New</Tag>
+    </Link>
     <br />
     <Link to={PORTAL_HOME_PATH} className='linkType-1'>
       Placements and Internship Portal

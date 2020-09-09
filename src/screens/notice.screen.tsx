@@ -1,11 +1,11 @@
 import React, {useEffect, useState,FC} from 'react';
-import {Typography, Row, Col,Button, Icon} from 'antd';
+import {Typography, Row, Col, Button, Icon, Skeleton} from 'antd';
 import {withRouter} from 'react-router-dom';
 import {NoticeBoard} from 'components/home/noticeBoard';
 import {INotice} from 'types/common.type';
 import {getAllNotices, getNotice} from '../helpers/api/core.api.helper';
-import LoadingComponentScreen from './loadingComponent.screen';
 import {dateFormatter} from '../helpers/dateFomatter';
+
 
 const {Title, Paragraph} = Typography;
 
@@ -21,7 +21,6 @@ interface ILoadedNotice{
   link:string
 }
 export const NoticeScreen: FC<IProps> = ({match,location,title}: any) => {
-  console.log(match,location,title)
   const [allNotices , setAllNotices ] = useState<Array<INotice>>([]);
   const [loading , setLoading ] = useState<boolean>(true);
   const [loadedNotice , setLoadedNotice ] = useState<ILoadedNotice | undefined>(undefined);
@@ -37,7 +36,7 @@ export const NoticeScreen: FC<IProps> = ({match,location,title}: any) => {
     getData()
   },[]);
   return(
-    <div className='container   white lighten-3'>
+    <div className='container white lighten-3'>
       <Row gutter={32}>
         {loadedNotice?(
           <Col sm={24} md={15}>
@@ -67,11 +66,10 @@ export const NoticeScreen: FC<IProps> = ({match,location,title}: any) => {
             </Button>
           </Col>
         ):(
-          <Col sm={24} md={8}>
-          <div className='row justify-center'>
-            <LoadingComponentScreen />
-          </div>
-          </Col>        )}
+          <Col sm={24} md={15}>
+            <Skeleton loading title={{width:'100%'}} />
+          </Col>
+        )}
         <Col sm={24} md={8}>
           <NoticeBoard noticesData={allNotices} />
         </Col>
