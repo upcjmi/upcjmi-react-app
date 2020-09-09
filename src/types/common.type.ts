@@ -46,3 +46,11 @@ export interface INavigation {
   icon: string;
   component: any;
 }
+
+
+export interface INotice {
+  title:string,
+  details:string,
+  created:string,
+  id:number
+}

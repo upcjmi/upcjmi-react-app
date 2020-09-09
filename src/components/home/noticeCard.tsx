@@ -1,12 +1,14 @@
 import {Link} from 'react-router-dom';
 import React from 'react';
-import {NOTICE_PATH} from '../../constants/routes/main.paths.constant';
+import {NOTICE_PATH} from 'constants/routes/main.paths.constant';
+import {dateFormatter} from 'helpers/dateFomatter';
 
-
-export const NoticeCard =({title,content,id}: {
+export const NoticeCard =({title,details,id,created}: {
   title:string,
-  content:string | undefined,
-  id:number})=> (
+  details:string | undefined,
+  id:number,
+  created:string,
+  })=> (
     <div className='card-notice'>
       <Link to={`${NOTICE_PATH}${id}`}>
         <div className='notice-card-title'>
@@ -14,12 +16,12 @@ export const NoticeCard =({title,content,id}: {
         </div>
       </Link>
       <p className='notice-card-details'>
-        {content?content.substring(0,256)||content:null}
+        {details?details.substring(0,256)||details:null}
         {' '}
-        {content?<Link to={`${NOTICE_PATH}${id}`} className='read-more'>Read More</Link>:null}
+        {details?<Link to={`${NOTICE_PATH}${id}`} className='read-more'>Read More</Link>:null}
       </p>
       <p className='notice-card-date'>
-      July 20, 2020
+        {dateFormatter(created)}
       </p>
     </div>
 )

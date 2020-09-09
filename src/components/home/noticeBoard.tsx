@@ -1,12 +1,14 @@
 import React, {FC} from 'react';
 import {Col,Typography} from 'antd';
 import {NoticeCard} from 'components/home/noticeCard'
+import {INotice} from 'types/common.type';
 
 interface IProps {
-  noticesData:Array<any>
+  noticesData:Array<INotice>
 }
 
 const {Title} = Typography;
+
 
 export const NoticeBoard:FC<IProps> = ({noticesData}) => {
   return (
@@ -15,7 +17,7 @@ export const NoticeBoard:FC<IProps> = ({noticesData}) => {
       <div className='notice-container'>
         {noticesData.map((details,index)=>(
           <Col span={24}>
-            <NoticeCard {...{title:details.name,content:details.content,id:index+1}} />
+            <NoticeCard {...details} />
           </Col>
         ))}
       </div>

@@ -1,93 +1,83 @@
-import React from 'react';
+import React, {useEffect, useState,FC} from 'react';
 import {Typography, Row, Col,Button, Icon} from 'antd';
+import {withRouter} from 'react-router-dom';
 import {NoticeBoard} from 'components/home/noticeBoard';
+import {INotice} from 'types/common.type';
+import {getAllNotices, getNotice} from '../helpers/api/core.api.helper';
+import LoadingComponentScreen from './loadingComponent.screen';
+import {dateFormatter} from '../helpers/dateFomatter';
 
 const {Title, Paragraph} = Typography;
 
-
-const dummyData = [
-  {
-    name:'Result of Senior School Certificate Class-XII (Commerce) (Regular)',
-    content:'All the students are hereby informed that result of class XIII regular is declared.' +
-      'All the students are hereby informed that result of class XIII regular is declared.' +
-      'All the students are hereby informed that result of class XIII regular is declared.' +
-      'All the students are hereby informed that result of class XIII regular is declared.' +
-      'All the students are hereby informed that result of class XIII regular is declared.' +
-      'All the students are hereby informed that result of class XIII regular is declared.' +
-      'All the students are hereby informed that result of class XIII regular is declared.' +
-      'All the students are hereby informed that result of class XIII regular is declared.'
-  },
-  {
-    name:'Result of Senior School Certificate Class-XII(Commerce)(Regular)',
-  }, {
-    name:'Result of Senior School Certificate Class-XII(Commerce)(Regular)',
-  },
-  {
-    name:'Result of Senior School Certificate Class-XII(Commerce)(Regular)',
-  },{
-    name:'Result of Senior School Certificate Class-XII (Commerce) (Regular)',
-    content:'All the students are hereby informed that result of class XIII regular is declared.'
-  },
-  {
-    name:'Result of Senior School Certificate Class-XII(Commerce)(Regular)',
-  }, {
-    name:'Result of Senior School Certificate Class-XII(Commerce)(Regular)',
-  },
-  {
-    name:'Result of Senior School Certificate Class-XII(Commerce)(Regular)',
-  },{
-    name:'Result of Senior School Certificate Class-XII(Commerce)(Regular)',
-  },{
-    name:'Result of Senior School Certificate Class-XII (Commerce) (Regular)',
-    content:'All the students are hereby informed that result of class XIII regular is declared.'
-  },
-  {
-    name:'Result of Senior School Certificate Class-XII(Commerce)(Regular)',
-  }, {
-    name:'Result of Senior School Certificate Class-XII(Commerce)(Regular)',
-  },
-  {
-    name:'Result of Senior School Certificate Class-XII(Commerce)(Regular)',
-  },
-];
-
-export const NoticeScreen = () => {
-  return (
-    <div className='container full-page  white lighten-3'>
+interface IProps {
+  match: any;
+}
+interface ILoadedNotice{
+  title:string,
+  details:string,
+  modified:string,
+  created:string,
+  documents:string,
+  link:string
+}
+export const NoticeScreen: FC<IProps> = ({match,location,title}: any) => {
+  console.log(match,location,title)
+  const [allNotices , setAllNotices ] = useState<Array<INotice>>([]);
+  const [loading , setLoading ] = useState<boolean>(true);
+  const [loadedNotice , setLoadedNotice ] = useState<ILoadedNotice | undefined>(undefined);
+  useEffect( ()=>{
+    const getData  =  async ()=>{
+      const {id} = match.params
+      const notice = await getNotice(id);
+      setLoadedNotice(notice);
+      const data = await getAllNotices();
+      setAllNotices(data);
+      setLoading(!(notice && data));
+    }
+    getData()
+  },[]);
+  return(
+    <div className='container   white lighten-3'>
       <Row gutter={32}>
-        <Col sm={24} md={15}>
-          <Title level={2}>
-            Result of Senior School Certificate Class-XII (Commerce) (Regular)
-          </Title>
-          <Paragraph>
-            All the students are hereby informed that result of class XIII regular is declared.
-            All the students are hereby informed that result of class XIII regular is declared.
-            All the students are hereby informed that result of class XIII regular is declared.
-            All the students are hereby informed that result of class XIII regular is declared.
-            All the students are hereby informed that result of class XIII regular is declared.
-            All the students are hereby informed that result of class XIII regular is declared.
-            All the students are hereby informed that result of class XIII regular is declared.
-            All the students are hereby informed that result of class XIII regular is declared.
-          </Paragraph>
-          <div className='row space-between'>
-            <Button type='primary' icon='download'>
-                Attachment
+        {loadedNotice?(
+          <Col sm={24} md={15}>
+            <Title level={2}>
+              {loadedNotice.title}
+            </Title>
+            <Paragraph>
+              {loadedNotice.details}
+            </Paragraph>
+            <div className='row space-between'>
+              <a
+                href={loadedNotice.documents}
+                download
+                target='_blank'
+                >
+                <Button type='primary' icon='download'>
+                  Attachment
+                </Button>
+              </a>
+              <p>
+                {dateFormatter(loadedNotice.created)}
+              </p>
+            </div>
+            <Button type='link' size='large' style={{padding:0}}>
+              {/* eslint-disable-next-line react/jsx-no-target-blank */}
+              <a target='_blank' href={loadedNotice.link}>{loadedNotice.link}</a>
             </Button>
-            <p>
-          July 20, 2020
-            </p>
+          </Col>
+        ):(
+          <Col sm={24} md={8}>
+          <div className='row justify-center'>
+            <LoadingComponentScreen />
           </div>
-          <Button type='link' size='large' style={{padding:0}}>
-            {/* eslint-disable-next-line react/jsx-no-target-blank */}
-            <a target='_blank' href='https://www.facebook.com/ashertoufeeq'>www.facebook.com</a>
-          </Button>
-        </Col>
+          </Col>        )}
         <Col sm={24} md={8}>
-          <NoticeBoard noticesData={dummyData} />
+          <NoticeBoard noticesData={allNotices} />
         </Col>
       </Row>
     </div>
   );
 };
 
-export default NoticeScreen;
+export default withRouter(NoticeScreen);

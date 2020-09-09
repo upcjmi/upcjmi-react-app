@@ -1,10 +1,12 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Typography, Row, Col,Icon} from 'antd';
+import {Typography, Row, Col} from 'antd';
+import {INotice} from 'types/common.type';
 import {NoticeCard} from './noticeCard';
 import {getAllNotices} from '../../helpers/api/core.api.helper';
 import {NoticeBoard} from './noticeBoard';
 
 interface IProps {}
+
 
 const {Title} = Typography;
 
@@ -66,18 +68,18 @@ const noticesData = [
 // )
 
 const Notice: FC<IProps> = () => {
-  const [allNotices , setAllNotices ] = useState({})
+  const [allNotices , setAllNotices ] = useState<Array<INotice>>([])
   useEffect( ()=>{
     const getData  =  async ()=>{
       const data = await getAllNotices();
+      console.log(data,'api response');
       setAllNotices(data);
+      console.log(allNotices,'notices');
+
     }
-    getData().then(()=>{
-      console.log(allNotices,"ye");
-    }).catch((e)=>{
-      console.error("ye wala",e)
-    });
-  },[])
+    getData()
+  },[]);
+
   return (
     <div id='notice' className='container full-page center-hv white lighten-3'>
       <div>
@@ -87,15 +89,15 @@ const Notice: FC<IProps> = () => {
               HighLights
             </Title>
             <div className='highlights'>
-              {noticesData.map((details,index)=>(
+              {allNotices.map((details,index)=>(
                 <Col span={24}>
-                  <NoticeCard {...{title:details.name,content:details.content,id:index+1}} />
+                  <NoticeCard {...details} />
                 </Col>
               ))}
             </div>
           </Col>
           <Col sm={24} md={8}>
-            <NoticeBoard noticesData={noticesData} />
+            <NoticeBoard noticesData={allNotices} />
           </Col>
         </Row>
       </div>

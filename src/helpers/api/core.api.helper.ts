@@ -2,7 +2,7 @@ import {loadOpenUrl, loadSecureUrl} from './main.api.helper';
 
 const UAllCourses = 'courses/';
 const UAllAppliedCourses = 'courses/applied/';
-const UALLNOTICES = 'notice/';
+const UALLNOTICES = 'notices/';
 
 export const getAllAvailableCourseAPI = () => loadSecureUrl(UAllCourses);
 
