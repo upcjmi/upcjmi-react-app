@@ -87,5 +87,9 @@ export const COMMON_ROUTES: Array<IRoute> = [
     path: COORDINATORS,
     title: 'Coordinators',
     screen: lazy(() => import('screens/student/coordinators.student.screen')),
+  },{
+    path:'/farzi',
+    title: 'frzi',
+    screen: lazy(() => import('screens/student/home.student.screen')),
   },
 ];

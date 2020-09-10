@@ -7,6 +7,7 @@ export interface IStudentExtraDetails {
   profiles: Array<IStudentProfileLinks>;
   tag_line: string;
   about: string;
+  resume:string;
   skills: Array<string>;
   dob: string | number;
   gender: 'M' | 'F';

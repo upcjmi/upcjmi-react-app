@@ -10,17 +10,22 @@ import {
   Select,
   Icon,
   Upload,
-  message,
+  message, Tooltip,
 } from 'antd';
 import moment from 'moment';
-
 import {openNotificationWithIcon} from 'helpers/notification.helper';
 import {saveStudentExtraDataAPI} from 'helpers/api/student.api.helper';
 import {IReduxState} from 'reducers';
 import {IStudentExtraDetails} from 'types/student.api.type';
 import {loadStudentExtraDetails} from 'actions/student.action';
-import {getFileHandlerURL, removeFileFromServer} from '../../helpers/api/file.api.helper';
+import {
+  resumeUploadURL,
+  removeFileFromServer,
+  studentDocumentUploadURL,
+} from '../../helpers/api/file.api.helper';
+import {API_BASE_URL} from '../../constants/credentials.constant';
 
+const {Dragger} = Upload;
 const {Title} = Typography;
 const {Option} = Select;
 
@@ -29,6 +34,17 @@ interface ITagProps {
   change: any;
   addText: string;
 }
+
+const props = {
+  name: 'file',
+  multiple: false,
+  data: (file: any) => ({
+    upload_id: file.uid,
+  }),
+  onRemove: (file: any) =>
+    file.response ? removeFileFromServer(file.response.identifier, file.uid) : true,
+  action: resumeUploadURL(),
+};
 
 const TagEditor: FC<ITagProps> = ({tags, change, addText}: ITagProps) => {
   const [inputVisible, setVisible] = useState(false);
@@ -208,6 +224,7 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
     dob: '1998-12-11',
     gender: 'M',
     skills: [],
+    resume:'',
     profiles: [],
     student: {
       roll: '',
@@ -240,7 +257,7 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
       } else openNotificationWithIcon('error', 'Please Correct the error displayed in forms.');
     });
   };
-  const normFile = (e: { fileList: any; }) => {
+  const normFile = (e: {fileList: any;}) => {
     console.log('Upload event:', e);
     if (Array.isArray(e)) {
       return e;
@@ -321,6 +338,45 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
               setFieldsValue({profiles});
             }}
           />
+        </Form.Item>
+        <Form.Item label='Resume' className='margin-bottom-0'>
+          <Dragger
+            {...props}
+            onChange={(info: any) => {
+              const {status} = info.file;
+              if (status !== 'uploading') {
+                console.log(info.file, info.fileList);
+              }
+              if (status === 'done') {
+                message.success(`${info.file.name} file uploaded successfully.`);
+              } else if (status === 'error') {
+                message.error(`${info.file.name} file upload failed.`);
+              }
+              const files: any = [];
+              info.fileList.map((file: any) => {
+                files.push({
+                  upload_id: file.uid,
+                  identifier: file.response ? file.response.identifier : '',
+                });
+                return '';
+              });
+              setFieldsValue({
+                resume: files[0],
+              });
+            }}
+          >
+            <p className='ant-upload-drag-icon'>
+              <Icon type='inbox' />
+            </p>
+            <p className='ant-upload-text'>Click or drag file to this area to upload</p>
+            <p className='ant-upload-hint'>
+              Upload Your Resume
+            </p>
+          </Dragger>
+          {getFieldDecorator('resume', {
+            rules: [{required: true}],
+            preserve: true,
+          })(<input type='hidden' value={getFieldValue('resume')} />)}
         </Form.Item>
         <br />
         <br />
