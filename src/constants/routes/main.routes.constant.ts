@@ -90,6 +90,6 @@ export const COMMON_ROUTES: Array<IRoute> = [
   },{
     path:'/farzi',
     title: 'frzi',
-    screen: lazy(() => import('screens/student/home.student.screen')),
+    screen:  lazy(() => import('../../screens/student/resume.student.screen')),
   },
 ];

@@ -54,6 +54,8 @@ export interface INotice {
   created:string,
   id:number
 }
+
+
 export interface ICoordinator {
   department:string
   email: string
@@ -62,4 +64,16 @@ export interface ICoordinator {
   phone: string
   photo: string
   type: string
+}
+
+export interface IRanking{
+  id:number
+  issuer:string
+  rank:string
+  year:number
+  heading:string
+  link:string
+  show_on_site:boolean
+  created:string
+  modified:string
 }

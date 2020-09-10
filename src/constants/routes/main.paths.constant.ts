@@ -15,3 +15,4 @@ export const COMPANY_PORTAL_HOME_PATH = '/portal/company/';
 
 export const EMAIL_VERIFICATION_PATH = '/verification/email/:hash';
 export const COORDINATORS = '/coordinators';
+export const RESUME_BUILDER = 'https://resume.upcjmi.com';

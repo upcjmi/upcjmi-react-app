@@ -24,6 +24,7 @@ import {
   studentDocumentUploadURL,
 } from '../../helpers/api/file.api.helper';
 import {API_BASE_URL} from '../../constants/credentials.constant';
+import {RESUME_BUILDER} from '../../constants/routes/main.paths.constant';
 
 const {Dragger} = Upload;
 const {Title} = Typography;
@@ -370,8 +371,17 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
             </p>
             <p className='ant-upload-text'>Click or drag file to this area to upload</p>
             <p className='ant-upload-hint'>
-              Upload Your Resume
+              Upload Your Resume.
             </p>
+            <p className='ant-upload-hint'>
+              If you do not have Resume you can create using our Resume Builder.
+            </p>
+            <Button type='primary'>
+              {/* eslint-disable-next-line react/jsx-no-target-blank */}
+              <a href={RESUME_BUILDER} target='_blank'>
+              Resume Builder
+              </a>
+            </Button>
           </Dragger>
           {getFieldDecorator('resume', {
             rules: [{required: true}],
