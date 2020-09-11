@@ -10,7 +10,7 @@ import {
   Select,
   Icon,
   Upload,
-  message, Tooltip,
+  message,
 } from 'antd';
 import moment from 'moment';
 import {openNotificationWithIcon} from 'helpers/notification.helper';
@@ -21,10 +21,8 @@ import {loadStudentExtraDetails} from 'actions/student.action';
 import {
   resumeUploadURL,
   removeFileFromServer,
-  studentDocumentUploadURL,
-} from '../../helpers/api/file.api.helper';
-import {API_BASE_URL} from '../../constants/credentials.constant';
-import {RESUME_BUILDER} from '../../constants/routes/main.paths.constant';
+} from 'helpers/api/file.api.helper';
+import {RESUME_BUILDER} from 'constants/routes/main.paths.constant';
 
 const {Dragger} = Upload;
 const {Title} = Typography;
@@ -376,18 +374,21 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
             <p className='ant-upload-hint'>
               If you do not have Resume you can create using our Resume Builder.
             </p>
-            <Button type='primary'>
-              {/* eslint-disable-next-line react/jsx-no-target-blank */}
-              <a href={RESUME_BUILDER} target='_blank'>
-              Resume Builder
-              </a>
-            </Button>
           </Dragger>
           {getFieldDecorator('resume', {
             rules: [{required: true}],
             preserve: true,
           })(<input type='hidden' value={getFieldValue('resume')} />)}
         </Form.Item>
+        <div className='row justify-center my-2'>
+          <Button type='primary'>
+            {/* eslint-disable-next-line react/jsx-no-target-blank */}
+            <a href={RESUME_BUILDER} target='_blank'>
+              Resume Builder
+            </a>
+          </Button>
+        </div>
+
         <br />
         <br />
         <Button type='primary' className='full-width' onClick={handelSubmit}>

@@ -1,7 +1,7 @@
 import React, {FC, Suspense, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter, Link, Route, Switch, withRouter} from 'react-router-dom';
-import {Button, Result} from 'antd';
+import {Button, Icon, Menu, Result} from 'antd';
 
 import {IRoute, ISidebarRoute} from 'types/common.type';
 import {IReduxState} from 'reducers';
@@ -12,7 +12,7 @@ import NotFoundScreen from 'screens/404.screen';
 import LoadingScreen from 'screens/loading.screen';
 import {selectScreen} from 'helpers/screen.helper';
 import SideBar from './portalNavigator';
-import {HOME_PATH} from '../constants/routes/main.paths.constant';
+import {HOME_PATH, RESUME_BUILDER} from '../constants/routes/main.paths.constant';
 import {cannotConnectToServerNotification} from '../helpers/notification.helper';
 
 interface IStateProps {
@@ -72,12 +72,23 @@ const Portal: FC<IProps> = (props: IProps) => {
   if (user && user.type !== allowedType) return <NotAuthorisedScreen />;
   if (user && !(user.account.account_verified && user.account.email_verified))
     return <AccountNotVerifiedScreen user={user} />;
-
+  const ResumeButton = (
+    <Menu.Item key='resume'>
+      {/* eslint-disable-next-line react/jsx-no-target-blank */}
+      <a href={RESUME_BUILDER} target='_blank'>
+        <Icon type='solution' />
+        <span>Resume Builder</span>
+      </a>
+    </Menu.Item>
+  )
   return (
     <>
       <div className='portal'>
         <BrowserRouter basename={baseLocation}>
-          <SideBar routes={sideRoutes} match={match.path} />
+          <SideBar
+            routes={sideRoutes}
+            match={match.path}
+            extra={ResumeButton} />
           <div
             className='full-page'
             style={{

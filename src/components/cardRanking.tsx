@@ -22,16 +22,18 @@ export const CardRanking = ({
     >
         <Meta
           title={(
-            <Title level={2} style={{textAlign:'center',margin:0}}>
-              {rank}
-            </Title>
-)}
-          description={(
             <div>
-              <Title level={4} className='m-0' style={{margin:0}}>{heading}</Title>
-              <p className='m-0'>{`${issuer} ${year}`}</p>
-              <p className='m-0'>{dateFormatter(created)}</p>
+              <Title level={2} style={{textAlign:'center',margin:0}}>
+                {rank}
+              </Title>
+              <Title level={4} className='m-0' style={{margin:0,padding:0}}>{heading}</Title>
             </div>
+            )}
+          description={(
+            <p
+              className='m-0'>
+              {`${issuer} ${year}`}
+            </p>
         )}
       />
       </Card>

@@ -254,6 +254,10 @@ img {
   max-height: 200px;
 }
 
+.quote-svg {
+  max-height: 80px;
+}
+
 .height-300 {
   height: 300px;
 }
@@ -381,15 +385,35 @@ img {
 .read-more:hover{
   text-decoration: underline;
 }
+.flex-1{
+  flex:1;
+}
+.flex-8{
+  flex:8;
+}
+.w-100{
+  width:100%;
+}
 .row{
  display: flex;
+  flex-direction: row;
  flex:1;
+}
+.align-center{
+  align-items: center;
+
+}
+.align-start{
+  align-items: flex-start;
+}
+.align-end{
+  align-items: flex-end;
 }
 .space-between{
   justify-content: space-between;
 }
 .justify-center{
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .m-0{
@@ -398,4 +422,11 @@ img {
 .my-2{
   margin-top:10px;
   margin-bottom:10px;
+}
+.column{
+  display: flex;
+  flex-direction: column;
+}
+.p-2{
+  padding:10px
 }

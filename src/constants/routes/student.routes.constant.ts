@@ -29,12 +29,12 @@ export const studentSideRoutes: Array<ISidebarRoute> = [
     path: '/courses/',
     screen:  lazy(() => import('screens/student/courses.student.screen')),
   },
-  {
-    name: 'Your Resume',
-    icon: 'solution',
-    path: '/resume/',
-    screen:  lazy(() => import('../../screens/student/resume.student.screen')),
-  },
+  // {
+  //   name: 'Your Resume',
+  //   icon: 'solution',
+  //   path: '/resume/',
+  //   screen:  lazy(() => import('../../screens/student/resume.student.screen')),
+  // },
   // {
   //   name: 'Account Settings',
   //   icon: 'setting',

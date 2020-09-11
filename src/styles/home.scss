@@ -18,3 +18,12 @@
 .ant-carousel .slick-slide h3 {
   color: transparent;
 }
+
+.top-recruiter .ant-carousel .slick-slide {
+  max-width: 100vw;
+
+  //display: flex;
+  text-align: center;
+  line-height: 160px;
+  //background: #546;
+}

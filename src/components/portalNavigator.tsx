@@ -8,11 +8,12 @@ import {selectScreen} from 'helpers/screen.helper';
 interface IProps {
   routes: Array<ISidebarRoute>;
   match: string;
+  extra?: any;
 }
 
 const JamiaLogo = require('assets/svgs/jamia-logo.svg');
 
-const PortalNavigator: FC<IProps> = ({routes}: IProps) => {
+const PortalNavigator: FC<IProps> = ({routes,extra}: IProps) => {
   const [visible, setVisible] = useState(false);
   const hide = () => setVisible(false);
 
@@ -41,6 +42,7 @@ const PortalNavigator: FC<IProps> = ({routes}: IProps) => {
             </Link>
           </Menu.Item>
         ))}
+        {extra}
       </Menu>
     </>
   );
