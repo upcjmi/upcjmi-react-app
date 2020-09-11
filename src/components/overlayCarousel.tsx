@@ -16,7 +16,7 @@ const OverlayCarousel: FC<IProps> = ({overlay: Overlay, images, carousel}: IProp
     </div>
 
     {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-    <Carousel autoplay dotPosition='right' {...carousel}>
+    <Carousel autoplay dots={false} {...carousel}>
       {images.map(({image, caption}, index) => (
         <img src={image} alt={caption} key={index.toString()} />
       ))}

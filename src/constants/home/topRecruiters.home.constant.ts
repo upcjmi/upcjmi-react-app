@@ -6,4 +6,4 @@ const TCS = require('assets/top-recruiters/TCS.png');
 const LnT = require('assets/top-recruiters/L&T.png');
 // const Innovaccer = require('assets/top-recruiters/innovaccer.png');
 
-export const TOP_RECRUITERS: Array<string> = [Microsoft, Adobe, OYO, Samsung, TCS, LnT];
+export const TOP_RECRUITERS: Array<string> = [Microsoft, Adobe, OYO, Samsung, TCS, LnT,Microsoft, Adobe, OYO, Samsung, TCS, LnT,];

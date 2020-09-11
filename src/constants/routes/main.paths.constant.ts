@@ -1,5 +1,6 @@
 export const HOME_PATH = '/';
 export const CONTACT_PATH = '/contact/';
+export const NOTICE_PATH = '/notice/';
 export const SIGN_IN_PATH = '/sign-in/';
 export const SIGN_UP_PATH_STUDENT = '/sign-up/student/';
 export const SIGN_UP_PATH_COMPANY = '/sign-up/company/';
@@ -13,3 +14,5 @@ export const STUDENT_PORTAL_HOME_PATH = '/portal/student/';
 export const COMPANY_PORTAL_HOME_PATH = '/portal/company/';
 
 export const EMAIL_VERIFICATION_PATH = '/verification/email/:hash';
+export const COORDINATORS = '/coordinators';
+export const RESUME_BUILDER = 'https://resume.upcjmi.com';

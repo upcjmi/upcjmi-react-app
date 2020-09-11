@@ -11,6 +11,7 @@ import SideDrawerForm from 'components/sideDrawerForm';
 import {getCourseName} from 'helpers/courses';
 import {GetProfileIcon} from 'helpers/function.helper';
 import ExtraDetailsChange from './extraDetailsChange.student';
+import {API_BASE_URL} from '../../constants/credentials.constant';
 
 interface IStateProps {
   extraDetails: IStudentExtraDetails | undefined | null;
@@ -95,13 +96,18 @@ const ProfileCardStudent: FC<IProps> = ({
           </div>
         </div>
         <br />
-        <Text>
-          <b>
-            {getCourseName(extraDetails.student.course)}
+        <div>
+          <Text>
+            <b>
+              {getCourseName(extraDetails.student.course)}
             &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-            {`${getYear(extraDetails.student.year)} year`}
-          </b>
-        </Text>
+              {`${getYear(extraDetails.student.year)} year`}
+            </b>
+          </Text>
+          <Button className='float-right my-2' type='link'>
+            <a href={`${API_BASE_URL}${extraDetails.resume}`} target='_blank'>View Resume</a>
+          </Button>
+        </div>
         <Paragraph type='secondary'>{extraDetails.about}</Paragraph>
         <div className='profile-extra-details'>
           {extraDetails.profiles.map(profile => (

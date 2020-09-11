@@ -13,3 +13,4 @@ export const removeFileFromServer = (identifier: number, uploadId: number) =>
   });
 export const getFileHandlerURL = () => `${API_BASE_URL}/${FILE}`;
 export const studentDocumentUploadURL = () => `${API_BASE_URL}/student/upload/documents/`;
+export const resumeUploadURL = () => `${API_BASE_URL}/student/resume/upload/`;
