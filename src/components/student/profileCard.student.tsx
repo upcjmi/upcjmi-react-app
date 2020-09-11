@@ -105,7 +105,12 @@ const ProfileCardStudent: FC<IProps> = ({
             </b>
           </Text>
           <Button className='float-right my-2' type='link'>
-            <a href={`${API_BASE_URL}${extraDetails.resume}`} target='_blank'>View Resume</a>
+            <a
+              href={`${API_BASE_URL}${extraDetails.resume}`}
+              rel='noopener noreferrer'
+              target='_blank'>
+              View Resume
+            </a>
           </Button>
         </div>
         <Paragraph type='secondary'>{extraDetails.about}</Paragraph>

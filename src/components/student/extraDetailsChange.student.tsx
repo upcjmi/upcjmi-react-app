@@ -256,14 +256,6 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
       } else openNotificationWithIcon('error', 'Please Correct the error displayed in forms.');
     });
   };
-  const normFile = (e: {fileList: any;}) => {
-    console.log('Upload event:', e);
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e && e.fileList;
-  };
-
   return (
     <div>
       <Title>Details</Title>

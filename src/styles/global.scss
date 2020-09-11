@@ -415,9 +415,11 @@ img {
 .justify-center{
   justify-content: center;
 }
-
+.p-0{
+  padding:0 !important;
+}
 .m-0{
-  margin:0;
+  margin:0 !important;
 }
 .my-2{
   margin-top:10px;

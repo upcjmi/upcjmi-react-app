@@ -20,6 +20,17 @@ import ContactScreen from './contact.screen';
 interface IProps {}
 
 const {Title} = Typography;
+// const dummy = {
+//   link:'https://facebook.com',
+//   id:1,
+//   issuer:'Outlook ranking',
+//   rank:'1st',
+//   year:2020,
+//   heading:'all around the world among top 50 universities.',
+//   show_on_site:true,
+//   created:'kajhsdf',
+//   modified:'aksdhjf',
+// }
 
 const quickLink = (
   <div className='space-child'>
@@ -65,45 +76,68 @@ const CarouselOverlayComponent = () => {
     getData()
   },[])
   return(
-    <>
-      {quickLink}
-      <div className='welcome-text'>
-        <Title level={2}>Welcome to,</Title>
-        <Title>
+    <div className='column space-between' style={{height:'100%'}}>
+      <div className='column'>
+        {quickLink}
+        <div className='welcome-text'>
+          <Title level={2}>Welcome to,</Title>
+          <Title>
         University Placement Cell
-          <br />
-          <p>Jamia Millia Islamia</p>
-        </Title>
+            <br />
+            <p>Jamia Millia Islamia</p>
+          </Title>
+        </div>
       </div>
-      <br />
-      <br />
+
       <div className='ranking-container'>
         <Carousel autoplay dots={false}>
           {getBadgesArray(apiBadges).map((item,index) => (
-            <Row gutter={32} style={{display: selectScreen('none', 'none', null)}}>
-              {
+            <div className='row-container'>
+              <Row gutter={32} style={{display: selectScreen('none', 'none', null)}}>
+                {
                 item.map((badge)=>(
                   <Col span={6}>
                     <CardRanking {...badge} />
                   </Col>
                 ))
               }
-            </Row>
+              </Row>
+            </div>
           ))}
+          {/* {[1,2].map((item,index) => ( */}
+          {/*  <div className='row-container'> */}
+          {/*    <Row */}
+          {/*      gutter={32} */}
+          {/*      style={{display: selectScreen('none', 'none', null)}} */}
+          {/*      type='flex' */}
+          {/*      justify='space-around' */}
+          {/*    > */}
+          {/*      { */}
+          {/*          [1,2,3,4].map((badge)=>( */}
+          {/*            <Col span={6}> */}
+          {/*              <CardRanking */}
+          {/*                {...dummy} */}
+          {/*              /> */}
+          {/*            </Col> */}
+          {/*          )) */}
+          {/*        } */}
+          {/*    </Row> */}
+          {/*  </div> */}
+          {/* ))} */}
         </Carousel>
       </div>
-      {  loading?(
+      {loading?(
         <div className='badge-container' style={{display: selectScreen('none', 'none', null)}}>
           {
             [1, 2, 3, 4].map((i) => (
               <Card style={{ width: '16rem',margin:10 ,borderRadius:'2rem'}}>
-                <Skeleton active={loading} key={i.toString()} />
+                <Skeleton active={loading} key={i.toString()}  />
               </Card>
             ))
           }
         </div>
       ):null}
-    </>
+    </div>
   );
 }
 

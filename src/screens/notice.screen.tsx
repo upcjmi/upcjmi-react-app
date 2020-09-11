@@ -1,5 +1,5 @@
 import React, {useEffect, useState,FC} from 'react';
-import {Typography, Row, Col, Button, Icon, Skeleton} from 'antd';
+import {Typography, Row, Col, Button, Skeleton} from 'antd';
 import {withRouter} from 'react-router-dom';
 import {NoticeBoard} from 'components/home/noticeBoard';
 import {INotice} from 'types/common.type';
@@ -20,9 +20,8 @@ interface ILoadedNotice{
   documents:string,
   link:string
 }
-export const NoticeScreen: FC<IProps> = ({match,location,title}: any) => {
+export const NoticeScreen: FC<IProps> = ({match}: any) => {
   const [allNotices , setAllNotices ] = useState<Array<INotice>>([]);
-  const [loading , setLoading ] = useState<boolean>(true);
   const [loadedNotice , setLoadedNotice ] = useState<ILoadedNotice | undefined>(undefined);
   useEffect( ()=>{
     const getData  =  async ()=>{
@@ -31,10 +30,9 @@ export const NoticeScreen: FC<IProps> = ({match,location,title}: any) => {
       setLoadedNotice(notice);
       const data = await getAllNotices();
       setAllNotices(data);
-      setLoading(!(notice && data));
     }
     getData()
-  },[]);
+  },[match.params]);
   return(
     <div className='container white lighten-3'>
       <Row gutter={32}>
@@ -51,6 +49,7 @@ export const NoticeScreen: FC<IProps> = ({match,location,title}: any) => {
                 href={loadedNotice.documents}
                 download
                 target='_blank'
+                rel='noopener noreferrer'
                 >
                 <Button type='primary' icon='download'>
                   Attachment

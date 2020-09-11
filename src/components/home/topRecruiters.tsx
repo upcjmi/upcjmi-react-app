@@ -1,39 +1,32 @@
 import React, {FC} from 'react';
-import {Typography, Row, Col} from 'antd';
+import { Row, Col, Carousel} from 'antd';
 import {TOP_RECRUITERS} from 'constants/home/topRecruiters.home.constant';
 
 interface IProps {}
 
-const {Title} = Typography;
 
 const TopRecruiters: FC<IProps> = () => (
-  <div className='full-page container center-hv center top-recruiter-col'>
-    <div>
-      <Title>Our Top Recruiters</Title>
-      <Row gutter={24}>
-        {TOP_RECRUITERS.map((recruiter, index) => (
-          <Col
-            xs={24}
-            md={8}
-            className='center margin-bottom-20 margin-top-20'
-            key={index.toString()}>
-            <img src={recruiter} alt='' className='max-height-50' />
-          </Col>
+  <>
+    <div className='top-recruiter top-recruiter-col'>
+      <Carousel autoplay>
+        {[1,2,3].map((item) => (
+          <Row gutter={24} type='flex' justify='space-between' align='middle'>
+            {TOP_RECRUITERS.map((recruiter, index) => (
+              <Col
+                xs={24}
+                md={8}
+                className='center margin-bottom-20 margin-top-20'
+                key={index.toString()}>
+                <div className='row justify-center'>
+                  <img src={recruiter} alt='' className='image-top-recruiter' />
+                </div>
+              </Col>
+            ))}
+          </Row>
         ))}
-      </Row>
-      <Row gutter={24}>
-        {TOP_RECRUITERS.map((recruiter, index) => (
-          <Col
-            xs={24}
-            md={8}
-            className='center margin-bottom-20 margin-top-20'
-            key={index.toString()}>
-            <img src={recruiter} alt='' className='max-height-50' />
-          </Col>
-        ))}
-      </Row>
+      </Carousel>
     </div>
-  </div>
+  </>
 );
 
 export default TopRecruiters;

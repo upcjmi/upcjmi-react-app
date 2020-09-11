@@ -1,5 +1,5 @@
-import React, {useEffect, useState,FC} from 'react';
-import {Typography, Row, Col, Card} from 'antd';
+import React, {useState,FC} from 'react';
+import {Typography, Row, Col} from 'antd';
 import FormCreator from 'components/formCreator';
 import {COURSES} from 'constants/formFields.constant';
 import {getCoordinator} from 'helpers/api/core.api.helper';
@@ -11,21 +11,9 @@ const {Title} = Typography;
 interface IProps {
 }
 
-// 83b36
-const demo = {
-  department: "3fc6d",
-  email: "ashertoufeeq@gmail.com",
-  id: 1,
-  name: "Asher Toufeeq",
-  phone: "9557807977",
-  photo: "http://faisal-e8c0ea81.localhost.run/media/coordinator/Profile.jpeg",
-  type: "S"
-}
-
-
 export const CoordinatorsScreen: FC<IProps> = () => {
   const [coordinator,setCoordinator] = useState<Array<ICoordinator> |undefined>([]);
-  const [loading,setLoading] = useState<boolean>(false);
+  // const [loading,setLoading] = useState<boolean>(false);
   const getData = async (code:string) =>{
     const data = await getCoordinator(code)
     console.log(data,'data');
@@ -40,13 +28,9 @@ export const CoordinatorsScreen: FC<IProps> = () => {
           ...COURSES(initialValues, form),
         },
       ]}
-
       submitButtonText='Search'
       onSubmit={async (objForm: any) => {
-        setLoading(true)
-        console.log(objForm.getFieldValue('course'))
         await getData(objForm.getFieldValue('course'));
-        setLoading(false);
       }}
       formLayout={
         {

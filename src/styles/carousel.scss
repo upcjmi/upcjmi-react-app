@@ -1,6 +1,8 @@
 @import 'variables';
+.home{
 
-.ant-carousel .slick-slide {
+}
+.home .ant-carousel .slick-slide {
   text-align: center;
   height: $full-page-height;
   line-height: 160px;
@@ -9,11 +11,11 @@
   z-index: -3;
 }
 
-.ant-carousel .slick-slide h3 {
+.home .ant-carousel .slick-slide h3 {
   color: #fff;
 }
 
-.ant-carousel .slick-slide img {
+.home .ant-carousel .slick-slide img {
   width: 100vw;
   height: $full-page-height;
   object-fit: cover;

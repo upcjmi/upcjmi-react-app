@@ -1,4 +1,4 @@
-import {Card, Icon, Avatar,Tooltip,Typography} from 'antd';
+import {Card,Avatar,Typography} from 'antd';
 import React from 'react';
 import {ICoordinator} from '../types/common.type';
 import {getCourseName} from '../helpers/courses';
