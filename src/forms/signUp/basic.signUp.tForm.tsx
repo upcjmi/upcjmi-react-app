@@ -92,39 +92,38 @@ export const basicSignUpTForm = (state: any, initialValues: any, extraValues: an
   },
 ];
 
-export const basicSignUpTFormCompany =
-  (state: any, initialValues: any,) => [
-    {
-      label: 'Ypur Name',
-      name: 'user_name',
-      initialValue: get(initialValues, 'user_name'),
-      kwargs: {
-        placeholder: 'ex: Username',
-      },
-      type: FORM_ELEMENT.INPUT,
-      rules: [{required: true}],
+export const basicSignUpTFormCompany = (state: any, initialValues: any) => [
+  {
+    label: 'Your Name',
+    name: 'user_name',
+    initialValue: get(initialValues, 'user_name'),
+    kwargs: {
+      placeholder: 'ex: Username',
     },
-    {
-      label: 'Company Name',
-      name: 'name',
-      initialValue: get(initialValues, 'name'),
-      kwargs: {
-        placeholder: 'ex: Company Name',
-      },
-      type: FORM_ELEMENT.INPUT,
-      rules: [{required: true}],
+    type: FORM_ELEMENT.INPUT,
+    rules: [{required: true}],
+  },
+  {
+    label: 'Company Name',
+    name: 'name',
+    initialValue: get(initialValues, 'name'),
+    kwargs: {
+      placeholder: 'ex: Company Name',
     },
-    {
-      label: 'About your company',
-      name: 'about',
-      initialValue: get(initialValues, 'about'),
-      kwargs: {
-        placeholder: 'ex: Company Details',
-      },
-      type: FORM_ELEMENT.TEXTAREA,
-      rules: [{required: true}],
+    type: FORM_ELEMENT.INPUT,
+    rules: [{required: true}],
+  },
+  {
+    label: 'About your company',
+    name: 'about',
+    initialValue: get(initialValues, 'about'),
+    kwargs: {
+      placeholder: 'ex: Company Details',
     },
-    {
-      ...CAPTCHA,
-    },
-  ];
+    type: FORM_ELEMENT.TEXTAREA,
+    rules: [{required: true}],
+  },
+  {
+    ...CAPTCHA,
+  },
+];
