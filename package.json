@@ -1,6 +1,6 @@
 {
   "name": "upcjmi",
-  "version": "1.1.1",
+  "version": "1.0.0",
   "private": false,
   "license": "GPL-2.0",
   "homepage": "https://upcjmi.com",
@@ -34,7 +34,7 @@
     "eject": "react-scripts eject",
     "predeploy": "yarn run build && cp build/index.html build/404.html && cp CNAME build/CNAME",
     "deploy": "gh-pages -d build -m",
-    "aws:sync": "aws s3 sync build/ s3://upcjmi --cache-control max-age=31557600 --delete",
+    "aws:sync": "aws s3 sync build/ s3://upcjmi-website --cache-control max-age=31557600 --delete",
     "aws:invalidate": "aws configure set preview.cloudfront true && aws cloudfront create-invalidation --distribution-id E2JT16QJ1F7YLO --paths /index.html /service-worker.js",
     "aws:deploy": "yarn predeploy && yarn aws:sync && yarn aws:invalidate",
     "contributors:add": "all-contributors add",
