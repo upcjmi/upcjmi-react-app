@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Skeleton, Tag, Typography, Card,Row,Col ,Carousel} from 'antd';
+import {Tag, Typography, Row, Carousel} from 'antd';
 import OverlayCarousel from 'components/overlayCarousel';
 import AboutUs from 'components/home/aboutUs';
 import {HOME_CAROUSEL} from 'constants/home/carousel.home.constant';
@@ -12,12 +12,13 @@ import {
 } from 'constants/routes/main.paths.constant';
 import {Link} from 'react-router-dom';
 import Notice from 'components/home/notice';
-import { getBadges} from 'helpers/api/core.api.helper';
+import {getBadges} from 'helpers/api/core.api.helper';
 import {CardRanking} from 'components/cardRanking';
 import {IRanking} from 'types/common.type';
 import ContactScreen from './contact.screen';
 
-interface IProps {}
+interface IProps {
+}
 
 const {Title} = Typography;
 // const dummy = {
@@ -55,30 +56,33 @@ const quickLink = (
     </Link>
   </div>
 );
-const getBadgesArray= (arr:Array<any>) => {
+const getBadgesArray = (arr: Array<any>) => {
   const newArr = [];
-  for(let i = 0; i<arr.length;i+=4){
-    newArr.push(arr.slice(i,i+4));
+  const limit = selectScreen(1, 1, 2, 3);
+  for (let i = 0; i < arr.length; i += limit) {
+    newArr.push(arr.slice(i, i + limit));
   }
-  return newArr
-}
+  return newArr;
+};
 
 const CarouselOverlayComponent = () => {
-  const [apiBadges,setApiBadges] = useState<Array<IRanking>>([])
-  const [loading,setLoading] = useState(false)
-  useEffect(()=>{
-    const getData  =  async ()=>{
-      setLoading(true);
+  const [apiBadges, setApiBadges] = useState<Array<IRanking>>([]);
+  // const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const getData = async () => {
       const data = await getBadges();
       setApiBadges(data);
-      setLoading(false);
-    }
-    getData()
-  },[])
-  return(
-    <div className='column space-between' style={{height:'100%'}}>
+    };
+
+    getData().then();
+  }, []);
+
+  return (
+    <div className='column space-between' style={{height: '100%'}}>
+      {quickLink}
+
       <div className='column'>
-        {quickLink}
         <div className='welcome-text'>
           <Title level={2}>Welcome to,</Title>
           <Title>
@@ -91,59 +95,34 @@ const CarouselOverlayComponent = () => {
 
       <div className='ranking-container'>
         <Carousel autoplay dots={false}>
-          {getBadgesArray(apiBadges).map((item,index) => (
+          {getBadgesArray(apiBadges).map((item, index) => (
             <div className='row-container'>
-              <Row gutter={32} style={{display: selectScreen('none', 'none', null)}}>
+              <Row
+                gutter={32}
+                style={{
+                  display: selectScreen('none', 'none', 'flex'),
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-end',
+                }}
+                className='center-hv'>
                 {
-                  item.map((badge)=>(
-                    <Col span={6}>
-                      <CardRanking {...badge} />
-                    </Col>
+                  item.map((badge) => (
+                    // <Col className='center-hv'>
+                    <CardRanking {...badge} />
+                    // </Col>
                   ))
                 }
               </Row>
             </div>
           ))}
-          {/* {[1,2].map((item,index) => ( */}
-          {/*  <div className='row-container'> */}
-          {/*    <Row */}
-          {/*      gutter={32} */}
-          {/*      style={{display: selectScreen('none', 'none', null)}} */}
-          {/*      type='flex' */}
-          {/*      justify='space-around' */}
-          {/*    > */}
-          {/*      { */}
-          {/*          [1,2,3,4].map((badge)=>( */}
-          {/*            <Col span={6}> */}
-          {/*              <CardRanking */}
-          {/*                {...dummy} */}
-          {/*              /> */}
-          {/*            </Col> */}
-          {/*          )) */}
-          {/*        } */}
-          {/*    </Row> */}
-          {/*  </div> */}
-          {/* ))} */}
         </Carousel>
       </div>
-      {loading?(
-        <div className='badge-container' style={{display: selectScreen('none', 'none', null)}}>
-          {
-            [1, 2, 3, 4].map((i) => (
-              <Card style={{ width: '16rem',margin:10 ,borderRadius:'2rem'}}>
-                <Skeleton active={loading} key={i.toString()}  />
-              </Card>
-            ))
-          }
-        </div>
-      ):null}
     </div>
   );
-}
+};
 
-const HomeScreen: FC<IProps> = () =>
-{
-  return(
+const HomeScreen: FC<IProps> = () => {
+  return (
     <>
       <OverlayCarousel
         overlay={CarouselOverlayComponent}
@@ -155,6 +134,7 @@ const HomeScreen: FC<IProps> = () =>
       <TopRecruiters />
       <ContactScreen />
     </>
-  );}
+  );
+};
 
 export default HomeScreen;

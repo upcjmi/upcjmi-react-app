@@ -232,11 +232,13 @@ img {
 .notice-card-title{
   font-size: 1rem;
   color:#000000;
-  cursor: default;
 }
-.notice-card-title:hover{
+.highlight-card-title{
+  font-size: 2rem;
+  color:#000000;
+}
+.notice-card-title:hover, .highlight-card-title:hover{
   text-decoration: underline;
-  cursor: default;
 }
 .notice-card-details{
   font-size: .8rem;
@@ -269,6 +271,10 @@ img {
 .signinScreen-card {
   max-width: 95vw;
   width: 450px;
+}
+
+#top-recruiter .slick-dots button {
+  background-color: #000c17;
 }
 
 .auth-container-type-1 {
