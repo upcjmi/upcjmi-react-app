@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {Typography, Row, Col} from 'antd';
 import {ABOUT_US_PEOPLE} from 'constants/home/people.home.constant';
+import {selectScreen} from '../../helpers/screen.helper';
 
 const JamiaLogo = require('assets/svgs/jamia-logo.svg');
 const leftQuote = require('assets/svgs/quote-left-solid.svg');
@@ -49,7 +50,10 @@ const AboutUs: FC<IProps> = () => (
         <Col sm={24} md={16}>
           <div className='row w-100 my-2'>
             <div className='row align-start flex-1 justify-center'>
-              <img src={leftQuote} alt='Quote Left' className='quote-svg' />
+              <img
+                src={leftQuote}
+                alt='Quote Left'
+                style={{maxHeight: selectScreen('30px', '30px', '50px','80px')}} />
             </div>
             <div className='column align-center flex-8 justify-center p-2'>
               <text>
@@ -67,7 +71,11 @@ const AboutUs: FC<IProps> = () => (
               </text>
             </div>
             <div className='row align-end flex-1 justify-center'>
-              <img src={rightQuote} alt='Quote Right' className='quote-svg' />
+              <img
+                src={rightQuote}
+                alt='Quote Right'
+                style={{maxHeight: selectScreen('30px', '30px', '50px','80px')}}
+              />
             </div>
           </div>
         </Col>

@@ -1,4 +1,4 @@
-import {IStudentExtraDetails, IReusmeData} from 'types/student.api.type';
+import {IStudentExtraDetails} from 'types/student.api.type';
 
 import {loadSecureUrl} from './main.api.helper';
 

@@ -42,11 +42,11 @@ const getYear = (year: number): string => {
 };
 
 const ProfileCardStudent: FC<IProps> = ({
-  extraDetails,
-  loadExtraDetails,
-  user,
-  editable = false,
-}: IProps) => {
+                                          extraDetails,
+                                          loadExtraDetails,
+                                          user,
+                                          editable = false,
+                                        }: IProps) => {
   useEffect(() => {
     loadExtraDetails();
   }, [loadExtraDetails]);
@@ -105,7 +105,10 @@ const ProfileCardStudent: FC<IProps> = ({
             </b>
           </Text>
           <Button className='float-right my-2' type='link'>
-            <a href={`${API_BASE_URL}${extraDetails.resume}`} target='_blank'>
+            <a
+              href={`${API_BASE_URL}${extraDetails.resume}`}
+              rel='noopener noreferrer'
+              target='_blank'>
               View Resume
             </a>
           </Button>
