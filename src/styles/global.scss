@@ -229,23 +229,23 @@ img {
   font-size: 1.3rem;
   text-align: justify;
 }
-.notice-card-title{
+.notice-card-title {
   font-size: 1rem;
-  color:#000000;
+  color: #000000;
   cursor: default;
 }
-.notice-card-title:hover{
+.notice-card-title:hover {
   text-decoration: underline;
   cursor: default;
 }
-.notice-card-details{
-  font-size: .8rem;
+.notice-card-details {
+  font-size: 0.8rem;
   margin-top: 10px;
 }
-.notice-card-date{
-  font-size: .6rem;
+.notice-card-date {
+  font-size: 0.6rem;
 }
-.card-notice{
+.card-notice {
   text-align: start;
   border-bottom: 1px #ddd solid;
   margin-bottom: 10px;
@@ -356,77 +356,76 @@ img {
   height: 70vh;
   overflow: scroll;
 }
-.mx{
+.mx {
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.jmi-text-home{
-  color:#ffffff;
+.jmi-text-home {
+  color: #ffffff;
   font-size: 17px;
-  background-color:#3A811D;
+  background-color: #3a811d;
   padding: 5px;
   border-radius: 10px;
 }
-.highlight-text{
+.highlight-text {
   font-size: 1.1rem;
   cursor: default;
 }
-.highlight-text:hover{
+.highlight-text:hover {
   font-size: 1.1rem;
-  color:#000000;
+  color: #000000;
   text-decoration: underline;
   cursor: default;
 }
-.read-more{
+.read-more {
   font-weight: bold;
   cursor: default;
 }
-.read-more:hover{
+.read-more:hover {
   text-decoration: underline;
 }
-.flex-1{
-  flex:1;
+.flex-1 {
+  flex: 1;
 }
-.flex-8{
-  flex:8;
+.flex-8 {
+  flex: 8;
 }
-.w-100{
-  width:100%;
+.w-100 {
+  width: 100%;
 }
-.row{
- display: flex;
+.row {
+  display: flex;
   flex-direction: row;
- flex:1;
+  flex: 1;
 }
-.align-center{
+.align-center {
   align-items: center;
-
 }
-.align-start{
+.align-start {
   align-items: flex-start;
 }
-.align-end{
+.align-end {
   align-items: flex-end;
 }
-.space-between{
+.space-between {
   justify-content: space-between;
 }
-.justify-center{
+.justify-center {
   justify-content: center;
 }
 
-.m-0{
-  margin:0;
+.m-0 {
+  margin: 0;
 }
-.my-2{
-  margin-top:10px;
-  margin-bottom:10px;
+.my-2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-.column{
+.column {
   display: flex;
   flex-direction: column;
 }
-.p-2{
-  padding:10px
+.p-2 {
+  padding: 10px;
 }

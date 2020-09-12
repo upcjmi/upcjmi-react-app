@@ -42,9 +42,9 @@ const AboutUs: FC<IProps> = () => (
           <br />
           <Title level={3}>{ABOUT_US_PEOPLE[0].name}</Title>
           {ABOUT_US_PEOPLE[0].position}
-            ,
+          ,
           <br />
-            Jamia Millia Islamia
+          Jamia Millia Islamia
         </Col>
         <Col sm={24} md={16}>
           <div className='row w-100 my-2'>
@@ -53,14 +53,14 @@ const AboutUs: FC<IProps> = () => (
             </div>
             <div className='column align-center flex-8 justify-center p-2'>
               <text>
-                Jamia Millia Islamia made a modest beginning in 1920 at Aligarh,
-                with the resolute determination of its founding members--Shaikhul Hind Maulana Mahmud
-                Hasan, Maulana Muhammad Ali Jauhar, Jenab Hakim Ajmal Khan, Dr. Mukhtar Ahmad Ansari,
-                Jenab Abdul Majeed Khwaja, and Dr. Zakir Hussain to create an institution that would
-                manifest indigenous ethos and spirit of plurality. It was conceived as a national
-                institution that would offer progressive education and nationalist ideals to students
-                from all communities, particularly the Muslims. The emergence of Jamia was supported
-                by Gandhiji and Tagore who felt that Jamia could shape lives of hundreds and thousands
+                Jamia Millia Islamia made a modest beginning in 1920 at Aligarh, with the resolute
+                determination of its founding members--Shaikhul Hind Maulana Mahmud Hasan, Maulana
+                Muhammad Ali Jauhar, Jenab Hakim Ajmal Khan, Dr. Mukhtar Ahmad Ansari, Jenab Abdul
+                Majeed Khwaja, and Dr. Zakir Hussain to create an institution that would manifest
+                indigenous ethos and spirit of plurality. It was conceived as a national institution
+                that would offer progressive education and nationalist ideals to students from all
+                communities, particularly the Muslims. The emergence of Jamia was supported by
+                Gandhiji and Tagore who felt that Jamia could shape lives of hundreds and thousands
                 of students on the basis of a shared culture and worldview. Jamia’s development is
                 marked by sacrifices made by the staff and students and a host of individuals who
                 contributed through myriad efforts.

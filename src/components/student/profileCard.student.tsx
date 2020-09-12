@@ -100,12 +100,14 @@ const ProfileCardStudent: FC<IProps> = ({
           <Text>
             <b>
               {getCourseName(extraDetails.student.course)}
-            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+              &nbsp;&nbsp;&middot;&nbsp;&nbsp;
               {`${getYear(extraDetails.student.year)} year`}
             </b>
           </Text>
           <Button className='float-right my-2' type='link'>
-            <a href={`${API_BASE_URL}${extraDetails.resume}`} target='_blank'>View Resume</a>
+            <a href={`${API_BASE_URL}${extraDetails.resume}`} target='_blank'>
+              View Resume
+            </a>
           </Button>
         </div>
         <Paragraph type='secondary'>{extraDetails.about}</Paragraph>

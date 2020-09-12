@@ -18,7 +18,7 @@ export const applyToCourseAPI = (data: any, course: number) =>
 
 export const getAllAppliedCoursesAPI = () => loadSecureUrl(UAllAppliedCourses);
 
-export const getAllNotices = () => loadOpenUrl(UALLNOTICES)
-export const getCoordinator = (department:string) => loadOpenUrl(`${UCOORDINATOR}${department}/`,)
-export const getNotice = (id:number) => loadOpenUrl(`${UALLNOTICES}${id}/`)
-export const getBadges = () => loadOpenUrl(`${URanking}`)
+export const getAllNotices = () => loadOpenUrl(UALLNOTICES);
+export const getCoordinator = (department: string) => loadOpenUrl(`${UCOORDINATOR}${department}/`);
+export const getNotice = (id: number) => loadOpenUrl(`${UALLNOTICES}${id}/`);
+export const getBadges = () => loadOpenUrl(`${URanking}`);

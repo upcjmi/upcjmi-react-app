@@ -1,10 +1,10 @@
 import {RESUME_BUILDER} from 'constants/routes/main.paths.constant';
 
-const ResumeStudentScreen=() => {
+const ResumeStudentScreen = () => {
   // @ts-ignore
   window.location.href = RESUME_BUILDER;
   return null;
-}
+};
 
 export default ResumeStudentScreen;
 

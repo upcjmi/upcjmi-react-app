@@ -13,7 +13,7 @@ interface IProps {
 
 const JamiaLogo = require('assets/svgs/jamia-logo.svg');
 
-const PortalNavigator: FC<IProps> = ({routes,extra}: IProps) => {
+const PortalNavigator: FC<IProps> = ({routes, extra}: IProps) => {
   const [visible, setVisible] = useState(false);
   const hide = () => setVisible(false);
 
@@ -31,7 +31,7 @@ const PortalNavigator: FC<IProps> = ({routes,extra}: IProps) => {
         mode='vertical'
         theme='light'
         forceSubMenuRender
-        inlineCollapsed={selectScreen(null, true,false,false)}
+        inlineCollapsed={selectScreen(null, true, false, false)}
         className={selectScreen(null, 'full-page')}
         selectedKeys={[]}>
         {routes.map((route: any, index: number) => (

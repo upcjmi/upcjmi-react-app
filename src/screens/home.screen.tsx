@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Skeleton, Tag, Typography, Card,Row,Col ,Carousel} from 'antd';
+import {Skeleton, Tag, Typography, Card, Row, Col, Carousel} from 'antd';
 import OverlayCarousel from 'components/overlayCarousel';
 import AboutUs from 'components/home/aboutUs';
 import {HOME_CAROUSEL} from 'constants/home/carousel.home.constant';
@@ -12,7 +12,7 @@ import {
 } from 'constants/routes/main.paths.constant';
 import {Link} from 'react-router-dom';
 import Notice from 'components/home/notice';
-import { getBadges} from 'helpers/api/core.api.helper';
+import {getBadges} from 'helpers/api/core.api.helper';
 import {CardRanking} from 'components/cardRanking';
 import {IRanking} from 'types/common.type';
 import ContactScreen from './contact.screen';
@@ -44,33 +44,33 @@ const quickLink = (
     </Link>
   </div>
 );
-const getBadgesArray= (arr:Array<any>) => {
+const getBadgesArray = (arr: Array<any>) => {
   const newArr = [];
-  for(let i = 0; i<arr.length;i+=4){
-    newArr.push(arr.slice(i,i+4));
+  for (let i = 0; i < arr.length; i += 4) {
+    newArr.push(arr.slice(i, i + 4));
   }
-  return newArr
-}
+  return newArr;
+};
 
 const CarouselOverlayComponent = () => {
-  const [apiBadges,setApiBadges] = useState<Array<IRanking>>([])
-  const [loading,setLoading] = useState(false)
-  useEffect(()=>{
-    const getData  =  async ()=>{
+  const [apiBadges, setApiBadges] = useState<Array<IRanking>>([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const getData = async () => {
       setLoading(true);
       const data = await getBadges();
       setApiBadges(data);
       setLoading(false);
-    }
-    getData()
-  },[])
-  return(
+    };
+    getData();
+  }, []);
+  return (
     <>
       {quickLink}
       <div className='welcome-text'>
         <Title level={2}>Welcome to,</Title>
         <Title>
-        University Placement Cell
+          University Placement Cell
           <br />
           <p>Jamia Millia Islamia</p>
         </Title>
@@ -79,48 +79,44 @@ const CarouselOverlayComponent = () => {
       <br />
       <div className='ranking-container'>
         <Carousel autoplay dots={false}>
-          {getBadgesArray(apiBadges).map((item,index) => (
+          {getBadgesArray(apiBadges).map((item, index) => (
             <Row gutter={32} style={{display: selectScreen('none', 'none', null)}}>
-              {
-                item.map((badge)=>(
-                  <Col span={6}>
-                    <CardRanking {...badge} />
-                  </Col>
-                ))
-              }
+              {item.map(badge => (
+                <Col span={6}>
+                  <CardRanking {...badge} />
+                </Col>
+              ))}
             </Row>
           ))}
         </Carousel>
       </div>
-      {  loading?(
+      {loading ? (
         <div className='badge-container' style={{display: selectScreen('none', 'none', null)}}>
-          {
-            [1, 2, 3, 4].map((i) => (
-              <Card style={{ width: '16rem',margin:10 ,borderRadius:'2rem'}}>
-                <Skeleton active={loading} key={i.toString()} />
-              </Card>
-            ))
-          }
+          {[1, 2, 3, 4].map(i => (
+            <Card style={{width: '16rem', margin: 10, borderRadius: '2rem'}}>
+              <Skeleton active={loading} key={i.toString()} />
+            </Card>
+          ))}
         </div>
-      ):null}
+      ) : null}
     </>
   );
-}
+};
 
-const HomeScreen: FC<IProps> = () =>
-{
-  return(
+const HomeScreen: FC<IProps> = () => {
+  return (
     <>
       <OverlayCarousel
         overlay={CarouselOverlayComponent}
         images={HOME_CAROUSEL}
         carousel={{dotPosition: 'bottom'}}
-    />
+      />
       <Notice />
       <AboutUs />
       <TopRecruiters />
       <ContactScreen />
     </>
-  );}
+  );
+};
 
 export default HomeScreen;

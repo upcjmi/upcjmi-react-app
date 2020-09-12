@@ -18,10 +18,7 @@ import {saveStudentExtraDataAPI} from 'helpers/api/student.api.helper';
 import {IReduxState} from 'reducers';
 import {IStudentExtraDetails} from 'types/student.api.type';
 import {loadStudentExtraDetails} from 'actions/student.action';
-import {
-  resumeUploadURL,
-  removeFileFromServer,
-} from 'helpers/api/file.api.helper';
+import {resumeUploadURL, removeFileFromServer} from 'helpers/api/file.api.helper';
 import {RESUME_BUILDER} from 'constants/routes/main.paths.constant';
 
 const {Dragger} = Upload;
@@ -223,7 +220,7 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
     dob: '1998-12-11',
     gender: 'M',
     skills: [],
-    resume:'',
+    resume: '',
     profiles: [],
     student: {
       roll: '',
@@ -256,7 +253,7 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
       } else openNotificationWithIcon('error', 'Please Correct the error displayed in forms.');
     });
   };
-  const normFile = (e: {fileList: any;}) => {
+  const normFile = (e: {fileList: any}) => {
     console.log('Upload event:', e);
     if (Array.isArray(e)) {
       return e;
@@ -362,15 +359,12 @@ const ExtraDetailsChangeStudent: FC<IProps> = ({
               setFieldsValue({
                 resume: files[0],
               });
-            }}
-          >
+            }}>
             <p className='ant-upload-drag-icon'>
               <Icon type='inbox' />
             </p>
             <p className='ant-upload-text'>Click or drag file to this area to upload</p>
-            <p className='ant-upload-hint'>
-              Upload Your Resume.
-            </p>
+            <p className='ant-upload-hint'>Upload Your Resume.</p>
             <p className='ant-upload-hint'>
               If you do not have Resume you can create using our Resume Builder.
             </p>

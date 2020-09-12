@@ -1,9 +1,9 @@
 /* eslint-disable */
 import React from 'react';
-import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
 import {RESUME_BUILDER} from '../../../constants/routes/main.paths.constant';
 
-const Resume=()=>(<Redirect to={RESUME_BUILDER}/>)
+const Resume = () => <Redirect to={RESUME_BUILDER} />;
 export default Resume;
 // import {DatePicker, Row, Col, Slider} from 'antd';
 //
@@ -550,4 +550,3 @@ export default Resume;
 //     );
 //   }
 // }
-

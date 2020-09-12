@@ -219,7 +219,9 @@ class FormCreator extends Component {
             case FORM_ELEMENT.FILE_DRAG_DROP:
               extraComponent = (
                 <Upload.Dragger
-                  beforeUpload={()=>{getFileHandlerURL()}}
+                  beforeUpload={() => {
+                    getFileHandlerURL();
+                  }}
                   action={getFileHandlerURL()}
                   data={file => ({
                     upload_id: file.uid,

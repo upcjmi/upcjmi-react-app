@@ -27,7 +27,7 @@ export const studentSideRoutes: Array<ISidebarRoute> = [
     name: 'Courses',
     icon: 'book',
     path: '/courses/',
-    screen:  lazy(() => import('screens/student/courses.student.screen')),
+    screen: lazy(() => import('screens/student/courses.student.screen')),
   },
   // {
   //   name: 'Your Resume',

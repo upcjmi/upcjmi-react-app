@@ -80,19 +80,16 @@ const Portal: FC<IProps> = (props: IProps) => {
         <span>Resume Builder</span>
       </a>
     </Menu.Item>
-  )
+  );
   return (
     <>
       <div className='portal'>
         <BrowserRouter basename={baseLocation}>
-          <SideBar
-            routes={sideRoutes}
-            match={match.path}
-            extra={ResumeButton} />
+          <SideBar routes={sideRoutes} match={match.path} extra={ResumeButton} />
           <div
             className='full-page'
             style={{
-              paddingLeft: selectScreen(0, 80,140,140),
+              paddingLeft: selectScreen(0, 80, 140, 140),
               transition: '0.4s',
             }}>
             <Suspense fallback={<LoadingScreen />}>

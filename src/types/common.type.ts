@@ -47,33 +47,31 @@ export interface INavigation {
   component: any;
 }
 
-
 export interface INotice {
-  title:string,
-  details:string,
-  created:string,
-  id:number
+  title: string;
+  details: string;
+  created: string;
+  id: number;
 }
-
 
 export interface ICoordinator {
-  department:string
-  email: string
-  id: number
-  name: string
-  phone: string
-  photo: string
-  type: string
+  department: string;
+  email: string;
+  id: number;
+  name: string;
+  phone: string;
+  photo: string;
+  type: string;
 }
 
-export interface IRanking{
-  id:number
-  issuer:string
-  rank:string
-  year:number
-  heading:string
-  link:string
-  show_on_site:boolean
-  created:string
-  modified:string
+export interface IRanking {
+  id: number;
+  issuer: string;
+  rank: string;
+  year: number;
+  heading: string;
+  link: string;
+  show_on_site: boolean;
+  created: string;
+  modified: string;
 }
