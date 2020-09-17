@@ -25,6 +25,7 @@ const applicationConfirmation = `# Notice
 - You also confirm to abide university rules and will abide to them.
 - **You can not edit your application later.**
 company will see your resume which is at the time of application**
+
 *If any of the above fails your access of portal can be blocked*
 `;
 
@@ -96,7 +97,7 @@ const RecruitmentDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) =
     company,
     application_required: applicationRequired,
     application_format: application,
-    can_apply: canApply,
+    // can_apply: canApply,
   } = jobDetails;
 
   const onSubmit = async (data: any) => {
@@ -174,12 +175,10 @@ About The Company (
             ))}
           </Collapse>
         </TabPane>
-        {canApply ? (
-          <TabPane tab='Apply' key='3'>
-            <ReactMarkdown source={applicationConfirmation} />
-            {applicationForm}
-          </TabPane>
-        ) : null}
+        <TabPane tab='Apply' key='3'>
+          <ReactMarkdown source={applicationConfirmation} />
+          {applicationForm}
+        </TabPane>
       </Tabs>
     </div>
   );

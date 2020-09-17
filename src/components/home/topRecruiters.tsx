@@ -23,7 +23,7 @@ const TopRecruiters: FC<IProps> = () => (
           Our Top Recruiter
         </Title>
       </div>
-      <Carousel autoplay autoplaySpeed={750} lazyLoad='progressive' dotPosition='left' pauseOnHover={false} pauseOnFocus={false}>
+      <Carousel autoplay autoplaySpeed={1500} lazyLoad='progressive' dotPosition='left' pauseOnHover={false} pauseOnFocus={false}>
         {getArrayGroup(TOP_RECRUITERS, selectScreen(6, 6, 12, 16)).map((recruiterList, i1) => (
           <Row gutter={24} type='flex' justify='space-between' align='middle'>
             {recruiterList.map((recruiter, i2) => (
