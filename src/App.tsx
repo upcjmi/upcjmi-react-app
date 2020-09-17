@@ -8,6 +8,7 @@ import {applyMiddleware, createStore} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {BrowserRouter as Router} from 'react-router-dom';
+import moment from 'moment-timezone';
 
 import rootReducer from 'reducers';
 import Main from 'main';
@@ -33,6 +34,7 @@ class App extends Component<IProps, IState> {
 
   componentDidMount = (): void => {
     window.addEventListener('resize', this.updateDimensions);
+    moment.tz.setDefault();
   };
 
   componentWillUnmount = (): void => {
