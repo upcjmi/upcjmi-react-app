@@ -97,7 +97,7 @@ const RecruitmentDetailsStudentScreen: FC<IProps> = ({match, history}: IProps) =
     company,
     application_required: applicationRequired,
     application_format: application,
-    // can_apply: canApply,
+    can_apply: canApply,
   } = jobDetails;
 
   const onSubmit = async (data: any) => {
@@ -177,7 +177,7 @@ About The Company (
         </TabPane>
         <TabPane tab='Apply' key='3'>
           <ReactMarkdown source={applicationConfirmation} />
-          {applicationForm}
+          {canApply? applicationForm : "Sorry! But you can't apply to this."}
         </TabPane>
       </Tabs>
     </div>

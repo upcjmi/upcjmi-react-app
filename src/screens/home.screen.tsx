@@ -42,7 +42,7 @@ const quickLink = (
       Courses Offered &nbsp;
       <Tag color='#87d068'>New</Tag>
     </Link>
-    <Link to={`${STUDENT_PORTAL_HOME_PATH}jobs/`} className='linkType-1'>
+    <Link to={`${STUDENT_PORTAL_HOME_PATH}recruitment/`} className='linkType-1'>
       Jobs &nbsp;
       <Tag color='#87d068'>New</Tag>
     </Link>
