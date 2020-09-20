@@ -18,6 +18,7 @@ import {BADGES} from 'constants/home/badges.home.constant';
 import ContactScreen from './contact.screen';
 import {TOP_RECRUITERS} from '../constants/home/topRecruiters.home.constant';
 import {selectScreen} from '../helpers/screen.helper';
+import PlacementProcess from '../components/home/placementProcess';
 
 
 const JamiaLogo = require('assets/svgs/jamia-logo-white.svg');
@@ -207,6 +208,7 @@ const HomeScreen: FC<IProps> = () =>
         </Col>
       </Row>
       <Notice />
+      <PlacementProcess />
       <AboutUs />
       {/* <TopRecruiters /> */}
       <ContactScreen />
