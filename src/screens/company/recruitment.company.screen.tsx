@@ -13,7 +13,7 @@ const columns = [
     title: 'Title',
     dataIndex: 'title',
     key: 'title',
-    render: (title: string) => <Link to='1/'>{title}</Link>,
+    render: (title: string, obj: any) => <Link to={`${obj.id}`}>{title}</Link>,
   },
   {
     title: 'Ongoing Round',
@@ -77,7 +77,7 @@ const RecruitmentCompanyScreen: FC<IProps> = () => {
       try {
         setData(await allJobsByCompany());
         setLoading(false);
-        console.log(data)
+        console.log(data);
       } catch (e) {
         console.log(e);
         openNotificationWithIcon('error', 'An error occurred', 'Try refreshing your page');
