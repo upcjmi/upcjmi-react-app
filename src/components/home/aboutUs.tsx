@@ -17,22 +17,41 @@ const AboutUs: FC<IProps> = () => (
       <Title>About Us</Title>
       <Row>
         <Col sm={24} md={18} className='about-us-col'>
-          Jamia Millia Islamia was founded at Aligarh in the United Province, India in 1920 during
-          the Khilafat and &nbsp;
-          {/* eslint-disable-next-line react/no-unescaped-entities */}
-          Non-Cooperation Movement in response to Gandhiji's call to boycott government supported
-          educational institutions. JMI moved from Aligarh to Delhi in the year 1925 and was made a
-          central university by Parliamentary act of 1988. Today, Jamia Millia Islamia is one of the
-          most prominent and promising central university of the country. &nbsp;
-          {/* eslint-disable-next-line react/no-unescaped-entities */}
-          JMI was recently awarded an 'A' Grade by NAAC (National Assessment and Accreditation
-          Council).
+          The University Placement Cell is the institutionalized mechanism for providing training
+          and placement opportunities to the students. Its hierarchical structure identifies
+          placement coordinators at the faculty, department and student level. This forms the
+          placement committee which works towards strengthening the Industry-University interaction
+          and training & placement of students.
+          <br />
+          The placement cell organizes various sessions on career development, resume writing, mock
+          interviews, aptitude test workshops, internship fairs, pre-placement training and seminars
+          on generic issues for the overall development of students. Presently the UPC coordinates
+          with teacher placement coordinators and student placement coordinators from various
+          departments across the university.
         </Col>
         <Col sm={24} md={6} className='center'>
           <img src={JamiaLogo} alt='University Placement Cell, Logo' className='jmi-logo1' />
         </Col>
       </Row>
-
+      <br />
+      <br />
+      <Title>Our Vision</Title>
+      <Row>
+        <Col sm={24} md={18} className='about-us-col'>
+          To become a leading centre for support and facilitate the transformation of students into
+          good human beings and competent professionals.
+        </Col>
+      </Row>
+      <br />
+      <br />
+      <Title>Our Mission</Title>
+      <Row>
+        <Col sm={24} md={18} className='about-us-col'>
+          To provide a platform towards the right career and building visionaries and leaders for
+          the nation. To increase the visibility of academic programs globally and attract corporate
+          at all levels.
+        </Col>
+      </Row>
       <br />
       <br />
       <br />
@@ -53,28 +72,48 @@ const AboutUs: FC<IProps> = () => (
               <img
                 src={leftQuote}
                 alt='Quote Left'
-                style={{maxHeight: selectScreen('30px', '30px', '50px','80px')}} />
+                style={{maxHeight: selectScreen('30px', '30px', '50px', '80px')}}
+              />
             </div>
             <div className='column align-center flex-8 justify-center p-2'>
               <text>
-                Jamia Millia Islamia made a modest beginning in 1920 at Aligarh, with the resolute
-                determination of its founding members--Shaikhul Hind Maulana Mahmud Hasan, Maulana
-                Muhammad Ali Jauhar, Jenab Hakim Ajmal Khan, Dr. Mukhtar Ahmad Ansari, Jenab Abdul
-                Majeed Khwaja, and Dr. Zakir Hussain to create an institution that would manifest
-                indigenous ethos and spirit of plurality. It was conceived as a national institution
-                that would offer progressive education and nationalist ideals to students from all
-                communities, particularly the Muslims. The emergence of Jamia was supported by
-                Gandhiji and Tagore who felt that Jamia could shape lives of hundreds and thousands
-                of students on the basis of a shared culture and worldview. Jamia’s development is
-                marked by sacrifices made by the staff and students and a host of individuals who
-                contributed through myriad efforts.
+                In its centenary year, Jamia Millia Islamia has featured in the top ten list of
+                National Institutional Ranking Framework (NIRF) 2020. I take pride as the
+                Vice-Chancellor in informing you that Jamia Millia Islamia is progressing leaps and
+                bounds in academics, research, placements, and strengthening of infrastructure for
+                gaining a universal identity.
+                <br />
+                <br />
+                I am pleased to invite public offices to extend the opportunities of
+                internships/fellowships to our students from different areas of study, for
+                internship opportunities at ministries of the Government of India. Working with
+                these offices would lead to great exposure for students to understand more about
+                issues, challenges, policies, schemes, and projects. There are issues ranging from
+                health, law, human rights, and climate change to development issues and
+                entrepreneurship which the students would be able to comprehend.
+                <br />
+                <br />
+                It will also prove to be an opportunity for them to further employment prospects in
+                various organizations and help them to acquire admissions for higher studies at
+                reputed universities within the country as well as abroad. Experiential learning
+                will be enabled through blended learning methodologies. Getting familiar with the
+                functions of various government offices would groom them for working towards the
+                welfare of the people and in turn develop them towards society and nation-building.
+                <br />
+                <br />
+                While we keep evolving with new research, academic standards, and excellent faculty,
+                we hope that our students will make good use of this internship opportunity to
+                broaden their professional acumen. I am confident that this would be a step towards
+                engaging them in focused professional pursuits. I am looking forward to a strong
+                association with various offices of Govt. of India in engaging our students as
+                fellows/interns
               </text>
             </div>
             <div className='row align-end flex-1 justify-center'>
               <img
                 src={rightQuote}
                 alt='Quote Right'
-                style={{maxHeight: selectScreen('30px', '30px', '50px','80px')}}
+                style={{maxHeight: selectScreen('30px', '30px', '50px', '80px')}}
               />
             </div>
           </div>
