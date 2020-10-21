@@ -41,11 +41,11 @@ const getYear = (year: number): string => {
 };
 
 const ProfileCardStudent: FC<IProps> = ({
-                                          extraDetails,
-                                          loadExtraDetails,
-                                          user,
-                                          editable = false,
-                                        }: IProps) => {
+  extraDetails,
+  loadExtraDetails,
+  user,
+  editable = false,
+}: IProps) => {
   useEffect(() => {
     loadExtraDetails();
   }, [loadExtraDetails]);
@@ -53,7 +53,7 @@ const ProfileCardStudent: FC<IProps> = ({
   if (extraDetails === undefined || user === undefined)
     return (
       <Card>
-        <Skeleton/>
+        <Skeleton />
       </Card>
     );
 
@@ -65,7 +65,7 @@ const ProfileCardStudent: FC<IProps> = ({
           trigger
           render={() => (
             // @ts-ignore
-            <ExtraDetailsChange action='add'/>
+            <ExtraDetailsChange action='add' />
           )}>
           <Button type='primary' size='large'>
             Click to add
@@ -85,7 +85,7 @@ const ProfileCardStudent: FC<IProps> = ({
             textAlign: selectScreen('center', null),
             justifyContent: selectScreen('space-around', null),
           }}>
-          <Avatar icon='user' size={64}/>
+          <Avatar icon='user' size={64} />
           <div
             style={{
               marginLeft: selectScreen(0, 5, 10),
@@ -94,7 +94,7 @@ const ProfileCardStudent: FC<IProps> = ({
             <Text strong>{extraDetails.tag_line}</Text>
           </div>
         </div>
-        <br/>
+        <br />
         <div>
           <Text>
             <b>
@@ -104,10 +104,7 @@ const ProfileCardStudent: FC<IProps> = ({
             </b>
           </Text>
           <Button className='float-right my-2' type='link'>
-            <a
-              href={extraDetails.resume}
-              rel='noopener noreferrer'
-              target='_blank'>
+            <a href={extraDetails.resume} rel='noopener noreferrer' target='_blank'>
               View Resume
             </a>
           </Button>
@@ -116,7 +113,7 @@ const ProfileCardStudent: FC<IProps> = ({
         <div className='profile-extra-details'>
           {extraDetails.profiles.map(profile => (
             <a href={profile.link} rel='noopener noreferrer' target='_blank'>
-              <GetProfileIcon type={profile.type}/>
+              <GetProfileIcon type={profile.type} />
             </a>
           ))}
         </div>
@@ -130,10 +127,10 @@ const ProfileCardStudent: FC<IProps> = ({
           <SideDrawerForm
             render={() => (
               // @ts-ignore
-              <ExtraDetailsChange action='edit'/>
+              <ExtraDetailsChange action='edit' />
             )}>
             <Button className='float-right' type='link'>
-              <Icon type='edit'/>
+              <Icon type='edit' />
               Edit
             </Button>
           </SideDrawerForm>

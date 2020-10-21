@@ -6,9 +6,7 @@ import {NoticeCard} from './noticeCard';
 import {NoticeBoard} from './noticeBoard';
 import LoadingScreen from '../../screens/loading.screen';
 
-interface IProps {
-}
-
+interface IProps {}
 
 const {Title} = Typography;
 
@@ -38,18 +36,18 @@ const Notice: FC<IProps> = () => {
       <div>
         <Row gutter={32} justify='start'>
           <Col sm={24} md={15}>
-            <Title className='mx'>
-                HighLights
-            </Title>
+            <Title className='mx'>HighLights</Title>
             <div className='highlights'>
               <Col span={24}>
-                {allNotices.length > 0 ? allNotices.slice(0, 5).map((details, index) => (
-                  <NoticeCard highlight {...details} />
-                )) : (
+                {allNotices.length > 0 ? (
+                  allNotices
+                    .slice(0, 5)
+                    .map((details, index) => <NoticeCard highlight {...details} />)
+                ) : (
                   <Result
                     icon={<Icon type='smile' theme='twoTone' />}
                     title='We dont have any highLights for now!'
-                    />
+                  />
                 )}
               </Col>
             </div>

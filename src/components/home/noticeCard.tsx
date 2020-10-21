@@ -8,7 +8,7 @@ import {INotice} from '../../types/common.type';
 export const NoticeCard = ({title, details, id, created, highlight}: INotice) => (
   <div className='card-notice'>
     <Link to={`${NOTICE_PATH}${id}`}>
-      <div className={highlight? 'highlight-card-title' : 'notice-card-title'}>{title}</div>
+      <div className={highlight ? 'highlight-card-title' : 'notice-card-title'}>{title}</div>
     </Link>
     <p className='notice-card-details'>
       {details ? details.substring(0, 256) || details : null}

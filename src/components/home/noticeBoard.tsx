@@ -5,7 +5,7 @@ import {INotice} from 'types/common.type';
 
 interface IProps {
   noticesData: Array<INotice>;
-  loading?: boolean
+  loading?: boolean;
 }
 
 const {Title} = Typography;

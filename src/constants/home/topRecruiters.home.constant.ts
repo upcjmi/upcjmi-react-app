@@ -20,7 +20,6 @@ const Uniparts = require('assets/top-recruiters/Uniparts.png');
 const Vedanta = require('assets/top-recruiters/Vedanta.png');
 const Wipro = require('assets/top-recruiters/Wipro.png');
 
-
 export const TOP_RECRUITERS: Array<string> = [
   Microsoft,
   Adobe,
