@@ -158,15 +158,9 @@ About The Company (
         <Text>
           <ReactMarkdown source={company.about} />
         </Text>
-      </Card>
-      <br />
-      <br />
 
-      <Tabs size='large' className='full-page'>
-        <TabPane tab='Details' key='1'>
-          <ReactMarkdown source={about} />
-        </TabPane>
-        <TabPane tab='Rounds' key='2'>
+        <Title level={3}>Rounds</Title>
+        <Text>
           <Collapse defaultActiveKey={[]} accordion>
             {rounds.map((round, index) => (
               <Panel header={`${index + 1}. ${round.title}`} key={index.toString()}>
@@ -174,12 +168,11 @@ About The Company (
               </Panel>
             ))}
           </Collapse>
-        </TabPane>
-        <TabPane tab='Apply' key='3'>
-          <ReactMarkdown source={applicationConfirmation} />
-          {canApply? applicationForm : "Sorry! But you can't apply to this."}
-        </TabPane>
-      </Tabs>
+        </Text>
+      </Card>
+      <ReactMarkdown source={about} />
+      <ReactMarkdown source={applicationConfirmation} />
+      {canApply ? applicationForm : "Sorry! But you can't apply to this."}
     </div>
   );
 };
