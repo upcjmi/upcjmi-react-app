@@ -1,6 +1,7 @@
 import React, {FC, useEffect, useState} from 'react';
 import Slider from "react-slick";
 import {Skeleton, Tag, Typography, Card,Row,Col ,Carousel} from 'antd';
+import {Tag, Typography, Row, Carousel} from 'antd';
 import OverlayCarousel from 'components/overlayCarousel';
 import AboutUs from 'components/home/aboutUs';
 import {HOME_CAROUSEL} from 'constants/home/carousel.home.constant';
@@ -13,6 +14,8 @@ import {
 import {Link} from 'react-router-dom';
 import Notice from 'components/home/notice';
 import { getBadges} from 'helpers/api/core.api.helper';
+import {getBadges} from 'helpers/api/core.api.helper';
+import {CardRanking} from 'components/cardRanking';
 import {IRanking} from 'types/common.type';
 import {BADGES} from 'constants/home/badges.home.constant';
 import ContactScreen from './contact.screen';
@@ -23,7 +26,8 @@ import PlacementProcess from '../components/home/placementProcess';
 
 const JamiaLogo = require('assets/svgs/jamia-logo-white.svg');
 
-interface IProps {}
+interface IProps {
+}
 
 const {Title} = Typography;
 
@@ -37,7 +41,7 @@ const quickLink = (
       Courses Offered &nbsp;
       <Tag color='#87d068'>New</Tag>
     </Link>
-    <Link to={`${STUDENT_PORTAL_HOME_PATH}jobs/`} className='linkType-1'>
+    <Link to={`${STUDENT_PORTAL_HOME_PATH}recruitment/`} className='linkType-1'>
       Jobs &nbsp;
       <Tag color='#87d068'>New</Tag>
     </Link>
@@ -54,11 +58,14 @@ const quickLink = (
 
 const getBadgesArray= (arr:Array<any>) => {
   const newArr = [];
-  for(let i = 0; i<arr.length;i+=4){
-    newArr.push(arr.slice(i,i+4));
+  const limit = selectScreen(1, 1, 2, 3);
+  for (let i = 0; i < arr.length; i += limit) {
+    newArr.push(arr.slice(i, i + limit));
   }
+
   return newArr
 }
+
 const Arrows = () =>{
   return(<div />)
 }
@@ -188,11 +195,10 @@ const CarouselOverlayComponent = () => {
       </Row>
     </div>
   );
-}
+};
 
-const HomeScreen: FC<IProps> = () =>
-{
-  return(
+const HomeScreen: FC<IProps> = () => {
+  return (
     <>
       <OverlayCarousel
         overlay={CarouselOverlayComponent}
@@ -213,6 +219,7 @@ const HomeScreen: FC<IProps> = () =>
       {/* <TopRecruiters /> */}
       <ContactScreen />
     </>
-  );}
+  );
+};
 
 export default HomeScreen;
