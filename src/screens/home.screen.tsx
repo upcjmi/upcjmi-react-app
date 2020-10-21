@@ -1,6 +1,7 @@
 import React, {FC, useEffect, useState} from 'react';
-import Slider from 'react-slick';
 import {Skeleton, Tag, Typography, Card, Row, Col, Carousel} from 'antd';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Slider from 'react-slick';
 import OverlayCarousel from 'components/overlayCarousel';
 import AboutUs from 'components/home/aboutUs';
 import {HOME_CAROUSEL} from 'constants/home/carousel.home.constant';
@@ -35,7 +36,7 @@ const quickLink = (
       Courses Offered &nbsp;
       <Tag color='#87d068'>New</Tag>
     </Link>
-    <Link to={`${STUDENT_PORTAL_HOME_PATH}jobs/`} className='linkType-1'>
+    <Link to={`${STUDENT_PORTAL_HOME_PATH}recruitment/`} className='linkType-1'>
       Jobs &nbsp;
       <Tag color='#87d068'>New</Tag>
     </Link>
@@ -52,11 +53,24 @@ const quickLink = (
 
 const getBadgesArray = (arr: Array<any>) => {
   const newArr = [];
-  for (let i = 0; i < arr.length; i += 4) {
-    newArr.push(arr.slice(i, i + 4));
+  // <<<<<<< HEAD
+  //   for (let i = 0; i < arr.length; i += 4) {
+  //     newArr.push(arr.slice(i, i + 4));
+  //   }
+  //   return newArr;
+  // };
+  // const Arrows = () => {
+  //   return <div />;
+  // };
+  // =======
+  const limit = selectScreen(1, 1, 2, 3);
+  for (let i = 0; i < arr.length; i += limit) {
+    newArr.push(arr.slice(i, i + limit));
   }
+
   return newArr;
 };
+
 const Arrows = () => {
   return <div />;
 };

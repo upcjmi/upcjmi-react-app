@@ -9,6 +9,7 @@
     "axios": "^0.19.0",
     "jamia-all-courses": "^1.2.0",
     "moment": "^2.24.0",
+    "moment-timezone": "^0.5.31",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-google-login": "^5.0.5",

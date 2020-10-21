@@ -58,7 +58,7 @@ const ContactScreen: FC<IProps> = () => (
       id='gmap_canvas'
       src={
         'https://maps.google.com/maps?' +
-        'q=university%20placement%20cell&t=&z=13&ie=UTF8&iwloc=&output=embed'
+        'q=university+placement+cell+-+jamia+millia+islamia&t=&z=16&ie=UTF8&iwloc=&output=embed'
       }
       frameBorder='0'
       scrolling='no'

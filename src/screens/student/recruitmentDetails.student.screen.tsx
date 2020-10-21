@@ -25,6 +25,7 @@ const applicationConfirmation = `# Notice
 - You also confirm to abide university rules and will abide to them.
 - **You can not edit your application later.**
 company will see your resume which is at the time of application**
+
 *If any of the above fails your access of portal can be blocked*
 `;
 
@@ -157,15 +158,9 @@ About The Company (
         <Text>
           <ReactMarkdown source={company.about} />
         </Text>
-      </Card>
-      <br />
-      <br />
 
-      <Tabs size='large' className='full-page'>
-        <TabPane tab='Details' key='1'>
-          <ReactMarkdown source={about} />
-        </TabPane>
-        <TabPane tab='Rounds' key='2'>
+        <Title level={3}>Rounds</Title>
+        <Text>
           <Collapse defaultActiveKey={[]} accordion>
             {rounds.map((round, index) => (
               <Panel header={`${index + 1}. ${round.title}`} key={index.toString()}>
@@ -173,14 +168,11 @@ About The Company (
               </Panel>
             ))}
           </Collapse>
-        </TabPane>
-        {canApply ? (
-          <TabPane tab='Apply' key='3'>
-            <ReactMarkdown source={applicationConfirmation} />
-            {applicationForm}
-          </TabPane>
-        ) : null}
-      </Tabs>
+        </Text>
+      </Card>
+      <ReactMarkdown source={about} />
+      <ReactMarkdown source={applicationConfirmation} />
+      {canApply ? applicationForm : "Sorry! But you can't apply to this."}
     </div>
   );
 };

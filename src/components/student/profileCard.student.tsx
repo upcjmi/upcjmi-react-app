@@ -11,7 +11,6 @@ import SideDrawerForm from 'components/sideDrawerForm';
 import {getCourseName} from 'helpers/courses';
 import {GetProfileIcon} from 'helpers/function.helper';
 import ExtraDetailsChange from './extraDetailsChange.student';
-import {API_BASE_URL} from '../../constants/credentials.constant';
 
 interface IStateProps {
   extraDetails: IStudentExtraDetails | undefined | null;
@@ -42,11 +41,11 @@ const getYear = (year: number): string => {
 };
 
 const ProfileCardStudent: FC<IProps> = ({
-                                          extraDetails,
-                                          loadExtraDetails,
-                                          user,
-                                          editable = false,
-                                        }: IProps) => {
+  extraDetails,
+  loadExtraDetails,
+  user,
+  editable = false,
+}: IProps) => {
   useEffect(() => {
     loadExtraDetails();
   }, [loadExtraDetails]);
@@ -105,10 +104,7 @@ const ProfileCardStudent: FC<IProps> = ({
             </b>
           </Text>
           <Button className='float-right my-2' type='link'>
-            <a
-              href={`${API_BASE_URL}${extraDetails.resume}`}
-              rel='noopener noreferrer'
-              target='_blank'>
+            <a href={extraDetails.resume} rel='noopener noreferrer' target='_blank'>
               View Resume
             </a>
           </Button>

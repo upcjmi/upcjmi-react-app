@@ -52,6 +52,7 @@ export interface INotice {
   details: string;
   created: string;
   id: number;
+  highlight?: boolean;
 }
 
 export interface ICoordinator {
