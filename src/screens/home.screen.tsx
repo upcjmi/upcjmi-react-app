@@ -156,7 +156,7 @@ const CarouselOverlayComponent = () => {
   }, [badgeIndex]);
   return (
     <div className='column space-between h-100'>
-      <div className='column'>
+      <div className='column space-between h-100'>
         {quickLink}
         <Row className='welcome-text'>
           <Col md={16} sm={24}>
