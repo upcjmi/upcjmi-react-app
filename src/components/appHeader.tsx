@@ -82,7 +82,6 @@ class AppHeader extends Component<IProps, IState> {
                 </div>
               </Col>
             </Link>
-
             <Col xs={0} md={18} xxl={20}>
               <HeaderPills mode='horizontal' />
             </Col>

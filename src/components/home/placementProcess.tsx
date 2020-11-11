@@ -26,7 +26,7 @@ const PlacementProcess: FC<IProps> = () => (
         <Title>Placement Process</Title>
       </Col>
     </Row>
-    <Row className='center grey lighten-3' gutter={32}>
+    <Row className='center white' gutter={32}>
       <Col sm={24} md={12} offset={selectScreen(0, 0, 6, 6, 6)}>
         <br />
         {/* <Title>Students</Title> */}

@@ -1,6 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Skeleton, Tag, Typography, Card, Row, Col, Carousel} from 'antd';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import {Tag, Typography, Row, Col} from 'antd';
 import Slider from 'react-slick';
 import OverlayCarousel from 'components/overlayCarousel';
 import AboutUs from 'components/home/aboutUs';
@@ -80,18 +79,18 @@ const TopRecruitersComp = () => (
     {...{
       dots: false,
       infinite: true,
-      slidesToShow: 3,
+      slidesToShow: 5,
       slidesToScroll: 1,
       autoplay: true,
       speed: 2000,
-      autoplaySpeed: 2000,
+      autoplaySpeed: 0,
       cssEase: 'linear',
       responsive: [
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 5,
+            slidesToScroll: 5,
             infinite: true,
             dots: true,
           },
@@ -116,7 +115,7 @@ const TopRecruitersComp = () => (
       prevArrow: <Arrows />,
     }}>
     {TOP_RECRUITERS.map((recruiter, index) => (
-      <Col xs={24} md={8} className='center margin-bottom-20 margin-top-20' key={index.toString()}>
+      <Col xs={24} md={8} className='center margin-bottom-10 margin-top-10' key={index.toString()}>
         <div className='row justify-center'>
           <img src={recruiter} alt='' className='image-top-recruiter' />
         </div>
@@ -188,6 +187,7 @@ const CarouselOverlayComponent = () => {
           </Col>
         </Row>
       </div>
+      <br />
       <Row
         className='white'
         style={{display: selectScreen('none', 'none', null, null, null, null)}}>
@@ -217,7 +217,6 @@ const HomeScreen: FC<IProps> = () => {
       <Notice />
       <AboutUs />
       <PlacementProcess />
-      {/* <TopRecruiters /> */}
       <ContactScreen />
     </>
   );
