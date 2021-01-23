@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {Col, Icon, Result, Card, Typography} from 'antd';
 import {NoticeCard} from 'components/home/noticeCard';
 import {INotice} from 'types/common.type';
+import LoadingScreen from '../../screens/loading.screen';
 
 interface IProps {
   noticesData: Array<INotice>;
@@ -10,7 +11,14 @@ interface IProps {
 
 const {Title} = Typography;
 
-export const NoticeBoard: FC<IProps> = ({noticesData}) => {
+export const NoticeBoard: FC<IProps> = ({noticesData, loading}) => {
+  if (loading) {
+    return (
+      <div id='notices' className='container full-page white lighten-3'>
+        <LoadingScreen />
+      </div>
+    );
+  }
   return (
     <Card style={{backgroundColor: '#fafafa'}}>
       <Title className='mx'>Notice</Title>

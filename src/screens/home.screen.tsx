@@ -169,7 +169,7 @@ const CarouselOverlayComponent = () => {
               </Col>
               <Col sm={24} md={20}>
                 <br />
-                <Title level={2}>Welcome to,</Title>
+                <Title level={2}>Welcome to</Title>
                 <Title>
                   University Placement Cell
                   <br />

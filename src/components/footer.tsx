@@ -22,7 +22,6 @@ const Footer: FC<IProps> = () => (
     <Row>
       <Col xs={24} md={12}>
         <Title level={4}>External links</Title>
-        <XLink href={UNIVERSITY_PLACEMENT_CELL}>Placement cell on Jamia&#39;s official site</XLink>
         <XLink href={JAMIA_MILLIA_ISLAMIA}>Jamia Millia Islamia</XLink>
         <XLink href={PRIVACY_POLICY}>Privacy policy</XLink>
         <XLink href={TERMS_AND_CONDITION}>Terms and Condition</XLink>

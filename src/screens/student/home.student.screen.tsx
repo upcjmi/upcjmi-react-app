@@ -5,8 +5,9 @@ import {Link} from 'react-router-dom';
 import ProfileCard from 'components/student/profileCard.student';
 import {getAllJobsAppliedAPI} from 'helpers/api/company.api.helper';
 import {openNotificationWithIcon} from 'helpers/notification.helper';
-import {getAllAppliedCoursesAPI} from 'helpers/api/core.api.helper';
-// import NoticeBoard from 'components/noticeBoard';
+import {getAllAppliedCoursesAPI, getAllNotices} from 'helpers/api/core.api.helper';
+import {NoticeBoard} from 'components/home/noticeBoard';
+import {INotice} from '../../types/common.type';
 
 interface IProps {}
 
@@ -26,6 +27,7 @@ const JobApplication: FC<IProps> = () => {
       company_id: 32,
     },
   ]);
+
   useEffect(() => {
     const load = async () => {
       try {
@@ -159,28 +161,41 @@ const CourseApplication: FC<IProps> = () => {
   );
 };
 
-const HomeStudentScreen: FC<IProps> = () => (
-  <div className='container'>
-    <Row gutter={24}>
-      <Col sm={24} md={12}>
-        {/* <NoticeBoard /> */}
-        <br />
-        <ProfileCard editable />
-        {/* <Link to='/resume/'> */}
-        {/*  <Button type='link'> */}
-        {/*    <Icon type='edit' /> */}
-        {/*    Edit your full resume */}
-        {/*  </Button> */}
-        {/* </Link> */}
-      </Col>
+const HomeStudentScreen: FC<IProps> = () => {
+  const [loadingNotice, setLoadingNotice] = useState(true);
+  const [allNotices, setAllNotices] = useState<Array<INotice>>([]);
 
-      <Col sm={24} md={12}>
-        <JobApplication />
-        <br />
-        <CourseApplication />
-      </Col>
-    </Row>
-  </div>
-);
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getAllNotices();
+      setAllNotices(data);
+      setLoadingNotice(false);
+    };
+    getData();
+  }, []);
+
+  return (
+    <div className='container'>
+      <Row gutter={24}>
+        <Col sm={24} md={12}>
+          <ProfileCard editable />
+          <br />
+          <JobApplication />
+          <br />
+          <CourseApplication />
+        </Col>
+        <Col sm={24} md={12}>
+          <NoticeBoard noticesData={allNotices} loading={loadingNotice} />
+          {/* <Link to='/resume/'> */}
+          {/*  <Button type='link'> */}
+          {/*    <Icon type='edit' /> */}
+          {/*    Edit your full resume */}
+          {/*  </Button> */}
+          {/* </Link> */}
+        </Col>
+      </Row>
+    </div>
+  );
+};
 
 export default HomeStudentScreen;

@@ -1,7 +1,7 @@
 export const CONTACT = {
   address: [
     'Dr. Rihan Khan Suri,',
-    'Training & Placement Officer',
+    'Professor (TPO)',
     'University Placement Cell',
     '3rd Floor, Faculty of Engineering & Technology Building',
     'Jamia Millia Islamia, New Delhi - 110025',
