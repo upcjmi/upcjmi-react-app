@@ -1,0 +1,2 @@
+(this.webpackJsonpupcjmi=this.webpackJsonpupcjmi||[]).push([[49],{841:function(e,t,n){"use strict";n.r(t);n(115);var a=n(59),i=n(0),s=n.n(i),c=a.a.Title;t.default=function(){return s.a.createElement("div",{className:"container"},s.a.createElement(c,null,"Terms and Condition"),"This is yet to be updated")}}}]);
+//# sourceMappingURL=49.84b02ca2.chunk.js.map
