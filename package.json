@@ -6,7 +6,7 @@
   "homepage": "https://upcjmi.com",
   "dependencies": {
     "antd": "^3.23.6",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "jamia-all-courses": "^1.2.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.31",
